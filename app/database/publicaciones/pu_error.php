@@ -1,0 +1,4 @@
+<?php #20/12/2024 - 1:18am
+$ACR = ['creador' => 'normal', 'pubo' => 'publicacion', 'db_archivo' => 'pu_error.php', 'db_ruta' => 'error.php', 'fecha_publicado' => '20/12/2024 - 1:18am', 'fecha_modificado' => '20/12/2024 - 1:18am', 'id_publicador' => '1', 'creador_borrador_version' => '0.1.2 Beta', 'creador_borrador_fecha' => '15.12.2024', ];
+$AC = ['titulo' => 'Oh! parece que hubo un error', 'descripcion' => 'Errores', 'meta_descripcion' => 'Errores', 'catalogo' => 'Error', 'meta_etiquetas' => 'Error', 'fragmento' => '', 'contenido' => 'Parece que la página a la que intenta acceder aún no está disponible o no existe, esta es la versión beta y aún está en construcción.', 'tipo' => '', 'miniatura' => 'assets/img/error.png', 'miniatura_url' => '', 'ruta' => '', 'archivo' => 'error.php', 'directorio' => './', ];
+?>

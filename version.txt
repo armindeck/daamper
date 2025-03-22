@@ -1,0 +1,90 @@
+Versión: 0.2.5 dev-2
+Fecha: 17/03/2025
+
+Enfocado: Optimización y traducción en tres idiomas, español, ingles y japones.
+
+11/03/2025 ... 15/03/2025 dev-1
+- App/
+  - System/ ~ Directorio eliminado.
+    -> System ~ Fue eliminado
+      ~ Se removio la generación y se agrego los nuevos datos para las versiones, lenguajes e información, usando los json.
+      ~ Fue movido al directorio control y el nombre se cambio por system.php
+      ~ El directorio fue eliminado.
+    -> Redes-sociales ~ Fue eliminado.
+  - Control/
+    -> System ~ Ex archivo web.system.php
+    -> Recursos/
+      ~ Fueron cambiadas las rutas de system y portabilidad.
+      ~ Se añadio una funcion para leer la database.
+      ~ Se cambiaron las rutas de los views y global.
+      ~ Se eliminaron los AppSystem y AppPortabilidad.
+    ~ Se movieron los archivos para controller, solo se dejaron control y control_procesa, estos llaman a controller/controller.php.
+  - Controller/ ~ Directorio para los controladores, se dejara de usar control en un futuro.
+  - Scripts/
+    -> Scripts ~ Se cambio el codigo del xv.
+    -> Function ~ Se agrego 2 funciones, la primera para aumentar json, y el segundo para crear carpetas.
+    -> Plantilla/Comandos ~ Se cambio el codigo para mostrar las visitas.
+  - Views/ ~ Se cambiaron todos los nombres ".view.php" por "-view.php".
+    -> Main/
+      -> Panel-apartados ~ Se agrego las traducciones, luego fue movido a panel-views.php y despues fue eliminado.
+      -> Panel-apartados-lista ~ Se cambio el nombre por panel-lista-views.php y se agrego las traducciones.
+      -> Panel ~ Se agrego la traducción y se vinculo el panel-lista-views.php.
+    -> Sidebar ~ Se agrego la traducción.
+    -> Layout ~ Se agrego la traducción.
+  - Http/ ~ Se cambio el nombre por global.
+    -> Url ~ Se cambio el codigo de las vistas por uno mas ordenado y usa json.
+    -> Url ~ Se cambio el nombre por global.php
+  - Global/ ~ Ex-contenidos de http/.
+- Database/ ~ Todos los archivos seran json
+  - Config/
+    -> Version ~ Contiene la información, version, estado, etc, de los apartados y pagina.
+    -> Languajes ~ Contiene gran parte de los textos en multiples idiomas, español, ingles y japones hasta el momento.
+    -> Info ~ Contiene la información del autor, nombre de la pagina y las redes sociales.
+    -> Config ~ Configuración de la pagina web.
+  -> Other/Count ~ Se crea de forma automatica y contiene un conteo de todas las visitas.
+- Panel/
+  - App/
+    -> Info/
+      -> View ~ se quito el texto de la generación y se agrego las traducciones.
+    - Config | Anuncios | Info | Comentarios | Scripts_js | Tema | Htaccess | Directorio | Editor | Subir_imagen | Tema | Actualizaciones | Plantilla
+      -> View ~ Se agrego las traducciones.
+      - x ~ Se elimino el directorio.
+    - Htaccess/
+      -> Htaccess_example ~ Se denego la entrada a database y se cambio el nombre de "htaccess_example.exa" por "htaccess.txt".
+      -> Procesa ~ Se cambio el nombre del archivo htaccess.txt
+    - Directorio | Editor
+      -> Url ~ Se agrego la traducción.
+    - Usuarios/
+      -> View ~ La traducción es limitada.
+      -> Procesa ~ Se agrego la traducción.
+    - Subir_imagen | Tema | Plantilla
+      -> Procesa ~ Se agrego la traducción.
+    - Tema/
+      -> Sub-url ~ Se agrego la traducción y se cambio los botones del formulario por enlaces.
+    - Plantilla/Procesa_scripts ~ Se agrego el apartado plantilla para que pueda leer la versión y no genere errores.
+    - Creador/
+      -> View ~ Se agrego la traducción y se cambio el icono dlel boton anuncio, ya que este no salia.
+      -> Url ~ Se agrego las traducciones a las alertas.
+      - Normal/
+        -> View ~ Se le cambio el nombre al blog.views.php por blog-views.php
+        -> Views/Blog ~ Se cambio el nombre por blog-views.php
+        -> Normal ~ Se agrego la traducción.
+  -> Procesa/procesa.panel.php ~ Se cambio los valores de xv.
+- Visitas/ ~ Fue eliminado.
+
+
+17/03/2025 dev-2
+-> LICENSE ~ Licencia del código fuente, términos de uso y restricciones.
+-> README ~ Descripción general del proyecto, cambios en la versión y pasos de instalación.  
+
+- Database/Config/
+  -> Version ~ Se actualizo la mayoria de estados.
+  -> Languaje ~ Se corrigieron algunas traducciones y se agrego la licencia.
+- App/
+  -> Control/Control | Control_procesa ~ Se agrego la licencia.
+  -> Controller/System ~ Se agrego el texto en referencia a la licencia.
+  -> Scripts/Plantilla/Comandos ~ Se corrigio un error en las visitas cuando se eliminaba Database/Other/Count, y ahora se establece en 0.
+- Panel/
+  -> Plantilla/View ~ Se corrigio el texto del boton activar scripts.
+  -> Subir_imagen/View ~ Se corrigio el texto del boton subir imagen.
+  -> Info/View ~ Se agrego un texto de la licencia.

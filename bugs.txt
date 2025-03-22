@@ -1,0 +1,4 @@
+- Panel/
+    -> Anuncios/View ~ Los scripts para seleccionar archivos tienen mal los label, ya que se unen multiples contenido dentro de cada label
+    -> Creador/Creadores
+- Procesa/ ~ Tienen bugs

@@ -1,0 +1,121 @@
+{
+	"system": {
+		"version": "0.2.5",
+		"state": "Dev-2",
+		"updated": "17.03.2025",
+		"created": "12.06.2024",
+		"license": "Uso No Transferible – Prohibida la venta del código fuente"
+	},
+	"languaje": {
+		"version": "0.1.0",
+		"state": "Beta",
+		"updated": "17.03.2025",
+		"created": "11.03.2025"
+	},
+	"dashboard": {
+		"anuncios": {
+			"version": "0.1.3",
+			"state": "Estable",
+			"updated": "13.03.2025",
+			"created": "08.07.2024"
+		},
+		"comentarios": {
+			"version": "0.1.1",
+			"state": "Beta",
+			"updated": "12.03.2025",
+			"created": "02.01.2025"
+		},
+		"config": {
+			"version": "0.1.3",
+			"state": "Estable",
+			"updated": "11.03.2025",
+			"created": "08.07.2024"
+		},
+		"creador": {
+			"version": "0.1.4",
+			"state": "Dev",
+			"updated": "15.03.2025",
+			"created": "01.07.2024",
+			"other": {
+				"normal": {
+					"version": "0.1.4",
+					"state": "Dev",
+					"updated": "15.03.2025",
+					"created": "30.07.2024"
+				},
+				"anime_entrada": {
+					"version": "0.1.3",
+					"state": "Dev",
+					"updated": "15.03.2025",
+					"created": "01.07.2024"
+				},
+				"anime_mirando": {
+					"version": "0.1.2",
+					"state": "Dev",
+					"updated": "04.01.2025",
+					"created": "02.07.2024"
+				},
+				"juego": {
+					"version": "0.1.1",
+					"state": "Dev",
+					"updated": "02.02.2025",
+					"created": "29.12.2024"
+				}
+			}
+		},
+		"directorio": {
+			"version": "0.1.2",
+			"state": "Beta",
+			"updated": "13.03.2025",
+			"created": "29.06.2024"
+		},
+		"editor": {
+			"version": "0.1.2",
+			"state": "Beta",
+			"updated": "13.03.2025",
+			"created": "30.06.2024"
+		},
+		"htaccess": {
+			"version": "0.1.2",
+			"state": "Estable",
+			"updated": "13.03.2025",
+			"created": "08.07.2024"
+		},
+		"info": {
+			"version": "0.1.1",
+			"state": "Estable",
+			"updated": "13.03.2025",
+			"created": "26.12.2024"
+		},
+		"plantilla": {
+			"version": "0.2.1",
+			"state": "Estable",
+			"updated": "17.03.2025",
+			"created": "09.07.2024"
+		},
+		"scripts_js": {
+			"version": "0.1.2",
+			"state": "Estable",
+			"updated": "13.03.2025",
+			"created": "08.07.2024"
+		},
+		"subir_imagen": {
+			"version": "0.1.2",
+			"state": "Estable",
+			"updated": "17.03.2025",
+			"created": "09.07.2024"
+		},
+		"tema": {
+			"version": "0.1.3",
+			"state": "Beta",
+			"updated": "14.13.2025",
+			"created": "24.08.2024"
+		},
+		"usuarios": {
+			"version": "0.1.1",
+			"state": "Beta",
+			"updated": "13.03.2025",
+			"created": "07.01.2025"
+		}
+	}
+}

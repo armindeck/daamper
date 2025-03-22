@@ -1,0 +1,4 @@
+<?php #19/12/2024 - 11:23pm
+$ACR = ['creador' => 'normal', 'pubo' => 'publicacion', 'db_archivo' => 'pu_auth-cambiar-contrasena.php', 'db_ruta' => 'auth/cambiar-contrasena.php', 'fecha_publicado' => '19/12/2024 - 11:23pm', 'fecha_modificado' => '19/12/2024 - 11:23pm', 'id_publicador' => '1', 'creador_borrador_version' => '0.1.2 Beta', 'creador_borrador_fecha' => '15.12.2024', ];
+$AC = ['titulo' => 'Cambiar contraseña', 'descripcion' => 'Cambiar contraseña', 'meta_descripcion' => 'Cambiar contraseña', 'catalogo' => 'Auth', 'meta_etiquetas' => 'Cambiar contraseña, Auth', 'fragmento' => '', 'contenido' => '', 'tipo' => '', 'miniatura' => 'assets/img/miniatura.png', 'miniatura_url' => '', 'ruta' => 'auth/', 'archivo' => 'cambiar-contrasena.php', 'directorio' => '../', ];
+?>

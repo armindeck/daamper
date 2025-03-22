@@ -1,0 +1,4 @@
+<?php #19/12/2024 - 11:31pm
+$ACR = ['creador' => 'normal', 'pubo' => 'publicacion', 'db_archivo' => 'pu_auth-registrar.php', 'db_ruta' => 'auth/registrar.php', 'fecha_publicado' => '19/12/2024 - 11:31pm', 'fecha_modificado' => '19/12/2024 - 11:31pm', 'id_publicador' => '1', 'creador_borrador_version' => '0.1.2 Beta', 'creador_borrador_fecha' => '15.12.2024', ];
+$AC = ['titulo' => 'Registrarse', 'descripcion' => 'Registrarse', 'meta_descripcion' => 'Registrarse', 'catalogo' => 'Auth', 'meta_etiquetas' => 'Registrarse, Auth', 'fragmento' => '', 'contenido' => '', 'tipo' => '', 'miniatura' => 'assets/img/miniatura.png', 'miniatura_url' => '', 'ruta' => 'auth/', 'archivo' => 'registrar.php', 'directorio' => '../', ];
+?>

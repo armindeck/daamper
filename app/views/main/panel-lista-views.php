@@ -1,0 +1,15 @@
+<?php return [
+    ['icono' => 'fas fa-plus', 'texto' => LANGUAJE['global']['creator'][CONFIG['languaje']], 'apartado' => 'creador'],
+    ['icono' => 'fas fa-comments', 'texto' => LANGUAJE['global']['comments'][CONFIG['languaje']], 'apartado' => 'comentarios'],
+    ['icono' => 'fas fa-user-circle', 'texto' => LANGUAJE['global']['users'][CONFIG['languaje']], 'apartado' => 'usuarios'],
+    ['icono' => 'fas fa-image', 'texto' => LANGUAJE['global']['upload-image'][CONFIG['languaje']], 'apartado' => 'subir_imagen'],
+    ['icono' => 'fas fa-newspaper', 'texto' => LANGUAJE['global']['announcements'][CONFIG['languaje']], 'apartado' => 'anuncios'],
+    ['icono' => 'fab fa-js', 'texto' => LANGUAJE['global']['scripts'][CONFIG['languaje']], 'apartado' => 'scripts_js'],
+    ['icono' => 'fas fa-cog', 'texto' => LANGUAJE['global']['settings'][CONFIG['languaje']], 'apartado' => 'config'],
+    ['icono' => 'fab fa-html5', 'texto' => LANGUAJE['global']['template'][CONFIG['languaje']], 'apartado' => 'plantilla'],
+    ['icono' => 'fab fa-css3', 'texto' => LANGUAJE['global']['theme'][CONFIG['languaje']], 'apartado' => 'tema'],
+    ['icono' => 'fas fa-sitemap', 'texto' => LANGUAJE['global']['directory'][CONFIG['languaje']], 'apartado' => 'directorio'],
+    ['icono' => 'fas fa-edit', 'texto' => LANGUAJE['global']['editor'][CONFIG['languaje']], 'apartado' => 'editor'],
+    ['icono' => 'fas fa-file-invoice', 'texto' => 'Htaccess', 'apartado' => 'htaccess'],
+    ['icono' => 'fas fa-gem', 'texto' => LANGUAJE['global']['updates'][CONFIG['languaje']], 'apartado' => 'actualizaciones'],
+]; ?>
