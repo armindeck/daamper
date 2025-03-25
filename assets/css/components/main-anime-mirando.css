@@ -1,0 +1,80 @@
+/*
+.content .article { display: none; max-width: 0px; }
+.content > main { max-width: 100%; }
+*/
+.opciones-botones {
+  width: 100%;
+  background: var(--boton-bg);
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.opciones-botones .opcion {
+  display: inline-block;
+}
+
+.opciones-botones .opcion a {
+  display: inline-block;
+  padding: 12px 8px;
+  color: var(--boton-co);
+  background-color: var(--boton-bg);
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.opciones-botones .opcion a:hover {
+  color: white;
+  background: rgb(0, 0, 0, 0.4);
+}
+
+.opciones-botones .opcion .title {
+  display: none;
+}
+
+.opciones-botones .opcion .title:hover {
+  display: block;
+  padding: 4px 8px;
+  font-size: 14px;
+  margin-top: -38px;
+  position: absolute;
+  border-radius: 4px;
+  color: white;
+  background: #484848;
+}
+
+.video {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: var(--local-botones-border-radius);
+}
+
+.lista-ver {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 4px;
+}
+
+.lista-ver section > footer {
+  max-width: 800px;
+}
+
+.lista-ver > article {
+  padding: 4px;
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+}
+
+.lista-ver .ruta {
+  text-transform: uppercase;
+}
+
+@media (max-width: 1252px) {
+  .lista-ver > article {
+    max-width: 100%;
+  }
+}

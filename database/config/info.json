@@ -1,0 +1,50 @@
+{
+    "author": "Armin",
+    "author-page-name": "dbproject",
+    "author-page-url": "https://dbproject.rf.gd",
+    "page-name": "daamper",
+    "page-url": "https://dbproject.rf.gd/web/daamper",
+    "anio": 2024,
+    "social-networks": {
+        "dbproject": {
+            "link": "https://dbproject.rf.gd",
+            "name": "dbproject",
+            "icono": "fas fa-hamburger"
+        },
+        "Facebook": {
+            "link": "https://facebook.com/armionegai",
+            "name": "ArmiOnegai",
+            "icono": "fab fa-facebook"
+        },
+        "YouTube": {
+            "link": "https://youtube.com/@SoyArminDeck",
+            "name": "SoyArminDeck",
+            "icono": "fab fa-youtube"
+        },
+        "X": {
+            "link": "https://x.com/armindeck",
+            "name": "Armin Deck",
+            "icono": "fab fa-twitter"
+        },
+        "GitHub": {
+            "link": "https://github.com/armindeck",
+            "name": "Armin Deck",
+            "icono": "fab fa-github"
+        },
+        "TikTok": {
+            "link": "https://tiktok.com/@arminvtch",
+            "name": "ArminVT",
+            "icono": "fab fa-tiktok"
+        },
+        "Patreon": {
+            "link": "https://patreon.com/arminvtch",
+            "name": "ArminVT",
+            "icono": "fab fa-patreon"
+        },
+        "Kofi": {
+            "link": "https://ko-fi.com/arminvtch",
+            "name": "ArminVT",
+            "icono": "fas fa-mug-hot"
+        }
+    }
+}

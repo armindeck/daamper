@@ -1,0 +1,22 @@
+Licencia de Uso No Transferible - daamper
+
+Copyright (c) 2025 DBHS / daamper
+
+Se concede permiso, de forma gratuita, a cualquier persona para usar, modificar y ejecutar el código fuente de este sitio web, incluyendo su uso en proyectos comerciales (como monetización por publicidad o donaciones).
+
+🚫 Está estrictamente prohibido:
+- Vender, sublicenciar o distribuir el código fuente, ya sea de forma parcial o total, con fines de lucro.
+- Convertir el código en privativo o eliminar esta licencia.
+- Reclamar la autoría del código original.
+
+📌 El autor (DBHS / daamper) se reserva el derecho de modificar esta licencia en futuras versiones del código.
+
+💡 Uso permitido:
+✅ Se permite el uso y modificación del código fuente para fines personales, educativos y comerciales (sin venderlo).
+✅ Se puede utilizar este sitio web como base para otros proyectos, siempre que se mantenga esta licencia.
+
+⚠ Descargo de responsabilidad:
+Este software se proporciona "tal cual", sin garantías de ningún tipo. El autor no se hace responsable de posibles daños o pérdidas derivadas de su uso.
+
+DBHS / daamper
+https://dbproject.rf.gd

@@ -1,0 +1,4 @@
+<?php #23/03/2025 - 7:59pm
+$ACR = ['creador' => 'normal', 'pubo' => 'publicacion', 'db_archivo' => 'pu_error.php', 'db_ruta' => 'error.php', 'fecha_publicado' => '20/12/2024 - 1:18am', 'fecha_modificado' => '23/03/2025 - 7:59pm', 'id_publicador' => '1', 'creador_borrador_version' => '0.1.2 Beta', 'creador_borrador_fecha' => '04.01.2025', ];
+$AC = ['titulo' => 'undefined', 'descripcion' => 'Errores', 'meta_descripcion' => 'Errores', 'catalogo' => 'Error', 'meta_etiquetas' => 'Error', 'fragmento' => '', 'contenido' => '', 'tipo' => '', 'miniatura' => 'assets/img/error.png', 'miniatura_url' => '', 'ruta' => '', 'archivo' => 'error.php', 'directorio' => './', ];
+?>

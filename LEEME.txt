@@ -1,0 +1,19 @@
+Hola soy Armin, el creador de daamper.
+Esta pagina web contiene todo lo que se hasta el momento, puede que en el futuro ya sea una pagina mas grande, y tenga muchas mas cosas.
+Mi meta es crear una pagina web que se pueda modificar al 100% o el 99% jajaja.
+
+En el apartado "Creador", puedes publicar, animes, proyectos, etc.
+Tambien puedes crear tus propios creadores, como de peliculas, juegos...
+
+Si quieres ver mas actualizaciones o mas paginas como esta, visita: https://dbproject.rf.gd
+
+Necesario: PHP 8.2+
+
+Credenciales default:
+	Usuario: admin
+	Contraseña: Admin123
+
+Espero que disfrutes esta pagina web :D
+Sayonara :3
+
+(c) 2024 - 2025 Armin | dbproject.rf.gd

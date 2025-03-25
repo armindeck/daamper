@@ -1,0 +1,775 @@
+{
+	"system": {
+		"title": {"es": "daamper", "en": "daamper", "jp": "daamper"},
+		"copy": {
+			"es": "Desarrollado por {{author}}: {{system-name}} v{{version}} {{state}} ~ {{updated}}.",
+			"en": "Powered by {{author}}: {{system-name}} v{{version}} {{state}} ~ {{updated}}.",
+			"jp": "{{author}} 提供: {{system-name}} v{{version}} {{state}} ~ {{updated}}."
+		},
+		"license": {"es": "Licencia: Uso No Transferible.", "en": "License: Non-Transferable Use.", "jp": "ライセンス: 譲渡不可の使用。"}
+	},
+	"global": {
+		"system": {"es": "Sistema", "en": "System", "jp": "システム"},
+		"dashboard": {"es": "Panel", "en": "Dashboard", "jp": "パネル"},
+		"upload-image": {"es": "Subir imagen", "en": "Upload image", "jp": "画像をアップロードする"},
+		"show": {"es": "Mostrar", "en": "Show", "jp": "見せる"},
+		"disguise": {"es": "Ocultar", "en": "Disguise", "jp": "隠す"},
+		"show-or-hide": {"es": "Mostrar u ocultar", "en": "Show or hide", "jp": "表示または非表示"},
+		"show-or-hide-section": {"es": "Mostrar u ocultar sección", "en": "Show or hide section", "jp": "セクションを表示または非表示"},
+		"show-or-hide-element": {"es": "Mostrar u ocultar elemento", "en": "Show or hide element", "jp": "要素を表示または非表示"},
+		"information": {"es": "Información", "en": "Information", "jp": "情報"},
+		"social-networks": {"es": "Redes sociales", "en": "Social networks", "jp": "ソーシャルネットワーク"},
+		"links": {"es": "Enlaces", "en": "Links", "jp": "リンク"},
+		"version": {"es": "Versión", "en": "Version", "jp": "バージョン"},
+		"state": {"es": "Estado", "en": "State", "jp": "状態"},
+		"created": {"es": "Creado", "en": "Created", "jp": "作成済み"},
+		"modified": {"es": "Modificado", "en": "Modified", "jp": "修正済み"},
+		"updated": {"es": "Actualizado", "en": "Updated", "jp": "更新済み"},
+		"license": {"es": "Licencia", "en": "License", "jp": "ライセンス"},
+		"thumbnail": {"es": "Miniatura", "en": "Thumbnail", "jp": "サムネイル"},
+		"poster": {"es": "Póster", "en": "Poster", "jp": "ポスター"},
+		"banner": {"es": "Banner", "en": "Banner", "jp": "バナー"},
+		"author": {"es": "Autor", "en": "Author", "jp": "著者"},
+		"creator": {"es": "Creador", "en": "Creator", "jp": "クリエイター"},
+		"creators": {"es": "Creadores", "en": "Creators", "jp": "クリエイターたち"},
+		"project": {"es": "Proyecto", "en": "Project", "jp": "プロジェクト"},
+		"website-name": {"es": "Nombre del sitio web", "en": "Website name", "jp": "ウェブサイト名"},
+		"settings": {"es": "Configuración", "en": "Settings", "jp": "設定"},
+		"enable": {"es": "Activar", "en": "Enable", "jp": "有効化"},
+		"update": {"es": "Actualizar", "en": "Update", "jp": "更新"},
+		"updates": {"es": "Actualizaciones", "en": "Updates", "jp": "広告"},
+		"comment": {"es": "Comentar", "en": "Comment", "jp": "コメントする"},
+		"comments": {"es": "Comentarios", "en": "Comments", "jp": "コメント"},
+		"route": {"es": "Ruta", "en": "Route", "jp": "ルート"},
+		"blog": {"es": "Blog", "en": "Blog", "jp": "ブログ"},
+		"announcement": {"es": "Anuncio", "en": "Announcement", "jp": "お知らせ"},
+		"announcements": {"es": "Anuncios", "en": "Announcements", "jp": "お知らせ"},
+		"scripts": {"es": "Scripts", "en": "Scripts", "jp": "スクリプト"},
+		"sections": {"es": "Secciones", "en": "Sections", "jp": "セクション"},
+		"users": {"es": "Usuarios", "en": "Users", "jp": "ユーザー"},
+		"template": {"es": "Plantilla", "en": "Template", "jp": "テンプレート"},
+		"templates": {"es": "Plantillas", "en": "Templates", "jp": "テンプレート"},
+		"theme": {"es": "Tema", "en": "Theme", "jp": "テーマ"},
+		"directory": {"es": "Directorio", "en": "Directory", "jp": "ディレクトリ"},
+		"htaccess": {"es": "Htaccess", "en": "Htaccess", "jp": "Htaccess"},
+		"menu": {"es": "Menú", "en": "Menu", "jp": "メニュー"},
+		"attention": {"es": "Atención", "en": "Attention", "jp": "注意"},
+		"no": {"es": "No", "en": "No", "jp": "いいえ"},
+		"yes": {"es": "Si", "en": "Yes", "jp": "はい"},
+		"back": {"es": "Atrás", "en": "Back", "jp": "戻る"},
+		"file": {"es": "Archivo", "en": "File", "jp": "ファイル"},
+		"content": {"es": "Contenido", "en": "Content", "jp": "コンテンツ"},
+		"fragment": {"es": "Fragmento", "en": "Fragment", "jp": "フラグメント"},
+		"free": {"es": "Libre", "en": "Free", "jp": "自由"},
+		"editor": {"es": "Editor", "en": "Editor", "jp": "エディター"},
+		"delete": {"es": "Eliminar", "en": "Delete", "jp": "削除"},
+		"delete-file": {"es": "Eliminar archivo", "en": "Delete file", "jp": "ファイルを削除"},
+		"delete-file-text-confirm": {"es": "Seguro que quiere eliminar el archivo?", "en": "Are you sure you want to delete the file?", "jp": "本当にファイルを削除しますか？"},
+		"file-exists": {"es": "El archivo {{value}} existe.", "en": "The file {{value}} exists.", "jp": "ファイル{{value}}は存在します。"},
+		"file-delete": {"es": "Se eliminó el archivo {{value}}", "en": "The file {{value}} has been deleted.", "jp": "ファイル {{value}} が削除されました。"},
+		"file-no-exists": {"es": "El archivo {{value}} no existe.", "en": "The file {{value}} does not exist.", "jp": "ファイル {{value}} は存在しません。"},
+		"file-save": {"es": "El archivo {{value}} se guardó.", "en": "The file {{value}} has been saved.", "jp": "ファイル{{value}}が保存されました。"},
+		"file-no-deleted": {"es": "El archivo no se eliminó.", "en": "The file was not deleted.", "jp": "ファイルは削除されませんでした。"},
+		"save": {"es": "Guardar", "en": "Save", "jp": "保存"},
+		"data-save": {"es": "Se guardaron los datos.", "en": "The data has been saved.", "jp": "データが保存されました。"},
+		"data-no-save": {"es": "No se guardaron los datos.", "en": "The data was not saved.", "jp": "データは保存されませんでした。"},
+		"upload-images": {"es": "Subir imágenes", "en": "Upload images", "jp": "画像をアップロード"},
+		"name": {"es": "Nombre", "en": "Name", "jp": "名前"},
+		"optional": {"es": "Opcional", "en": "Optional", "jp": "オプション"},
+		"quantity": {"es": "Cantidad", "en": "Quantity", "jp": "数量"},
+		"styles": {"es": "Estilos", "en": "Styles", "jp": "スタイル"},
+		"title": {"es": "Titulo", "en": "Title", "jp": "タイトル"},
+		"titles": {"es": "Titulos", "en": "Titles", "jp": "タイトル"},
+		"use": {"es": "Utilizar", "en": "Use", "jp": "使用"},
+		"normalize": {"es": "Normalizar", "en": "Normalize", "jp": "正規化"},
+		"options": {"es": "Opciones", "en": "Options", "jp": "オプション"},
+		"extras": {"es": "Extras", "en": "Extras", "jp": "追加"},
+		"restore": {"es": "Restaurar", "en": "Restore", "jp": "復元"},
+		"components": {"es": "Componentes", "en": "Components", "jp": "コンポーネント"},
+		"normal": {"es": "Normal", "en": "Normal", "jp": "ノーマル"},
+		"header": {"es": "Encabezado", "en": "Header", "jp": "ヘッダーーネント"},
+		"header-bar": {"es": "Barra de encabezado", "en": "Header bar", "jp": "ヘッダーバー"},
+		"sidebar": {"es": "Barra lateral", "en": "Sidebar", "jp": "サイドバー"},
+		"open-content": {"es": "Abrir contenido", "en": "Open content", "jp": "コンテンツを開く"},
+		"main-header": {"es": "Encabezado principal", "en": "Main header", "jp": "メインヘッダー"},
+		"main": {"es": "Principal", "en": "Main", "jp": "メイン"},
+		"main-footer": {"es": "Pie de página principal", "en": "Main footer", "jp": "メインフッター"},
+		"article": {"es": "Artículo", "en": "Article", "jp": "記事"},
+		"close-content": {"es": "Cerrar contenido", "en": "Close content", "jp": "コンテンツを閉じる"},
+		"footer": {"es": "Pie de página", "en": "Footer", "jp": "フッター"},
+		"type": {"es": "Tipo", "en": "Type", "jp": "タイプ"},
+		"element": {"es": "Elemento", "en": "Element", "jp": "要素"},
+		"elements": {"es": "Elementos", "en": "Elements", "jp": "要素"},
+		"data": {"es": "Datos", "en": "Data", "jp": "データ"},
+		"container": {"es": "Contenedor", "en": "Container", "jp": "コンテナ"},
+		"open-container": {"es": "Abrir contenedor", "en": "Open container", "jp": "コンテナを開く"},
+		"close-container": {"es": "Cerrar contenedor", "en": "Close container", "jp": "コンテナを閉じる"},
+		"open-element-container": {"es": "Abrir contenedor del elemento", "en": "Open element container", "jp": "要素のコンテナを開く"},
+		"close-element-container": {"es": "Cerrar contenedor del elemento", "en": "Close element container", "jp": "要素のコンテナを閉じる"},
+		"section-type": {"es": "Tipo de sección", "en": "Section type", "jp": "セクションの種類"},
+		"number-elements-section": {"es": "Cantidad de elementos de la sección", "en": "Number of elements in the section", "jp": "セクションの要素数"},
+		"section-name": {"es": "Nombre de la sección", "en": "Section name", "jp": "セクション名"},
+		"expand": {"es": "Desplegar", "en": "Expand", "jp": "展開"},
+		"commands": {"es": "Comandos", "en": "Commands", "jp": "コマンド"},
+		"beta": {"es": "Beta", "en": "Beta", "jp": "ベータ"},
+		"games": {"es": "Juegos", "en": "Games", "jp": "ゲーム"},
+		"refresh": {"es": "Refrescar", "en": "Refresh", "jp": "更新"},
+		"refreshed": {"es": "Refrescado", "en": "Refreshed", "jp": "更新済み"},
+		"position": {"es": "Posición", "en": "Position", "jp": "位置"},
+		"hide-or-how-the-element-container-tags": {"es": "Ocultar u mostrar las etiquetas del contenedor del elemento", "en": "Hide or show the element container tags", "jp": "要素のコンテナタグを非表示または表示"},
+		"enable-or-disable-scripts": {"es": "Activar o desactivar scripts.", "en": "Enable or disable scripts.", "jp": "スクリプトを有効化または無効化する。"},
+		"like": {"es": "Me gusta", "en": "Like", "jp": "いいね"},
+		"dislike": {"es": "No me gusta", "en": "Dislike", "jp": "よくないね"},
+		"follow": {"es": "Seguir", "en": "Follow", "jp": "フォロー"},
+		"suspended": {"es": "Suspendido", "en": "Suspended", "jp": "一時停止"},
+		"airing": {"es": "Emisión", "en": "Airing", "jp": "放送中"},
+		"synopsis": {"es": "Sinopsis", "en": "Synopsis", "jp": "あらすじ"},
+		"language": {"es": "Idioma", "en": "Language", "jp": "言語"},
+		"subtitle": {"es": "Subtítulo", "en": "Subtitle", "jp": "字幕"},
+		"episodes": {"es": "Episodios", "en": "Episodes", "jp": "エピソード"},
+		"premiere": {"es": "Estreno", "en": "Premiere", "jp": "初放送"},
+		"ended": {"es": "Finalizó", "en": "Ended", "jp": "放送終了"},
+		"finalized": {"es": "Finalizado", "en": "Finalized", "jp": "終了"},
+		"details": {"es": "Detalles", "en": "Details", "jp": "詳細"},
+		"genres": {"es": "Géneros", "en": "Genres", "jp": "ジャンル"},
+		"episodes-every-thursday": {"es": "Episodios cada {{value}}", "en": "Episodes every {{value}}", "jp": "{{value}}ごとのエピソード"},
+		"episode-list": {"es": "Lista de episodios", "en": "Episode list", "jp": "エピソードリスト"},
+		"sort": {"es": "Ordenar", "en": "Sort", "jp": "並び替え"},
+		"episode": {"es": "Episodio", "en": "Episode", "jp": "エピソード"},
+		"sort-by": {"es": "Ordenar por", "en": "Sort by", "jp": "並び替え"},
+		"ascending": {"es": "Ascendente", "en": "Ascending", "jp": "昇順"},
+		"descending": {"es": "Descendente", "en": "Descending", "jp": "降順"},
+		"post-route": {"es": "Ruta de la publicación", "en": "Post route", "jp": "投稿のルート"},
+		"categories": {"es": "Categorías", "en": "Categories", "jp": "カテゴリ"},
+		"home": {"es": "Inicio", "en": "Home", "jp": "ホーム"},
+		"images": {"es": "Imágenes", "en": "Images", "jp": "画像"},
+		"image-of": {"es": "Imagen de {{value}}", "en": "Image of {{value}}", "jp": "{{value}}の画像"},
+		"gallery": {"es": "Galería", "en": "Gallery", "jp": "ギャラリー"},
+		"japanese": {"es": "Japonés", "en": "Japanese", "jp": "日本語"},
+		"spanish": {"es": "Español", "en": "Spanish", "jp": "スペイン語"},
+		"english": {"es": "Inglés", "en": "English", "jp": "英語"},
+		"chinese": {"es": "Chino", "en": "Chinese", "jp": "中国語"},
+		"castilian": {"es": "Castellano", "en": "Castilian", "jp": "カスティーリャ語"},
+		"every": {"es": "Cada", "en": "Every", "jp": "毎"},
+		"monday": {"es": "Lunes", "en": "Monday", "jp": "月曜日"},
+		"tuesday": {"es": "Martes", "en": "Tuesday", "jp": "火曜日"},
+		"wednesday": {"es": "Miércoles", "en": "Wednesday", "jp": "水曜日"},
+		"thursday": {"es": "Jueves", "en": "Thursday", "jp": "木曜日"},
+		"friday": {"es": "Viernes", "en": "Friday", "jp": "金曜日"},
+		"saturday": {"es": "Sábado", "en": "Saturday", "jp": "土曜日"},
+		"sunday": {"es": "Domingo", "en": "Sunday", "jp": "日曜日"},
+		"undefined": {"es": "Indefinido", "en": "Undefined", "jp": "未定"},
+		"anime": {"es": "Anime", "en": "Anime", "jp": "アニメ"},
+		"hentai": {"es": "Hentai", "en": "Hentai", "jp": "変態"},
+		"movie": {"es": "Película", "en": "Movie", "jp": "映画"},
+		"ova": {"es": "Ova", "en": "OVA", "jp": "OVA"},
+		"catalog": {"es": "Catalogo", "en": "Catalog", "jp": "カタログ"},
+		"poster-of": {"es": "Poster de {{value}}", "en": "Poster of {{value}}", "jp": "{{value}}のポスター"},
+		"reference": {"es": "Referencia", "en": "Reference", "jp": "リファレンス"},
+		"stream-default": {"es": "Stream predeterminado", "en": "Stream default", "jp": "デフォルトのストリーム"},
+		"server": {"es": "Servidor", "en": "Server", "jp": "サーバー"},
+		"link": {"es": "Enlace", "en": "Link", "jp": "リンク"},
+		"shortened-link": {"es": "Enlace acortado", "en": "Shortened link", "jp": "短縮リンク"},
+		"stream": {"es": "Stream", "en": "Stream", "jp": "ストリーム"},
+		"download": {"es": "Descarga", "en": "Download", "jp": "ダウンロード"},
+		"downloads": {"es": "Descargas", "en": "Downloads", "jp": "ダウンロード"},
+		"download-zone": {"es": "Zona de descargas", "en": "Download Zone", "jp": "ダウンロードゾーン"},
+		"direct": {"es": "Directa", "en": "Direct", "jp": "直接"},
+		"previous": {"es": "Anterior", "en": "Previous", "jp": "前"},
+		"next": {"es": "Siguiente", "en": "Next", "jp": "次"},
+		"list": {"es": "Lista", "en": "List", "jp": "リスト"},
+		"option": {"es": "Opción", "en": "Option", "jp": "オプション"},
+		"languages": {"es": "Idiomas", "en": "Languages", "jp": "言語"},
+		"languages-options": {
+			"es": {"es": "Español", "en": "Ingles", "jp": "Japonés"},
+			"en": {"es": "Spanish", "en": "English", "jp": "Japanese"},
+			"jp": {"es": "スペイン語", "en": "英語", "jp": "日本語"}
+		},
+		"subtitles": {"es": "Subtítulos", "en": "Subtitles", "jp": "字幕"},
+		"developer": {"es": "Desarrollador", "en": "Developer", "jp": "開発者"},
+		"development": {"es": "Desarrollo", "en": "Development", "jp": "開発"},
+		"released": {"es": "Lanzado", "en": "Released", "jp": "発売日"},
+		"completed": {"es": "Terminado", "en": "Completed", "jp": "完了"},
+		"extra-information": {"es": "Información extra", "en": "Extra information", "jp": "追加情報"},
+		"other-names": {"es": "Otros nombres", "en": "Other names", "jp": "別の名前"},
+		"operating-systems": {"es": "Sistemas operativos", "en": "Operating systems", "jp": "オペレーティングシステム"},
+		"size": {"es": "Tamaño", "en": "Size", "jp": "サイズ"},
+		"minimum-requirements": {"es": "Requisitos mínimos", "en": "Minimum Requirements", "jp": "最小要件"},
+		"recommended-requirements": {"es": "Requisitos recomendados", "en": "Recommended Requirements", "jp": "推奨要件"},
+		"requirements": {"es": "Requisitos", "en": "Requirements", "jp": "要件"},
+		"processor": {"es": "Procesador", "en": "Processor", "jp": "プロセッサ"},
+		"graphics-card": {"es": "Tarjeta gráfica", "en": "Graphics Card", "jp": "グラフィックカード"},
+		"ram": {"es": "RAM", "en": "RAM", "jp": "RAM"},
+		"storage": {"es": "Espacio", "en": "Storage", "jp": "ストレージ"},
+		"versions": {"es": "Versiones", "en": "Versions", "jp": "バージョン"},
+		"no-access-file": {"es": "No tiene acceso al archivo.", "en": "No access to the file.", "jp": "ファイルにアクセスできません。"},
+		"file-not-exist-section": {"es": "No existe el archivo procesa del apartado.", "en": "The processing file for the section does not exist.", "jp": "セクションの処理ファイルが存在しません。"},
+		"data-list-not-exist": {"es": "No existe la lista de los datos que se van a procesar.", "en": "The list of data to be processed does not exist.", "jp": "処理するデータのリストが存在しません。"},
+		"cannot-stay-here": {"es": "No puede seguir aquí.", "en": "You cannot stay here.", "jp": "ここに留まることはできません。"},
+		"admin-panel": {
+			"es": "Panel administrativo",
+			"en": "Admin Panel",
+			"jp": "管理パネル"
+		},
+		"login": {"es": "Iniciar sesión", "en": "Login", "jp": "ログイン"},
+		"user": {"es": "Usuario", "en": "User", "jp": "ユーザー"},
+		"password": {"es": "Contraseña", "en": "Password", "jp": "パスワード"},
+		"math-question": {"es": "Cuanto es {{value}} + {{value2}}", "en": "How much is {{value}} + {{value2}}", "jp": "{{value}} + {{value2}} はいくらですか"},
+		"start": {"es": "Iniciar", "en": "Start", "jp": "開始"},
+		"register": {"es": "Registrarse", "en": "Register", "jp": "登録"},
+		"forgot-password": {"es": "Olvide mi contraseña", "en": "Forgot my password", "jp": "パスワードを忘れました"},
+		"new-password": {"es": "Nueva contraseña", "en": "New password", "jp": "新しいパスワード"},
+		"repeat-password": {"es": "Repite la contraseña", "en": "Repeat password", "jp": "パスワードを再入力してください"},
+		"change-password": {"es": "Cambiar contraseña", "en": "Change password", "jp": "パスワードを変更する"},
+		"no-change-password": {"es": "No cambiar contraseña", "en": "Do not change password", "jp": "パスワードを変更しない"},
+		"email": {"es": "E-mail", "en": "E-mail", "jp": "Eメール"},
+		"recover": {"es": "Recuperar", "en": "Recover", "jp": "回復する"},
+		"old-password": {"es": "Contraseña antigua", "en": "Old password", "jp": "古いパスワード"},
+		"description": {"es": "Descripción", "en": "Description", "jp": "説明"},
+		"social-name": {"es": "Nombre de la red social", "en": "Social network name", "jp": "ソーシャルネットワーク名"},
+		"social-link": {"es": "Enlace de la red social", "en": "Social network link", "jp": "ソーシャルネットワークリンク"},
+		"update-data": {"es": "Actualizar datos", "en": "Update data", "jp": "データを更新する"},
+		"no-change": {"es": "No cambiar", "en": "Do not change", "jp": "変更しない"},
+		"change-avatar": {"es": "Cambiar avatar", "en": "Change avatar", "jp": "アバターを変更する"},
+		"upload-avatar": {"es": "Sube un avatar", "en": "Upload an avatar", "jp": "アバターをアップロードする"},
+		"avatar-size-recommendation": {"es": "Recomiendo usar avatares con un tamaño de 250px o 500px.", "en": "I recommend using avatars with a size of 250px or 500px.", "jp": "250px または 500px のアバターを使用することをお勧めします。"},
+		"update-role": {"es": "Actualizar Rol", "en": "Update Role", "jp": "ロールを更新する"},
+		"get-role": {"es": "Opten un rol desde {{value}}", "en": "Get a role from {{value}}", "jp": "{{value}} からロールを取得する"},
+		"delete-account": {"es": "Eliminar cuenta", "en": "Delete account", "jp": "アカウントを削除する"},
+		"delete-warning": {"es": "Atención: se eliminarán todos los datos registrados, favoritos, comentarios y todo lo demás.", "en": "Warning: All registered data, favorites, comments, and everything else will be deleted.", "jp": "警告: 登録データ、お気に入り、コメント、その他すべてが削除されます。"},
+		"reasons": {"es": "Motivos", "en": "Reasons", "jp": "理由"},
+		"confirm-delete": {"es": "Deseas eliminar la cuenta?", "en": "Do you want to delete the account?", "jp": "アカウントを削除しますか?"},
+		"no-delete": {"es": "No eliminar", "en": "Do not delete", "jp": "削除しない"},
+		"yes-delete": {"es": "Si eliminar", "en": "Yes, delete", "jp": "はい、削除する"},
+		"delete-reminder": {"es": "Recuerda que ya no tendrás acceso a esta cuenta.", "en": "Remember that you will no longer have access to this account.", "jp": "このアカウントにはアクセスできなくなりますのでご注意ください。"},
+		"have-other-account": {"es": "Tengo otra cuenta", "en": "I have another account", "jp": "別のアカウントを持っています"},
+		"no-longer-use": {"es": "Ya no usare esta plataforma", "en": "I will no longer use this platform", "jp": "このプラットフォームを使用しなくなります"},
+		"other-reasons": {"es": "Otros motivos", "en": "Other reasons", "jp": "その他の理由"},
+		"avatar": {"es": "Avatar", "en": "Avatar", "jp": "アバター"},
+		"recover-account": {"es": "Recuperar cuenta", "en": "Recover account", "jp": "アカウントを回復する"},
+		"go-back": {"es": "Regresar", "en": "Go back", "jp": "戻る"},
+		"key": {"es": "Llave", "en": "Key", "jp": "鍵"},
+		"categories-tags": {
+			"action": {"es": "Acción", "en": "Action", "jp": "アクション"},
+			"martial_arts": {"es": "Artes Marciales", "en": "Martial Arts", "jp": "マーシャルアーツ"},
+			"adventure": {"es": "Aventuras", "en": "Adventure", "jp": "アドベンチャー"},
+			"racing": {"es": "Carreras", "en": "Racing", "jp": "レーシング"},
+			"sci_fi": {"es": "Ciencia Ficción", "en": "Science Fiction", "jp": "サイエンスフィクション"},
+			"comedy": {"es": "Comedia", "en": "Comedy", "jp": "コメディ"},
+			"dementia": {"es": "Demencia", "en": "Dementia", "jp": "認知症"},
+			"demons": {"es": "Demonios", "en": "Demons", "jp": "悪魔"},
+			"sports": {"es": "Deportes", "en": "Sports", "jp": "スポーツ"},
+			"drama": {"es": "Drama", "en": "Drama", "jp": "ドラマ"},
+			"ecchi": {"es": "Ecchi", "en": "Ecchi", "jp": "エッチ"},
+			"school": {"es": "Escolares", "en": "School", "jp": "学校"},
+			"space": {"es": "Espacial", "en": "Space", "jp": "スペース"},
+			"fantasy": {"es": "Fantasía", "en": "Fantasy", "jp": "ファンタジー"},
+			"harem": {"es": "Harem", "en": "Harem", "jp": "ハーレム"},
+			"historical": {"es": "Historico", "en": "Historical", "jp": "歴史"},
+			"kids": {"es": "Infantil", "en": "Kids", "jp": "子供向け"},
+			"josei": {"es": "Josei", "en": "Josei", "jp": "女性"},
+			"games": {"es": "Juegos", "en": "Games", "jp": "ゲーム"},
+			"magic": {"es": "Magia", "en": "Magic", "jp": "魔法"},
+			"mecha": {"es": "Mecha", "en": "Mecha", "jp": "メカ"},
+			"military": {"es": "Militar", "en": "Military", "jp": "軍事"},
+			"mystery": {"es": "Misterio", "en": "Mystery", "jp": "ミステリー"},
+			"music": {"es": "Música", "en": "Music", "jp": "音楽"},
+			"parody": {"es": "Parodia", "en": "Parody", "jp": "パロディ"},
+			"police": {"es": "Policía", "en": "Police", "jp": "警察"},
+			"psychological": {"es": "Psicológico", "en": "Psychological", "jp": "心理学"},
+			"slice_of_life": {"es": "Recuentos de la vida", "en": "Slice of Life", "jp": "日常"},
+			"romance": {"es": "Romance", "en": "Romance", "jp": "ロマンス"},
+			"samurai": {"es": "Samurai", "en": "Samurai", "jp": "侍"},
+			"seinen": {"es": "Seinen", "en": "Seinen", "jp": "青年"},
+			"shoujo": {"es": "Shoujo", "en": "Shoujo", "jp": "少女"},
+			"shounen": {"es": "Shounen", "en": "Shounen", "jp": "少年"},
+			"supernatural": {"es": "Sobrenatural", "en": "Supernatural", "jp": "超自然"},
+			"superpowers": {"es": "Superpoderes", "en": "Superpowers", "jp": "超能力"},
+			"suspense": {"es": "Suspenso", "en": "Suspense", "jp": "サスペンス"},
+			"horror": {"es": "Terror", "en": "Horror", "jp": "ホラー"},
+			"vampires": {"es": "Vampiros", "en": "Vampires", "jp": "ヴァンパイア"},
+			"censored": {"es": "Censura", "en": "Censored", "jp": "検閲"},
+			"uncensored": {"es": "Sin censura", "en": "Uncensored", "jp": "無修正"},
+			"3d": {"es": "3D", "en": "3D", "jp": "3D"},
+			"ahegao": {"es": "Ahegao", "en": "Ahegao", "jp": "アヘ顔"},
+			"anal": {"es": "Anal", "en": "Anal", "jp": "アナル"},
+			"married": {"es": "Casadas", "en": "Married", "jp": "既婚"},
+			"chikan": {"es": "Chikan", "en": "Chikan", "jp": "痴漢"},
+			"nurses": {"es": "Enfermeras", "en": "Nurses", "jp": "看護師"},
+			"futanari": {"es": "Futanari", "en": "Futanari", "jp": "ふたなり"},
+			"gore": {"es": "Gore", "en": "Gore", "jp": "ゴア"},
+			"hardcore": {"es": "Hardcore", "en": "Hardcore", "jp": "ハードコア"},
+			"incest": {"es": "Incesto", "en": "Incest", "jp": "近親相姦"},
+			"sex_games": {"es": "Juegos sexuales", "en": "Sex Games", "jp": "セックスゲーム"},
+			"milfs": {"es": "Milfs", "en": "Milfs", "jp": "熟女"},
+			"maids": {"es": "Maids", "en": "Maids", "jp": "メイド"},
+			"netorare": {"es": "Netorare", "en": "Netorare", "jp": "寝取られ"},
+			"nymphomania": {"es": "Ninfomanía", "en": "Nymphomania", "jp": "色情狂"},
+			"ninjas": {"es": "Ninjas", "en": "Ninjas", "jp": "忍者"},
+			"orgies": {"es": "Orgías", "en": "Orgies", "jp": "乱交"},
+			"shota": {"es": "Shota", "en": "Shota", "jp": "ショタ"},
+			"softcore": {"es": "Softcore", "en": "Softcore", "jp": "ソフトコア"},
+			"succubus": {"es": "Súcubo", "en": "Succubus", "jp": "サキュバス"},
+			"teacher": {"es": "Profesoras", "en": "Teacher", "jp": "先生"},
+			"tentacles": {"es": "Tentáculos", "en": "Tentacles", "jp": "触手"},
+			"big_breasts": {"es": "Senos grandes", "en": "Big Breasts", "jp": "巨乳"},
+			"vanilla": {"es": "Vainilla", "en": "Vanilla", "jp": "バニラ"},
+			"rape": {"es": "Violación", "en": "Rape", "jp": "レイプ"},
+			"virgins": {"es": "Vírgenes", "en": "Virgins", "jp": "処女"},
+			"yuri": {"es": "Yuri", "en": "Yuri", "jp": "百合"},
+			"yaoi": {"es": "Yaoi", "en": "Yaoi", "jp": "やおい"},
+			"bondage": {"es": "Bondage", "en": "Bondage", "jp": "ボンデージ"},
+			"elfs": {"es": "Elfos", "en": "Elfs", "jp": "エルフ"},
+			"petite": {"es": "Pequeña", "en": "Petite", "jp": "小柄"},
+			"threesome": {"es": "Trío", "en": "Threesome", "jp": "スリーウェイ"},
+			"paizuri": {"es": "Paizuri", "en": "Paizuri", "jp": "パイズリ"},
+			"gal": {"es": "Gal", "en": "Gal", "jp": "ギャル"},
+			"oyakodon": {"es": "Oyakodon", "en": "Oyakodon", "jp": "親子丼"}
+		},
+		"games-tags": {
+			"action": {"es": "Acción", "en": "Action", "pt": "Ação", "ja": "アクション"},
+			"adventure": {"es": "Aventura", "en": "Adventure", "pt": "Aventura", "ja": "アドベンチャー"},
+			"platformer": {"es": "Plataformas", "en": "Platformer", "pt": "Plataforma", "ja": "プラットフォーマー"},
+			"fighting": {"es": "Lucha", "en": "Fighting", "pt": "Luta", "ja": "格闘"},
+			"beat-em-up": {"es": "Beat 'em up", "en": "Beat 'em up", "pt": "Beat 'em up", "ja": "ベルトスクロールアクション"},
+			"shooter": {"es": "Shooter", "en": "Shooter", "pt": "Tiro", "ja": "シューティング"},
+			"first-person-shooter": {"es": "Shooter en primera persona (FPS)", "en": "First-person shooter (FPS)", "pt": "Tiro em primeira pessoa (FPS)", "ja": "一人称シューティング"},
+			"third-person-shooter": {"es": "Shooter en tercera persona (TPS)", "en": "Third-person shooter (TPS)", "pt": "Tiro em terceira pessoa (TPS)", "ja": "三人称シューティング"},
+			"battle-royale": {"es": "Battle Royale", "en": "Battle Royale", "pt": "Battle Royale", "ja": "バトルロイヤル"},
+			"role-playing": {"es": "Rol (RPG)", "en": "Role-playing (RPG)", "pt": "RPG", "ja": "ロールプレイング"},
+			"action-rpg": {"es": "Rol de acción", "en": "Action RPG", "pt": "RPG de ação", "ja": "アクションRPG"},
+			"mmorpg": {"es": "MMORPG", "en": "MMORPG", "pt": "MMORPG", "ja": "MMORPG"},
+			"roguelike": {"es": "Roguelike", "en": "Roguelike", "pt": "Roguelike", "ja": "ローグライク"},
+			"roguelite": {"es": "Roguelite", "en": "Roguelite", "pt": "Roguelite", "ja": "ローグライト"},
+			"strategy": {"es": "Estrategia", "en": "Strategy", "pt": "Estratégia", "ja": "ストラテジー"},
+			"real-time-strategy": {"es": "Estrategia en tiempo real (RTS)", "en": "Real-time strategy (RTS)", "pt": "Estratégia em tempo real (RTS)", "ja": "リアルタイムストラテジー"},
+			"turn-based-strategy": {"es": "Estrategia por turnos", "en": "Turn-based strategy", "pt": "Estratégia por turnos", "ja": "ターン制ストラテジー"},
+			"tower-defense": {"es": "Tower Defense", "en": "Tower Defense", "pt": "Defesa de torre", "ja": "タワーディフェンス"},
+			"simulation": {"es": "Simulación", "en": "Simulation", "pt": "Simulação", "ja": "シミュレーション"},
+			"life-simulation": {"es": "Simulación de vida", "en": "Life simulation", "pt": "Simulação de vida", "ja": "ライフシミュレーション"},
+			"building-simulation": {"es": "Simulación de construcción", "en": "Building simulation", "pt": "Simulação de construção", "ja": "建築シミュレーション"},
+			"sports-simulation": {"es": "Simulación deportiva", "en": "Sports simulation", "pt": "Simulação esportiva", "ja": "スポーツシミュレーション"},
+			"sports": {"es": "Deportes", "en": "Sports", "pt": "Esportes", "ja": "スポーツ"},
+			"racing": {"es": "Carreras", "en": "Racing", "pt": "Corrida", "ja": "レース"},
+			"puzzle": {"es": "Puzzle", "en": "Puzzle", "pt": "Quebra-cabeça", "ja": "パズル"},
+			"party-games": {"es": "Party Games", "en": "Party Games", "pt": "Jogos de festa", "ja": "パーティーゲーム"},
+			"sandbox": {"es": "Sandbox", "en": "Sandbox", "pt": "Sandbox", "ja": "サンドボックス"},
+			"open-world": {"es": "Mundo abierto", "en": "Open world", "pt": "Mundo aberto", "ja": "オープンワールド"},
+			"survival-horror": {"es": "Horror de supervivencia", "en": "Survival horror", "pt": "Horror de sobrevivência", "ja": "サバイバルホラー"},
+			"psychological-horror": {"es": "Terror psicológico", "en": "Psychological horror", "pt": "Terror psicológico", "ja": "心理ホラー"},
+			"visual-novel": {"es": "Novela visual", "en": "Visual novel", "pt": "Novela visual", "ja": "ビジュアルノベル"},
+			"narrative-games": {"es": "Juegos narrativos", "en": "Narrative games", "pt": "Jogos narrativos", "ja": "ナラティブゲーム"},
+			"metroidvania": {"es": "Metroidvania", "en": "Metroidvania", "pt": "Metroidvania", "ja": "メトロイドヴァニア"},
+			"soulslike": {"es": "Soulslike", "en": "Soulslike", "pt": "Soulslike", "ja": "ソウルズライク"},
+			"rhythm": {"es": "Ritmo (Music/Rhythm)", "en": "Rhythm (Music/Rhythm)", "pt": "Ritmo", "ja": "リズムゲーム"},
+			"bullet-hell": {"es": "Bullet Hell", "en": "Bullet Hell", "pt": "Bullet Hell", "ja": "弾幕シューティング"},
+			"moba": {"es": "MOBA", "en": "MOBA", "pt": "MOBA", "ja": "MOBA"},
+			"card-games": {"es": "Juegos de cartas", "en": "Card games", "pt": "Jogos de cartas", "ja": "カードゲーム"},
+			"board-games": {"es": "Juegos de mesa", "en": "Board games", "pt": "Jogos de tabuleiro", "ja": "ボードゲーム"},
+			"tycoon": {"es": "Tycoon", "en": "Tycoon", "pt": "Tycoon", "ja": "タイクーン"},
+			"idle-games": {"es": "Idle Games", "en": "Idle Games", "pt": "Jogos ociosos", "ja": "アイドルゲーム"},
+			"clicker": {"es": "Clicker", "en": "Clicker", "pt": "Clicker", "ja": "クリックゲーム"},
+			"education": {"es": "Educación", "en": "Education", "pt": "Educação", "ja": "教育"},
+			"jrpg": {"es": "JRPG", "en": "JRPG", "pt": "JRPG", "ja": "JRPG"},
+			"arpg": {"es": "ARPG", "en": "ARPG", "pt": "ARPG", "ja": "ARPG"},
+			"hack-and-slash": {"es": "Hack and Slash", "en": "Hack and Slash", "pt": "Hack and Slash", "ja": "ハックアンドスラッシュ"},
+			"stealth-games": {"es": "Juegos de sigilo", "en": "Stealth games", "pt": "Jogos de furtividade", "ja": "ステルスゲーム"},
+			"detective-games": {"es": "Juegos de detectives", "en": "Detective games", "pt": "Jogos de detetive", "ja": "探偵ゲーム"}
+		}
+	},
+	"alert": {
+		"file-exists-no-data-or-incomplete": {"es": "El archivo existe, pero no tiene datos almacenados o están incompletos.", "en": "The file exists, but it has no stored data or it is incomplete.", "jp": "ファイルは存在しますが、保存されたデータがないか、不完全です。"},
+		"file-no-data-creator-or-ruta": {"es": "El archivo no cuenta con los datos del creador o la ruta.", "en": "The file does not contain the creator's data or the route.", "jp": "ファイルには作成者のデータやルートが含まれていません。"},
+		"file-no-identifier": {
+			"es": "Este archivo no tiene un identificador o está incompleto.",
+			"en": "This file has no identifier or is incomplete.",
+			"jp": "このファイルには識別子がないか、不完全です。"
+		},
+		"profile-data-missing": {
+			"es": "No existen los datos del perfil!",
+			"en": "Profile data does not exist!",
+			"jp": "プロファイルデータが存在しません！"
+		},
+		"data-file-missing": {
+			"es": "No existe el archivo de los datos!",
+			"en": "The data file does not exist!",
+			"jp": "データファイルが存在しません！"
+		},
+		"creator-not-found": {
+			"es": "El creador {{value}} no existe.",
+			"en": "The creator {{value}} does not exist.",
+			"jp": "作成者 {{value}} は存在しません。"
+		},
+		"user-not-found": {
+			"es": "No existe ningún usuario hasta el momento.",
+			"en": "There is no user at the moment.",
+			"jp": "現在、ユーザーは存在しません。"
+		},
+		"user-not-exist": {
+			"es": "El usuario no existe!",
+			"en": "The user does not exist!",
+			"jp": "ユーザーは存在しません！"
+		},
+		"user-suspended-deleted": {
+			"es": "Este usuario fue suspendido o eliminado.",
+			"en": "This user was suspended or deleted.",
+			"jp": "このユーザーは停止または削除されました。"
+		},
+		"role-mismatch": {
+			"es": "El ROL es diferente de los datos almacenados.",
+			"en": "The ROLE is different from the stored data.",
+			"jp": "役割は保存されたデータと異なります。"
+		},
+		"farewell": {
+			"es": "Hasta la próxima!",
+			"en": "See you next time!",
+			"jp": "またね！"
+		},
+		"change-password": {
+			"es": "Quieres cambiar la contraseña?",
+			"en": "Do you want to change the password?",
+			"jp": "パスワードを変更しますか？"
+		},
+		"no-access": {
+			"es": "No tiene acceso.",
+			"en": "No access.",
+			"jp": "アクセスできません。"
+		},
+		"login-required": {
+			"es": "Necesita iniciar sesión para entrar al panel.",
+			"en": "You need to log in to access the panel.",
+			"jp": "パネルに入るにはログインが必要です。"
+		},
+		"higher-role-required": {
+			"es": "Necesita un rol más elevado para entrar al panel.",
+			"en": "You need a higher role to access the panel.",
+			"jp": "パネルに入るにはより高いロールが必要です。"
+		}
+	},
+	"auth": {
+		"welcome-back": {"es": "Bienvenid@ de nuevo!", "en": "Welcome back!", "jp": "お帰りなさい!"},
+		"user-registered-success": {"es": "El usuario se registró exitosamente!", "en": "The user was successfully registered!", "jp": "ユーザーが正常に登録されました!"},
+		"password-changed-success": {"es": "La contraseña fue cambiada exitosamente!", "en": "The password was successfully changed!", "jp": "パスワードが正常に変更されました!"},
+		"want-to-change-password": {"es": "Quieres cambiar la contraseña?", "en": "Do you want to change the password?", "jp": "パスワードを変更しますか?"},
+		"no-access-file": {
+			"es": "No tiene acceso al archivo.",
+			"en": "You do not have access to the file.",
+			"pt": "Você não tem acesso ao arquivo.",
+			"jp": "ファイルにアクセスできません。"
+		},
+		"do-not-modify-hidden-fields": {
+			"es": "Por favor no modifique los campos ocultos.",
+			"en": "Please do not modify hidden fields.",
+			"pt": "Por favor, não modifique os campos ocultos.",
+			"jp": "非表示フィールドを変更しないでください。"
+		},
+		"something-went-wrong": {
+			"es": "Oh! parece que algo salió mal.",
+			"en": "Oh! Something went wrong.",
+			"pt": "Oh! Algo deu errado.",
+			"jp": "おっと！何か問題が発生しました。"
+		},
+		"incorrect-sum": {
+			"es": "La suma es incorrecta, inténtelo de nuevo.",
+			"en": "The sum is incorrect, please try again.",
+			"pt": "A soma está incorreta, tente novamente.",
+			"jp": "合計が正しくありません。もう一度お試しください。"
+		},
+		"recommend-password-change": {
+			"es": "Se recomienda cambiar la contraseña en el caso de olvidarla.",
+			"en": "It is recommended to change the password if forgotten.",
+			"pt": "É recomendável alterar a senha se esquecida.",
+			"jp": "パスワードを忘れた場合は変更することをお勧めします。"
+		},
+		"fill-required-fields": {
+			"es": "Por favor llene los campos necesarios.",
+			"en": "Please fill in the required fields.",
+			"pt": "Por favor, preencha os campos necessários.",
+			"jp": "必要な項目を入力してください。"
+		},
+		"fill-fields-with-data": {
+			"es": "Por favor llene los campos con los datos necesarios.",
+			"en": "Please fill in the fields with the necessary data.",
+			"pt": "Por favor, preencha os campos com os dados necessários.",
+			"jp": "必要なデータを入力してください。"
+		},
+		"password-mismatch": {
+			"es": "La contraseña es diferente en los campos.",
+			"en": "The password is different in the fields.",
+			"pt": "A senha é diferente nos campos.",
+			"jp": "パスワードが一致しません。"
+		},
+		"no-users-or-database": {
+			"es": "Parece que todavía no existe ningún usuario registrado o no existe la base de datos.",
+			"en": "It seems that no users are registered yet or the database does not exist.",
+			"pt": "Parece que ainda não há usuários registrados ou o banco de dados não existe.",
+			"jp": "まだ登録されているユーザーがいないか、データベースが存在しません。"
+		},
+		"profile-suspended-or-deleted": {
+			"es": "Este perfil está suspendido o fue eliminado.",
+			"en": "This profile is suspended or has been deleted.",
+			"pt": "Este perfil está suspenso ou foi excluído.",
+			"jp": "このプロフィールは停止されているか削除されました。"
+		},
+		"email-already-used": {
+			"es": "El e-mail ingresado ya fue usado.",
+			"en": "The entered email has already been used.",
+			"pt": "O e-mail inserido já foi usado.",
+			"jp": "入力されたメールはすでに使用されています。"
+		},
+		"incorrect-password": {
+			"es": "La contraseña es incorrecta.",
+			"en": "The password is incorrect.",
+			"pt": "A senha está incorreta.",
+			"jp": "パスワードが正しくありません。"
+		},
+		"use-another-password": {
+			"es": "Por favor use otra contraseña.",
+			"en": "Please use another password.",
+			"pt": "Por favor, use outra senha.",
+			"jp": "別のパスワードを使用してください。"
+		},
+		"confirm-deletion": {
+			"es": "Tiene que confirmar la eliminación para continuar.",
+			"en": "You have to confirm the deletion to continue.",
+			"pt": "Você precisa confirmar a exclusão para continuar.",
+			"jp": "続行するには削除を確認する必要があります。"
+		},
+		"incorrect-user-or-password": {
+			"es": "El usuario o la contraseña es incorrecta.",
+			"en": "The username or password is incorrect.",
+			"pt": "O nome de usuário ou senha está incorreto.",
+			"jp": "ユーザー名またはパスワードが正しくありません。"
+		},
+		"incorrect-user-or-email": {
+			"es": "El usuario o el e-mail es incorrecto, está suspendido o fue eliminado.",
+			"en": "The username or email is incorrect, suspended, or deleted.",
+			"pt": "O nome de usuário ou e-mail está incorreto, suspenso ou foi excluído.",
+			"jp": "ユーザー名またはメールが正しくない、停止されている、または削除されました。"
+		},
+		"user-already-in-use": {
+			"es": "El usuario ya está en uso.",
+			"en": "The username is already in use.",
+			"pt": "O nome de usuário já está em uso.",
+			"jp": "このユーザー名は既に使用されています。"
+		},
+		"selected-user-suspended-or-deleted": {
+			"es": "El usuario que seleccionó fue suspendido o eliminado.",
+			"en": "The user you selected was suspended or deleted.",
+			"pt": "O usuário que você selecionou foi suspenso ou excluído.",
+			"jp": "選択したユーザーは停止または削除されました。"
+		},
+		"email-already-in-use": {
+			"es": "El e-mail ya está en uso.",
+			"en": "The email is already in use.",
+			"pt": "O e-mail já está em uso.",
+			"jp": "このメールはすでに使用されています。"
+		},
+		"selected-email-suspended-or-deleted": {
+			"es": "El e-mail que seleccionó fue suspendido o eliminado.",
+			"en": "The email you selected was suspended or deleted.",
+			"pt": "O e-mail que você selecionou foi suspenso ou excluído.",
+			"jp": "選択したメールは停止または削除されました。"
+		}
+	},
+	"posts": {
+		"error": {
+			"title": {
+				"es": "¡Oh! parece que hubo un error...",
+				"en": "Oh! It looks like an error occurred...",
+				"jp": "おっと！エラーが発生したようです..."
+			},
+			"page-not-available": {
+				"es": "Parece que la página a la que intenta acceder aún no está disponible, está en construcción, no tiene acceso o no existe.",
+				"en": "It seems that the page you are trying to access is not yet available, under construction, restricted, or does not exist.",
+				"jp": "アクセスしようとしているページは、まだ利用できないか、開発中であるか、アクセスが制限されているか、存在しないようです。"
+			}
+		}
+	},
+	"dashboard": {
+		"dashboard": {
+			"wellcome-dashboard": {
+				"es": "Bienvenido al panel administrativo.", "en": "Welcome to the administrative panel.", "jp": "管理パネルへようこそ。"
+			},
+			"text": {"es": "En la parte inferior encontrarás los apartados.", "en": "At the bottom, you will find the sections.", "jp": "下部にセクションがあります。"},
+			"attention": {
+				"es": "Parece que la sección {{value}} no existe o está en construcción.",
+				"en": "It seems that the section {{value}} does not exist or is under construction.",
+				"jp": "セクション{{value}}は存在しないか、工事中のようです。"
+			}
+		},
+		"anuncios": {
+			"title": {"es": "Actualizar mensajes y anuncios", "en": "Update messages and announcements", "jp": "メッセージと広告を更新"},
+			"moving-message": {"es": "Mensaje en movimiento", "en": "Moving message", "jp": "動くメッセージ"},
+			"moving-message-title": {"es": "Se mostrará/ocultará el mensaje en movimiento.", "en": "The moving message will be shown/hidden.", "jp": "動くメッセージが表示/非表示されます。"},
+			"long-image": {"es": "Imagen larga", "en": "Long image", "jp": "長い画像"},
+			"long-image-title": {"es": "Se mostrará/ocultará la imagen larga.", "en": "The long image will be shown/hidden.", "jp": "長い画像が表示/非表示されます。"},
+			"article-thumbnail": {"es": "Miniatura del artículo", "en": "Article thumbnail", "jp": "記事のサムネイル"},
+			"article-thumbnail-title": {"es": "Se mostrará/ocultará la miniatura del artículo.", "en": "The article thumbnail will be shown/hidden.", "jp": "記事のサムネイルが表示/非表示されます。"},
+			"placeholder-textarea": {"es": "😁 Bienvenidos a mi sitio web!", "en": "😁 Welcome to my website!", "jp": "😁 私のウェブサイトへようこそ!"}
+		},
+		"comments": {},
+		"config": {
+			"page-name": {"es": "Nombre de la página", "en": "Page name", "jp": "ページ名"},
+			"page-link": {"es": "Enlace de la página", "en": "Page link", "jp": "ページのリンク"},
+			"time-zone": {"es": "Zona horaria", "en": "Time zone", "jp": "タイムゾーン"},
+			"year-of-page-publication": {"es": "Año de publicación de la página", "en": "Year of page publication", "jp": "ページの公開年"},
+			"https-image": {"es": "HTTPS Imagen", "en": "HTTPS Image", "jp": "HTTPS画像"},
+			"errors": {"es": "ERRORES", "en": "ERRORS", "jp": "エラー"},
+			"errors-title": {
+				"es": "Los errores se mostrarán. Actívelo en .htaccess. Tenga cuidado al activarlo.",
+				"en": "Errors will be displayed. Enable it in .htaccess. Be careful when enabling it.",
+				"jp": "エラーが表示されます。.htaccess で有効にしてください。 有効化する際は注意してください。"
+			},
+			"php-title": {"es": "Los enlaces internos tendrán la extensión .php", "en": "Internal links will have the .php extension", "jp": "内部リンクには .php 拡張子が付きます"}
+		},
+		"creador": {
+			"message": {"es": "Creemos algo épico!", "en": "Let's create something epic!", "jp": "何か壮大なものを作ろう！"},
+			"actions": {"es": "Acciones", "en": "Actions", "jp": "アクション"},
+			"publish": {"es": "Publicar", "en": "Publish", "jp": "公開する"},
+			"posts": {"es": "Publicaciones", "en": "Posts", "jp": "投稿"},
+			"drafts": {"es": "Borradores", "en": "Drafts", "jp": "下書き"},
+			"entries": {"es": "Entradas", "en": "Entries", "jp": "エントリー"},
+			"the-best-games": {"es": "Los mejores juegos...", "en": "The best games...", "jp": "最高のゲーム..."},
+			"title-in-the-entries": {"es": "Título en las entradas", "en": "Title in the entries", "jp": "エントリーのタイトル"},
+			"image-type-poster": {"es": "La imagen será de tipo póster", "en": "The image will be a poster type", "jp": "画像はポスタータイプになります"},
+			"list-of-entries": {"es": "Lista de entradas", "en": "List of entries", "jp": "エントリーリスト"},
+			"do-not-touch-this-field": {"es": "NO TOCAR ESTE CAMPO.", "en": "DO NOT TOUCH THIS FIELD.", "jp": "このフィールドには触れないでください"},
+			"attention-update": {"es": "Prestar atención antes de actualizar.", "en": "Pay attention before updating.", "jp": "更新する前に注意してください。"},
+			"creator-no-exists": {"es": "El creador {{value}} no existe.", "en": "The creator {{value}} does not exist.", "jp": "クリエーター {{value}} は存在しません。"},
+			"private": {"es": "Privado", "en": "Private", "jp": "プライベート"},
+			"description": {"es": "Descripción", "en": "Description", "jp": "説明"},
+			"meta-description": {"es": "Meta descripción", "en": "Meta description", "jp": "メタ説明"},
+			"catalog": {"es": "Catalogo", "en": "Catalog", "jp": "カタログ"},
+			"meta-tags": {"es": "Meta etiquetas", "en": "Meta tags", "jp": "メタタグ"},
+			"show-in-the-list": {"es": "Mostrar en el listado", "en": "Show in the list", "jp": "リストに表示"},
+			"show-it-as-new": {"es": "Mostrarlo como nuevo", "en": "Show it as new", "jp": "新着として表示"},
+			"remove-it-from-the-list": {"es": "Quitarlo del listado", "en": "Remove it from the list", "jp": "リストから削除"},
+			"blog-and-thumbnail": {"es": "Blog solo con la miniatura", "en": "Blog with only the thumbnail", "jp": "サムネイルのみのブログ"},
+			"please-select-a-reference": {"es": "Por favor seleccione una referencia.", "en": "Please select a reference.", "jp": "参照を選択してください。"},
+			"reference-does-not-exist": {"es": "La referencia no existe.", "en": "The reference does not exist.", "jp": "参照は存在しません。"},
+			"name-of-the-game": {"es": "Nombre del juego", "en": "Name of the game", "jp": "ゲームの名前"},
+			"other": {
+				"normal": {},
+				"anime_entrada": {
+					"tags": {
+						"es": "{{value}}, Todos los capítulos de {{value}}, Ver y descargar todos los capítulos de {{value}} en HD",
+						"en": "{{value}}, All chapters of {{value}}, Watch and download all chapters of {{value}} in HD",
+						"jp": "{{value}}, {{value}}の全話, {{value}}の全話をHDで視聴およびダウンロード"
+					}
+				},
+				"anime_mirando": {
+					"title": {
+						"es": "{{value}} episodio {{episode}}",
+						"en": "{{value}} episode {{episode}}",
+						"jp": "{{value}} エピソード {{episode}}"
+					},
+					"description": {
+						"es": "Ver y descargar {{name}} episodio {{episode}} por {{webname}}",
+						"en": "Watch and download {{name}} episode {{episode}} on {{webname}}",
+						"jp": "{{webname}} で {{name}} エピソード {{episode}} を視聴およびダウンロード"
+					},
+					"tags": {
+						"es": "{{name}}, {{title}}, Ver {{name}} episodio {{episode}} online en HD, descargar episodio {{episode}} de {{name}}, descargar episodio {{episode}} de {{name}} por MEGA y MediaFire",
+						"en": "{{name}}, {{title}}, Watch {{name}} episode {{episode}} online in HD, download episode {{episode}} of {{name}}, download episode {{episode}} of {{name}} via MEGA and MediaFire",
+						"jp": "{{name}}, {{title}}, {{name}} エピソード {{episode}} をHDでオンライン視聴、{{name}} のエピソード {{episode}} をダウンロード、MEGAとMediaFireで{{name}} のエピソード {{episode}} をダウンロード"
+					}
+				},
+				"juego": {
+					"title": {
+						"es": "Descargar {{name}} para {{os}}",
+						"en": "Download {{name}} for {{os}}",
+						"jp": "{{name}} を {{os}} 用にダウンロード"
+					},
+					"extra-information-placeholder": {"es": "Si el juego no les funciona... ya que a veces... además el código es...", "en": "If the game doesn't work for you... since sometimes... also, the code is...", "jp": "ゲームが動作しない場合... 時々あるので... さらに、コードは..."},
+					"default-used-main": {"es": "Por defecto se usa la principal.", "en": "By default, the main one is used.", "jp": "デフォルトではメインが使用されます。"}
+				}
+			}
+		},
+		"editor": {
+			"file-required": {"es": "Es necesario un archivo para utilizar el editor.", "en": "A file is required to use the editor.", "jp": "エディターを使うにはファイルが必要です。"},
+			"only-edit-files": {"es": "Solo se pueden editar archivos.", "en": "Only files can be edited.", "jp": "ファイルのみ編集できます。"},
+			"file-no-permission": {"es": "No tiene permiso para modificar este archivo.", "en": "You do not have permission to modify this file.", "jp": "このファイルを変更する権限がありません。"}
+		},
+		"directorio": {
+			"directory": {"es": "Directorio", "en": "Directory", "jp": "ディレクトリ"},
+			"create-file": {"es": "Crear archivo", "en": "Create file", "jp": "ファイルを作成"},
+			"file": {"es": "Archivo", "en": "File", "jp": "ファイル"},
+			"create-folder": {"es": "Crear carpeta", "en": "Create folder", "jp": "フォルダーを作成"},
+			"folder": {"es": "Carpeta", "en": "Folder", "jp": "フォルダー"},
+			"deleted": {"es": "Se eliminaron", "en": "Deleted", "jp": "削除されました"},
+			"delete-folder": {"es": "Eliminar carpeta", "en": "Delete folder", "jp": "フォルダーを削除"},
+			"delete-folder-text": {"es": "¿Seguro que quiere eliminar la carpeta?", "en": "Are you sure you want to delete the folder?", "jp": "フォルダーを削除してもよろしいですか？"},
+			"directory-created": {"es": "El directorio fue creado exitosamente.", "en": "The directory was created successfully.", "jp": "ディレクトリが正常に作成されました。"},
+			"directory-exists": {"es": "El directorio ya existe.", "en": "The directory already exists.", "jp": "ディレクトリはすでに存在しています。"},
+			"directory-no-exists": {"es": "El directorio no existe.", "en": "The directory does not exist.", "jp": "ディレクトリは存在しません。"},
+			"confirm-delete": {"es": "Tiene que confirmar la eliminación del directorio.", "en": "You need to confirm the deletion of the directory.", "jp": "ディレクトリの削除を確認する必要があります。"}
+		},
+		"htaccess": {
+			"error-page-links": {"es": "Enlaces de páginas de error", "en": "Error page links", "jp": "エラーページのリンク"},
+			"400": {"es": "Solicitud incorrecta", "en": "Bad Request", "jp": "不正なリクエスト"},
+			"401": {"es": "No autorizado", "en": "Unauthorized", "jp": "未認証"},
+			"403": {"es": "Prohibido", "en": "Forbidden", "jp": "禁止"},
+			"404": {"es": "No encontrado", "en": "Not Found", "jp": "見つかりません"},
+			"500": {"es": "Error interno del servidor", "en": "Internal Server Error", "jp": "サーバー内部エラー"},
+			"503": {"es": "Servicio no disponible", "en": "Service Unavailable", "jp": "サービス利用不可"},
+			"ssl-https": {"es": "SSL HTTPS", "en": "SSL HTTPS", "jp": "SSL HTTPS"},
+			"ssl-https-title": {"es": "Solo activar si el SSL está activo.", "en": "Only enable if SSL is active.", "jp": "SSL が有効な場合のみ有効にしてください。"},
+			"errors": {"es": "ERRORES", "en": "ERRORS", "jp": "エラー"},
+			"errors-title": {"es": "Ten cuidado al activar esta opción cuando la página esté en línea.", "en": "Be careful when enabling this option when the page is online.", "jp": "ページがオンラインのときにこのオプションを有効にする際は注意してください。"},
+			"time-zone": {"es": "Zona horaria", "en": "Time zone", "jp": "タイムゾーン"},
+			"time-zone-title": {"es": "Zona horaria establecida en el apartado de configuración.", "en": "Time zone set in the configuration section.", "jp": "設定セクションで設定されたタイムゾーン。"}
+		},
+		"info": {
+			"about": {
+				"es": "daamper es una página web para múltiples tipos de contenidos creados por Armin el día 15 de julio del 2024 como un proyecto personal para subir juegos, blogs, forolink, animes y muchos otros más. <br> Página web para ForoLink, Juegos, Animes, Proyectos, Blogs con múltiples temas personalizados, Panel administrativo avanzado con muchas funciones para la personalización de la página, extensiones y muchas otras cosas.",
+				"en": "daamper is a website for multiple types of content created by Armin on July 15, 2024, as a personal project to upload games, blogs, forumlinks, animes, and many others. <br> Website for ForoLink, Games, Animes, Projects, Blogs with multiple custom themes, an advanced administrative panel with many functions for page customization, extensions, and many other things.",
+				"jp": "daamper は、ゲーム、ブログ、フォーラムリンク、アニメなど、さまざまなコンテンツをアップロードするための Web サイトであり、2024 年 7 月 15 日に Armin によって個人プロジェクトとして作成されました。<br> ForoLink、ゲーム、アニメ、プロジェクト、ブログなどに対応し、複数のカスタムテーマ、高度な管理パネル、ページのカスタマイズ機能、拡張機能など、さまざまな機能を備えた Web サイトです。"
+			}
+		},
+		"template": {
+			"commands-title": {"es": "Comandos versión beta", "en": "Beta version commands", "jp": "ベータ版コマンド"}
+		},
+		"scripts_js": {
+			"title": {"es": "Scripts Javascript", "en": "Javascript Scripts", "jp": "Javascript スクリプト"},
+			"others": {"es": "Otros", "en": "Others", "jp": "その他"},
+			"google-placeholder": {
+				"es": "Scripts de Google Analytics, Google Fonts, Google AdSense...",
+				"en": "Scripts for Google Analytics, Google Fonts, Google AdSense...",
+				"jp": "Google アナリティクス、Google フォント、Google AdSense のスクリプト..."
+			},
+			"font-awesome-placeholder": {
+				"es": "Scripts de Font Awesome",
+				"en": "Font Awesome Scripts",
+				"jp": "Font Awesome のスクリプト"
+			},
+			"use-freely": {
+				"es": "Usar de forma libre",
+				"en": "Use freely",
+				"jp": "自由に使用"
+			}
+		},
+		"subir-imagen": {
+			"recommended": {"es": "Antes de subir una imagen usa: {{value}} para optimizar la imagen.", "en": "Before uploading an image, use {{value}} to optimize the image.", "jp": "画像をアップロードする前に、 {{value}} を使用して画像を最適化してください。"},
+			"select-image": {"es": "Selecciona una imagen", "en": "Select an image", "jp": "画像を選択"},
+			"image-name": {"es": "nombre-de-la-imagen", "en": "image-name", "jp": "画像の名前"},
+			"error-upload-image": {"es": "Error al subir la imagen.", "en": "Error uploading the image.", "jp": "画像のアップロード中にエラーが発生しました。"},
+			"error-uploading": {"es": "Parece que hubo un error al subir la imagen.", "en": "It looks like there was an error uploading the image.", "jp": "画像のアップロード中にエラーが発生したようです。"},
+			"image-max-size": {"es": "El tamaño máximo es de 1MB.", "en": "The maximum size is 1MB.", "jp": "最大サイズは1MBです。"},
+			"uploaded-image": {"es": "Se subió la imagen", "en": "The image was uploaded", "jp": "画像がアップロードされました"},
+			"format-accept": {"es": "Solo se aceptan formatos: jpg, jpeg, png y gif.", "en": "Only jpg, jpeg, png, and gif formats are accepted.", "jp": "許可される形式は jpg、jpeg、png、gif のみです。"}
+		},
+		"tema": {
+			"title": {"es": "Tema de la plantilla", "en": "Template theme", "jp": "テンプレートのテーマ"},
+			"created-themes": {"es": "Temas creados", "en": "Created themes", "jp": "作成されたテーマ"},
+			"custom-styles": {"es": "Estilos personalizados", "en": "Custom styles", "jp": "カスタムスタイル"},
+			"theme-activated": {"es": "Tema activado.", "en": "Theme activated.", "jp": "テーマが有効になりました。"},
+			"theme-no-activated": {"es": "El tema no se activó.", "en": "The theme was not activated.", "jp": "テーマは有効化されませんでした。"},
+			"default-theme": {"es": "Tema por defecto.", "en": "Default theme.", "jp": "デフォルトのテーマ。"},
+			"default-theme-off": {"es": "El tema ya está por defecto.", "en": "The theme is already set as default.", "jp": "テーマはすでにデフォルトに設定されています。"}
+		},
+		"updates": {
+			"text": {"es": "Disfruta de las últimas actualizaciones de daamper por dbproject.", "en": "Enjoy the latest updates from daamper by dbproject.", "jp": "daamper の最新アップデートを dbproject でお楽しみください。"}
+		}
+	}
+}
