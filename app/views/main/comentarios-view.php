@@ -42,7 +42,7 @@ if (count($comentarios) <= 0) { ?>
     $i = 0;
     $sigue = true;
     $responder = [];
-    require_once __DIR__. '/comentario-views.php';
+    require_once __DIR__. '/comentario-view.php';
     foreach ($comentarios as $key => $value) {
         $sigue_one = false;
         if ($value['ruta'] == $Web['ruta'] && empty($value['id_comentario'])) { $sigue_one = true; } else { $sigue_one = false; }
