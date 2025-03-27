@@ -114,7 +114,7 @@ dev-3
       -> Juego ~ Se agregaron las traducciones y se hicieron mejoras.
       -> View ~ Se agreg los subtitulos y se añadieron mejoras.
 
-21/03/2025 ~ Dia de Dia de descanso.
+21/03/2025 ~ Dia de descanso.
 
 22/03/2025 ... 24/03/2025 Estable
 -> README ~ Se agrego la extención del archivo "README.md" y se actualizo el contenido.
@@ -174,6 +174,18 @@ dev-3
     -> Anime_mirando/Mod
 - Procesa/
   -> Auth ~ Se agrego las traducciones.
+
+v0.2.5.1 - 26/03/2025: Corrección de errores en la carga de comentarios.
+Se corrigió el nombre del archivo comentario.views.php, que era llamado en form-comentar-view.php y comentarios-view.php, para coincidir con el nombre correcto comentario-view.php.
+Antes, el error impedía que los comentarios se mostraran y rompía la carga de la página.
+
+- App/Views/Main/
+    -> comentarios-view.php
+    -> form-comentar-view.php
+  -> Database/Config/Version ~ Actualizado.
+  -> Version.txt ~ Actualizado
+
+---------------------------------------------------
 
 Prioridades cercanas:
 ~ Completar las traducciones pendientes en Procesa/ y Panel/Procesa/, ademas los sistemas de perfil, comentarios, reportes, reacciones, etc.
