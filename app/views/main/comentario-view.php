@@ -97,7 +97,7 @@
 <?php if (empty($value['id_comentario']) && $value['estado'] == 'publico' && $Web['ruta'] != 'reportar.php'): ?>
 <div class="form-responder">
     <?php $responder['comentario'] = !empty($value['id_usuario']) ? '@' . (usu[$value['id_usuario']]['usuario']) : $value['apodo'] . ' '; ?>
-    <?php $responder['id'] = $value['id']; $responder['ruta'] = $value['ruta']; require __DIR__ . "/form-comentar.views.php" ?>
+    <?php $responder['id'] = $value['id']; $responder['ruta'] = $value['ruta']; require __DIR__ . "/form-comentar-view.php" ?>
 </div>
 <?php endif; ?>
     
