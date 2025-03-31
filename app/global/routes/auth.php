@@ -1,4 +1,11 @@
 <?php # Auth
+if ($Web['ruta_completa'] == '../auth/configuracion.php' && !isset($_SESSION['id'])){
+	mensajeSpan(['bg'=>'red',
+		'text'=> Language('please-login', 'alert'),
+		'ruta'=>"{$Web['directorio']}auth/iniciar{$Web['config']['php']}"
+	]);
+}
+
 Ruta(null,
   isset($_SESSION['cambiar_contrasena']) &&
   $Web['ruta_completa'] != '../auth/cambiar-contrasena.php',
