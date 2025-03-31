@@ -9,7 +9,6 @@
     ['icono' => 'fab fa-html5', 'texto' => Language('template'), 'apartado' => 'plantilla'],
     ['icono' => 'fab fa-css3', 'texto' => Language('theme'), 'apartado' => 'tema'],
     ['icono' => 'fas fa-sitemap', 'texto' => Language('directory'), 'apartado' => 'directorio'],
-    ['icono' => 'fas fa-edit', 'texto' => Language('editor'), 'apartado' => 'editor'],
     ['icono' => 'fas fa-file-invoice', 'texto' => Language('htaccess'), 'apartado' => 'htaccess'],
     ['icono' => 'fas fa-gem', 'texto' => Language('updates'), 'apartado' => 'actualizaciones'],
 ]; ?>
