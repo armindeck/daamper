@@ -7,7 +7,7 @@ $comentarios = [];
 if (file_exists($file_comentarios)){ $comentarios = require_once $file_comentarios; }
 if (file_exists($file_comentarios_extras)){ require_once $file_comentarios_extras; }
 if (count($comentarios) <= 0) { ?>
-    <div class="form" style="text-align: center;">¡Oh! ~ Parece que todavía no hay comentarios!</div>
+    <div class="form" style="text-align: center;"><?= Language('no-comments', 'form') ?></div>
 <?php } else {
     $comentarios_estable = $comentarios;
     $comentarios = isset($_GET['orden_comentarios']) && $_GET['orden_comentarios'] === 'desc' ? array_reverse($comentarios) : $comentarios;
@@ -18,12 +18,12 @@ if (count($comentarios) <= 0) { ?>
     <form method="get">
         <section>
             <?= $Web['ruta_completa'] == '../panel/panel.php' ? "<input name='ap' value='comentarios' hidden>" : '' ?>
-            <label>Ordenar por <select name="orden_comentarios">
-                    <option>asc</option>
-                    <option>desc</option>
+            <label><?= Language('sort-by') ?> <select name="orden_comentarios">
+                    <option value="asc"><?= Language('ascending') ?></option>
+                    <option value="desc"><?= Language('descending') ?></option>
                 </select>
             </label>
-            <label>Cantidad <select name="cantidad_comentarios">
+            <label><?= Language('quantity') ?> <select name="cantidad_comentarios">
                     <option>10</option>
                     <option>30</option>
                     <option>50</option>
@@ -31,10 +31,10 @@ if (count($comentarios) <= 0) { ?>
                     <option>130</option>
                     <option>150</option>
                     <option>200</option>
-                    <option>auto</option>
+                    <option value="auto"><?= Language('auto') ?></option>
                 </select>
             </label>
-            <input class="boton" type="submit" value="Filtrar">
+            <input class="boton" type="submit" value="<?= Language('filter') ?>">
         </section>
     </form>
     <?php endif; ?>
@@ -59,12 +59,12 @@ if (count($comentarios) <= 0) { ?>
             if ($sigue) { ?>
                 <?php if(isset($_GET['view']) || $Web['ruta_completa'] == '../panel/panel.php'): ?>
                 <section class="flex-between t-12" style="width: 100%; max-width: 800px;">
-                    <span>Ruta:</span>
+                    <span><?= Language('route') ?>:</span>
                     <a target="_blank" href="<?= $Web['directorio'].str_replace(".php", "", $value['ruta']) . $Web['config']['php'] ?>"><?= str_replace(".php", "", $value['ruta']) ?></a>
                 </section>
                 <?php endif; ?>
                 <?= Comentario($value) ?>
-                <details <?= $i < 1 ? 'open' : '' ?> style="width: 100%; max-width: 800px;"><summary class="t-14">Comentarios</summary>
+                <details <?= $i < 1 ? 'open' : '' ?> style="width: 100%; max-width: 800px;"><summary class="t-14"><?= Language('comments') ?></summary>
                     <section class="panel form-comentarios">
                     <?php foreach ($comentarios_estable as $key2 => $value2) {
                         if ($value2['ruta'] == $value['ruta'] && $value2['id_comentario'] == $value['id']) {

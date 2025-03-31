@@ -70,7 +70,7 @@
         <?= !empty($value['enlace_imagen']) ? "<center><img loading style='max-width: 100%;' src='{$value['enlace_imagen']}'></center>" : '' ?>
         <?= !empty($value['enlace_imagen']) && !empty($value['enlace']) ? '<hr>' : ''; ?>
         <?php if (!empty($value['enlace'])) {
-            echo "<a style='font-size: 12px;' target='_blank' title='Sera dirigido a: {$value['enlace']}' href='{$value['enlace']}'>";
+            echo "<a style='font-size: 12px;' target='_blank' title='".Language('redirect-to', 'form', ['value' => $value['enlace']])."' href='{$value['enlace']}'>";
             $maximo = 25;
             echo substr($value['enlace'], 0, $maximo);
             if (strlen($value['enlace']) > $maximo) {
@@ -82,16 +82,16 @@
     </section>
     <footer>
         <?php if (empty($value['id_comentario']) && $value['estado'] == 'publico' && $Web['ruta'] != 'reportar.php'){ ?>
-        <?php if (!isset($_GET['view'])){ ?><label for="responder-comentario-<?= md5('R+_' . $value['id'] . '-W') ?>">Responder</label><?php } else { echo '<span></span>'; } ?>
+        <?php if (!isset($_GET['view'])){ ?><label for="responder-comentario-<?= md5('R+_' . $value['id'] . '-W') ?>"><?= Language('reply') ?></label><?php } else { echo '<span></span>'; } ?>
         <?php } else { echo '<label></label>'; } ?>
         <?php if ($Web['ruta'] != 'reportar.php') { ?>
-        <a target="_blank" href="<?= $Web['directorio'] . 'reportar' . $Web['config']['php'] . '?r=' . md5('R+_' . $value['id'] . '-W'); ?>">Reportar</a>
+        <a target="_blank" href="<?= $Web['directorio'] . 'reportar' . $Web['config']['php'] . '?r=' . md5('R+_' . $value['id'] . '-W'); ?>"><?= Language('report') ?></a>
         <?php } ?>
     </footer>
     <?php } elseif ($value['estado'] == 'revision') {
-        echo '<p>Este comentario se encuentra en revisión.</p>';
+        echo '<p>'.Language('comment-under-review', 'form').'</p>';
     } else {
-        echo '<p>Este comentario fue eliminado.</p>';
+        echo '<p>'.Language('comment-deleted', 'form').'</p>';
     } ?>
 </div>
 <?php if (empty($value['id_comentario']) && $value['estado'] == 'publico' && $Web['ruta'] != 'reportar.php'): ?>
