@@ -8,12 +8,12 @@ $TIPO = isset($_POST['comentar']) && !empty($_POST['comentar']) ? 'comentar' : (
 $get['ruta'] = !isset($_GET['ruta']) || empty($_GET['ruta']);
 
 if (empty($TIPO) || $get['ruta']) {
-    header("Location: {$Web['directorio']}error{$Web['config']['php']}?e=Datos incorrectos.");
+    header("Location: {$Web['directorio']}error{$Web['config']['php']}?e=".Language("incorrect-data", "alert"));
 }
 
 # RUTA
 if (md5('R+_'. $_GET['ruta'] . '-W') !== $_POST['token']) {
-    header("Location: {$Web['directorio']}error{$Web['config']['php']}?e=Por favor no modifique los campos ocultos.");
+    header("Location: {$Web['directorio']}error{$Web['config']['php']}?e=".Language("do-not-modify-hidden-fields", "alert"));
 }
 
 $get['ruta'] = SCRIPTS->normalizar2($_GET['ruta']);
@@ -21,13 +21,13 @@ $get['ruta_php'] = $Web['directorio'] . str_replace('.php', '', $get['ruta']) . 
 $get['ruta_completa'] = $Web['directorio'] . $get['ruta'];
 
 if (!file_exists($get['ruta_completa'])) {
-    header("Location: {$Web['directorio']}error{$Web['config']['php']}?e=Por favor no modifique los campos ocultos.");
+    header("Location: {$Web['directorio']}error{$Web['config']['php']}?e=".Language("do-not-modify-hidden-fields", "alert"));
 }
 
 # SUMA
 if (md5('R+_'. $_POST['resultado'] . '-W') !== $_POST['resultado_verificar']) {
     mensajeSpan(['bg'=>'yellow', 'co'=>'#000',
-        'text'=>'La suma es incorrecta.',
+        'text'=> Language("incorrect-sum", "alert"),
         'ruta'=>"{$get['ruta_php']}"
     ]);
 }
@@ -53,7 +53,7 @@ if ($TIPO == 'responder') {
         }
         if (!isset($encontro)) {
             mensajeSpan(['bg'=>'yellow', 'co'=>'#000',
-                'text'=>'Por favor no modifique los campos ocultos.',
+                'text'=> Language("do-not-modify-hidden-fields", "alert"),
                 'ruta'=>"{$get['ruta_php']}"
             ]);
         }
@@ -86,13 +86,12 @@ if (isset($_GET['sub-ruta']) && $_GET['sub-ruta'] == 'panel-comentarios') {
 
 if (file_put_contents($db, $file_mod)) {
     mensajeSpan(['bg'=>'green',
-            'text'=>'Gracias por comentar.',
+            'text'=> Language("thanks-for-commenting", "alert"),
             'ruta'=>"{$get['ruta_php']}"
         ]);
 } else {
     mensajeSpan(['bg'=>'red',
-        'text'=>'Oh! no se guardaron los datos.',
+        'text'=> Language("data-not-saved", "alert"),
         'ruta'=>"{$get['ruta_php']}"
     ]);
 }
-?>

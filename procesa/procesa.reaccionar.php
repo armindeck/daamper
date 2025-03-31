@@ -1,10 +1,10 @@
-<?php # 07/11/2024 ~ 12:04am
+<?php # 07/11/2024 ~ 12:04am | 30/03/2025 ~ 6:53pm
 $Web['directorio'] = '../'; $Web['ruta'] = 'procesa/procesa.reaccionar.php';
 require_once $Web['directorio'].'app/control/control_procesa.php';
 
 if (!isset($_POST['me_gusta']) && !isset($_POST['no_me_gusta']) || !isset($_SESSION['id'])) {
     mensajeSpan(['bg'=>'yellow', 'co' => 'black',
-        'text'=>'Por favor inicie sesión o no modifique los campos ocultos.',
+        'text'=> Language("login-or-do-not-modify-hidden-fields", "alert"),
         'ruta'=>$Web['directorio']
     ]);
 }
@@ -15,7 +15,7 @@ $lista = ['token-comentario'];
 foreach ($lista as $key => $value) {
     if (!isset($_POST[$value]) || empty($_POST[$value])) {
         mensajeSpan(['bg'=>'red',
-            'text'=>'Por favor llene todos los campos.',
+            'text'=> Language("fill-all-fields", "alert"),
             'ruta'=> $Web['directorio']
         ]);
     }
@@ -27,7 +27,7 @@ $comentarios = 0;
 if (file_exists($file_comentarios)){ $comentarios = require_once $file_comentarios; }
 if (count($comentarios) <= 0) {
     mensajeSpan(['bg'=>'red',
-            'text'=>'Todavia no hay comentarios',
+            'text'=> Language("no-comments-yet", "alert"),
             'ruta'=>$Web['directorio']
         ]);
 }
@@ -36,7 +36,7 @@ for ($i = 1; $i <= count($comentarios); $i++) {
 }
 if (!isset($encontro)) {
     mensajeSpan(['bg'=>'red',
-        'text'=>'¡Oh! ~ Parece que el comentario que va a reaccionar no existe!',
+        'text'=> Language("comment-to-react-not-exist", "alert"),
         'ruta'=>$Web['directorio']
     ]);
 }
@@ -85,16 +85,15 @@ $dato = "$" . "comentarios[$id]['reacciones'][$reacciones] = ['id_usuario' => {$
 $resultado = file_put_contents($file_comentarios_extras, $file_comentarios_extras_leer . $dato);
 require $Web['directorio'] . AppDatabase('usuarios/usuarios');
 
-$nombre = '<strong>' . (!empty($comentarios[$id]['apodo']) ? $comentarios[$id]['apodo'] : $usu[($comentarios[$id]['id_usuario'])]['nombre']) . '</strong>.';
+$nombre = '<strong>' . (!empty($comentarios[$id]['apodo']) ? $comentarios[$id]['apodo'] : $usu[($comentarios[$id]['id_usuario'])]['nombre']) . '</strong>';
 
 if ($resultado) {
     mensajeSpan(['bg'=>'green',
-        'text'=>'Reaccionaste al comentario de ' . $nombre,
+        'text'=> Language("reacted-to-comment", "alert", ['value' => $nombre]),
         'ruta'=>$ruta
     ]);
 }
 mensajeSpan(['bg'=>'red',
-    'text'=>'Fallo al reaccionar al comentario de ' . $nombre,
+    'text'=> Language("failed-to-react-comment", "alert", ['value' => $nombre]),
     'ruta'=>$ruta
 ]);
-?>

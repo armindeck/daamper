@@ -6,14 +6,14 @@ if (isset($_SESSION['creador-key-hidden']) && !isset($_SESSION['tmpForm'])) {
 }
 if(!isset($_SESSION['tmpForm'])){
 	/* Error generado por: views/main */
-	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=>'No tiene acceso. <small>x1.</small>','ruta'=>'../panel.php?ap=creador']);
+	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=> Language("no-access-preview", "alert"),'ruta'=>'../panel.php?ap=creador']);
 }
 if(!isset($_SESSION['tmpForm']['creador'])){
-	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=>'No existe el creador. <small>x2.</small>','ruta'=>'../panel.php?ap=creador']);
+	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=> Language("creator-not-exist", "alert"),'ruta'=>'../panel.php?ap=creador']);
 }
 unset($_SESSION['tmpForm']['mostrar']);
-$X['creador_borrador_version'] = '0.1.2 Beta';
-$X['creador_borrador_fecha'] = '04.01.2025';
+$X['creador_borrador_version'] = VERSION['dashboard']['creador']['preview']['version'] . ' ' . VERSION['dashboard']['creador']['preview']['state'];
+$X['creador_borrador_fecha'] = VERSION['dashboard']['creador']['preview']['updated'];
 
 /* VARIABLES LIBRES
 	*	$ACR_CARGADO
@@ -39,14 +39,14 @@ $QUITARLO_DEL_INDEX = isset($_SESSION['tmpForm']['quitarlo_del_index']) &&
 
 if(!empty($ACR_FORM['pubo'])){
 	if(!in_array($ACR_FORM['pubo'], ['', 'borrador', 'publicacion'])){
-		mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=>'Por favor no modifique los campos ocultos del campo pubo. <small>x3.</small>','ruta'=>"../panel.php?ap=creador&creador={$ACR_FORM['creador']}"]);
+		mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=> Language("do-not-modify-pubo", "alert"),'ruta'=>"../panel.php?ap=creador&creador={$ACR_FORM['creador']}"]);
 	}
 	$ruta_archivo = $Web['directorio'] . ($ACR_FORM['pubo'] == 'borrador' ? 'panel/app/creador/borradores/' :
 			($ACR_FORM['pubo'] == 'publicacion' ? 'app/database/publicaciones/' : '')
 		) . $ACR_FORM['db_archivo'];
 	if(!file_exists($ruta_archivo)) {
 		mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=>
-			'El archivo '.$ACR_FORM['db_archivo'].' no existe, por favor no modifique los campos ocultos. <small>x4.</small>',
+			Language("file-not-exist", "alert", ['value' => $ACR_FORM['db_archivo']]),
 			'ruta'=>"../panel.php?ap=creador&creador={$ACR_FORM['creador']}"]);
 	}
 	require $ruta_archivo;
@@ -57,7 +57,7 @@ if(!empty($ACR_FORM['pubo'])){
 if(isset($ACR_CARGA)){
 	foreach ($LISTA_ACR as $key => $value) {
 		if($ACR_FORM[$value] != $ACR_CARGA[$value]){
-			mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=>'Los datos son diferentes a los campos ocultos, por favor no modifique los campos ocultos. <small>x5.</small>','ruta'=>"../panel.php?ap=creador&creador={$ACR_CARGA['creador']}&tipo={$ACR_CARGA['tipo']}&archivo={$ACR['db_archivo']}"]);
+			mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=> Language("data-different-hidden-fields", "alert"),'ruta'=>"../panel.php?ap=creador&creador={$ACR_CARGA['creador']}&tipo={$ACR_CARGA['tipo']}&archivo={$ACR['db_archivo']}"]);
 		}
 	}
 	$LISTA_ACR_CARGA = ['creador','pubo','db_ruta','id_publicador','fecha_publicado','fecha_modificado','creador_borrador_version','creador_borrador_fecha'];
@@ -92,7 +92,7 @@ if(file_exists($Web['directorio'].'panel/app/creador/creadores/'.$ACR_FORM['crea
 if (isset($AC_FORM['ruta'])) { $AC_FORM['ruta'] = str_replace(['../','./'], '', $AC_FORM['ruta']); $AC_FORM['ruta'] = trim($AC_FORM['ruta'], '/'); }
 
 if(!isset($AC_FORM['ruta']) || !isset($AC_FORM['archivo'])){
-	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=>'Hacen falta los datos de la ruta u archivo. <small>x6.</small>','ruta'=>"../panel.php?ap=creador&creador={$ACR_FORM['creador']}"]);
+	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=> Language("missing-path-or-file", "alert"),'ruta'=>"../panel.php?ap=creador&creador={$ACR_FORM['creador']}"]);
 }
 
 if (empty($AC_FORM['ruta'])) {
@@ -135,7 +135,7 @@ if(empty($ACR_FORM['pubo'])){
 		file_exists($Web['directorio'].'app/database/publicaciones/pu_'.$CONVERTIDO['ruta_archivo_slash']) ||
 		file_exists($Web['directorio'].'panel/app/creador/borradores/bo_'.$CONVERTIDO['ruta_archivo_slash'])
 	){
-		mensajeSpan(['bg'=>'red','text'=>'Parece que ya existe una publicación o borrador con la misma dirección, por favor verifique en los apartados respectivos. <small>x7.</small>','ruta'=>"../panel.php?ap=creador&creador={$ACR_FORM['creador']}"]);
+		mensajeSpan(['bg'=>'red','text'=> Language("duplicate-post-or-draft", "alert"),'ruta'=>"../panel.php?ap=creador&creador={$ACR_FORM['creador']}"]);
 	}
 }
 
@@ -143,7 +143,7 @@ if(isset($ACR_CARGADO['db_ruta'])){
 	if($CONVERTIDO['ruta_archivo'] != $ACR_CARGADO['db_ruta']){
 		$_SESSION['tmpForm']['ruta'] = $AC_CARGA['ruta'];
 		$_SESSION['tmpForm']['archivo'] = $AC_CARGA['archivo'];
-		mensajeSpan(['bg'=>'red','text'=>'Por favor no modifique la ruta u archivo, o bien cree otra entrada u eliminela. <small>x8.</small>','ruta'=>"../panel.php?ap=creador&creador={$ACR_FORM['creador']}&tipo={$ACR_CARGADO['pubo']}&archivo={$ACR_FORM['db_archivo']}"]);
+		mensajeSpan(['bg'=>'red','text'=> Language("do-not-modify-path", "alert"),'ruta'=>"../panel.php?ap=creador&creador={$ACR_FORM['creador']}&tipo={$ACR_CARGADO['pubo']}&archivo={$ACR_FORM['db_archivo']}"]);
 	}
 }
 
@@ -178,34 +178,34 @@ require $Web['directorio'].AppDatabase();
 	}
 </style>
 <div class="procesa-creador-borrador-header">
-	<p style="padding: 4px;"><b>Vista previa</b> <span style="font-size: 10px;">v<?= $X['creador_borrador_version']; ?> ~ <?= $X['creador_borrador_fecha']; ?></span></p>
+	<p style="padding: 4px;"><b><?= Language("preview") ?></b> <span style="font-size: 10px;">v<?= $X['creador_borrador_version']; ?> ~ <?= $X['creador_borrador_fecha']; ?></span></p>
 	<div>
-		<a class="boton" href="../panel.php?ap=creador">Cancelar</a>
+		<a class="boton" href="../panel.php?ap=creador"><?= Language("cancel") ?></a>
 		<a class="boton" href="<?php echo '../panel.php?ap=creador&creador='.$ACR_FORM['creador'];
 			echo !empty($ACR_FORM['pubo']) ? '&tipo='.$ACR_FORM['pubo'].'&archivo='.$ACR_FORM['db_archivo'] : '';
-		?>">Volver</a>
+		?>"><?= Language("go-back") ?></a>
 		<form method="post" style="display: inline-block;">
-			<input class="boton" style="padding: 10px;" type="submit" name="guardar" value="Guardar">
+			<input class="boton" style="padding: 10px;" type="submit" name="guardar" value="<?= Language("save") ?>">
 		</form>
 		<?php if(!empty($ACR_FORM['pubo'])): ?>
 		<form method="post" style="display: inline-block;">
-			<input class="boton2" style="padding: 10px;" type="submit" name="eliminar" value="Eliminar">
+			<input class="boton2" style="padding: 10px;" type="submit" name="eliminar" value="<?= Language("delete") ?>">
 		</form>
 		<form method="post" style="display: inline-block;">
-			<input class="boton" style="padding: 10px;" type="submit" name="publicar" value="Publicar">
+			<input class="boton" style="padding: 10px;" type="submit" name="publicar" value="<?= Language("publish") ?>">
 		</form>
 		<?php endif; ?>
 	</div>
 </div>
 <div class="procesa-creador-borrador-datos">
-	<b>Datos:</b>
+	<b><?= Language("data") ?>:</b>
 	<div class="campo scrolls" style="min-width: 100%; max-width: 100%;"><?php
-		echo '<h3>FORMULARIO</h3><hr>';
+		echo '<h3>'.Language("FORM", "other").'</h3><hr>';
 		foreach ($AC_FORM as $key => $value) {
 			echo '<b>'.$key .':</b> '.SCRIPTS->normalizar($value).'<hr> ';
 		}
 		if(isset($AC_FORM_POST)){
-			echo '<h3>FORMULARIO POST</h3><hr>';
+			echo '<h3>'.Language("POST-FORM", "other").'</h3><hr>';
 			foreach ($AC_FORM_POST as $key => $value) {
 				echo '<b>'.$key .':</b> '.SCRIPTS->normalizar($value).'<hr> ';
 			}
@@ -214,7 +214,7 @@ require $Web['directorio'].AppDatabase();
 			$ACR = $ACR_FORM; $AC = $AC_FORM;
 			require $Web['directorio'].'panel/app/creador/creadores/'.$ACR_FORM['creador'].'/mod.php';
 			if(isset($MOD)){
-				echo '<h3>CREADOR MOD</h3><hr>';
+				echo '<h3>'.Language("CREATOR-MOD", "other").'</h3><hr>';
 				foreach ($MOD as $key => $value) {
 					echo '<b>'.$value .':</b> '.SCRIPTS->normalizar($AC[$value]).'<hr> ';
 				}
@@ -225,12 +225,12 @@ require $Web['directorio'].AppDatabase();
 				}
 			}
 		}
-		echo '<h3>CREADOR</h3><hr>';
+		echo '<h3>'.Language("CREATOR", "other").'</h3><hr>';
 		foreach ($ACR_FORM as $key => $value) {
 			echo '<b>'.$key .':</b> '.SCRIPTS->normalizar($value).'<hr> ';
 		}
 		if(isset($ACR_CARGADO)){
-			echo '<h3>CARGADOS</h3><hr>';
+			echo '<h3>'.Language("LOADED", "other").'</h3><hr>';
 			foreach ($ACR_CARGADO as $key => $value) {
 				if($key!='id_publicador'){
 					echo '<b>'.$key .':</b> '.SCRIPTS->normalizar($value).'<hr> ';
@@ -294,7 +294,7 @@ require $Web['directorio'].AppDatabase();
 	if(isset($_POST['guardar'])){
 		file_put_contents($Web['directorio'].'panel/app/creador/borradores/'.$ACR_FORM['db_archivo'], $guardar);
 		Historial($Web, 'Guardar/Actualizar: '.$ACR_FORM['db_archivo']);
-		mensajeSpan(['bg'=>'green','text'=>'Se guardo el borrador <b>'.$ACR_FORM['db_archivo'].'</b>','ruta'=>"../panel.php?ap=creador"]);
+		mensajeSpan(['bg'=>'green','text'=> Language("draft-saved", "alert", ["value" => "<b>".$ACR_FORM['db_archivo']."</b>"]),'ruta'=>"../panel.php?ap=creador"]);
 	} elseif(isset($_POST['publicar'])){
 		$mostrar_en_index = true;
 		if(file_exists($Web['directorio'].'app/database/publicaciones/'.$ACR_FORM['db_archivo']) && !$ACR_VOLVER_A_MOSTRAR){
@@ -352,7 +352,7 @@ require $Web['directorio'].AppDatabase();
 		file_put_contents($Web['directorio'].'app/database/publicaciones/'.$ACR_FORM['db_archivo'], $guardar);
 		unlink($Web['directorio'].'panel/app/creador/borradores/bo_'. $CONVERTIDO['ruta_archivo_slash']);
 		Historial($Web, 'Publicar/Actualizar: '.$ACR_FORM['db_archivo']);
-		mensajeSpan(['bg'=>'green','text'=>'Se publico una nueva entrada <a href="../'.$CONVERTIDO['ruta_archivo'].'" target="_blank"><b>Mostrar <i class="fas fa-external-link-alt"></i></b></a>','ruta'=>"../panel.php?ap=creador"]);
+		mensajeSpan(['bg'=>'green','text'=> Language("new-post-published", "alert", ["value" => '<a href="../'.$CONVERTIDO['ruta_archivo'].'" target="_blank"><b>'.Language('show').' <i class="fas fa-external-link-alt"></i></b></a>']),'ruta'=>"../panel.php?ap=creador"]);
 	}
 	exit;
 }
@@ -361,7 +361,7 @@ if(isset($_POST['eliminar']) && !empty($_POST['eliminar'])){
 	if($ACR_FORM['pubo'] == 'borrador'){
 		unlink($Web['directorio'].'panel/app/creador/borradores/'.$ACR_FORM['db_archivo']);
 		Historial($Web, 'Eliminar ~ borrador: '.$ACR_FORM['db_archivo']);
-		mensajeSpan(['bg'=>'green','text'=>'El borrador <b>'.$ACR_FORM['db_archivo'].'</b> fue eliminado exitosamente','ruta'=>"../panel.php?ap=creador"]);
+		mensajeSpan(['bg'=>'green','text'=> Language("draft-deleted", "alert", ["value" => "<b>".$ACR_FORM['db_archivo']."</b>"]),'ruta'=>"../panel.php?ap=creador"]);
 	}
 
 	if($ACR_FORM['pubo'] == 'publicacion'){
@@ -375,7 +375,7 @@ if(isset($_POST['eliminar']) && !empty($_POST['eliminar'])){
 
 		Historial($Web, 'Eliminar ~ Publicación: '.$ACR_FORM['db_archivo']);
 
-		mensajeSpan(['bg'=>'green','text'=>'La publicación <b>'.$ACR_FORM['db_archivo'].'</b> fue eliminada exitosamente','ruta'=>"../panel.php?ap=creador"]);
+		mensajeSpan(['bg'=>'green','text'=> Language("post-deleted", "alert", ["value" => "<b>".$ACR_FORM['db_archivo']."</b>"]),'ruta'=>"../panel.php?ap=creador"]);
 	}
 } ?>
 

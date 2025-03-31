@@ -1,10 +1,10 @@
-<?php # 07/11/2024 ~ 12:04am
+<?php # 07/11/2024 ~ 12:04am | 30/03/2025 ~ 7:42pm
 $Web['directorio'] = '../'; $Web['ruta'] = 'procesa/procesa.reportar.php';
 require_once $Web['directorio'].'app/control/control_procesa.php';
 
 if (!isset($_POST['reportar']) || !isset($_SESSION['id'])) {
     mensajeSpan(['bg'=>'yellow', 'co' => 'black',
-        'text'=>'Por favor inicie sesión o no modifique los campos ocultos.',
+        'text'=> Language("login-or-do-not-modify-hidden-fields", "alert"),
         'ruta'=>$Web['directorio']
     ]);
 }
@@ -13,7 +13,7 @@ $lista = ['motivos', 'motivos_texto', 'token-comentario', 'resultado', 'resultad
 foreach ($lista as $key => $value) {
     if (!isset($_POST[$value]) || empty($_POST[$value])) {
         mensajeSpan(['bg'=>'red',
-            'text'=>'Por favor llene todos los campos.',
+            'text'=> Language("fill-all-fields", "alert"),
             'ruta'=>"reportar" . $Web['config']['php']
         ]);
     }
@@ -24,7 +24,7 @@ $ruta = $Web['directorio'] . "reportar" . $Web['config']['php'] . '?r=' . $post[
 
 if (md5('R+_'. $_POST['resultado'] . '-W') !== $_POST['resultado_verificar']) {
     mensajeSpan(['bg'=>'yellow', 'co'=>'#000',
-        'text'=>'La suma es incorrecta.',
+        'text'=> Language("incorrect-sum", "alert"),
         'ruta'=>$ruta
     ]);
 }
@@ -33,7 +33,7 @@ $comentarios = 0;
 if (file_exists($file_comentarios)){ $comentarios = require_once $file_comentarios; }
 if (count($comentarios) <= 0) {
     mensajeSpan(['bg'=>'red',
-            'text'=>'Todavia no hay comentarios',
+            'text'=> Language("no-comments-yet", "alert"),
             'ruta'=>"reportar" . $Web['config']['php']
         ]);
 }
@@ -42,7 +42,7 @@ for ($i = 1; $i <= count($comentarios); $i++) {
 }
 if (!isset($encontro)) {
     mensajeSpan(['bg'=>'red',
-        'text'=>'¡Oh! ~ Parece que el comentario que va a reportar no existe!',
+        'text'=> Language("comment-to-report-not-exist", "alert"),
         'ruta'=>"reportar" . $Web['config']['php']
     ]);
 }
@@ -64,7 +64,7 @@ if (isset($comentarios[$id]['reportes'])) { $reportes = count($comentarios[$id][
     foreach ($comentarios[$id]['reportes'] as $key => $value) {
         if ($value['id_usuario'] == $_SESSION['id']) {
             mensajeSpan(['bg'=>'yellow', 'co'=>'#000',
-                'text'=>'El reporte fue enviado anteriormente.',
+                'text'=> Language("report-already-sent", "alert"),
                 'ruta'=>$ruta
             ]);
         }
@@ -79,12 +79,11 @@ if ($resultado) {
         ) . "$". "comentarios[$id]['estado'] = 'revision';\n");
     }
     mensajeSpan(['bg'=>'green',
-        'text'=>'El comentario fue reportado exitosamente.',
+        'text'=> Language("comment-reported", "alert"),
         'ruta'=>$ruta
     ]);
 }
 mensajeSpan(['bg'=>'red',
-    'text'=>'Fallo al reportar el comentario.',
+    'text'=> Language("failed-to-report-comment", "alert"),
     'ruta'=>$ruta
 ]);
-?>
