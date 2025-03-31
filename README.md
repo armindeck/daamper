@@ -14,10 +14,10 @@ Para saber más sobre esta página, ver imágenes y demás, puedes visitar el si
 - 📂 Migración a **JSON** para configuración y almacenamiento de datos.  
 - 🔧 Mejoras en controladores, scripts y vistas.  
 - ⚡ Eliminación de archivos obsoletos y reestructuración de directorios.  
-- 👉 Descubre las mejoras de esta versión en el archivo [`version`](./version.txt).
+- 👉 Descubre las mejoras de esta versión en el archivo [`CHANGELOG`](./CHANGELOG.md).
 
 ## 📂 Instalación  
-1. Descarga el código desde el repositorio **[daamper](https://github.com/armindeck/daamper)**.
+1. Descarga el código desde el repositorio **[daamper](https://github.com/armindeck/daamper)** o desde **[dbproject](https://dbproject.rf.gd/web/daamper)**.
 2. Monta un servidor local o en la web con los archivos.   
 2. Inicia sesión para acceder al panel administrativo.   
 3. Modifica todo el contenido según tus necesidades.  
