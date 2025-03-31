@@ -40,6 +40,7 @@
 		"updates": {"es": "Actualizaciones", "en": "Updates", "jp": "広告"},
 		"comment": {"es": "Comentar", "en": "Comment", "jp": "コメントする"},
 		"comments": {"es": "Comentarios", "en": "Comments", "jp": "コメント"},
+		"reply": {"es": "Responder", "en": "Reply", "jp": "返信"},
 		"route": {"es": "Ruta", "en": "Route", "jp": "ルート"},
 		"blog": {"es": "Blog", "en": "Blog", "jp": "ブログ"},
 		"announcement": {"es": "Anuncio", "en": "Announcement", "jp": "お知らせ"},
@@ -169,6 +170,7 @@
 		"stream-default": {"es": "Stream predeterminado", "en": "Stream default", "jp": "デフォルトのストリーム"},
 		"server": {"es": "Servidor", "en": "Server", "jp": "サーバー"},
 		"link": {"es": "Enlace", "en": "Link", "jp": "リンク"},
+		"image-link": {"es": "Enlace de la imagen", "en": "Image link", "jp": "画像リンク"},
 		"shortened-link": {"es": "Enlace acortado", "en": "Shortened link", "jp": "短縮リンク"},
 		"stream": {"es": "Stream", "en": "Stream", "jp": "ストリーム"},
 		"download": {"es": "Descarga", "en": "Download", "jp": "ダウンロード"},
@@ -216,6 +218,7 @@
 		"password": {"es": "Contraseña", "en": "Password", "jp": "パスワード"},
 		"math-question": {"es": "Cuanto es {{value}} + {{value2}}", "en": "How much is {{value}} + {{value2}}", "jp": "{{value}} + {{value2}} はいくらですか"},
 		"start": {"es": "Iniciar", "en": "Start", "jp": "開始"},
+		"start-profile": {"es": "Inicio", "en": "Start", "jp": "開始"},
 		"register": {"es": "Registrarse", "en": "Register", "jp": "登録"},
 		"forgot-password": {"es": "Olvide mi contraseña", "en": "Forgot my password", "jp": "パスワードを忘れました"},
 		"new-password": {"es": "Nueva contraseña", "en": "New password", "jp": "新しいパスワード"},
@@ -228,6 +231,9 @@
 		"description": {"es": "Descripción", "en": "Description", "jp": "説明"},
 		"social-name": {"es": "Nombre de la red social", "en": "Social network name", "jp": "ソーシャルネットワーク名"},
 		"social-link": {"es": "Enlace de la red social", "en": "Social network link", "jp": "ソーシャルネットワークリンク"},
+		"social-network": {"es": "Red social", "en": "Social network", "jp": "ソーシャルネットワーク"},
+		"registered": {"es": "Registrado", "en": "Registered", "jp": "登録済み"},
+		"role": {"es": "Rol", "en": "Role", "jp": "役割"},
 		"update-data": {"es": "Actualizar datos", "en": "Update data", "jp": "データを更新する"},
 		"no-change": {"es": "No cambiar", "en": "Do not change", "jp": "変更しない"},
 		"change-avatar": {"es": "Cambiar avatar", "en": "Change avatar", "jp": "アバターを変更する"},
@@ -245,10 +251,20 @@
 		"have-other-account": {"es": "Tengo otra cuenta", "en": "I have another account", "jp": "別のアカウントを持っています"},
 		"no-longer-use": {"es": "Ya no usare esta plataforma", "en": "I will no longer use this platform", "jp": "このプラットフォームを使用しなくなります"},
 		"other-reasons": {"es": "Otros motivos", "en": "Other reasons", "jp": "その他の理由"},
+		"other": {"es": "Otro", "en": "Other", "jp": "その他"},
 		"avatar": {"es": "Avatar", "en": "Avatar", "jp": "アバター"},
 		"recover-account": {"es": "Recuperar cuenta", "en": "Recover account", "jp": "アカウントを回復する"},
 		"go-back": {"es": "Regresar", "en": "Go back", "jp": "戻る"},
 		"key": {"es": "Llave", "en": "Key", "jp": "鍵"},
+		"or": {"es": "o", "en": "or", "jp": "または"},
+		"emojis": {"es": "Emojis", "en": "Emojis", "jp": "絵文字"},
+		"auto": {"es": "Auto", "en": "Auto", "jp": "自動"},
+		"filter": {"es": "Filtrar", "en": "Filter", "jp": "フィルター"},
+		"report": {"es": "Reportar", "en": "Report", "jp": "報告する"},
+		"cancel": {"es": "Cancelar", "en": "Cancel", "jp": "キャンセル"},
+		"preview": {"es": "Vista previa", "en": "Preview", "jp": "プレビュー"},
+		"post-preview": {"es": "Vista previa de la publicación", "en": "Post preview", "jp": "投稿のプレビュー"},
+		"publish": {"es": "Publicar", "en": "Publish", "jp": "公開する"},
 		"categories-tags": {
 			"action": {"es": "Acción", "en": "Action", "jp": "アクション"},
 			"martial_arts": {"es": "Artes Marciales", "en": "Martial Arts", "jp": "マーシャルアーツ"},
@@ -410,6 +426,11 @@
 			"en": "The user does not exist!",
 			"jp": "ユーザーは存在しません！"
 		},
+		"user-not-exist-value": {
+			"es": "El usuario {{value}} no existe.",
+			"en": "The user {{value}} does not exist.",
+			"jp": "ユーザー {{value}} は存在しません。"
+		},
 		"user-suspended-deleted": {
 			"es": "Este usuario fue suspendido o eliminado.",
 			"en": "This user was suspended or deleted.",
@@ -440,11 +461,72 @@
 			"en": "You need to log in to access the panel.",
 			"jp": "パネルに入るにはログインが必要です。"
 		},
+		"please-login": {
+			"es": "Por favor inicie sesión.",
+			"en": "Please log in.",
+			"jp": "ログインしてください。"
+		},
 		"higher-role-required": {
 			"es": "Necesita un rol más elevado para entrar al panel.",
 			"en": "You need a higher role to access the panel.",
 			"jp": "パネルに入るにはより高いロールが必要です。"
-		}
+		},
+		"incorrect-data": {"es": "Datos incorrectos.", "en": "Incorrect data.", "jp": "誤ったデータ。"},
+		"do-not-modify-hidden-fields": {"es": "Por favor no modifique los campos ocultos.", "en": "Please do not modify the hidden fields.", "jp": "非表示のフィールドを変更しないでください。"},
+		"thanks-for-commenting": {"es": "Gracias por comentar.", "en": "Thanks for commenting.", "jp": "コメントありがとうございます。"},
+		"data-not-saved": {"es": "¡Oh! no se guardaron los datos.", "en": "Oh! The data was not saved.", "jp": "ああ！データが保存されませんでした。"},
+		"incorrect-sum": {
+			"es": "La suma es incorrecta, inténtelo de nuevo.",
+			"en": "The sum is incorrect, please try again.",
+			"pt": "A soma está incorreta, tente novamente.",
+			"jp": "合計が正しくありません。もう一度お試しください。"
+		},
+		"login-or-do-not-modify-hidden-fields": {"es": "Por favor inicie sesión o no modifique los campos ocultos.", "en": "Please log in or do not modify the hidden fields.", "jp": "ログインするか、非表示のフィールドを変更しないでください。"},
+		"fill-all-fields": {"es": "Por favor llene todos los campos.", "en": "Please fill in all fields.", "jp": "すべてのフィールドに入力してください。"},
+		"no-comments-yet": {"es": "Todavía no hay comentarios.", "en": "There are no comments yet.", "jp": "まだコメントはありません。"},
+		"comment-to-react-not-exist": {"es": "¡Oh! ~ Parece que el comentario que va a reaccionar no existe!", "en": "Oh! ~ It seems that the comment you want to react to does not exist!", "jp": "おっと！リアクションしたいコメントが存在しないようです！"},
+		"reacted-to-comment": {"es": "Reaccionaste al comentario de {{value}}", "en": "You reacted to {{value}}'s comment", "jp": "{{value}}のコメントにリアクションしました"},
+		"failed-to-react-comment": {"es": "Fallo al reaccionar al comentario de {{value}}", "en": "Failed to react to {{value}}'s comment", "jp": "{{value}}のコメントへのリアクションに失敗しました"},
+		"comment-to-report-not-exist": {"es": "¡Oh! ~ Parece que el comentario que va a reportar no existe!", "en": "Oh! ~ It seems that the comment you want to report does not exist!", "jp": "おっと！報告したいコメントが存在しないようです！"},
+		"report-already-sent": {"es": "El reporte fue enviado anteriormente.", "en": "The report was sent previously.", "jp": "この報告は以前に送信されました。"},
+		"comment-reported": {"es": "El comentario fue reportado.", "en": "The comment has been reported.", "jp": "コメントが報告されました。"},
+		"failed-to-report-comment": {"es": "Fallo al reportar el comentario.", "en": "Failed to report the comment.", "jp": "コメントの報告に失敗しました。"},
+		"no-access-preview": {"es": "No tiene acceso a la vista previa de la publicación.", "en": "You do not have access to the post preview.", "jp": "投稿のプレビューにアクセスできません。"},
+		"creator-not-exist": {"es": "No existe el creador.", "en": "The creator does not exist.", "jp": "作成者が存在しません。"},
+		"do-not-modify-pubo": {"es": "Por favor no modifique los campos ocultos del campo pubo.", "en": "Please do not modify the hidden fields of the pubo field.", "jp": "puboフィールドの非表示フィールドを変更しないでください。"},
+		"file-not-exist": {"es": "El archivo {{value}} no existe, por favor no modifique los campos ocultos.", "en": "The file {{value}} does not exist, please do not modify the hidden fields.", "jp": "ファイル{{value}}が存在しません。非表示フィールドを変更しないでください。"},
+		"data-different-hidden-fields": {"es": "Los datos son diferentes a los campos ocultos, por favor no modifique los campos ocultos.", "en": "The data is different from the hidden fields, please do not modify the hidden fields.", "jp": "データが非表示フィールドと異なります。非表示フィールドを変更しないでください。"},
+		"missing-path-or-file": {"es": "Hacen falta los datos de la ruta u archivo.", "en": "Path or file data is missing.", "jp": "パスまたはファイルのデータが不足しています。"},
+		"duplicate-post-or-draft": {"es": "Parece que ya existe una publicación o borrador con la misma dirección, por favor verifique en los apartados respectivos.", "en": "It looks like a post or draft with the same address already exists, please check the respective sections.", "jp": "同じアドレスの投稿または下書きが既に存在するようです。該当セクションを確認してください。"},
+		"do-not-modify-path": {"es": "Por favor no modifique la ruta u archivo, o bien cree otra entrada u elimínela.", "en": "Please do not modify the path or file, or create another entry or delete it.", "jp": "パスやファイルを変更しないでください。別のエントリーを作成するか、削除してください。"},
+		"draft-saved": {"es": "Se guardó el borrador {{value}}.", "en": "The draft {{value}} has been saved.", "jp": "下書き{{value}}が保存されました。"},
+		"new-post-published": {"es": "Se publicó una nueva entrada {{value}}.", "en": "A new post {{value}} has been published.", "jp": "新しい投稿{{value}}が公開されました。"},
+		"draft-deleted": {"es": "El borrador {{value}} fue eliminado.", "en": "The draft {{value}} was deleted.", "jp": "下書き{{value}}が削除されました。"},
+		"post-deleted": {"es": "La publicación {{value}} fue eliminada.", "en": "The post {{value}} was deleted.", "jp": "投稿{{value}}が削除されました。"}
+	},
+	"form": {
+		"leave-comment": {"es": "Deja un comentario 😄", "en": "Leave a comment 😄", "jp": "コメントを残す 😄"},
+		"reply-comment": {"es": "Responder comentario 🙃", "en": "Reply to comment 🙃", "jp": "コメントに返信 🙃"},
+		"do-you-have-an-account": {"es": "¿Tienes una cuenta?", "en": "Do you have an account?", "jp": "アカウントを持っていますか？"},
+		"value-or-value2": {"es": "{{value}} o {{value2}}", "en": "{{value}} or {{value2}}", "jp": "{{value}} または {{value2}}"},
+		"comment-anonymously": {"es": "Comentar anonimamente", "en": "Comment anonymously", "jp": "匿名でコメントする"},
+		"nickname": {"es": "Apodo", "en": "Nickname", "jp": "ニックネーム"},
+		"leaves-comment": {"es": "deja un comentario 😉", "en": "leaves a comment 😉", "jp": "がコメントを残しました 😉"},
+		"replies-comment": {"es": "responde el comentario 😉", "en": "replies to the comment 😉", "jp": "がコメントに返信しました 😉"},
+		"wow-message": {"es": "¡Guau! Me gustaría... además como...", "en": "Wow! I would like to... also like...", "jp": "わあ！ 私は... さらに..."},
+		"no-comments": {"es": "¡Oh! ~ Parece que todavía no hay comentarios!", "en": "Oh! ~ It looks like there are no comments yet!", "jp": "おおっ！〜 まだコメントがないようです！"},
+		"redirect-to": {"es": "Será dirigido a: {{value}}", "en": "You will be redirected to: {{value}}", "jp": "{{value}} にリダイレクトされます"},
+		"comment-under-review": {"es": "Este comentario se encuentra en revisión.", "en": "This comment is under review.", "jp": "このコメントは審査中です。"},
+		"comment-deleted": {"es": "Este comentario fue eliminado.", "en": "This comment has been deleted.", "jp": "このコメントは削除されました。"},
+		"login-or-create-account-to-report": {"es": "Inicie sesión o cree una cuenta para reportar el comentario.", "en": "Log in or create an account to report the comment.", "jp": "コメントを報告するにはログインするか、アカウントを作成してください。"},
+		"comment-to-report-not-exist": {"es": "¡Oh! ~ Parece que el comentario que va a reportar no existe!", "en": "Oh! ~ It looks like the comment you are trying to report does not exist!", "jp": "おっと！~ 報告しようとしているコメントは存在しないようです！"},
+		"report-comment": {"es": "Reportar comentario 😨", "en": "Report comment 😨", "jp": "コメントを報告する 😨"},
+		"harassment": {"es": "Acoso", "en": "Harassment", "jp": "嫌がらせ"},
+		"deception": {"es": "Engaño", "en": "Deception", "jp": "詐欺"},
+		"spam": {"es": "Spam", "en": "Spam", "jp": "スパム"},
+		"violence": {"es": "Violencia", "en": "Violence", "jp": "暴力"},
+		"response": {"es": "Respuesta", "en": "Response", "jp": "返答"},
+		"report-reason": {"es": "Motivos de mi reporte...", "en": "Reasons for my report...", "jp": "私の報告の理由..."}
 	},
 	"auth": {
 		"welcome-back": {"es": "Bienvenid@ de nuevo!", "en": "Welcome back!", "jp": "お帰りなさい!"},
@@ -585,6 +667,13 @@
 				"jp": "アクセスしようとしているページは、まだ利用できないか、開発中であるか、アクセスが制限されているか、存在しないようです。"
 			}
 		}
+	},
+	"other": {
+		"FORM": {"es": "FORMULARIO", "en": "FORM", "jp": "フォーム"},
+		"POST-FORM": {"es": "FORMULARIO POST", "en": "POST FORM", "jp": "POSTフォーム"},
+		"CREATOR-MOD": {"es": "CREADOR MOD", "en": "CREATOR MOD", "jp": "作成者MOD"},
+		"CREATOR": {"es": "CREADOR", "en": "CREATOR", "jp": "作成者"},
+		"LOADED": {"es": "CARGADOS", "en": "LOADED", "jp": "読み込み済み"}
 	},
 	"dashboard": {
 		"dashboard": {
