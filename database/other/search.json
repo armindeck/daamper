@@ -1,0 +1,19 @@
+{
+    "limit": 15,
+    "search-by": ["title", "title-tags", "tags", "description"],
+    "remove": [
+    "pu_index.php",
+    "pu_auth-cambiar-contrasena.php",
+    "pu_auth-configuracion.php",
+    "pu_auth-iniciar.php",
+    "pu_auth-olvide-contrasena.php",
+    "pu_auth-registrar.php",
+    "pu_panel-index.php",
+    "pu_panel-panel.php",
+    "pu_p-perfil.php",
+    "pu_search.php",
+    "pu_reportar.php",
+    "pu_error.php",
+    "publicaciones.php"
+    ]
+}
