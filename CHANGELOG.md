@@ -1,4 +1,21 @@
 # Changelog
+Descubre las nuevas novedades de daamper!
+
+## 02/04/2025
+Se agrego un sistema de busquedas el cual permitira buscar los posts mas rapido.
+
+## Añadidos
+- Se agrego un componente llamado [search](./app/views/components/search-view.php).
+- Se agrego una vista llamada [search](./app/views/main/search-view.php).
+- Se agrego la nueva entrada [search](./search.php).
+- Se agrego los datos del search en la database [search](./database/other/search.json).
+- Se agrego los titulos con traducciones para el search en [mod](./panel/app/creador/creadores/normal/mod.php).
+- Se actualizaron las versiones e idioma.
+
+## ⚠️ ¡importante!
+- Puede que no funcione para las publicaciones de ver animes.
+
+## 30/03/2025  
 Nuevas traducciones, optimizaciones y correcciones para el sitio web.
 
 ## Mejoras
