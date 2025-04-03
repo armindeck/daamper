@@ -1,15 +1,15 @@
 {
 	"system": {
-		"version": "0.2.6",
+		"version": "0.2.6.1",
 		"state": "Estable",
-		"updated": "30.03.2025",
+		"updated": "02.04.2025",
 		"created": "12.06.2024",
 		"license": "Uso No Transferible – Prohibida la venta del código fuente"
 	},
 	"language": {
-		"version": "0.1.1",
+		"version": "0.1.2",
 		"state": "Beta",
-		"updated": "30.03.2025",
+		"updated": "02.04.2025",
 		"created": "11.03.2025"
 	},
 	"other": {
@@ -18,6 +18,12 @@
 			"state": "Estable",
 			"updated": "30.03.2025",
 			"created": "07.11.2024"
+		},
+		"search": {
+			"version": "0.1.0",
+			"state": "Estable",
+			"updated": "02.04.2025",
+			"created": "02.04.2024"
 		}
 	},
 	"dashboard": {
