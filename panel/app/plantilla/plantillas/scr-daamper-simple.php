@@ -1,6 +1,6 @@
 <?php #0.2.1 Estable 23.03.2025 
 return [
-'redes-sociales_cantidad_enlace_comandos_default_elemento_1_contenedor_1' => '8',
+'redes-sociales_cantidad_enlace_comandos_default_elemento_1_contenedor_1' => '9',
 'redes-sociales_mostrar_enlace_comandos_default_elemento_1_contenedor_1' => 'on',
 'redes-sociales_icono_1_enlace_comandos_default_elemento_1_contenedor_1' => 'fas fa-hamburger',
 'redes-sociales_texto_1_enlace_comandos_default_elemento_1_contenedor_1' => 'dbproject',
@@ -42,6 +42,11 @@ return [
 'redes-sociales_url_8_enlace_comandos_default_elemento_1_contenedor_1' => 'https://github.com/armindeck',
 'redes-sociales_http_8_enlace_comandos_default_elemento_1_contenedor_1' => 'on',
 'redes-sociales_externo_8_enlace_comandos_default_elemento_1_contenedor_1' => 'on',
+'redes-sociales_icono_9_enlace_comandos_default_elemento_1_contenedor_1' => 'fab fa-facebook',
+'redes-sociales_texto_9_enlace_comandos_default_elemento_1_contenedor_1' => 'dbproject',
+'redes-sociales_url_9_enlace_comandos_default_elemento_1_contenedor_1' => 'https://www.facebook.com/groups/dbproject',
+'redes-sociales_http_9_enlace_comandos_default_elemento_1_contenedor_1' => 'on',
+'redes-sociales_externo_9_enlace_comandos_default_elemento_1_contenedor_1' => 'on',
 'redes-sociales-recomendadas_cantidad_enlace_comandos_default_elemento_1_contenedor_1' => '2',
 'redes-sociales-recomendadas_mostrar_enlace_comandos_default_elemento_1_contenedor_1' => 'on',
 'redes-sociales-recomendadas_icono_1_enlace_comandos_default_elemento_1_contenedor_1' => 'fas fa-hamburger',

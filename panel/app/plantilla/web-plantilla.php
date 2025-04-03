@@ -54,7 +54,8 @@ return ['archivo_plantilla' => 'daamper-simple.php',
   </div>
 </label>
 <section>[View=components/temas]</section>
-<section>[View=components/languages]</section>',
+<section>[View=components/languages]</section>
+<section>[View=components/search]</section>',
 'comandos_campos_default_elemento_3_contenedor_3' => '<section><strong>Redes</strong>
   <section>[Form=InputEnlace name="links"]</section>
 </section>
