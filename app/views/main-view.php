@@ -14,7 +14,7 @@ if(file_exists("{$Web['directorio']}panel/app/creador/creadores/{$AXR['creador']
 Views("main/auth");
 Views("main/perfil");
 Views("main/reportar");
-
+Ruta(null, "./search.php", fn () => Views("main/search"));
 if($Web['ruta_completa'] == '../panel/panel.php'){
 	Views("main/panel");
 }
