@@ -21,10 +21,10 @@
 						} ?>
 					</section>
 				</details>
-			<?php }
-			if (!isset($_GET['creador'])): ?>
-				<details>
-					<summary><?= Language(['creador', 'entries'], 'dashboard') ?></summary>
+			<?php } ?>
+			<details>
+				<summary><?= Language(['creador', 'entries'], 'dashboard') ?></summary>
+				<?php if (!isset($_GET['creador']) && !isset($_GET['disable-entries'])){ ?>
 					<form method="get">
 						<p class="t-center" style="background-color: rgb(0,0,0,.3); padding: 2px 6px 2px 6px; margin-bottom: 4px;"><?= Language(['creador', 'attention-update'], 'dashboard') ?></p>
 						<label class="flex-between">
@@ -53,8 +53,10 @@
 						</details>
 						<input class="boton boton-mini" style="margin-top: 8px;" type="submit" name="actualizar-entradas" value="<?= Language('update') ?>">
 					</form>
+				<?php } else { ?>
+					<a href="?ap=creador" class="boton-2"><i class="fas fa-eye"></i> <?= Language("show") ?></a>
+				<?php } ?>
 				</details>
-			<?php endif; ?>
 		</details>
 	</section>
 </section>

@@ -6,10 +6,10 @@ if (isset($_SESSION['creador-key-hidden']) && !isset($_SESSION['tmpForm'])) {
 }
 if(!isset($_SESSION['tmpForm'])){
 	/* Error generado por: views/main */
-	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=> Language("no-access-preview", "alert"),'ruta'=>'../panel.php?ap=creador']);
+	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=> Language("no-access-preview", "alert"),'ruta'=>'../panel.php?ap=creador&disable-entries=true']);
 }
 if(!isset($_SESSION['tmpForm']['creador'])){
-	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=> Language("creator-not-exist", "alert"),'ruta'=>'../panel.php?ap=creador']);
+	mensajeSpan(['bg'=>'yellow','co'=>'#000','text'=> Language("creator-not-exist", "alert"),'ruta'=>'../panel.php?ap=creador&disable-entries=true']);
 }
 unset($_SESSION['tmpForm']['mostrar']);
 $X['creador_borrador_version'] = VERSION['dashboard']['creador']['preview']['version'] . ' ' . VERSION['dashboard']['creador']['preview']['state'];
@@ -294,7 +294,7 @@ require $Web['directorio'].AppDatabase();
 	if(isset($_POST['guardar'])){
 		file_put_contents($Web['directorio'].'panel/app/creador/borradores/'.$ACR_FORM['db_archivo'], $guardar);
 		Historial($Web, 'Guardar/Actualizar: '.$ACR_FORM['db_archivo']);
-		mensajeSpan(['bg'=>'green','text'=> Language("draft-saved", "alert", ["value" => "<b>".$ACR_FORM['db_archivo']."</b>"]),'ruta'=>"../panel.php?ap=creador"]);
+		mensajeSpan(['bg'=>'green','text'=> Language("draft-saved", "alert", ["value" => "<b>".$ACR_FORM['db_archivo']."</b>"]),'ruta'=>"../panel.php?ap=creador&disable-entries=true"]);
 	} elseif(isset($_POST['publicar'])){
 		$mostrar_en_index = true;
 		if(file_exists($Web['directorio'].'app/database/publicaciones/'.$ACR_FORM['db_archivo']) && !$ACR_VOLVER_A_MOSTRAR){
@@ -352,7 +352,7 @@ require $Web['directorio'].AppDatabase();
 		file_put_contents($Web['directorio'].'app/database/publicaciones/'.$ACR_FORM['db_archivo'], $guardar);
 		unlink($Web['directorio'].'panel/app/creador/borradores/bo_'. $CONVERTIDO['ruta_archivo_slash']);
 		Historial($Web, 'Publicar/Actualizar: '.$ACR_FORM['db_archivo']);
-		mensajeSpan(['bg'=>'green','text'=> Language("new-post-published", "alert", ["value" => '<a href="../'.$CONVERTIDO['ruta_archivo'].'" target="_blank"><b>'.Language('show').' <i class="fas fa-external-link-alt"></i></b></a>']),'ruta'=>"../panel.php?ap=creador"]);
+		mensajeSpan(['bg'=>'green','text'=> Language("new-post-published", "alert", ["value" => '<a href="../'.$CONVERTIDO['ruta_archivo'].'" target="_blank"><b>'.Language('show').' <i class="fas fa-external-link-alt"></i></b></a>']),'ruta'=>"../panel.php?ap=creador&disable-entries=true"]);
 	}
 	exit;
 }
@@ -361,7 +361,7 @@ if(isset($_POST['eliminar']) && !empty($_POST['eliminar'])){
 	if($ACR_FORM['pubo'] == 'borrador'){
 		unlink($Web['directorio'].'panel/app/creador/borradores/'.$ACR_FORM['db_archivo']);
 		Historial($Web, 'Eliminar ~ borrador: '.$ACR_FORM['db_archivo']);
-		mensajeSpan(['bg'=>'green','text'=> Language("draft-deleted", "alert", ["value" => "<b>".$ACR_FORM['db_archivo']."</b>"]),'ruta'=>"../panel.php?ap=creador"]);
+		mensajeSpan(['bg'=>'green','text'=> Language("draft-deleted", "alert", ["value" => "<b>".$ACR_FORM['db_archivo']."</b>"]),'ruta'=>"../panel.php?ap=creador&disable-entries=true"]);
 	}
 
 	if($ACR_FORM['pubo'] == 'publicacion'){
@@ -375,7 +375,7 @@ if(isset($_POST['eliminar']) && !empty($_POST['eliminar'])){
 
 		Historial($Web, 'Eliminar ~ Publicación: '.$ACR_FORM['db_archivo']);
 
-		mensajeSpan(['bg'=>'green','text'=> Language("post-deleted", "alert", ["value" => "<b>".$ACR_FORM['db_archivo']."</b>"]),'ruta'=>"../panel.php?ap=creador"]);
+		mensajeSpan(['bg'=>'green','text'=> Language("post-deleted", "alert", ["value" => "<b>".$ACR_FORM['db_archivo']."</b>"]),'ruta'=>"../panel.php?ap=creador&disable-entries=true"]);
 	}
 } ?>
 
