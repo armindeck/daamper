@@ -1,6 +1,9 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## 16/04/2025
+Corregido el reinicio de listas de entradas y añadido enlace para recargar el formulario.
+
 ## 02/04/2025
 Se agrego un sistema de busquedas el cual permitira buscar los posts mas rapido.
 
