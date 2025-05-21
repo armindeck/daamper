@@ -1,5 +1,0 @@
-<?php #22/12/2024 - 11:03pm
-$ACR = ['creador' => 'normal', 'pubo' => 'publicacion', 'db_archivo' => 'pu_reportar.php', 'db_ruta' => 'reportar.php', 'fecha_publicado' => '22/12/2024 - 11:03pm', 'fecha_modificado' => '22/12/2024 - 11:03pm', 'id_publicador' => '1', 'creador_borrador_version' => '0.1.2 Beta', 'creador_borrador_fecha' => '22.12.2024', ];
-$AC = ['titulo' => 'Reportar comentarios', 'descripcion' => 'Reportar comentarios', 'meta_descripcion' => 'Reportar comentarios', 'catalogo' => 'Reportar', 'meta_etiquetas' => 'Reportar comentarios', 'fragmento' => '', 'contenido' => '<h2>Bienvenido a la sección de reportes.</h2>
-<p>En esta sección puedes reportar comentarios inadecuados o que incumplan con las reglas.</p>', 'tipo' => '', 'miniatura' => 'assets/img/miniatura.png', 'miniatura_url' => '', 'anuncio' => 'on', 'ruta' => '', 'archivo' => 'reportar.php', 'directorio' => './', ];
-?>

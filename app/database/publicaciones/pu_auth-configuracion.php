@@ -1,4 +1,0 @@
-<?php #19/12/2024 - 11:25pm
-$ACR = ['creador' => 'normal', 'pubo' => 'publicacion', 'db_archivo' => 'pu_auth-configuracion.php', 'db_ruta' => 'auth/configuracion.php', 'fecha_publicado' => '19/12/2024 - 11:25pm', 'fecha_modificado' => '19/12/2024 - 11:25pm', 'id_publicador' => '1', 'creador_borrador_version' => '0.1.2 Beta', 'creador_borrador_fecha' => '15.12.2024', ];
-$AC = ['titulo' => 'Configuración del perfil', 'descripcion' => 'Configuración del perfil', 'meta_descripcion' => 'Configuración del perfil', 'catalogo' => 'Auth', 'meta_etiquetas' => 'Configuración del perfil, Auth', 'fragmento' => '', 'contenido' => '', 'tipo' => '', 'miniatura' => 'assets/img/miniatura.png', 'miniatura_url' => '', 'ruta' => 'auth/', 'archivo' => 'configuracion.php', 'directorio' => '../', ];
-?>

@@ -1,4 +1,0 @@
-<?php #19/12/2024 - 11:29pm
-$ACR = ['creador' => 'normal', 'pubo' => 'publicacion', 'db_archivo' => 'pu_auth-olvide-contrasena.php', 'db_ruta' => 'auth/olvide-contrasena.php', 'fecha_publicado' => '19/12/2024 - 11:29pm', 'fecha_modificado' => '19/12/2024 - 11:29pm', 'id_publicador' => '1', 'creador_borrador_version' => '0.1.2 Beta', 'creador_borrador_fecha' => '15.12.2024', ];
-$AC = ['titulo' => 'Recuperar cuenta', 'descripcion' => 'Recuperar cuenta', 'meta_descripcion' => 'Recuperar cuenta', 'catalogo' => 'Auth', 'meta_etiquetas' => 'Recuperar cuenta, Auth', 'fragmento' => '', 'contenido' => '', 'tipo' => '', 'miniatura' => 'assets/img/miniatura.png', 'miniatura_url' => '', 'ruta' => 'auth/', 'archivo' => 'olvide-contrasena.php', 'directorio' => '../', ];
-?>
