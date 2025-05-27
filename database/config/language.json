@@ -22,6 +22,10 @@
 		"links": {"es": "Enlaces", "en": "Links", "jp": "リンク"},
 		"version": {"es": "Versión", "en": "Version", "jp": "バージョン"},
 		"state": {"es": "Estado", "en": "State", "jp": "状態"},
+		"status": {"es": "Estado", "en": "Status", "jp": "状態"},
+		"public": {"es": "Público", "en": "Public", "jp": "公開"},
+		"review": {"es": "Revisión", "en": "Review", "jp": "レビュー"},
+		"deleted": {"es": "Eliminado", "en": "Deleted", "jp": "削除済み"},
 		"created": {"es": "Creado", "en": "Created", "jp": "作成済み"},
 		"modified": {"es": "Modificado", "en": "Modified", "jp": "修正済み"},
 		"updated": {"es": "Actualizado", "en": "Updated", "jp": "更新済み"},
@@ -275,6 +279,46 @@
 		"hide-path": {"es": "Ocultar ruta", "en": "Hide path", "jp": "パスを隠す"},
 		"hide-title": {"es": "Ocultar título", "en": "Hide title", "jp": "タイトルを隠す"},
 		"limit": {"es": "Límite", "en": "Limit", "jp": "制限"},
+		"username-or-email": {"es": "Usuario o email", "en": "Username or email", "jp": "ユーザー名またはメール"},
+		"pin": {"es": "Pin", "en": "Pin", "jp": "暗証番号"},
+		"new-pin": {"es": "Nuevo pin", "en": "New pin", "jp": "新しい暗証番号"},
+		"recovery-pin": {"es": "Pin de recuperación", "en": "Recovery pin", "jp": "回復用暗証番号"},
+		"show-pin": {"es": "Mostrar pin", "en": "Show pin", "jp": "暗証番号を表示"},
+		"log-out": {"es": "Cerrar sesión", "en": "Log out", "jp": "ログアウト"},
+		"ads": {"es": "Anuncios", "en": "Ads", "jp": "広告"},
+		"config": {"es": "Configuración", "en": "Config", "jp": "設定"},
+		"info": {"es": "Información", "en": "Info", "jp": "情報"},
+		"auth": {"es": "Autenticación", "en": "Auth", "jp": "認証"},
+		"form-comment": {"es": "Formulario de comentario", "en": "Form comment", "jp": "コメントフォーム"},
+		"anime-entry": {"es": "Anime entrada", "en": "Anime entry", "jp": "アニメエントリー"},
+		"anime-watching": {"es": "Anime mirando", "en": "Anime watching", "jp": "視聴中のアニメ"},
+		"game": {"es": "Juego", "en": "Game", "jp": "ゲーム"},
+		"dev": {"es": "Desarrollo", "en": "Dev", "jp": "開発"},
+		"stable": {"es": "Estable", "en": "Stable", "jp": "安定版"},
+		"api": {"es": "Api", "en": "Api", "jp": "API"},
+		"engine": {"es": "Motor", "en": "Engine", "jp": "エンジン"},
+		"engines": {"es": "Motores", "en": "Engines", "jp": "エンジン一覧"},
+		"reaction": {"es": "Reacción", "en": "Reaction", "jp": "リアクション"},
+		"list-of-entries": {"es": "Lista de entradas", "en": "List of entries", "jp": "エントリー一覧"},
+		"rules": {"es": "Reglas", "en": "Rules", "jp": "ルール"},
+		"roles": {"es": "Roles", "en": "Roles", "jp": "役割"},
+		"default": {"es": "Predeterminado", "en": "Default", "jp": "デフォルト"},
+		"comments-extras": {"es": "Comentarios extra", "en": "Comments extras", "jp": "追加コメント"},
+		"users-extras": {"es": "Usuarios extra", "en": "Users extras", "jp": "追加ユーザー"},
+		"list-tags": {"es": "Lista de etiquetas", "en": "List tags", "jp": "タグ一覧"},
+		"visits": {"es": "Visitas", "en": "Visits", "jp": "訪問数"},
+		"field-default": {"es": "Campo predeterminado", "en": "Field default", "jp": "デフォルトフィールド"},
+		"post": {"es": "Publicación", "en": "Post", "jp": "投稿"},
+		"draft": {"es": "Borrador", "en": "Draft", "jp": "下書き"},
+		"automatic": {"es": "Automático", "en": "Automatic", "jp": "自動"},
+		"lite": {"es": "Lite", "en": "Lite", "jp": "ライト"},
+		"pro": {"es": "Pro", "en": "Pro", "jp": "プロ"},
+		"prerelease": {"es": "Prerelanzamiento", "en": "Prerelease", "jp": "プレリリース"},
+		"prereleased": {"es": "Prerelanzado", "en": "Prereleased", "jp": "プレリリース済み"},
+		"directories": {"es": "Directorios", "en": "Directories", "jp": "ディレクトリ"},
+		"files": {"es": "Archivos", "en": "Files", "jp": "ファイル"},
+		"edit": {"es": "Editar", "en": "Edit", "jp": "編集"},
+		"change-name": {"es": "Cambiar nombre", "en": "Change name", "jp": "名前を変更"},
 		"categories-tags": {
 			"action": {"es": "Acción", "en": "Action", "jp": "アクション"},
 			"martial_arts": {"es": "Artes Marciales", "en": "Martial Arts", "jp": "マーシャルアーツ"},
@@ -353,54 +397,95 @@
 			"oyakodon": {"es": "Oyakodon", "en": "Oyakodon", "jp": "親子丼"}
 		},
 		"games-tags": {
-			"action": {"es": "Acción", "en": "Action", "pt": "Ação", "ja": "アクション"},
-			"adventure": {"es": "Aventura", "en": "Adventure", "pt": "Aventura", "ja": "アドベンチャー"},
-			"platformer": {"es": "Plataformas", "en": "Platformer", "pt": "Plataforma", "ja": "プラットフォーマー"},
-			"fighting": {"es": "Lucha", "en": "Fighting", "pt": "Luta", "ja": "格闘"},
-			"beat-em-up": {"es": "Beat 'em up", "en": "Beat 'em up", "pt": "Beat 'em up", "ja": "ベルトスクロールアクション"},
-			"shooter": {"es": "Shooter", "en": "Shooter", "pt": "Tiro", "ja": "シューティング"},
-			"first-person-shooter": {"es": "Shooter en primera persona (FPS)", "en": "First-person shooter (FPS)", "pt": "Tiro em primeira pessoa (FPS)", "ja": "一人称シューティング"},
-			"third-person-shooter": {"es": "Shooter en tercera persona (TPS)", "en": "Third-person shooter (TPS)", "pt": "Tiro em terceira pessoa (TPS)", "ja": "三人称シューティング"},
-			"battle-royale": {"es": "Battle Royale", "en": "Battle Royale", "pt": "Battle Royale", "ja": "バトルロイヤル"},
-			"role-playing": {"es": "Rol (RPG)", "en": "Role-playing (RPG)", "pt": "RPG", "ja": "ロールプレイング"},
-			"action-rpg": {"es": "Rol de acción", "en": "Action RPG", "pt": "RPG de ação", "ja": "アクションRPG"},
-			"mmorpg": {"es": "MMORPG", "en": "MMORPG", "pt": "MMORPG", "ja": "MMORPG"},
-			"roguelike": {"es": "Roguelike", "en": "Roguelike", "pt": "Roguelike", "ja": "ローグライク"},
-			"roguelite": {"es": "Roguelite", "en": "Roguelite", "pt": "Roguelite", "ja": "ローグライト"},
-			"strategy": {"es": "Estrategia", "en": "Strategy", "pt": "Estratégia", "ja": "ストラテジー"},
-			"real-time-strategy": {"es": "Estrategia en tiempo real (RTS)", "en": "Real-time strategy (RTS)", "pt": "Estratégia em tempo real (RTS)", "ja": "リアルタイムストラテジー"},
-			"turn-based-strategy": {"es": "Estrategia por turnos", "en": "Turn-based strategy", "pt": "Estratégia por turnos", "ja": "ターン制ストラテジー"},
-			"tower-defense": {"es": "Tower Defense", "en": "Tower Defense", "pt": "Defesa de torre", "ja": "タワーディフェンス"},
-			"simulation": {"es": "Simulación", "en": "Simulation", "pt": "Simulação", "ja": "シミュレーション"},
-			"life-simulation": {"es": "Simulación de vida", "en": "Life simulation", "pt": "Simulação de vida", "ja": "ライフシミュレーション"},
-			"building-simulation": {"es": "Simulación de construcción", "en": "Building simulation", "pt": "Simulação de construção", "ja": "建築シミュレーション"},
-			"sports-simulation": {"es": "Simulación deportiva", "en": "Sports simulation", "pt": "Simulação esportiva", "ja": "スポーツシミュレーション"},
-			"sports": {"es": "Deportes", "en": "Sports", "pt": "Esportes", "ja": "スポーツ"},
-			"racing": {"es": "Carreras", "en": "Racing", "pt": "Corrida", "ja": "レース"},
-			"puzzle": {"es": "Puzzle", "en": "Puzzle", "pt": "Quebra-cabeça", "ja": "パズル"},
-			"party-games": {"es": "Party Games", "en": "Party Games", "pt": "Jogos de festa", "ja": "パーティーゲーム"},
-			"sandbox": {"es": "Sandbox", "en": "Sandbox", "pt": "Sandbox", "ja": "サンドボックス"},
-			"open-world": {"es": "Mundo abierto", "en": "Open world", "pt": "Mundo aberto", "ja": "オープンワールド"},
-			"survival-horror": {"es": "Horror de supervivencia", "en": "Survival horror", "pt": "Horror de sobrevivência", "ja": "サバイバルホラー"},
-			"psychological-horror": {"es": "Terror psicológico", "en": "Psychological horror", "pt": "Terror psicológico", "ja": "心理ホラー"},
-			"visual-novel": {"es": "Novela visual", "en": "Visual novel", "pt": "Novela visual", "ja": "ビジュアルノベル"},
-			"narrative-games": {"es": "Juegos narrativos", "en": "Narrative games", "pt": "Jogos narrativos", "ja": "ナラティブゲーム"},
-			"metroidvania": {"es": "Metroidvania", "en": "Metroidvania", "pt": "Metroidvania", "ja": "メトロイドヴァニア"},
-			"soulslike": {"es": "Soulslike", "en": "Soulslike", "pt": "Soulslike", "ja": "ソウルズライク"},
-			"rhythm": {"es": "Ritmo (Music/Rhythm)", "en": "Rhythm (Music/Rhythm)", "pt": "Ritmo", "ja": "リズムゲーム"},
-			"bullet-hell": {"es": "Bullet Hell", "en": "Bullet Hell", "pt": "Bullet Hell", "ja": "弾幕シューティング"},
-			"moba": {"es": "MOBA", "en": "MOBA", "pt": "MOBA", "ja": "MOBA"},
-			"card-games": {"es": "Juegos de cartas", "en": "Card games", "pt": "Jogos de cartas", "ja": "カードゲーム"},
-			"board-games": {"es": "Juegos de mesa", "en": "Board games", "pt": "Jogos de tabuleiro", "ja": "ボードゲーム"},
-			"tycoon": {"es": "Tycoon", "en": "Tycoon", "pt": "Tycoon", "ja": "タイクーン"},
-			"idle-games": {"es": "Idle Games", "en": "Idle Games", "pt": "Jogos ociosos", "ja": "アイドルゲーム"},
-			"clicker": {"es": "Clicker", "en": "Clicker", "pt": "Clicker", "ja": "クリックゲーム"},
-			"education": {"es": "Educación", "en": "Education", "pt": "Educação", "ja": "教育"},
-			"jrpg": {"es": "JRPG", "en": "JRPG", "pt": "JRPG", "ja": "JRPG"},
-			"arpg": {"es": "ARPG", "en": "ARPG", "pt": "ARPG", "ja": "ARPG"},
-			"hack-and-slash": {"es": "Hack and Slash", "en": "Hack and Slash", "pt": "Hack and Slash", "ja": "ハックアンドスラッシュ"},
-			"stealth-games": {"es": "Juegos de sigilo", "en": "Stealth games", "pt": "Jogos de furtividade", "ja": "ステルスゲーム"},
-			"detective-games": {"es": "Juegos de detectives", "en": "Detective games", "pt": "Jogos de detetive", "ja": "探偵ゲーム"}
+			"action": {"es": "Acción", "en": "Action", "pt": "Ação", "jp": "アクション"},
+			"adventure": {"es": "Aventura", "en": "Adventure", "pt": "Aventura", "jp": "アドベンチャー"},
+			"platformer": {"es": "Plataformas", "en": "Platformer", "pt": "Plataforma", "jp": "プラットフォーマー"},
+			"fighting": {"es": "Lucha", "en": "Fighting", "pt": "Luta", "jp": "格闘"},
+			"beat-em-up": {"es": "Beat 'em up", "en": "Beat 'em up", "pt": "Beat 'em up", "jp": "ベルトスクロールアクション"},
+			"shooter": {"es": "Shooter", "en": "Shooter", "pt": "Tiro", "jp": "シューティング"},
+			"first-person-shooter": {"es": "Shooter en primera persona (FPS)", "en": "First-person shooter (FPS)", "pt": "Tiro em primeira pessoa (FPS)", "jp": "一人称シューティング"},
+			"third-person-shooter": {"es": "Shooter en tercera persona (TPS)", "en": "Third-person shooter (TPS)", "pt": "Tiro em terceira pessoa (TPS)", "jp": "三人称シューティング"},
+			"battle-royale": {"es": "Battle Royale", "en": "Battle Royale", "pt": "Battle Royale", "jp": "バトルロイヤル"},
+			"role-playing": {"es": "Rol (RPG)", "en": "Role-playing (RPG)", "pt": "RPG", "jp": "ロールプレイング"},
+			"action-rpg": {"es": "Rol de acción", "en": "Action RPG", "pt": "RPG de ação", "jp": "アクションRPG"},
+			"mmorpg": {"es": "MMORPG", "en": "MMORPG", "pt": "MMORPG", "jp": "MMORPG"},
+			"roguelike": {"es": "Roguelike", "en": "Roguelike", "pt": "Roguelike", "jp": "ローグライク"},
+			"roguelite": {"es": "Roguelite", "en": "Roguelite", "pt": "Roguelite", "jp": "ローグライト"},
+			"strategy": {"es": "Estrategia", "en": "Strategy", "pt": "Estratégia", "jp": "ストラテジー"},
+			"real-time-strategy": {"es": "Estrategia en tiempo real (RTS)", "en": "Real-time strategy (RTS)", "pt": "Estratégia em tempo real (RTS)", "jp": "リアルタイムストラテジー"},
+			"turn-based-strategy": {"es": "Estrategia por turnos", "en": "Turn-based strategy", "pt": "Estratégia por turnos", "jp": "ターン制ストラテジー"},
+			"tower-defense": {"es": "Tower Defense", "en": "Tower Defense", "pt": "Defesa de torre", "jp": "タワーディフェンス"},
+			"simulation": {"es": "Simulación", "en": "Simulation", "pt": "Simulação", "jp": "シミュレーション"},
+			"life-simulation": {"es": "Simulación de vida", "en": "Life simulation", "pt": "Simulação de vida", "jp": "ライフシミュレーション"},
+			"building-simulation": {"es": "Simulación de construcción", "en": "Building simulation", "pt": "Simulação de construção", "jp": "建築シミュレーション"},
+			"sports-simulation": {"es": "Simulación deportiva", "en": "Sports simulation", "pt": "Simulação esportiva", "jp": "スポーツシミュレーション"},
+			"sports": {"es": "Deportes", "en": "Sports", "pt": "Esportes", "jp": "スポーツ"},
+			"racing": {"es": "Carreras", "en": "Racing", "pt": "Corrida", "jp": "レース"},
+			"puzzle": {"es": "Puzzle", "en": "Puzzle", "pt": "Quebra-cabeça", "jp": "パズル"},
+			"party-games": {"es": "Party Games", "en": "Party Games", "pt": "Jogos de festa", "jp": "パーティーゲーム"},
+			"sandbox": {"es": "Sandbox", "en": "Sandbox", "pt": "Sandbox", "jp": "サンドボックス"},
+			"open-world": {"es": "Mundo abierto", "en": "Open world", "pt": "Mundo aberto", "jp": "オープンワールド"},
+			"survival-horror": {"es": "Horror de supervivencia", "en": "Survival horror", "pt": "Horror de sobrevivência", "jp": "サバイバルホラー"},
+			"psychological-horror": {"es": "Terror psicológico", "en": "Psychological horror", "pt": "Terror psicológico", "jp": "心理ホラー"},
+			"visual-novel": {"es": "Novela visual", "en": "Visual novel", "pt": "Novela visual", "jp": "ビジュアルノベル"},
+			"narrative-games": {"es": "Juegos narrativos", "en": "Narrative games", "pt": "Jogos narrativos", "jp": "ナラティブゲーム"},
+			"metroidvania": {"es": "Metroidvania", "en": "Metroidvania", "pt": "Metroidvania", "jp": "メトロイドヴァニア"},
+			"soulslike": {"es": "Soulslike", "en": "Soulslike", "pt": "Soulslike", "jp": "ソウルズライク"},
+			"rhythm": {"es": "Ritmo (Music/Rhythm)", "en": "Rhythm (Music/Rhythm)", "pt": "Ritmo", "jp": "リズムゲーム"},
+			"bullet-hell": {"es": "Bullet Hell", "en": "Bullet Hell", "pt": "Bullet Hell", "jp": "弾幕シューティング"},
+			"moba": {"es": "MOBA", "en": "MOBA", "pt": "MOBA", "jp": "MOBA"},
+			"card-games": {"es": "Juegos de cartas", "en": "Card games", "pt": "Jogos de cartas", "jp": "カードゲーム"},
+			"board-games": {"es": "Juegos de mesa", "en": "Board games", "pt": "Jogos de tabuleiro", "jp": "ボードゲーム"},
+			"tycoon": {"es": "Tycoon", "en": "Tycoon", "pt": "Tycoon", "jp": "タイクーン"},
+			"idle-games": {"es": "Idle Games", "en": "Idle Games", "pt": "Jogos ociosos", "jp": "アイドルゲーム"},
+			"clicker": {"es": "Clicker", "en": "Clicker", "pt": "Clicker", "jp": "クリックゲーム"},
+			"education": {"es": "Educación", "en": "Education", "pt": "Educação", "jp": "教育"},
+			"jrpg": {"es": "JRPG", "en": "JRPG", "pt": "JRPG", "jp": "JRPG"},
+			"arpg": {"es": "ARPG", "en": "ARPG", "pt": "ARPG", "jp": "ARPG"},
+			"hack-and-slash": {"es": "Hack and Slash", "en": "Hack and Slash", "pt": "Hack and Slash", "jp": "ハックアンドスラッシュ"},
+			"stealth-games": {"es": "Juegos de sigilo", "en": "Stealth games", "pt": "Jogos de furtividade", "jp": "ステルスゲーム"},
+			"detective-games": {"es": "Juegos de detectives", "en": "Detective games", "pt": "Jogos de detetive", "jp": "探偵ゲーム"},
+			"cooperative-shooter": {"es": "Shooter cooperativo", "en": "Cooperative shooter", "jp": "協力型シューティング"},
+			"tactical-shooter": {"es": "Shooter táctico", "en": "Tactical shooter", "jp": "タクティカルシューティング"},
+			"resource-management": {"es": "Gestión de recursos", "en": "Resource management", "jp": "資源管理"},
+			"space-exploration": {"es": "Exploración espacial", "en": "Space exploration", "jp": "宇宙探査"},
+			"survival": {"es": "Survival", "en": "Survival", "jp": "サバイバル"},
+			"virtual-reality": {"es": "Realidad virtual (VR)", "en": "Virtual reality (VR)", "jp": "バーチャルリアリティ (VR)"},
+			"augmented-reality": {"es": "Realidad aumentada (AR)", "en": "Augmented reality (AR)", "jp": "拡張現実 (AR)"},
+			"experimental-games": {"es": "Juegos experimentales", "en": "Experimental games", "jp": "実験的なゲーム"},
+			"indie-games": {"es": "Juegos indie", "en": "Indie games", "jp": "インディーゲーム"},
+			"military-simulation": {"es": "Simulación militar", "en": "Military simulation", "jp": "軍事シミュレーション"},
+			"dungeon-crawler": {"es": "Dungeon Crawler", "en": "Dungeon Crawler", "jp": "ダンジョンクローラー"},
+			"group-survival-games": {"es": "Juegos de supervivencia en grupo", "en": "Group survival games", "jp": "集団サバイバルゲーム"},
+			"exploration-games": {"es": "Juegos de exploración", "en": "Exploration games", "jp": "探索ゲーム"},
+			"episodic-games": {"es": "Juegos episódicos", "en": "Episodic games", "jp": "エピソード型ゲーム"},
+			"cooking-games": {"es": "Juegos de cocina", "en": "Cooking games", "jp": "料理ゲーム"},
+			"farming-games": {"es": "Juegos de granja", "en": "Farming games", "jp": "農業ゲーム"},
+			"fishing-games": {"es": "Juegos de pesca", "en": "Fishing games", "jp": "釣りゲーム"},
+			"dance-games": {"es": "Juegos de baile", "en": "Dance games", "jp": "ダンスゲーム"},
+			"trivia-games": {"es": "Juegos de trivia", "en": "Trivia games", "jp": "トリビアゲーム"},
+			"pinball-games": {"es": "Juegos de pinball", "en": "Pinball games", "jp": "ピンボールゲーム"},
+			"arcade-games": {"es": "Juegos de arcade", "en": "Arcade games", "jp": "アーケードゲーム"},
+			"time-management-games": {"es": "Juegos de gestión de tiempo", "en": "Time management games", "jp": "時間管理ゲーム"},
+			"economy-games": {"es": "Juegos de economía", "en": "Economy games", "jp": "経済ゲーム"},
+			"historical-games": {"es": "Juegos históricos", "en": "Historical games", "jp": "歴史ゲーム"},
+			"educational-kids-games": {"es": "Juegos educativos para niños", "en": "Educational games for kids", "jp": "子供向け教育ゲーム"},
+			"tactical-rpg": {"es": "Juegos de rol táctico", "en": "Tactical RPG", "jp": "タクティカルRPG"},
+			"mixed-reality-games": {"es": "Juegos de realidad mixta", "en": "Mixed reality games", "jp": "複合現実ゲーム"},
+			"medical-simulation-games": {"es": "Juegos de simulación médica", "en": "Medical simulation games", "jp": "医療シミュレーションゲーム"},
+			"city-building-games": {"es": "Juegos de construcción de ciudades", "en": "City building games", "jp": "都市建設ゲーム"},
+			"postapocalyptic-survival-games": {"es": "Juegos de supervivencia postapocalípticos", "en": "Postapocalyptic survival games", "jp": "ポストアポカリプスサバイバルゲーム"},
+			"interactive-narrative-games": {"es": "Juegos narrativos interactivos", "en": "Interactive narrative games", "jp": "インタラクティブストーリーゲーム"},
+			"physics-based-games": {"es": "Juegos basados en física", "en": "Physics-based games", "jp": "物理ベースのゲーム"},
+			"artistic-poetic-games": {"es": "Juegos artísticos/poéticos", "en": "Artistic/poetic games", "jp": "芸術的・詩的なゲーム"},
+			"naval-combat-games": {"es": "Juegos de combate naval", "en": "Naval combat games", "jp": "海戦ゲーム"},
+			"space-trade-economy-games": {"es": "Juegos de comercio y economía espacial", "en": "Space trade and economy games", "jp": "宇宙貿易・経済ゲーム"},
+			"hunting-games": {"es": "Juegos de caza", "en": "Hunting games", "jp": "狩猟ゲーム"},
+			"mafia-games": {"es": "Juegos de mafia", "en": "Mafia games", "jp": "マフィアゲーム"},
+			"strategic-war-games": {"es": "Juegos de guerra estratégica", "en": "Strategic war games", "jp": "戦略戦争ゲーム"},
+			"collectible-card-games": {"es": "Juegos de cartas coleccionables", "en": "Collectible card games", "jp": "コレクティブルカードゲーム"},
+			"escape-room-games": {"es": "Juegos tipo escape room", "en": "Escape room games", "jp": "脱出ゲーム"},
+			"music-trivia-games": {"es": "Juegos de trivia musical", "en": "Music trivia games", "jp": "音楽トリビアゲーム"}
 		}
 	},
 	"alert": {
@@ -501,6 +586,7 @@
 		"report-already-sent": {"es": "El reporte fue enviado anteriormente.", "en": "The report was sent previously.", "jp": "この報告は以前に送信されました。"},
 		"comment-reported": {"es": "El comentario fue reportado.", "en": "The comment has been reported.", "jp": "コメントが報告されました。"},
 		"failed-to-report-comment": {"es": "Fallo al reportar el comentario.", "en": "Failed to report the comment.", "jp": "コメントの報告に失敗しました。"},
+		"comment-already-sent": {"es": "Este comentario ya fue enviado.", "en": "This comment has already been sent.", "jp": "このコメントはすでに送信済みです。"},
 		"no-access-preview": {"es": "No tiene acceso a la vista previa de la publicación.", "en": "You do not have access to the post preview.", "jp": "投稿のプレビューにアクセスできません。"},
 		"creator-not-exist": {"es": "No existe el creador.", "en": "The creator does not exist.", "jp": "作成者が存在しません。"},
 		"do-not-modify-pubo": {"es": "Por favor no modifique los campos ocultos del campo pubo.", "en": "Please do not modify the hidden fields of the pubo field.", "jp": "puboフィールドの非表示フィールドを変更しないでください。"},
@@ -512,7 +598,9 @@
 		"draft-saved": {"es": "Se guardó el borrador {{value}}.", "en": "The draft {{value}} has been saved.", "jp": "下書き{{value}}が保存されました。"},
 		"new-post-published": {"es": "Se publicó una nueva entrada {{value}}.", "en": "A new post {{value}} has been published.", "jp": "新しい投稿{{value}}が公開されました。"},
 		"draft-deleted": {"es": "El borrador {{value}} fue eliminado.", "en": "The draft {{value}} was deleted.", "jp": "下書き{{value}}が削除されました。"},
-		"post-deleted": {"es": "La publicación {{value}} fue eliminada.", "en": "The post {{value}} was deleted.", "jp": "投稿{{value}}が削除されました。"}
+		"post-deleted": {"es": "La publicación {{value}} fue eliminada.", "en": "The post {{value}} was deleted.", "jp": "投稿{{value}}が削除されました。"},
+		"alert-pin-title": {"es": "Guarda este PIN antes de salir.", "en": "Save this PIN before leaving.", "jp": "退出する前にこの暗証番号を保存してください。"},
+		"alert-pin-main": {"es": "Lo necesitarás para recuperar tu cuenta si olvidas tu contraseña.", "en": "You will need it to recover your account if you forget your password.", "jp": "パスワードを忘れた場合にアカウントを復元するために必要です。"}
 	},
 	"form": {
 		"leave-comment": {"es": "Deja un comentario 😄", "en": "Leave a comment 😄", "jp": "コメントを残す 😄"},
@@ -639,6 +727,7 @@
 			"pt": "O nome de usuário ou e-mail está incorreto, suspenso ou foi excluído.",
 			"jp": "ユーザー名またはメールが正しくない、停止されている、または削除されました。"
 		},
+		"pin-incorrect": {"es": "El pin ingresado es incorrecto.", "en": "The entered pin is incorrect.", "jp": "入力された暗証番号が正しくありません。"},
 		"user-already-in-use": {
 			"es": "El usuario ya está en uso.",
 			"en": "The username is already in use.",
@@ -665,6 +754,55 @@
 		}
 	},
 	"posts": {
+		"admin-index": {
+			"title": {
+				"es": "Acceder al panel administrativo",
+				"en": "Access the admin panel",
+				"jp": "管理パネルにアクセスする"
+			}
+		},
+		"admin-admin": {
+			"title": {
+				"es": "Panel administrativo",
+				"en": "Admin Panel",
+				"jp": "管理パネル"
+			}
+		},
+		"auth-login": {
+			"title": {
+				"es": "Iniciar sesión",
+				"en": "Login",
+				"jp": "ログイン"
+			}
+		},
+		"auth-register": {
+			"title": {
+				"es": "Registrarse",
+				"en": "Register",
+				"jp": "登録"
+			}
+		},
+		"auth-config": {
+			"title": {
+				"es": "Configuración",
+				"en": "Settings",
+				"jp": "設定"
+			}
+		},
+		"auth-forgot-password": {
+			"title": {
+				"es": "Olvide mi contraseña",
+				"en": "Forgot my password",
+				"jp": "パスワードを忘れました"
+			}
+		},
+		"auth-change-password": {
+			"title": {
+				"es": "Cambiar contraseña",
+				"en": "Change password",
+				"jp": "パスワードを変更する"
+			}
+		},
 		"error": {
 			"title": {
 				"es": "¡Oh! parece que hubo un error...",
@@ -676,6 +814,15 @@
 				"en": "It seems that the page you are trying to access is not yet available, under construction, restricted, or does not exist.",
 				"jp": "アクセスしようとしているページは、まだ利用できないか、開発中であるか、アクセスが制限されているか、存在しないようです。"
 			}
+		},
+		"search": {
+			"title": {"es": "Buscar", "en": "Search", "jp": "検索"}
+		},
+		"report": {
+			"title": {"es": "Reportar", "en": "Report", "jp": "報告する"}
+		},
+		"p-profile": {
+			"title": {"es": "Perfil", "en": "Profile", "jp": "プロフィール"}
 		}
 	},
 	"other": {
@@ -695,9 +842,10 @@
 				"es": "Parece que la sección {{value}} no existe o está en construcción.",
 				"en": "It seems that the section {{value}} does not exist or is under construction.",
 				"jp": "セクション{{value}}は存在しないか、工事中のようです。"
-			}
+			},
+			"higher-role-required": {"es": "Necesita un rol más elevado para acceder a esta sección.", "en": "You need a higher role to access this section.", "jp": "このセクションにアクセスするには、より高いロールが必要です。"}
 		},
-		"anuncios": {
+		"ads": {
 			"title": {"es": "Actualizar mensajes y anuncios", "en": "Update messages and announcements", "jp": "メッセージと広告を更新"},
 			"moving-message": {"es": "Mensaje en movimiento", "en": "Moving message", "jp": "動くメッセージ"},
 			"moving-message-title": {"es": "Se mostrará/ocultará el mensaje en movimiento.", "en": "The moving message will be shown/hidden.", "jp": "動くメッセージが表示/非表示されます。"},
@@ -722,7 +870,7 @@
 			},
 			"php-title": {"es": "Los enlaces internos tendrán la extensión .php", "en": "Internal links will have the .php extension", "jp": "内部リンクには .php 拡張子が付きます"}
 		},
-		"creador": {
+		"creator": {
 			"message": {"es": "Creemos algo épico!", "en": "Let's create something epic!", "jp": "何か壮大なものを作ろう！"},
 			"actions": {"es": "Acciones", "en": "Actions", "jp": "アクション"},
 			"publish": {"es": "Publicar", "en": "Publish", "jp": "公開する"},
@@ -748,6 +896,8 @@
 			"please-select-a-reference": {"es": "Por favor seleccione una referencia.", "en": "Please select a reference.", "jp": "参照を選択してください。"},
 			"reference-does-not-exist": {"es": "La referencia no existe.", "en": "The reference does not exist.", "jp": "参照は存在しません。"},
 			"name-of-the-game": {"es": "Nombre del juego", "en": "Name of the game", "jp": "ゲームの名前"},
+			"need-higher-role-to-modify-post": {"es": "Necesita un rol más elevado para publicar, editar, u eliminar esta publicación.", "en": "You need a higher role to publish, edit, or delete this post.", "jp": "この投稿を公開、編集、または削除するには、より高い権限が必要です。"},
+			"please-use-another-route": {"es": "Por favor use otra ruta.", "en": "Please use another route.", "jp": "別のルートを使用してください。"},
 			"other": {
 				"normal": {},
 				"anime_entrada": {
@@ -788,9 +938,12 @@
 		"editor": {
 			"file-required": {"es": "Es necesario un archivo para utilizar el editor.", "en": "A file is required to use the editor.", "jp": "エディターを使うにはファイルが必要です。"},
 			"only-edit-files": {"es": "Solo se pueden editar archivos.", "en": "Only files can be edited.", "jp": "ファイルのみ編集できます。"},
-			"file-no-permission": {"es": "No tiene permiso para modificar este archivo.", "en": "You do not have permission to modify this file.", "jp": "このファイルを変更する権限がありません。"}
+			"file-no-permission": {"es": "No tiene permiso para modificar este archivo.", "en": "You do not have permission to modify this file.", "jp": "このファイルを変更する権限がありません。"},
+			"confirm-delete": {"es": "Tiene que confirmar la eliminación del archivo.", "en": "You must confirm the deletion of the file.", "jp": "ファイルの削除を確認する必要があります。"},
+			"confirm-change-name": {"es": "Tiene que confirmar el cambio de nombre.", "en": "You must confirm the name change.", "jp": "名前の変更を確認する必要があります。"},
+			"new-name-{{value}}": {"es": "nuevo-nombre.{{value}}", "en": "new-name.{{value}}", "jp": "新しい名前.{{value}}"}
 		},
-		"directorio": {
+		"directory": {
 			"directory": {"es": "Directorio", "en": "Directory", "jp": "ディレクトリ"},
 			"create-file": {"es": "Crear archivo", "en": "Create file", "jp": "ファイルを作成"},
 			"file": {"es": "Archivo", "en": "File", "jp": "ファイル"},
@@ -829,7 +982,7 @@
 		"template": {
 			"commands-title": {"es": "Comandos versión beta", "en": "Beta version commands", "jp": "ベータ版コマンド"}
 		},
-		"scripts_js": {
+		"scripts": {
 			"title": {"es": "Scripts Javascript", "en": "Javascript Scripts", "jp": "Javascript スクリプト"},
 			"others": {"es": "Otros", "en": "Others", "jp": "その他"},
 			"google-placeholder": {
@@ -848,17 +1001,17 @@
 				"jp": "自由に使用"
 			}
 		},
-		"subir-imagen": {
+		"upload-image": {
 			"recommended": {"es": "Antes de subir una imagen usa: {{value}} para optimizar la imagen.", "en": "Before uploading an image, use {{value}} to optimize the image.", "jp": "画像をアップロードする前に、 {{value}} を使用して画像を最適化してください。"},
 			"select-image": {"es": "Selecciona una imagen", "en": "Select an image", "jp": "画像を選択"},
 			"image-name": {"es": "nombre-de-la-imagen", "en": "image-name", "jp": "画像の名前"},
 			"error-upload-image": {"es": "Error al subir la imagen.", "en": "Error uploading the image.", "jp": "画像のアップロード中にエラーが発生しました。"},
 			"error-uploading": {"es": "Parece que hubo un error al subir la imagen.", "en": "It looks like there was an error uploading the image.", "jp": "画像のアップロード中にエラーが発生したようです。"},
-			"image-max-size": {"es": "El tamaño máximo es de 1MB.", "en": "The maximum size is 1MB.", "jp": "最大サイズは1MBです。"},
+			"image-max-size": {"es": "El tamaño máximo es de {{value}}.", "en": "The maximum size is {{value}}.", "jp": "最大サイズは{{value}}です。"},
 			"uploaded-image": {"es": "Se subió la imagen", "en": "The image was uploaded", "jp": "画像がアップロードされました"},
 			"format-accept": {"es": "Solo se aceptan formatos: jpg, jpeg, png y gif.", "en": "Only jpg, jpeg, png, and gif formats are accepted.", "jp": "許可される形式は jpg、jpeg、png、gif のみです。"}
 		},
-		"tema": {
+		"theme": {
 			"title": {"es": "Tema de la plantilla", "en": "Template theme", "jp": "テンプレートのテーマ"},
 			"created-themes": {"es": "Temas creados", "en": "Created themes", "jp": "作成されたテーマ"},
 			"custom-styles": {"es": "Estilos personalizados", "en": "Custom styles", "jp": "カスタムスタイル"},
