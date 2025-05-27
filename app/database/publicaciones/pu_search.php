@@ -1,4 +1,0 @@
-<?php #02/04/2025 - 10:43am
-$ACR = ['creador' => 'normal', 'pubo' => 'publicacion', 'db_archivo' => 'pu_search.php', 'db_ruta' => 'search.php', 'fecha_publicado' => '02/04/2025 - 10:43am', 'fecha_modificado' => '02/04/2025 - 10:43am', 'id_publicador' => '1', 'creador_borrador_version' => '0.1.3 Estable', 'creador_borrador_fecha' => '30.03.2025', ];
-$AC = ['titulo' => 'undefined', 'descripcion' => 'Search', 'meta_descripcion' => 'Search', 'catalogo' => 'Search', 'meta_etiquetas' => 'Search', 'fragmento' => '', 'contenido' => '', 'tipo' => 'libre', 'miniatura' => 'assets/img/miniatura.png', 'miniatura_url' => '', 'anuncio' => 'on', 'ruta' => '', 'archivo' => 'search.php', 'directorio' => './', ];
-?>
