@@ -1,1 +1,60 @@
-{"nombre_web":"daamper","enlace_web":"https:\/\/dbproject.rf.gd","enlace_web_simple":"dbproject.rf.gd","timezone":"America\/Bogota","ano_publicada":"2024","language":"en","https_imagen":"","php":"","errores":"","languaje":"en"}
+{
+    "config": {
+        "nombre_web": "daamper",
+        "enlace_web": "https:\/\/dbproject.rf.gd",
+        "enlace_web_simple": "dbproject.rf.gd",
+        "timezone": "America\/Bogota",
+        "ano_publicada": "2024",
+        "language": "en",
+        "https_imagen": "",
+        "php": "",
+        "errores": "",
+        "api": "on",
+        "show-api-config-info": "on",
+        "show-api-config-version": "on",
+        "show-api-config-config": "",
+        "show-api-config-default": "",
+        "show-api-config-rules": "",
+        "show-api-config-language": "",
+        "show-api-comment-comment": "",
+        "show-api-comment-extras": "",
+        "show-api-user-user": "",
+        "show-api-user-extras": "",
+        "show-api-creator-default": "",
+        "show-api-creator-list-of-entries": "",
+        "show-api-creator-field-default": "",
+        "show-api-creator-list-tags": "",
+        "show-api-other-visits": "",
+        "show-api-auto-post": "",
+        "show-api-auto-draft": "",
+        "show-api-auto-template": "",
+        "show-api-auto-theme": ""
+    },
+    "scripts": {
+        "mostrar_scripts_google": "",
+        "mostrar_scripts_font_awesome": "on",
+        "mostrar_scripts_otros": "on"
+    },
+    "ads": {
+        "enlace_anuncio_mensaje_movimiento": "https:\/\/dbproject.rf.gd",
+        "enlace_anuncio_mini_banner": "https:\/\/dbproject.rf.gd",
+        "enlace_anuncio_miniatura_article": "https:\/\/dbproject.rf.gd",
+        "imagen_anuncio_mini_banner": "assets\/img\/anuncio.png",
+        "imagen_anuncio_miniatura_article": "assets\/img\/miniatura.png",
+        "anuncio_mensaje_movimiento_texto": "🎁 Se encuentra disponible la versión 0.3.0 Estable de daamper y viene con nuevas mejoras! ✅",
+        "mostrar_anuncio_mensaje_movimiento": "on",
+        "mostrar_anuncio_mini_banner": "on",
+        "mostrar_anuncio_miniatura_article": "on"
+    },
+    "htaccess": {
+        "error_400": "https:\/\/dbproject.rf.gd\/error?e=400",
+        "error_401": "https:\/\/dbproject.rf.gd\/error?e=401",
+        "error_403": "https:\/\/dbproject.rf.gd\/error?e=403",
+        "error_404": "https:\/\/dbproject.rf.gd\/error?e=404",
+        "error_500": "https:\/\/dbproject.rf.gd\/error?e=500",
+        "error_503": "https:\/\/dbproject.rf.gd\/error?e=503",
+        "todo_https": "",
+        "errores": "",
+        "timezone": ""
+    }
+}
