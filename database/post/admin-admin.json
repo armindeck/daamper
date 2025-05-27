@@ -1,0 +1,28 @@
+{
+    "ACR": {
+        "creador": "normal",
+        "pubo": "publicacion",
+        "db_archivo": "admin-admin.json",
+        "db_ruta": "admin\/admin.php",
+        "fecha_publicado": "25\/05\/2025 - 1:36am",
+        "fecha_modificado": "25\/05\/2025 - 3:34pm",
+        "id_publicador": 1,
+        "creador_borrador_version": "0.1.6 Stable",
+        "creador_borrador_fecha": "23.05.2025"
+    },
+    "AC": {
+        "titulo": "undefined",
+        "descripcion": "Dashboard",
+        "meta_descripcion": "Dashboard",
+        "catalogo": "Dashboard",
+        "meta_etiquetas": "Dashboard",
+        "fragmento": "",
+        "contenido": "",
+        "tipo": "",
+        "miniatura": "assets\/img\/miniatura.png",
+        "miniatura_url": "",
+        "ruta": "admin\/",
+        "archivo": "admin.php",
+        "directorio": "..\/"
+    }
+}

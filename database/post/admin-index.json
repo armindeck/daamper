@@ -1,0 +1,34 @@
+{
+    "ACR": {
+        "creador": "normal",
+        "pubo": "publicacion",
+        "db_archivo": "admin-index.json",
+        "db_ruta": "admin\/index.php",
+        "fecha_publicado": "19\/12\/2024 - 11:35pm",
+        "fecha_modificado": "23\/05\/2025 - 11:48am",
+        "id_publicador": "1",
+        "creador_borrador_version": "0.1.6 Estable",
+        "creador_borrador_fecha": "22.05.2025"
+    },
+    "AC": {
+        "titulo": "undefined",
+        "descripcion": "Acceder al panel administrativo",
+        "meta_descripcion": "Acceder al panel administrativo",
+        "catalogo": "Panel",
+        "meta_etiquetas": "Acceder al panel administrativo",
+        "fragmento": "",
+        "contenido": "",
+        "tipo": "",
+        "posicion-": "",
+        "posicion-blog": "",
+        "posicion-post": "",
+        "posicion-anime": "",
+        "posicion-ver": "",
+        "miniatura": "assets\/img\/miniatura.png",
+        "miniatura_url": "",
+        "anuncio": "on",
+        "ruta": "admin\/",
+        "archivo": "index.php",
+        "directorio": "..\/"
+    }
+}
