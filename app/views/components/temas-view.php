@@ -3,7 +3,7 @@
   <a><i class="fas fa-fill-drip"></i></a>
   <div class="sub">
     <nav>
-      <?php $files = glob($Web['directorio'].'assets/css/theme/*.css');
+      <?php $files = glob($Web['directorio'].'assets/css/template/daamper/theme/*.css');
       foreach ($files as $file) { $file = str_replace('.css', '', basename($file));
       $file_explode = explode('-', $file); ?>
         <a href="?tema=<?= $file ?>"><i class="fas fa-<?=
