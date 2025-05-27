@@ -1,5 +1,5 @@
 <?php
-$db = Database('other/search');
+$db = DATA->Config("default")["search"];
 $search = isset($_GET['q']) ? SCRIPTS->normalizar2($_GET['q']) : false;
 $search_by = isset($_GET['search-by']) && !empty($_GET['search-by']) && in_array($_GET['search-by'], $db['search-by']) ? SCRIPTS->normalizar2($_GET['search-by']) : $db['search-by'][1];
 $search_limit = isset($_GET['search-limit']) && is_numeric($_GET['search-limit']) ? SCRIPTS->normalizar2($_GET['search-limit']) : $db['limit'];
@@ -26,42 +26,53 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? SCRIPTS->normalizar2
             <?= pCheckboxBoton(["nameidclass" => "hide-path", "texto" => Language("route"), "checked" => $hide_path]) ?>
         </section>
         <input class="boton" type="submit" value="&#xf002 <?= Language('search') ?>">
-        <hr><span style="font-size: 12px;">v<?= VERSION['other']['search']['version'] . ' ~ ' . VERSION['other']['search']['updated'] ?></span>
+        <hr><span style="font-size: 12px;">v<?= VERSION['other']['search']['version'] . ' ' . VERSION['other']['search']['state'] . ' ~ ' . VERSION['other']['search']['updated'] ?></span>
     </form>
 </section>
 <?php if ($search && strlen($search) >= 4): ?>
 <hr>
 <section class="flex-evenly" style="gap: 8px; padding: 4px; <?= $hide_images ? 'margin: 0px auto; max-width: 1024px;' : '' ?>">
     <?php // Busqueda
-    $archivos = glob($Web['directorio'].'app/database/publicaciones/*.php', GLOB_BRACE);
+    $archivos = glob($Web["directorio"] . 'database/post/*.json', GLOB_BRACE);
     sort($archivos, SORT_NATURAL | SORT_FLAG_CASE);
     $mostrar = [];
     for($i = 0; $i < count($archivos); $i++) {
-        if(!in_array(basename($archivos[$i]), $db["remove"])){
-            include $archivos[$i];
-            
-            if ($search_by == 'title') {
-                if(strtolower($search) == strtolower($AC['titulo'])){
-                    $mostrar[] = $archivos[$i];
-                    break;
-                }
+        if(!in_array(str_replace(".json", "", basename($archivos[$i])), $db["remove"])){
+            $ACR = DATA->Post(basename($archivos[$i]))["ACR"];
+            $AC = DATA->Post(basename($archivos[$i]))["AC"];
+
+            $continua = true;
+            if(in_array(trim($AC["ruta"], "/"), $db["remove-route"])){
+                $continua = false;
             }
-            if (in_array($search_by, ["title-tags", "tags", "description"])) {
-                $search_array = explode(" ", strtolower($search));
-                $busca = match (true) {
-                    $search_by == 'title-tags' => 'titulo',
-                    $search_by == 'tags' => 'meta_etiquetas',
-                    $search_by == 'description' => 'descripcion',
-                };
-                $titulo_array = explode(" ", strtolower($AC[$busca]));
-                foreach ($search_array as $search_titulo) {
-                    if(strlen($search_titulo) >= 4){
-                        foreach ($titulo_array as $titulo) {
-                            if (strpos($titulo, $search_titulo) !== false) {
-                                if(!in_array($archivos[$i], $mostrar)){
-                                    $mostrar[] = $archivos[$i];
+            if($continua){
+                if(file_exists(RAIZ . "app/actions/admin/content/global/creators/mod/{$ACR['creador']}.php")){
+                    require RAIZ . "app/actions/admin/content/global/creators/mod/{$ACR['creador']}.php";
+                }
+
+                if ($search_by == 'title') {
+                    if(strtolower($search) == strtolower($AC['titulo'])){
+                        $mostrar[] = $archivos[$i];
+                        break;
+                    }
+                }
+                if (in_array($search_by, ["title-tags", "tags", "description"])) {
+                    $search_array = explode(" ", strtolower($search));
+                    $busca = match (true) {
+                        $search_by == 'title-tags' => 'titulo',
+                        $search_by == 'tags' => 'meta_etiquetas',
+                        $search_by == 'description' => 'descripcion',
+                    };
+                    $titulo_array = explode(" ", strtolower($AC[$busca]));
+                    foreach ($search_array as $search_titulo) {
+                        if(strlen($search_titulo) >= 4){
+                            foreach ($titulo_array as $titulo) {
+                                if (strpos($titulo, $search_titulo) !== false) {
+                                    if(!in_array($archivos[$i], $mostrar)){
+                                        $mostrar[] = $archivos[$i];
+                                    }
+                                    break;
                                 }
-                                break;
                             }
                         }
                     }
@@ -77,8 +88,15 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? SCRIPTS->normalizar2
         $limit = $db['limit'];
         $min = ($page - 1) * $limit;
         $max = $min + $limit;
-        for($i = $min; $i < $max; $i++) { if( isset($mostrar[$i]) && file_exists($mostrar[$i])){ include $mostrar[$i]; ?>
-            <a class="boton-2 flex-column" style="<?= !$hide_images ? 'max-width: 350px;' : 'width: 100%;' ?> flex-grow: 1; gap: 10px;" target="_blank" href="<?= $ACR['db_ruta'] ?>">
+        for($i = $min; $i < $max; $i++) { if( isset($mostrar[$i]) && file_exists($mostrar[$i])){
+            $ACR = DATA->Post(basename($mostrar[$i]))["ACR"];
+            $AC = DATA->Post(basename($mostrar[$i]))["AC"];
+            
+            if(file_exists(RAIZ . "app/actions/admin/content/global/creators/mod/{$ACR['creador']}.php")){
+                require RAIZ . "app/actions/admin/content/global/creators/mod/{$ACR['creador']}.php";
+            }
+            ?>
+            <a class="boton-2 flex-column" style="<?= !$hide_images ? 'max-width: 350px;' : 'width: 100%;' ?> flex-grow: 1; gap: 10px;" href="<?= str_replace(".php", "", $ACR['db_ruta']) . $Web["config"]["php"] ?>">
                 <?php if(!$hide_images): ?>
                     <img width="100%" src="<?= $AC['miniatura'] ?>" style="border-radius: 4px;" loading="lazy">
                 <?php endif; ?>
@@ -87,7 +105,7 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? SCRIPTS->normalizar2
                 <?php endif; ?>
                 <?= !in_array($search_by, ['title', 'title-tags']) && in_array($search_by, $db['search-by']) ? "<p>{$AC[$busca]}</p>" : '' ?>
                 <?php if(!$hide_path): ?>
-                    <section class="t-12" style="margin-top: auto;"><hr><?= str_replace(".php", "", $ACR['db_ruta']) ?></section>
+                    <section class="t-12" style="margin-top: auto;"><hr><?= str_replace(".php", "", $ACR['db_ruta']) . $Web["config"]["php"] ?></section>
                 <?php endif; ?>
             </a>
     <?php unset($AC); unset($ACR); } } } ?>
