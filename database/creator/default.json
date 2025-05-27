@@ -1,0 +1,14 @@
+{
+    "titles": [
+        "error", "report", "search", "admin-admin", "p-perfil", "api",
+        "auth-login", "auth-register", "auth-forgot-password", "auth-change-password", "auth-config"
+    ],
+    "server": {
+        "streams": [
+            "MEGA", "Uqload", "Stream Wish", "Lulu Stream", "Voe", "Stape", "Netu", "YourUpload", "Okru", "MP4Upload", "Filemoon", "Dood Stream", "StreamTape", "YouTube" 
+        ],
+        "downloads": [
+            "MEGA", "MediaFire", "FireLoad", "Gofile", "Stream Wish", "Stape", "OneDrive", "Drive", "Utorrent"
+        ]
+    }
+}
