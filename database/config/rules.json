@@ -1,0 +1,56 @@
+{
+    "admin":{
+        "ceo founder": [
+            "creator",
+            "comments",
+            "users",
+            "upload-image",
+            "ads",
+            "scripts",
+            "config",
+            "template",
+            "theme",
+            "directory",
+            "editor",
+            "htaccess",
+            "updates",
+            "info"
+        ],
+        "administrador": [
+            "creator",
+            "comments",
+            "users",
+            "upload-image",
+            "updates",
+            "info"
+        ],
+        "editor": ["creator", "comments", "upload-image", "updates", "info"],
+        "usuario": []
+    },
+    "creator":{
+        "publish": {
+            "access": {
+                "rules": ["ceo founder"],
+                "files": [
+                    "admin/index",
+                    "admin/admin",
+                    "auth/login",
+                    "auth/register",
+                    "auth/config",
+                    "auth/forgot-password",
+                    "auth/change-password",
+                    "api",
+                    "p/perfil"
+                ]
+            },
+            "denied-routes": [
+                "app",
+                "admin/process",
+                "assets",
+                "process",
+                "database",
+                "p"
+            ]
+        }
+    }
+}
