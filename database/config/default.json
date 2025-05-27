@@ -1,0 +1,87 @@
+{
+  "global": {
+    "upload-image": {
+      "max-size": 5,
+      "support": ["image/png", "image/jpeg", "image/jpg", "image/gif"]
+    },
+    "simple-suma": { "min": 1, "max": 15, "min-input": 1, "max-input": 99 }
+  },
+  "auth": {
+    "update-data": {
+      "description": "",
+      "social-network-name": "dbproject",
+      "social-network-link": "https://dbproject.rf.gd"
+    },
+    "change-avatar": {
+      "max-size": 1,
+      "support": ["image/png", "image/jpeg", "image/jpg", "image/gif"]
+    }
+  },
+  "admin": {
+    "upload-image": {
+      "max-size": 5,
+      "support": ["image/png", "image/jpeg", "image/jpg", "image/gif"]
+    },
+    "config": {
+      "api": {
+        "config": ["info"],
+        "other": [
+          "api-post",
+          "api-post-entries",
+          "api-comment",
+          "api-user",
+          "api-config",
+          "api-creator",
+          "api-other",
+          "api-template",
+          "api-theme"
+        ]
+      }
+    }
+  },
+  "api": {
+    "show": {
+      "config": ["info", "version", "config", "default", "rules", "language"],
+      "comment": ["comment", "extras"],
+      "user": ["user", "extras"],
+      "creator": ["default", "list-of-entries", "field-default", "list-tags"],
+      "other": ["visits"]
+    },
+    "auto": ["post", "draft", "template", "theme"]
+  },
+  "search": {
+    "limit": 15,
+    "search-by": ["title", "title-tags", "tags", "description"],
+    "remove": [
+      "index",
+      "auth-change-password",
+      "auth-config",
+      "auth-login",
+      "auth-forgot-password",
+      "auth-register",
+      "admin-index",
+      "admin-admin",
+      "p-perfil",
+      "search",
+      "report",
+      "error",
+      "api"
+    ],
+    "remove-route": ["ver", "ejmplo/ruta"]
+  },
+  "other": {
+    "alert-types": ["success", "error", "warning", "info", "refresh"]
+  },
+  "entries": {
+    "anime_mirando": {
+      "ads": {
+        "title": "dbproject",
+        "link": "https://dbproject.rf.gd",
+        "link-iframe": "https://dbproject.rf.gd/web/index.php",
+        "ads-show": "on",
+        "title-show": "on",
+        "iframe-show": "on"
+      }
+    }
+  }
+}
