@@ -26,15 +26,15 @@
 		Versión: <?= WEBSITE->version .' '.WEBSITE->estado.' '.WEBSITE->mod . "\n" ?>
 	-->
 	<?php require_once $Web['directorio'] . 'assets/css/styles.php'; ?>
-	<?php foreach (['scripts_js_google','scripts_js_font_awesome','scripts_js_otros'] as $key => $value){
-		if(isset($Web['scripts_js']['mostrar_'.$value]) && !empty($Web['scripts_js']['mostrar_'.$value])){
-			if(file_exists($Web['directorio'].'panel/app/scripts_js/web-'.$value.'.html')){
-				require $Web['directorio'].'panel/app/scripts_js/web-'.$value.'.html';
+	<?php foreach (['scripts_google','scripts_font_awesome','scripts_otros'] as $key => $value){
+		if(isset($Web['scripts']['mostrar_'.$value]) && !empty($Web['scripts']['mostrar_'.$value])){
+			if(file_exists($Web["directorio"].'database/files/html/'.$value.'.html')){
+				require $Web["directorio"].'database/files/html/'.$value.'.html';
 				echo "\n";
 			}
 		}
 	} ?>
 	<?= file_exists(($Web['directorio'] != './' ? $Web['directorio'] : '').'../elementos/js/all.js') ? '<script src="'.(($Web['directorio'] != './' ? $Web['directorio'] : '').'../elementos/js/all.js').'"></script>' : '' ?>
-	<?php if(file_exists($Web['directorio'].'panel/app/tema/scr-tema.php')){
-        require_once $Web['directorio'] . 'panel/app/tema/scr-tema.php';
+	<?php if(file_exists($Web['directorio'].'app/actions/admin/content/src/theme.php')){
+        require_once $Web['directorio'] . 'app/actions/admin/content/src/theme.php';
    } ?>
