@@ -1,0 +1,38 @@
+[
+    {
+        "entrada": "",
+        "poster": "",
+        "titulo": "Agregados recientemente",
+        "titulo-alternativo": "Publicaciones"
+    },
+    {
+        "entrada": "blog",
+        "poster": "",
+        "titulo": "Blog",
+        "titulo-alternativo": ""
+    },
+    {
+        "entrada": "post",
+        "poster": "",
+        "titulo": "Posteos",
+        "titulo-alternativo": "Agregados recientemente"
+    },
+    {
+        "entrada": "anime",
+        "poster": "on",
+        "titulo": "Animes",
+        "titulo-alternativo": "Agregados recientemente"
+    },
+    {
+        "entrada": "ver",
+        "poster": "",
+        "titulo": "Agregados recientemente",
+        "titulo-alternativo": "Capitulos"
+    },
+    {
+        "entrada": "juego",
+        "poster": "on",
+        "titulo": "Juegos",
+        "titulo-alternativo": "Agregados recientemente"
+    }
+]
