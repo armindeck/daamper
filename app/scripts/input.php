@@ -407,11 +407,11 @@ function pInputEnlace($Web, $Apartado, $list = [], $Contenedor = null, $Elemento
 					]).' ';
 			}
 			foreach ($lista['checkbox'] as $value) {
-				$return .= $value['name'] != 'ocultar' ? (pCheckboxBotonActivoDesaptivo($Web, ['plantilla', 'scr'], [
+				$return .= $value['name'] != 'ocultar' ? (pCheckboxBotonActivoDesaptivo($Web, ['template', 'scr'], [
 					'nameidclass'=>(isset($list['name']) ? $list['name'].'_' : '')."{$value['name']}_{$i}_enlace_comandos_default_elemento_{$Elemento}_contenedor_{$Contenedor}",
 					'texto-2'=>$value['texto'],
 					'title'=>$value['title']
-				])) : (pCheckboxBotonActivoDesaptivo($Web, ['plantilla', 'scr'], [
+				])) : (pCheckboxBotonActivoDesaptivo($Web, ['template', 'scr'], [
 					'nameidclass'=>(isset($list['name']) ? $list['name'].'_' : '')."{$value['name']}_{$i}_enlace_comandos_default_elemento_{$Elemento}_contenedor_{$Contenedor}",
 					'title'=>$value['title'],
 					'invertir' => true
