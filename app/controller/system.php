@@ -2,10 +2,10 @@
 /* NO PUEDO USAR FOREACH PARA ORDENAR LOS DEFINE, YA QUE VS CODE DETECTA UN MONTON DE ERRORES :v */
 define("INFO", Database('config/info'));
 define("VERSION", Database('config/version'));
-#define("LANGUAJE", Database('config/language'));
 define("LANGUAGE", Database('config/language'));
-define("CONFIG", Database('config/config'));
+define("CONFIG", Database('config/config')["config"]);
 define("INFOVERSION", array_merge(INFO, VERSION['system']));
+define("RAIZ", __DIR__."/../../");
 
 class Web {
     public $nombre;
@@ -40,7 +40,7 @@ class Web {
 
     public function web() {
         return '<span style="font-size: 14px;">'.
-            Language("copy", "system", ["author" => "<a target=\"_blank\" href=\"".$this->creador_enlace."\">".$this->creador."</a>", "system-name" => "<a target=\"_blank\" href=\"".$this->enlace."\">".$this->nombre."</a>", "version" => $this->version, "state" => $this->estado, "updated" => $this->mod]). '<br>'.Language("license", "system")
+            Language("copy", "system", ["author" => "<a target=\"_blank\" href=\"".$this->creador_enlace."\">".$this->creador."</a>", "system-name" => "<a target=\"_blank\" href=\"".$this->enlace."\">".$this->nombre."</a>", "version" => $this->version, "state" => (Language(strtolower($this->estado == "Estable" ? "stable" : $this->estado))), "updated" => $this->mod]). '<br>'.Language("license", "system")
             .'</span>';
     }
 }
