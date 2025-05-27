@@ -9,6 +9,6 @@
 </head>
 <body>
 	<?= Views("template") ?>
-	<?php unset($_SESSION['mensaje_span']); ?>
+	<?php unset($_SESSION["sendAlert"]); ?>
 </body>
 </html>
