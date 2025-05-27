@@ -1,28 +1,23 @@
 <?php global $AXR, $AX;
 if(
-	$Web['ruta_completa'] != '../../panel/procesa/procesa.creador.borrador.php' &&
+	$Web['ruta_completa'] != '../../admin/process/creator.php' &&
 	isset($_SESSION['tmpForm']['instance_destroy'])
 	){
 		unset($_SESSION['tmpForm']);
 }
 
-# Views del apartado creador en los creadores
-if(file_exists("{$Web['directorio']}panel/app/creador/creadores/{$AXR['creador']}/view.php")){
-	require "{$Web['directorio']}panel/app/creador/creadores/{$AXR['creador']}/view.php";
-}
-
+if(file_exists(__DIR__."/main/{$AXR['creador']}-view.php")){ Views("main/{$AXR['creador']}"); }
+Show(isset($_SESSION["id"]) && isset($_GET["cerrar-sesion"]), fn() => Views("components/alert-pin"));
 Views("main/auth");
 Views("main/perfil");
 Views("main/reportar");
 Ruta(null, "./search.php", fn () => Views("main/search"));
-if($Web['ruta_completa'] == '../panel/panel.php'){
-	Views("main/panel");
+if($Web['ruta_completa'] == '../admin/admin.php'){
+	Views("main/admin");
 }
 
-if($Web['ruta_completa'] != '../../panel/procesa/procesa.creador.borrador.php'){
-	/* Error x1 ~ panel/procesa/procesa.creador.borrador.php */
+if($Web['ruta_completa'] != '../../admin/process/creator.php'){
+	/* Error x1 ~ admin/procesa/creator.php */
 	/* Error se resetea el contenido de los formularios */
 	unset($_SESSION['tmpForm']);
 }
-
-?>
