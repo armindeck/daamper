@@ -1,11 +1,10 @@
 <?php if (!isset($_GET['view']) && !isset($_GET['view-main']) || isset($_GET['view']) && in_array($_GET['view'], ['comentarios'])): ?>
 <aside class="panel div-comentarios" <?= isset($_GET['view']) ? 'style="padding: 15px 6px;"' : '' ?>>
 <?php
-$file_comentarios = $Web['directorio'] . AppDatabase('comentarios/comentarios');
-$file_comentarios_extras = $Web['directorio'] . AppDatabase('comentarios/comentarios_extras');
-$comentarios = [];
-if (file_exists($file_comentarios)){ $comentarios = require_once $file_comentarios; }
-if (file_exists($file_comentarios_extras)){ require_once $file_comentarios_extras; }
+$file_comentarios = $Web['directorio'] . "database/comment/comment.json";
+$file_comentarios_extras = $Web['directorio'] . "database/comment/extras.json";
+$comentarios = SCRIPTS->UnirArrays(DATA->Comment() ?? [], DATA->Comment("extras") ?? []) ?? [];
+
 if (count($comentarios) <= 0) { ?>
     <div class="form" style="text-align: center;"><?= Language('no-comments', 'form') ?></div>
 <?php } else {
@@ -17,21 +16,17 @@ if (count($comentarios) <= 0) { ?>
     <?php if (!isset($_GET['view'])): ?>
     <form method="get">
         <section>
-            <?= $Web['ruta_completa'] == '../panel/panel.php' ? "<input name='ap' value='comentarios' hidden>" : '' ?>
+            <?= $Web['ruta_completa'] == '../admin/admin.php' ? "<input name='ap' value='comments' hidden>" : '' ?>
             <label><?= Language('sort-by') ?> <select name="orden_comentarios">
-                    <option value="asc"><?= Language('ascending') ?></option>
-                    <option value="desc"><?= Language('descending') ?></option>
+                <?php foreach (["asc" => "ascending", "desc" => "descending"] as $key => $value) {
+                    echo '<option value="'.$key.'" '.(isset($_GET["orden_comentarios"]) && $_GET["orden_comentarios"] == $key ? "selected" : "").'>'. Language($value) .'</option>';
+                } ?>
                 </select>
             </label>
             <label><?= Language('quantity') ?> <select name="cantidad_comentarios">
-                    <option>10</option>
-                    <option>30</option>
-                    <option>50</option>
-                    <option>100</option>
-                    <option>130</option>
-                    <option>150</option>
-                    <option>200</option>
-                    <option value="auto"><?= Language('auto') ?></option>
+                <?php foreach ([10, 30, 50, 100, 130, 150, 200, "auto"] as $key => $value) {
+                    echo '<option value="'.($value).'" '.(isset($_GET["cantidad_comentarios"]) && $_GET["cantidad_comentarios"] == $value ? "selected" : "").'>'.($value == "auto" ? Language("auto") : $value).'</option>';
+                } ?>
                 </select>
             </label>
             <input class="boton" type="submit" value="<?= Language('filter') ?>">
@@ -46,10 +41,7 @@ if (count($comentarios) <= 0) { ?>
     foreach ($comentarios as $key => $value) {
         $sigue_one = false;
         if ($value['ruta'] == $Web['ruta'] && empty($value['id_comentario'])) { $sigue_one = true; } else { $sigue_one = false; }
-        if (
-            $Web['ruta_completa'] == '../panel/panel.php' && empty($value['id_comentario']) ||
-            isset($_GET['view']) && empty($value['id_comentario']) && $value['ruta'] == $Web['ruta']
-        ) {
+        if ($Web['ruta_completa'] == '../admin/admin.php' || isset($_GET['view']) && $value['ruta'] == $Web['ruta']) {
             $sigue_one = true;
         }
         if ($sigue_one){
@@ -57,14 +49,15 @@ if (count($comentarios) <= 0) { ?>
                 $sigue = $i < $_GET['cantidad_comentarios'] ? true : false;
             }
             if ($sigue) { ?>
-                <?php if(isset($_GET['view']) || $Web['ruta_completa'] == '../panel/panel.php'): ?>
-                <section class="flex-between t-12" style="width: 100%; max-width: 800px;">
+                <?php if(isset($_GET['view']) || $Web['ruta_completa'] == '../admin/admin.php'): ?>
+                <section class="flex-between t-12 mx-4" style="width: 100%; max-width: 800px;">
                     <span><?= Language('route') ?>:</span>
                     <a target="_blank" href="<?= $Web['directorio'].str_replace(".php", "", $value['ruta']) . $Web['config']['php'] ?>"><?= str_replace(".php", "", $value['ruta']) ?></a>
                 </section>
                 <?php endif; ?>
                 <?= Comentario($value) ?>
-                <details <?= $i < 1 ? 'open' : '' ?> style="width: 100%; max-width: 800px;"><summary class="t-14"><?= Language('comments') ?></summary>
+                <?php if ($Web['ruta_completa'] != '../admin/admin.php'): ?>
+                <details open style="width: 100%; max-width: 800px;" class="mx-4"><summary class="t-14"><?= Language('comments') ?></summary>
                     <section class="panel form-comentarios">
                     <?php foreach ($comentarios_estable as $key2 => $value2) {
                         if ($value2['ruta'] == $value['ruta'] && $value2['id_comentario'] == $value['id']) {
@@ -73,6 +66,7 @@ if (count($comentarios) <= 0) { ?>
                     } ?>
                     </section>
                 </details>
+                <?php endif; ?>
             <?php $i++; }
         }
     }

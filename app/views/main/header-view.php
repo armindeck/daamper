@@ -1,2 +1,2 @@
-<?= Views("components/mensaje-span"); ?>
+<?= Views("components/alert"); ?>
 <?= Views("components/anuncio-nav"); ?>
