@@ -1,4 +1,3 @@
-<?php #26/12/2024 - 4:22pm
+<?php # 18/05/2025 - 12:51am
 $Web = ['directorio'=>'./','ruta'=>'bienvenida.php'];
-require_once "{$Web["directorio"]}app/control/control.php";
-?>
+require_once $Web['directorio'].'app/controller/controller.php';
