@@ -1,0 +1,82 @@
+.index-entrada,
+.normal-directorio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: start;
+  gap: 4px;
+}
+
+.index-entrada a,
+.normal-directorio .elemento a {
+  text-decoration: none;
+  color: var(--con-entrada-co);
+}
+
+.con-entrada,
+.normal-directorio .elemento {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  max-width: var(--con-entrada-max-width);
+  border: var(--con-entrada-border);
+  border-radius: var(--con-entrada-border-radius);
+  color: var(--con-entrada-co);
+  background-color: var(--con-entrada-bg);
+  box-shadow: var(--con-entrada-box-shadow);
+}
+
+.normal-directorio .elemento {
+  max-width: 200px;
+  display: block;
+}
+
+.con-entrada .catalogo {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  padding: var(--con-entrada-con-catalogo-padding);
+  border-radius: var(--con-entrada-con-catalogo-border-radius);
+  color: var(--con-entrada-con-catalogo-co);
+  background-color: var(--con-entrada-con-catalogo-bg);
+}
+
+.con-entrada .imagen {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  height: var(--con-entrada-con-entrada-img-height);
+}
+
+.normal-directorio .elemento .imagen {
+  overflow: hidden;
+  height: 100%;
+  max-height: 270px;
+}
+
+.con-entrada .imagen img,
+.normal-directorio .elemento .imagen img {
+  width: 100%;
+  transition: 0.2s ease all;
+}
+
+.normal-directorio .elemento .imagen img {
+  height: 100%;
+}
+
+.con-entrada .imagen img:hover,
+.normal-directorio .elemento .imagen img:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.con-entrada .texto {
+  padding: 6px;
+}
+
+.normal-directorio .elemento p {
+  padding: 6px;
+  text-align: center;
+}

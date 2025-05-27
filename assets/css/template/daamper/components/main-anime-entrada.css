@@ -1,0 +1,110 @@
+/*
+.content .article { display: none; max-width: 0px; }
+.content > main { max-width: 100%; }
+*/
+.anime_entrada,
+.anime_entrada .izq .media-lista,
+.anime_entrada .izq .div-episodios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.anime_entrada-banner {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.anime_entrada-banner .contenido {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  width: 100%;
+  padding: 4px 20px;
+  background: rgb(0, 0, 0, 0.6);
+  color: white;
+}
+
+.anime_entrada-banner .contenido h2 {
+  color: white;
+}
+
+.anime_entrada .izq {
+  width: 100%;
+  max-width: 1100px;
+  padding: 4px;
+}
+
+.anime_entrada .izq .url {
+  font-size: 12px;
+  margin: 8px 0px 12px 0px;
+  text-transform: uppercase;
+}
+
+.anime_entrada .izq .media-lista {
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.anime_entrada .izq .media-lista .izq-content,
+.anime_entrada .izq .media-lista .opciones {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.anime_entrada .izq .media-lista .izq-content .poster {
+  max-width: 185px;
+  max-height: 260px;
+  border-radius: 4px;
+}
+
+.anime_entrada .izq .media-lista .izq-content .opciones .boton-estado {
+  text-align: center;
+}
+
+.anime_entrada .izq .media-lista .con {
+  display: inline;
+  max-width: calc(100% - 200px);
+  margin: 0;
+}
+
+.anime_entrada .izq .media-lista .der-content .sinopsis {
+  display: block;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 150px;
+}
+
+.anime_entrada .izq .div-episodios {
+  flex-direction: column;
+  flex-wrap: unset;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 480px;
+  margin: 0px 6px;
+}
+
+@media (max-width: 640px) {
+  .anime_entrada .izq {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+
+  .anime_entrada .izq .media-lista .con {
+    max-width: 100%;
+  }
+
+  .anime_entrada .izq .media-lista .der-content .sinopsis {
+    max-height: 350px;
+  }
+}

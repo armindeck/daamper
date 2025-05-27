@@ -1,0 +1,27 @@
+.panel {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.panel > form,
+.panel > .form {
+  display: flex;
+  flex-direction: column;
+  padding: var(--panel-form-padding);
+  margin: var(--panel-form-margin);
+  width: 100%;
+  max-width: var(--panel-form-max-width);
+  gap: 4px;
+  border: var(--panel-form-border);
+  border-radius: var(--panel-form-border-radius);
+  box-shadow: var(--panel-form-box-shadow);
+  color: var(--panel-form-co);
+  background-color: var(--panel-form-bg);
+}
+
+.panel > form ul,
+.panel > .form ul {
+  list-style-type: none;
+}

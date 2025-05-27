@@ -1,0 +1,30 @@
+.perfil {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-content: center;
+  margin: 20px 0px;
+  gap: 20px;
+}
+
+.perfil img {
+  width: 100%;
+  max-width: 250px;
+  max-height: 250px;
+  border-radius: var(--perfil-img-border-radius);
+}
+
+.perfil .info table {
+  display: inline-block;
+  font-size: 14px;
+  border: var(--perfil-info-table-border);
+  border-radius: var(--perfil-info-table-border-radius);
+  color: var(--perfil-info-table-co);
+  background-color: var(--perfil-info-table-bg);
+  box-shadow: var(--perfil-info-table-box-shadow);
+}
+
+.perfil .info table td {
+  padding: 4px;
+}

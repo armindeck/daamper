@@ -1,0 +1,35 @@
+body > .header {
+  z-index: 1000;
+  padding: var(--header-padding);
+  justify-content: space-between;
+  color: var(--header-co);
+  background-color: var(--header-bg);
+}
+
+body > .header a {
+  cursor: pointer;
+  color: var(--header-a-co);
+}
+
+body > .header a:hover {
+  color: var(--header-a-hover-co);
+}
+
+body > .header .titulo a {
+  display: inline-block;
+  font-weight: var(--header-titulo-a-font-weight);
+  padding: var(--header-titulo-a-padding);
+  border: var(--header-titulo-a-border);
+  border-radius: var(--header-titulo-a-border-radius);
+  box-shadow: var(--header-titulo-a-box-shadow);
+  color: var(--header-titulo-a-co);
+  background-color: var(--header-titulo-a-bg);
+}
+
+body > .header .titulo a:hover {
+  border: var(--header-titulo-a-hover-border);
+  border-radius: var(--header-titulo-a-hover-border-radius);
+  box-shadow: var(--header-titulo-a-hover-box-shadow);
+  color: var(--header-titulo-a-hover-co);
+  background-color: var(--header-titulo-a-hover-bg);
+}
