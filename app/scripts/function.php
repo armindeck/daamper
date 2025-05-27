@@ -15,13 +15,19 @@ function Ruta($Tipo = null, $Ruta, $Contenido) {
 	}
 }
 
+function Show(bool $condicion, $content){
+	echo $condicion === true ? $content() : "";
+}
+
 function FormComentario (string $string = null) { global $AX, $Web;
 	foreach (['comentar' => 'form-comentar', 'comentarios' => 'comentarios'] as $key => $value) {
 		$mostrar = false;
 		if (
 			isset($AX[$key]) && !empty($AX[$key]) &&
-			$Web['ruta_completa'] !== '../panel/procesa/procesa.creador.borrador.php'){ $mostrar = true; }
-		if ($Web['ruta_completa'] == '../panel/panel.php' && isset($_GET['ap']) && $_GET['ap'] == 'comentarios' && $string !== null) { $mostrar = true; }
+			$Web['ruta_completa'] !== '../../admin/process/creator.php'){ $mostrar = true; }
+		if ($Web['ruta_completa'] == '../admin/admin.php' && isset($_GET['ap']) && $_GET['ap'] == 'comments' && $string !== null) {
+			$mostrar = $value == "form-comentar" ? false : true;
+		}
 		if ($mostrar) {
 			Views("main/{$value}");
 		}
