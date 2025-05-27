@@ -1,35 +1,32 @@
 <?php # Auth
-if ($Web['ruta_completa'] == '../auth/configuracion.php' && !isset($_SESSION['id'])){
-	mensajeSpan(['bg'=>'red',
-		'text'=> Language('please-login', 'alert'),
-		'ruta'=>"{$Web['directorio']}auth/iniciar{$Web['config']['php']}"
-	]);
+if ($Web['ruta_completa'] == '../auth/config.php' && !isset($_SESSION['id'])){
+  sendAlert->Error(Language('please-login', 'alert'),
+		"{$Web['directorio']}auth/login{$Web['config']['php']}"
+	);
 }
 
 Ruta(null,
   isset($_SESSION['cambiar_contrasena']) &&
-  $Web['ruta_completa'] != '../auth/cambiar-contrasena.php',
+  $Web['ruta_completa'] != '../auth/change-password.php',
   function () use ($Web) {
-    mensajeSpan(['bg'=>'red',
-      'text'=> Language('change-password', 'alert'),
-      'ruta'=>"{$Web['directorio']}auth/cambiar-contrasena{$Web['config']['php']}"
-    ]);
+    sendAlert->Error(Language('change-password', 'alert'),
+      "{$Web['directorio']}auth/change-password{$Web['config']['php']}"
+    );
 });
 
 Ruta(null,
-  !isset($_SESSION['id']) && $Web['ruta_completa'] == '../auth/cambiar-contrasena.php',
+  !isset($_SESSION['id']) && $Web['ruta_completa'] == '../auth/change-password.php',
   function () use ($Web) {
-    mensajeSpan(['bg'=>'yellow','co'=>'#000',
-      'text'=> Language('no-access', 'alert'),
-      'ruta'=>"{$Web['directorio']}auth/iniciar{$Web['config']['php']}"
-    ]);
+    sendAlert->Warning(Language('no-access', 'alert'),
+      "{$Web['directorio']}auth/login{$Web['config']['php']}"
+    );
 });
 
 Ruta(null,
-  in_array($Web['ruta_completa'], ['../auth/iniciar.php', '../auth/registrar.php', '../auth/olvide-contrasena.php']),
+  in_array($Web['ruta_completa'], ['../auth/login.php', '../auth/register.php', '../auth/forgot-password.php']),
   function () use ($Web) {
     if(isset($_SESSION['id']) && isset($_SESSION['rol'])){
-      require $Web['directorio'].AppDatabase('usuarios/usuarios');
-      header("Location: {$Web['directorio']}p/{$usu[$_SESSION['id']]['usuario']}{$Web['config']['php']}");
+      $usuario = DATA->User()[$_SESSION["id"]]["usuario"];
+      header("Location: {$Web['directorio']}p/{$usuario}{$Web['config']['php']}");
     }
 }); ?>
