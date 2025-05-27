@@ -1,8 +1,7 @@
 <?php
 function AppScripts($valor=false){ return 'app/scripts/' . ($valor ? $valor : 'scripts') . '.php';  }
-function AppHttp($valor=false){ return 'app/global/' . ($valor ? $valor : 'global') . '.php';  }
+function AppGlobal($valor=false){ return 'app/global/' . ($valor ? $valor : 'global') . '.php';  }
 function AppContent($valor=false){ return 'app/content/' . ($valor ? $valor : 'content') . '.php';  }
-function AppDatabase($valor=false){ return 'app/database/' . ($valor ? $valor : 'database') . '.php'; }
 function AppViews($valor=false){ return 'app/views/' . ($valor ? $valor : 'layout') . '-view.php';  }
 
 // Assets
