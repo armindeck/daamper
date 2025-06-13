@@ -15,5 +15,5 @@
             </h3>
             <h3><?= str_replace('/','.', substr($AXR['fecha_publicado'], 0, 10)) ?></h3>
         </section>
-        <br><?= $AX['fragmento'] ?><br><br>
+        <?= isset($AX['fragmento']) && !empty($AX['fragmento']) ? "<br>{$AX['fragmento']}<br><br>" : "" ?>
         <?php endif; ?>
