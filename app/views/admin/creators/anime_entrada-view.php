@@ -1,3 +1,4 @@
+<?php Views("components/commands"); ?>
 <?= pTextarea(['name'=>'sinopsis','placeholder'=>Language(['synopsis']),'label'=>false,'texto'=>Language(['synopsis']),'style'=>'min-height:100px','required'=>true]) ?>
 <details>
 	<summary><?= Language('categories') ?></summary>
@@ -11,7 +12,7 @@
 <details>
 	<summary><?= Language('images') ?></summary>
 	<section>
-		<?= pEnlace(['class'=>'', 'texto'=>Language('upload-image'),'icono'=>'fas fa-external-link-alt','target'=>'_blank','href'=>'?ap=subir_imagen']) ?>
+		<?= pEnlace(['class'=>'', 'texto'=>Language('upload-image'),'icono'=>'fas fa-external-link-alt','target'=>'_blank','href'=>'?ap=upload-image']) ?>
 		<section style="margin-top: 4px; margin-bottom: 4px;">
 			<?= pSelectArchivos(['name'=>'miniatura','label'=>true,'texto'=>Language('thumbnail'),'ruta'=>$Web['directorio'].'assets/img/','tipo_archivos'=>'png,jpg,jpeg,gif']) ?>
 			<?= pInput(['name'=>'miniatura_url','type'=>'url','placeholder'=>Language('thumbnail').' URL ('.(Language('optional')).')','label'=>false,'texto'=>Language('thumbnail').' URL']) ?>
