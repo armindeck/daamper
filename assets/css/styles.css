@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Boogaloo");
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", "Arial", "Fontawesome", sans-serif;
+  font-family: "Poppins", "Arial", sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
