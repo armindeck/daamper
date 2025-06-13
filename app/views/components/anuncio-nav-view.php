@@ -5,7 +5,7 @@ if(isset($AX['anuncio']) && !empty($AX['anuncio'])) {
 		<div class="anuncio-marquee">
 			<a target="_blank" href="<?= $Web['ads']['enlace_anuncio_mensaje_movimiento'] ?? '' ?>">
 				<marquee direction="left" onmouseout="start();" onmouseover="stop();" scrollamount="10" scrolldelay="145">
-					<?= $Web['ads']['anuncio_mensaje_movimiento_texto'] ?? '' ?>
+					<?= isset($Web['ads']['anuncio_mensaje_movimiento_texto']) ? SCRIPTS->Commands($Web['ads']['anuncio_mensaje_movimiento_texto']) : '' ?>
 				</marquee>
 			</a>
 		</div>

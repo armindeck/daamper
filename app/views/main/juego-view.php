@@ -47,7 +47,7 @@
 			</aside>
 			<div class="con der-content">
 				<h3><?= Language('information') ?></h3><hr>
-				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= $AX['sinopsis']; ?></p><hr>
+				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= SCRIPTS->Commands($AX['sinopsis']); ?></p><hr>
 				<details class="t-14" open>
 					<summary><?= Language('details') ?></summary>
 					<ul class="t-14">
