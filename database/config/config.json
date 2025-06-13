@@ -41,7 +41,7 @@
         "enlace_anuncio_miniatura_article": "https:\/\/dbproject.rf.gd",
         "imagen_anuncio_mini_banner": "assets\/img\/anuncio.png",
         "imagen_anuncio_miniatura_article": "assets\/img\/miniatura.png",
-        "anuncio_mensaje_movimiento_texto": "🎁 Se encuentra disponible la versión 0.3.0 Estable de daamper y viene con nuevas mejoras! ✅",
+        "anuncio_mensaje_movimiento_texto": "🎁 Se encuentra disponible la versión cmd[version]; cmd[state]; de daamper y viene con nuevas mejoras! ✅",
         "mostrar_anuncio_mensaje_movimiento": "on",
         "mostrar_anuncio_mini_banner": "on",
         "mostrar_anuncio_miniatura_article": "on"
