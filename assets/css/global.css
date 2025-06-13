@@ -89,13 +89,28 @@ input[type="password"],
 input[type="date"],
 textarea,
 select,
-.campo {
+.campo,
+.text-field {
   padding: 6px;
   border: var(--formulario-campo-border);
   border-radius: var(--formulario-campo-border-radius);
   color: var(--formulario-campo-co);
   background-color: var(--formulario-campo-bg);
   box-shadow: var(--formulario-campo-box-shadow);
+}
+
+.text-field {
+  display: inline-block;
+}
+
+.campo-mini,
+.text-field-mini {
+  padding: 1px 4px;
+}
+
+.text-field-small,
+.text-field-mini-small{
+  font-size: smaller;
 }
 
 input[type="text"]:focus,
@@ -342,6 +357,10 @@ textarea {
   font-size: 20px;
 }
 
+.text-command {
+  color: green;
+}
+
 .t-center {
   text-align: center;
 }
@@ -374,7 +393,8 @@ label {
 }
 
 .flex-evenly,
-.flex-column {
+.flex-column,
+.flex-center {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
@@ -385,6 +405,10 @@ label {
 }
 .flex-column {
   flex-direction: column !important;
+}
+
+.flex-center {
+  justify-content: center;
 }
 
 .flex-row{
