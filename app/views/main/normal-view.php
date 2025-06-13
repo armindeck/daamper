@@ -11,7 +11,7 @@
       echo in_array(strtolower($AX['tipo']), ['', 'normal']) ? '<div class="con">' : '';
       if (in_array(strtolower($AX['tipo']), ['blog', 'normal-blog'])) { Views("main/blog"); }
     } ?>
-	<?= SCRIPTS->comandos($Web, PlantillaComandos($AX['contenido'], 0, 0)) ?>
+	<?= SCRIPTS->Commands($AX['contenido']) ?>
 	<?= isset($AX['tipo']) && in_array(strtolower($AX['tipo']), ['', 'normal', 'blog', 'normal-blog']) ? (in_array(strtolower($AX['tipo']), ['blog']) && isset($AXR['fecha_modificado']) && !empty($AXR['fecha_modificado']) ? '<hr><small>' . $AXR['fecha_modificado'] . '</small>' : '') . '</div>' : ''; ?>
 	<?= isset($AX['tipo']) && in_array(strtolower($AX['tipo']), ['blog', 'normal-blog']) ? '</div>' : ''; ?>
 <?php } ?>
