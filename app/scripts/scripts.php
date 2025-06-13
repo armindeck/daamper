@@ -147,9 +147,9 @@ class scripts
     {
         return $this->RutaConvertir($string);
     }
-    public function comandos($Web, $string)
+    public function Commands($string)
     {
-        require_once __DIR__ . '/comandos.php';
+        require __DIR__ . '/commands.php';
         return $string;
     }
     public function saltoToBr($string)
