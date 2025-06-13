@@ -1,6 +1,28 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.1 Stable] - 11/06/2025
+-   Se agrego nuevo contenido e instrucciones para cambiar el idioma, iniciar sesión, hacer la primera publicación, configurar la pagina, configurar la plantilla y se cambiaron los comandos en la publicación [`bienvenida`](./database/post/bienvenida.json).
+-   Se agrego un componente para mostrar los [`comandos`](./app/views/components/commands-view.php) en los apartados de los creadores [`normal`](./app/views/admin/creators/normal-view.php), [`anime entrada`](./app/views/admin/creators/anime_entrada-view.php) y [`juego`](./app/views/admin/creators/juego-view.php).
+-   Se cambio el nombre del archivo de los `comandos.php` por [`commands.php`](./app/scripts/commands.php), se mejoro el sistema para los nuevos comandos, compatibilidad para los antiguos, soporte extendido para botones, enlaces, íconos, entre otros. Además se usa un archivo json para los [`comandos`](./database/config/commands.json).
+-   Se removió la función de **PlantillaComandos** para evitar futuros problemas y vulnerabilidades en vista [`normal`](./app/views/main/normal-view.php)
+-   Se agregaron los comandos para que puedan ser usados en la sinopsis de los animes y juegos, además en los anuncios.
+-   Se cambio el nombre de la función comandos por Commands y se actualizo el contenido de la función en los [`scripts`](./app/scripts/scripts.php).
+-   Se cambiaron los comandos de la plantilla por los comandos de las publicaciones en el `index`.
+-   Se corrigieron los enlaces de subir imágenes.
+-   Nuevos estilos para los campos de texto, color de texto de comandos y un flex center en los estilos [`global`](./assets/css/global.css).
+-   Ahora los anuncios funcionan con los comandos de las publicaciones.
+-   Se agrego un nuevo archivo para los [`comandos`](./database/config/commands.json).
+-   Los comandos ahora se mostraran en la api.
+-   Se agregaron los comandos de cmd (version y state) para no tener que actualizar los anuncios en movimiento cada ves que llegue una nueva actualización.
+-   Nuevas traducciones, se actualizaron las versiones y los cambios.
+
+### Correcciones
+-   Corrección de espaciado cuando no se coloca el fragmento en las publicaciones de tipo blog.
+-   Corrección de importación de fuentes Poppins.
+-   Corrección en los enlaces de subir imagen en los creadores y anuncios.
+-   `30/05/2025` Corrección de etiquetas mal escritas en las traducciones para los géneros de los animes.
+
 ## [0.3.0 Stable] – 27/05/2025
 -   Generador de pin y recuperación de cuenta.
 -   En la configuración del perfil se agregó una vista para mostrar u generar un nuevo pin.
