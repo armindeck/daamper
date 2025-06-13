@@ -5,9 +5,9 @@
         "db_archivo": "index.json",
         "db_ruta": "index.php",
         "fecha_publicado": "06\/07\/2024 - 8:58pm",
-        "fecha_modificado": "25\/05\/2025 - 12:44am",
+        "fecha_modificado": "11\/06\/2025 - 2:58pm",
         "id_publicador": "1",
-        "creador_borrador_version": "0.1.6 Estable",
+        "creador_borrador_version": "0.1.6 Stable",
         "creador_borrador_fecha": "23.05.2025"
     },
     "AC": {
@@ -17,7 +17,7 @@
         "catalogo": "index",
         "meta_etiquetas": "armin, proyectos de armin",
         "fragmento": "",
-        "contenido": "<section class=\"con t-center\" style=\"background-color: red; color: white;\">\r\n <p>Se encuentra disponible la versión <span>[Return=WebVersion]<\/span> [Return=WebEstado]! y llega con nuevas mejoras!<\/p>\r\n<\/section>\r\n<section class=\"con\">\r\n <p>Hola!, soy <a target=\"_blank\" href=\"[Return=WebEnlace]\">[Return=WebCreador]<\/a> y soy vtuber, desarrollador de sitios web y juegos que comparto en mi <a target=\"_blank\" href=\"https:\/\/youtube.com\/@soyarmindeck\">Canal de YouTube<\/a>. Además me gusta dibujar, editar y crear videos, los cuales son subidos al canal. Desarrollo páginas web como la presente <strong>daamper<\/strong> donde subo mis contenidos de información y actualizaciones de ciertos temas. <a target=\"_blank\" href=\"https:\/\/dbproject.rf.gd\/\">¡Sigue a delante!<\/a><\/p>\r\n<\/section>\r\n<center>\r\n  <a class=\"boton-2\" target=\"_blank\" href=\"https:\/\/youtube.com\/@soyarmindeck?sub_confirmation=1\"><i class=\"fab fa-youtube\"><\/i> Suscribete<\/a>\r\n  <a class=\"boton\" href=\"p\/perfil\">Cuenta <i class=\"fas fa-user\"><\/i><\/a>\r\n  <a class=\"boton-2\" target=\"_blank\" href=\"https:\/\/github.com\/armindeck\">GitHub <i class=\"fab fa-github\"><\/i><\/a>\r\n<\/center>",
+        "contenido": "<section class=\"con t-center\" style=\"background-color: red; color: white;\">\r\n <p>Se encuentra disponible la versión cmd[version]; cmd[state];! y llega con nuevas mejoras!<\/p>\r\n<\/section>\r\ncontent[\r\n <p>Hola!, soy link-external[cmd[creator-page-link];]\/[cmd[creator];]link; y soy vtuber, desarrollador de sitios web y juegos que comparto en mi link-external[https:\/\/youtube.com\/@soyarmindeck]\/[Canal de YouTube]link;. Además me gusta dibujar, editar y crear videos, los cuales son subidos al canal. Desarrollo páginas web como la presente <strong>daamper<\/strong> donde subo mis contenidos de información y actualizaciones de ciertos temas. link-external[cmd[creator-page-link];]\/[¡Sigue a delante!]link;<\/p>\r\n]content;\r\ncenter[\r\n  button-2-external[https:\/\/youtube.com\/@soyarmindeck?sub_confirmation=1]\/[icon[fab fa-youtube]icon; Suscríbete]button;\r\n  button[p\/perfil]\/[Cuenta icon[fas fa-user]icon;]button;\r\n  button-2-external[https:\/\/github.com\/armindeck]\/[GitHub icon[fab fa-github]icon;]button;\r\n]center;",
         "tipo": "libre",
         "posicion-": "1",
         "mostrar-": "on",

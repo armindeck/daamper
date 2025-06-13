@@ -1,3 +1,3 @@
-<?php # 25/05/2025 - 12:44am
+<?php # 11/06/2025 - 2:58pm
 $Web = ['directorio'=>'./','ruta'=>'index.php'];
 require_once $Web['directorio'].'app/controller/controller.php';
