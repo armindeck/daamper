@@ -106,7 +106,7 @@
 
 							$lista_campos_predeterminados[3] = [
 								['name' => 'a_subir_imagen', 'contenido' =>
-								pEnlace(['class' => '', 'texto' => (Language('upload-image')), 'icono' => 'fas fa-external-link-alt', 'target' => '_blank', 'href' => '?ap=subir_imagen'])],
+								pEnlace(['class' => '', 'texto' => (Language('upload-image')), 'icono' => 'fas fa-external-link-alt', 'target' => '_blank', 'href' => '?ap=upload-image'])],
 								['name' => 'miniatura', 'contenido' =>
 								pSelectArchivos(['name' => 'miniatura', 'label' => true, 'texto' => (Language('thumbnail')), 'ruta' => $Web['directorio'] . 'assets/img/', 'tipo_archivos' => 'png,jpg,jpeg,gif'])],
 								['name' => 'miniatura_url', 'contenido' =>
