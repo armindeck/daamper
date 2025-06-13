@@ -41,7 +41,7 @@
   },
   "api": {
     "show": {
-      "config": ["info", "version", "config", "default", "rules", "language"],
+      "config": ["info", "version", "config", "default", "rules", "language", "commands"],
       "comment": ["comment", "extras"],
       "user": ["user", "extras"],
       "creator": ["default", "list-of-entries", "field-default", "list-tags"],
