@@ -1,8 +1,8 @@
 {
 	"system": {
-		"version": "0.3.1",
+		"version": "0.3.1.1",
 		"state": "Stable",
-		"updated": "13.06.2025",
+		"updated": "14.06.2025",
 		"created": "12.06.2024",
 		"license": "Uso No Transferible – Prohibida la venta del código fuente"
 	},
@@ -32,9 +32,9 @@
 			"created": "02.04.2024"
 		},
 		"auth": {
-			"version": "0.2.0",
+			"version": "0.2.1",
 			"state": "Stable",
-			"updated": "25.05.2025",
+			"updated": "14.06.2025",
 			"created": "12.06.2024"
 		},
 		"report": {
