@@ -106,7 +106,7 @@ if (SCRIPTS->SimpleToken(SCRIPTS->normalizar2($_POST['resultado'])) != SCRIPTS->
 if ($TIPO == 'no_cambiar_contrasena') {
 	if (isset($_SESSION['id'])) {
 		unset($_SESSION['cambiar_contrasena']);
-		sendAlert->Error(Language('recommend-password-change', 'auth'), "{$Web['directorio']}auth/login{$Web['config']['php']}");
+		sendAlert->Error(Language('recommend-password-change', 'auth'), "{$Web['directorio']}p/".(DATA->User()[$_SESSION["id"]]["usuario"])."{$Web['config']['php']}");
 	}
 }
 
@@ -414,6 +414,7 @@ if (in_array($TIPO, ['iniciar', 'registrar'])) {
 }
 
 if ($TIPO == 'cambiar_contrasena') {
+	if(isset($_SESSION['cambiar_contrasena'])){ unset($_SESSION['cambiar_contrasena']); }
 	sendAlert->Success(Language('password-changed-success', 'auth'), "{$Web['directorio']}p/{$usu[$_SESSION['id']]['usuario']}{$Web['config']['php']}");
 }
 if ($TIPO == 'olvide_contrasena') {
