@@ -1,7 +1,17 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
-## [0.3.1 Stable] - 11/06/2025
+## [0.3.1.1 Stable] - 14/06/2025
+Corregido bug en recuperación de cuenta
+
+-   Corregido problema donde no se cambiaba la contraseña y no se mostraba la alerta de recomendación.
+-   Solucionado bucle que pedía cambiar la contraseña incluso después de haberla cambiado correctamente.
+-   Actualizado versión y cambios.
+-   Corregido la fecha de la versión `0.3.1` en **CHANGELOD.md**
+
+Archivo corregido: [`auth`](./app/actions/public/auth.php)
+
+## [0.3.1 Stable] - 13/06/2025
 -   Se agrego nuevo contenido e instrucciones para cambiar el idioma, iniciar sesión, hacer la primera publicación, configurar la pagina, configurar la plantilla y se cambiaron los comandos en la publicación [`bienvenida`](./database/post/bienvenida.json).
 -   Se agrego un componente para mostrar los [`comandos`](./app/views/components/commands-view.php) en los apartados de los creadores [`normal`](./app/views/admin/creators/normal-view.php), [`anime entrada`](./app/views/admin/creators/anime_entrada-view.php) y [`juego`](./app/views/admin/creators/juego-view.php).
 -   Se cambio el nombre del archivo de los `comandos.php` por [`commands.php`](./app/scripts/commands.php), se mejoro el sistema para los nuevos comandos, compatibilidad para los antiguos, soporte extendido para botones, enlaces, íconos, entre otros. Además se usa un archivo json para los [`comandos`](./database/config/commands.json).
