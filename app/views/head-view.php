@@ -1,8 +1,8 @@
-	<?php $ruta = isset($Web['config']['enlace_web']) && !empty($Web['config']['enlace_web']) ? $Web['config']['enlace_web'].'/' : '';
+	<?php global $WEBSITE;  $ruta = isset($Web['config']['enlace_web']) && !empty($Web['config']['enlace_web']) ? $Web['config']['enlace_web'].'/' : '';
 	if($AX['archivo'] == 'index.php'){ $ruta .= str_replace('index.php', '', $Web['ruta']); } else {
 		$ruta .= isset($Web['config']['php']) && empty($Web['config']['php']) ? str_replace('.php', '', $Web['ruta']) : $Web['ruta'];
 	} ?>
-	<title><?= $AX['titulo'] ?? '' ?> ~ <?= $Web['config']['nombre_web'] ?? WEBSITE->nombre ?></title>
+	<title><?= $AX['titulo'] ?? '' ?> ~ <?= $Web['config']['nombre_web'] ?? $WEBSITE->nombre ?></title>
 	<link rel="preload" href="<?= $Web['config']['https_imagen'] . AssetsImg('logo.png') ?>" as="image">
 	<link rel="icon" type="image/png" href="<?= $Web['config']['https_imagen'] . AssetsImg('logo.png') ?>" sizes="128x128">
 	<meta name="description" content="<?= $AX['descripcion'] ?? '' ?>" />
@@ -19,11 +19,11 @@
 	<meta name="twitter:image" content="<?= ImagenesACX($AX, false, ['miniatura', 'miniatura_url']) ?>">
 	<meta name="keywords" content="<?= ($AX['meta_etiquetas'] ?? '') . ', '.($Web['config']['nombre_web'] ?? '').', '.($Web['config']['enlace_web_simple'] ?? '').', '.($Web['config']['enlace_web'] ?? '') ?>">
 	<!--
-		Theme Name: <?= WEBSITE->nombre ?>' Theme
-		Theme URL: <?= WEBSITE->enlace . "\n" ?>
-		Author: <?= WEBSITE->creador . "\n" ?>
-		Author URL: <?= WEBSITE->creador_enlace . "\n" ?>
-		Versión: <?= WEBSITE->version .' '.WEBSITE->estado.' '.WEBSITE->mod . "\n" ?>
+		Theme Name: <?= $WEBSITE->nombre ?>' Theme
+		Theme URL: <?= $WEBSITE->enlace . "\n" ?>
+		Author: <?= $WEBSITE->creador . "\n" ?>
+		Author URL: <?= $WEBSITE->creador_enlace . "\n" ?>
+		Versión: <?= $WEBSITE->version .' '.$WEBSITE->estado.' '.$WEBSITE->mod . "\n" ?>
 	-->
 	<?php require_once $Web['directorio'] . 'assets/css/styles.php'; ?>
 	<?php foreach (['scripts_google','scripts_font_awesome','scripts_otros'] as $key => $value){

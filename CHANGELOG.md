@@ -1,6 +1,16 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.2 Stable] - 25/07/2025
+- Reemplazo de define() con objeto por variable global segura ($WEBSITE)
+
+- Se eliminó el uso incorrecto de define("WEBSITE", new Web()) que causaba un TypeError en PHP 8.2, ya que define() no acepta objetos como segundo parámetro.
+
+- Ahora se usa una variable global $WEBSITE inicializada en el sistema principal, lo que garantiza compatibilidad con versiones modernas de PHP y mantiene la accesibilidad en todo el proyecto.
+
+Este cambio también permite evitar errores de tipo y mejorar la mantenibilidad del código.
+
+
 ## [0.3.1.1 Stable] - 14/06/2025
 Corregido bug en recuperación de cuenta
 

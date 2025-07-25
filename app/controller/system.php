@@ -44,4 +44,5 @@ class Web {
             .'</span>';
     }
 }
-define("WEBSITE", new Web());
+$WEBSITE = new Web();
+//define("WEBSITE", new Web());

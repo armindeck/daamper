@@ -1,4 +1,4 @@
-<?php function PlantillaComandosReemplazar ($comando, $comando_valor, $comando_atributos, $Contenedor, $Elemento) { global $Web;
+<?php function PlantillaComandosReemplazar ($comando, $comando_valor, $comando_atributos, $Contenedor, $Elemento) { global $Web, $WEBSITE;
 	if (in_array($comando, ['Form', 'Return', 'Post'])) {
         if (in_array($comando_valor, ['Input'])) {
 			$comando_atributos['name'] = ($comando_atributos['name'] ?? 'empty') . "_elemento_{$Elemento}_contenedor_{$Contenedor}";
@@ -45,7 +45,7 @@
 		] as $key => $value) {
 			if($comando_valor == 'Web'.(is_string($key) ? $key : $value)) {
 				$return = strtolower($value);
-				return WEBSITE->$return;
+				return $WEBSITE->$return;
 			}
 		}
 
@@ -55,8 +55,8 @@
 			case 'Directorio': return $Web['directorio'] ?? './'; break;
 			case 'Php': return $Web['config']['php'] ?? ''; break;
 			case 'Copy': return '&copy; ' . (isset($Web['config']['ano_publicada']) && $Web['config']['ano_publicada'] != date("Y") ? $Web['config']['ano_publicada'] . ' -' : '') .' '. date("Y") . ' ' . ($Web['config']['nombre_web'] ?? '').'.'; break;
-			#case 'WebVersion&Estado': return 'v'.WEBSITE->version .' ' . WEBSITE->estado; break;
-			case 'WebVersionCompleta': return WEBSITE->web(); break;
+			#case 'WebVersion&Estado': return 'v'.$WEBSITE->version .' ' . $WEBSITE->estado; break;
+			case 'WebVersionCompleta': return $WEBSITE->web(); break;
 			case 'ElementoContenedor': return "_elemento_{$Elemento}_contenedor_{$Contenedor}" ?? ''; break;
 			case 'WebVersionesOnline': return '<iframe frameborder="0" width="100%" style="min-height: 250px;" src="https://dbproject.rf.gd/main_external.php?tema='.(isset($_SESSION['tmp']['tema']) ? $_SESSION['tmp']['tema'] : 'blue-aero').'&cantidad=7&background=none&contenido=daamper-actualizaciones&font-size=14px&max-width=100%"></iframe>'; break;
 			case 'Visitas': return DATA->Read('other/visits')['total'] ?? 0; break;
