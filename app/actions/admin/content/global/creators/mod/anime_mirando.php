@@ -4,8 +4,8 @@ if(!file_exists(RAIZ . 'database/post/'.$AC['referencia'])){
 	die(Language(['creator', 'reference-does-not-exist'], 'dashboard'));
 }
 
-$ACR = DATA->Post($AC['referencia'])["ACR"];
-$AC = DATA->Post($AC['referencia'])["AC"];
+$ACR = Daamper::$data->Post($AC['referencia'])["ACR"];
+$AC = Daamper::$data->Post($AC['referencia'])["AC"];
 
 require __DIR__.'/anime_entrada.php';
 $MOD = [

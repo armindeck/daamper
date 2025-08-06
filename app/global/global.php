@@ -11,10 +11,10 @@ Ruta(null,
 		if(!isset($_SESSION['rol']) or isset($_SESSION['rol']) && strtolower($_SESSION['rol']) != 'ceo founder'){
 			CrearCarpetas('database/other/');
 			$file = $Web['directorio'].'database/other/visits.json';
-			$leer = DATA->Read("other/visits");
+			$leer = Daamper::$data->Read("other/visits");
 			$leer['total'] = AumentarJSON($leer, 'total');
 			$leer[$Web['ruta']] = AumentarJSON($leer, $Web['ruta']);
 
-			DATA->Save("other/visits", $leer);
+			Daamper::$data->Save("other/visits", $leer);
 		}
 }); ?>

@@ -1,6 +1,6 @@
 <!-- © 2024 Armin | dbproject.rf.gd -->
 <!DOCTYPE html>
-<html lang="<?= CONFIG['language'] ?>">
+<html lang="<?= Daamper::$config['language'] ?>">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">

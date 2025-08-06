@@ -3,7 +3,7 @@
 <?php
 $file_comentarios = $Web['directorio'] . "database/comment/comment.json";
 $file_comentarios_extras = $Web['directorio'] . "database/comment/extras.json";
-$comentarios = SCRIPTS->UnirArrays(DATA->Comment() ?? [], DATA->Comment("extras") ?? []) ?? [];
+$comentarios = Daamper::$scripts->UnirArrays(Daamper::$data->Comment() ?? [], Daamper::$data->Comment("extras") ?? []) ?? [];
 
 if (count($comentarios) <= 0) { ?>
     <div class="form" style="text-align: center;"><?= Language('no-comments', 'form') ?></div>
@@ -11,7 +11,7 @@ if (count($comentarios) <= 0) { ?>
     $comentarios_estable = $comentarios;
     $comentarios = isset($_GET['orden_comentarios']) && $_GET['orden_comentarios'] === 'desc' ? array_reverse($comentarios) : $comentarios;
     $cantidad = isset($_GET['cantidad_comentarios']) && is_numeric($_GET['cantidad_comentarios']) && $_GET['cantidad_comentarios'] <= count($comentarios) ?
-        SCRIPTS->normalizar2($_GET['cantidad_comentarios']) : count($comentarios);
+        Daamper::$scripts->normalizar2($_GET['cantidad_comentarios']) : count($comentarios);
     if ($comentarios > 10) { ?>
     <?php if (!isset($_GET['view'])): ?>
     <form method="get">

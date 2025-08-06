@@ -14,7 +14,7 @@
 	<details>
 		<summary><?= Language(['creator', 'list-of-entries'], 'dashboard') ?></summary>
 		<section>
-			<?php $p = file_exists(RAIZ . "database/creator/list-of-entries.json") ? DATA->Read("creator/list-of-entries") : [];
+			<?php $p = file_exists(RAIZ . "database/creator/list-of-entries.json") ? Daamper::$data->Read("creator/list-of-entries") : [];
 			$j = 1;
 			foreach ($p as $key => $value) {
 				echo '<section class="flex-column"><label class="flex-between"><span>' . ($value['entrada'] ? ucfirst($value['entrada']) : Language(['creator', 'posts'], 'dashboard')) . '</span><section class="flex-between">';

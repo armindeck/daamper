@@ -6,14 +6,14 @@ if (isset($_SESSION['creador-key-hidden']) && !isset($_SESSION['tmpForm'])) {
 }
 if(!isset($_SESSION['tmpForm'])){
 	/* Error generado por: views/main */
-	sendAlert->Warning(Language("no-access-preview", "alert"), '../admin.php?ap=creator&disable-entries=true');
+	Daamper::$sendAlert->Warning(Language("no-access-preview", "alert"), '../admin.php?ap=creator&disable-entries=true');
 }
 if(!isset($_SESSION['tmpForm']['creador'])){
-	sendAlert->Warning(Language("creator-not-exist", "alert"), '../admin.php?ap=creator&disable-entries=true');
+	Daamper::$sendAlert->Warning(Language("creator-not-exist", "alert"), '../admin.php?ap=creator&disable-entries=true');
 }
 unset($_SESSION['tmpForm']['mostrar']);
-$X['creador_borrador_version'] = VERSION['dashboard']['creator']['preview']['version'] . ' ' . VERSION['dashboard']['creator']['preview']['state'];
-$X['creador_borrador_fecha'] = VERSION['dashboard']['creator']['preview']['updated'];
+$X['creador_borrador_version'] = Daamper::$version['dashboard']['creator']['preview']['version'] . ' ' . Daamper::$version['dashboard']['creator']['preview']['state'];
+$X['creador_borrador_fecha'] = Daamper::$version['dashboard']['creator']['preview']['updated'];
 
 /* VARIABLES LIBRES
 	*	$ACR_CARGADO
@@ -28,7 +28,7 @@ $LISTA_ACR = ['creador', 'pubo', 'db_archivo'];
 
 foreach ($LISTA_ACR as $key => $value) {
 	if(isset($_SESSION['tmpForm'][$value])){
-		$ACR_FORM[$value] = SCRIPTS->normalizar2($_SESSION['tmpForm'][$value]);
+		$ACR_FORM[$value] = Daamper::$scripts->normalizar2($_SESSION['tmpForm'][$value]);
 	}
 }
 
@@ -39,7 +39,7 @@ $QUITARLO_DEL_INDEX = isset($_SESSION['tmpForm']['quitarlo_del_index']) &&
 
 if(!empty($ACR_FORM['pubo'])){
 	if(!in_array($ACR_FORM['pubo'], ['', 'borrador', 'publicacion'])){
-		sendAlert->Warning(Language("do-not-modify-pubo", "alert"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
+		Daamper::$sendAlert->Warning(Language("do-not-modify-pubo", "alert"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
 	}
 	$post_or_draft = match (true) {
 		$ACR_FORM['pubo'] == "borrador" => "draft",
@@ -50,19 +50,19 @@ if(!empty($ACR_FORM['pubo'])){
 	$ruta_archivo = $Web["directorio"] . "database/" . $post_or_draft . "/" . $archivo_en_db;
 	
 	if(!file_exists($ruta_archivo)) {
-		sendAlert->Warning(Language("file-not-exist", "alert", ['value' => $ACR_FORM['db_archivo']]),
+		Daamper::$sendAlert->Warning(Language("file-not-exist", "alert", ['value' => $ACR_FORM['db_archivo']]),
 			"../admin.php?ap=creator&mensaje=es-true&creador={$ACR_FORM['creador']}"
 		);
 	}
 	
-	$ACR_CARGA = DATA->Read($post_or_draft . "/" . $archivo_en_db)["ACR"];
-	$AC_CARGA = DATA->Read($post_or_draft . "/" . $archivo_en_db)["AC"];
+	$ACR_CARGA = Daamper::$data->Read($post_or_draft . "/" . $archivo_en_db)["ACR"];
+	$AC_CARGA = Daamper::$data->Read($post_or_draft . "/" . $archivo_en_db)["AC"];
 }
 
 if(isset($ACR_CARGA)){
 	foreach ($LISTA_ACR as $key => $value) {
 		if($ACR_FORM[$value] != $ACR_CARGA[$value]){
-			sendAlert->Warning(Language("data-different-hidden-fields", "alert"), "../admin.php?ap=creator&creador={$ACR_CARGA['creador']}&tipo={$ACR_CARGA['tipo']}&archivo={$ACR['db_archivo']}");
+			Daamper::$sendAlert->Warning(Language("data-different-hidden-fields", "alert"), "../admin.php?ap=creator&creador={$ACR_CARGA['creador']}&tipo={$ACR_CARGA['tipo']}&archivo={$ACR['db_archivo']}");
 		}
 	}
 	$LISTA_ACR_CARGA = ['creador','pubo','db_ruta','id_publicador','fecha_publicado','fecha_modificado','creador_borrador_version','creador_borrador_fecha'];
@@ -77,7 +77,7 @@ if(isset($ACR_CARGA)){
 
 foreach ($_SESSION['tmpForm'] as $key => $value) {
 	if(!in_array($key, ['creador', 'pubo', 'db_ruta', 'db_archivo', 'volver_a_mostrarlo_como_nuevo', 'quitarlo_del_index'])){
-		$AC_FORM[$key] = trim(SCRIPTS->quitarComilla($value));
+		$AC_FORM[$key] = trim(Daamper::$scripts->quitarComilla($value));
 	}
 }
 
@@ -97,7 +97,7 @@ if(file_exists(RAIZ . 'app/actions/admin/content/global/creators/action/'.$ACR_F
 if (isset($AC_FORM['ruta'])) { $AC_FORM['ruta'] = str_replace(['../','./'], '', $AC_FORM['ruta']); $AC_FORM['ruta'] = trim($AC_FORM['ruta'], '/'); }
 
 if(!isset($AC_FORM['ruta']) || !isset($AC_FORM['archivo'])){
-	sendAlert->Warning(Language("missing-path-or-file", "alert"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
+	Daamper::$sendAlert->Warning(Language("missing-path-or-file", "alert"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
 }
 
 if (empty($AC_FORM['ruta'])) {
@@ -110,7 +110,7 @@ if (empty($AC_FORM['ruta'])) {
 }
 
 $AC_FORM['archivo'] = str_replace('.php', '', $AC_FORM['archivo']);
-$AC_FORM['archivo'] = SCRIPTS->archivoAceptado($AC_FORM['archivo']);
+$AC_FORM['archivo'] = Daamper::$scripts->archivoAceptado($AC_FORM['archivo']);
 $AC_FORM['archivo'] .= '.php';
 
 if(!empty($AC_FORM['ruta'])){ $pase=false;
@@ -126,7 +126,7 @@ if(!empty($AC_FORM['ruta'])){ $pase=false;
 	unset($pase); unset($RUT_SLAS);
 }
 
-$AC_FORM['ruta'] = SCRIPTS->RutaConvertir($AC_FORM['ruta']);
+$AC_FORM['ruta'] = Daamper::$scripts->RutaConvertir($AC_FORM['ruta']);
 
 $CONVERTIDO = [
 	'ruta' => $AC_FORM['ruta'],
@@ -138,14 +138,14 @@ $CONVERTIDO = [
 $CONVERTIDO['ruta_archivo_slash_json'] = str_replace([".php", ".json"], "", $CONVERTIDO['ruta_archivo_slash']) . ".json";
 $FILE_JSON_DATA = $CONVERTIDO['ruta_archivo_slash_json'];
 
-$default = DATA->Config("rules")["creator"]["publish"];
+$default = Daamper::$data->Config("rules")["creator"]["publish"];
 if(in_array(str_replace(".php", "", $CONVERTIDO["ruta_archivo"]), $default["access"]["files"]) && !in_array(strtolower($_SESSION["rol"]), $default["access"]["rules"])){
-	sendAlert->Error(Language(["creator", "need-higher-role-to-modify-post"], "dashboard"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
+	Daamper::$sendAlert->Error(Language(["creator", "need-higher-role-to-modify-post"], "dashboard"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
 }
 
 if(in_array(trim($CONVERTIDO["ruta"], "/"), $default["denied-routes"])){
 	if(trim($CONVERTIDO["ruta"], "/") == "p" && strtolower($_SESSION["rol"]) != "ceo founder" || trim($CONVERTIDO["ruta"], "/") != "p"){
-		sendAlert->Error(Language(["creator", "please-use-another-route"], "dashboard"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
+		Daamper::$sendAlert->Error(Language(["creator", "please-use-another-route"], "dashboard"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
 	}
 }
 
@@ -154,7 +154,7 @@ if(empty($ACR_FORM['pubo'])){
 		file_exists(RAIZ . 'database/post/'.$CONVERTIDO['ruta_archivo_slash']) ||
 		file_exists(RAIZ . 'database/draft/'.$CONVERTIDO['ruta_archivo_slash'])
 	){
-		sendAlert->Error(Language("duplicate-post-or-draft", "alert"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
+		Daamper::$sendAlert->Error(Language("duplicate-post-or-draft", "alert"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
 	}
 }
 
@@ -162,7 +162,7 @@ if(isset($ACR_CARGADO['db_ruta'])){
 	if($CONVERTIDO['ruta_archivo'] != $ACR_CARGADO['db_ruta']){
 		$_SESSION['tmpForm']['ruta'] = $AC_CARGA['ruta'];
 		$_SESSION['tmpForm']['archivo'] = $AC_CARGA['archivo'];
-		sendAlert->Error(Language("do-not-modify-path", "alert"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}&tipo={$ACR_CARGADO['pubo']}&archivo={$ACR_FORM['db_archivo']}");
+		Daamper::$sendAlert->Error(Language("do-not-modify-path", "alert"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}&tipo={$ACR_CARGADO['pubo']}&archivo={$ACR_FORM['db_archivo']}");
 	}
 }
 
@@ -220,12 +220,12 @@ require RAIZ . AppContent('creator');
 	<div class="campo scrolls" style="min-width: 100%; max-width: 100%;"><?php
 		echo '<h3>'.Language("FORM", "other").'</h3><hr>';
 		foreach ($AC_FORM as $key => $value) {
-			echo '<b>'.$key .':</b> '.SCRIPTS->normalizar($value).'<hr> ';
+			echo '<b>'.$key .':</b> '.Daamper::$scripts->normalizar($value).'<hr> ';
 		}
 		if(isset($AC_FORM_POST)){
 			echo '<h3>'.Language("POST-FORM", "other").'</h3><hr>';
 			foreach ($AC_FORM_POST as $key => $value) {
-				echo '<b>'.$key .':</b> '.SCRIPTS->normalizar($value).'<hr> ';
+				echo '<b>'.$key .':</b> '.Daamper::$scripts->normalizar($value).'<hr> ';
 			}
 		}
 		if(file_exists(RAIZ . 'app/actions/admin/content/global/creators/mod/'.$ACR_FORM['creador'].'.php')){
@@ -234,7 +234,7 @@ require RAIZ . AppContent('creator');
 			if(isset($MOD)){
 				echo '<h3>'.Language("CREATOR-MOD", "other").'</h3><hr>';
 				foreach ($MOD as $key => $value) {
-					echo '<b>'.$value .':</b> '.SCRIPTS->normalizar($AC[$value]).'<hr> ';
+					echo '<b>'.$value .':</b> '.Daamper::$scripts->normalizar($AC[$value]).'<hr> ';
 				}
 				if(isset($AC)){
 					foreach ($AC as $key => $value) {
@@ -245,13 +245,13 @@ require RAIZ . AppContent('creator');
 		}
 		echo '<h3>'.Language("CREATOR", "other").'</h3><hr>';
 		foreach ($ACR_FORM as $key => $value) {
-			echo '<b>'.$key .':</b> '.SCRIPTS->normalizar($value).'<hr> ';
+			echo '<b>'.$key .':</b> '.Daamper::$scripts->normalizar($value).'<hr> ';
 		}
 		if(isset($ACR_CARGADO)){
 			echo '<h3>'.Language("LOADED", "other").'</h3><hr>';
 			foreach ($ACR_CARGADO as $key => $value) {
 				if($key!='id_publicador'){
-					echo '<b>'.$key .':</b> '.SCRIPTS->normalizar($value).'<hr> ';
+					echo '<b>'.$key .':</b> '.Daamper::$scripts->normalizar($value).'<hr> ';
 				}
 			}
 		}
@@ -260,12 +260,12 @@ require RAIZ . AppContent('creator');
 <?php endif; ?>
 <?php function Historial($Web, $texto){
 	$ruta_historial = "database/files/txt/history/";
-	SCRIPTS->CrearCarpetas($ruta_historial);
+	Daamper::$scripts->CrearCarpetas($ruta_historial);
 	$ruta_historial = RAIZ . $ruta_historial . "creator.txt";
 	if(!file_exists($ruta_historial)){ file_put_contents($ruta_historial,''); }
 	$leer_historial = file_get_contents($ruta_historial);
 	if(strlen($leer_historial) > 0){ $leer_historial = "\n".$leer_historial; }
-	$guardar_historial = SCRIPTS->fecha_hora().' ~ '.$texto.' -> '.$_SESSION['id'];
+	$guardar_historial = Daamper::$scripts->fecha_hora().' ~ '.$texto.' -> '.$_SESSION['id'];
 	file_put_contents($ruta_historial, $guardar_historial.$leer_historial);
 } ?>
 <?php if(isset($_POST['guardar']) && !empty($_POST['guardar']) || isset($_POST['publicar']) && !empty($_POST['publicar'])){
@@ -283,11 +283,11 @@ require RAIZ . AppContent('creator');
 		$ACR_FORM['db_archivo'] = $FILE_JSON_DATA;
 	}
 	if(!isset($ACR_CARGADO['fecha_publicado'])){
-		$ACR_FORM['fecha_publicado'] = SCRIPTS->fecha_hora();
+		$ACR_FORM['fecha_publicado'] = Daamper::$scripts->fecha_hora();
 	} else {
 		$ACR_FORM['fecha_publicado'] = $ACR_CARGADO['fecha_publicado'];
 	}
-	$ACR_FORM['fecha_modificado'] = SCRIPTS->fecha_hora();
+	$ACR_FORM['fecha_modificado'] = Daamper::$scripts->fecha_hora();
 	if(!isset($ACR_CARGADO['id_publicador'])){
 		$ACR_FORM['id_publicador'] = $_SESSION['id'];
 	} else {
@@ -307,9 +307,9 @@ require RAIZ . AppContent('creator');
 	$SAVE = ["ACR" => $ACR_FORM, "AC" => $AC_FORM_GUARDAR];
 
 	if(isset($_POST['guardar'])){
-		DATA->Save("draft/$FILE_JSON_DATA", $SAVE);
+		Daamper::$data->Save("draft/$FILE_JSON_DATA", $SAVE);
 		Historial($Web, 'Guardar/Actualizar: '.$FILE_JSON_DATA);
-		sendAlert->Success(Language("draft-saved", "alert", ["value" => "<b>".$FILE_JSON_DATA."</b>"]), "../admin.php?ap=creator&disable-entries=true");
+		Daamper::$sendAlert->Success(Language("draft-saved", "alert", ["value" => "<b>".$FILE_JSON_DATA."</b>"]), "../admin.php?ap=creator&disable-entries=true");
 	} elseif(isset($_POST['publicar'])){
 		$mostrar_en_index = true;
 		if(file_exists(RAIZ . "database/post/" . $FILE_JSON_DATA) && !$ACR_VOLVER_A_MOSTRAR){
@@ -321,12 +321,12 @@ require RAIZ . AppContent('creator');
 		function AgregarEntradas (string $archivo_publicaciones = 'posts') { global $Web, $FILE_JSON_DATA, $mostrar_en_index, $ACR_VOLVER_A_MOSTRAR, $QUITARLO_DEL_INDEX, $CONVERTIDO;
 			$archivo_publicaciones = str_replace(".php", "", $archivo_publicaciones) . ".json";
 			$archivo_publicaciones = 'database/post/entries/' . $archivo_publicaciones;
-			SCRIPTS->CrearCarpetas('database/post/entries/');
+			Daamper::$scripts->CrearCarpetas('database/post/entries/');
 			if(!file_exists(RAIZ . $archivo_publicaciones)){
-				DATA->Save($archivo_publicaciones, []);
+				Daamper::$data->Save($archivo_publicaciones, []);
 			}
 
-			$archivo_publicaciones_dato = DATA->Read($archivo_publicaciones);
+			$archivo_publicaciones_dato = Daamper::$data->Read($archivo_publicaciones);
 			
 			#MOSTRAR EN INDEX Y MOSTRAR DE NUEVO
 			if(!file_exists(RAIZ . 'database/post/' . $FILE_JSON_DATA) ||
@@ -343,7 +343,7 @@ require RAIZ . AppContent('creator');
 				$archivo_publicaciones_dato[] = $CONVERTIDO['ruta_archivo_slash'];
 			}
 			
-			DATA->Save($archivo_publicaciones, $archivo_publicaciones_dato);
+			Daamper::$data->Save($archivo_publicaciones, $archivo_publicaciones_dato);
 		}
 		$EXTRA['ruta_simple'] = trim($AC_FORM['ruta'], '/');
 		if (in_array($EXTRA['ruta_simple'], ['anime', 'hentai', 'ver', 'pelicula', 'movie', 'juego', 'game', 'aplicacion', 'aplication', 'blog', 'post', 'actualizacion', 'update', 'web'])) {
@@ -359,13 +359,13 @@ require RAIZ . AppContent('creator');
 			AgregarEntradas();
 		}
 
-		SCRIPTS->CrearCarpetas($CONVERTIDO['ruta']);
-		SCRIPTS->CreateEntry($CONVERTIDO['ruta_archivo'], $AC_FORM["directorio"]);
+		Daamper::$scripts->CrearCarpetas($CONVERTIDO['ruta']);
+		Daamper::$scripts->CreateEntry($CONVERTIDO['ruta_archivo'], $AC_FORM["directorio"]);
 
-		DATA->Save("post/$FILE_JSON_DATA", $SAVE);
+		Daamper::$data->Save("post/$FILE_JSON_DATA", $SAVE);
 		unlink(RAIZ . "database/draft/" . $FILE_JSON_DATA);
 		Historial($Web, 'Publicar/Actualizar: '.$FILE_JSON_DATA);
-		sendAlert->Success(Language("new-post-published", "alert", ["value" => '<a href="../'.$CONVERTIDO['ruta_archivo'].'" target="_blank"><b>'.Language('show').' <i class="fas fa-external-link-alt"></i></b></a>']), "../admin.php?ap=creator&disable-entries=true");
+		Daamper::$sendAlert->Success(Language("new-post-published", "alert", ["value" => '<a href="../'.$CONVERTIDO['ruta_archivo'].'" target="_blank"><b>'.Language('show').' <i class="fas fa-external-link-alt"></i></b></a>']), "../admin.php?ap=creator&disable-entries=true");
 	}
 	exit;
 }
@@ -374,7 +374,7 @@ if(isset($_POST['eliminar']) && !empty($_POST['eliminar'])){
 	if($ACR_FORM['pubo'] == 'borrador'){
 		unlink(RAIZ . "database/draft/" . $FILE_JSON_DATA);
 		Historial($Web, 'Eliminar ~ borrador: '.$FILE_JSON_DATA);
-		sendAlert->Success(Language("draft-deleted", "alert", ["value" => "<b>".$FILE_JSON_DATA."</b>"]), "../admin.php?ap=creator&disable-entries=true");
+		Daamper::$sendAlert->Success(Language("draft-deleted", "alert", ["value" => "<b>".$FILE_JSON_DATA."</b>"]), "../admin.php?ap=creator&disable-entries=true");
 	}
 
 	if($ACR_FORM['pubo'] == 'publicacion'){
@@ -382,13 +382,13 @@ if(isset($_POST['eliminar']) && !empty($_POST['eliminar'])){
 		unlink(RAIZ . $AC_FORM['ruta'].$AC_FORM['archivo']);
 
 		$archivo_publicaciones = RAIZ . "database/post/entries/posts.json";
-		$archivo_publicaciones_dato = DATA->Read("post/entries/posts.json") ?? [];
+		$archivo_publicaciones_dato = Daamper::$data->Read("post/entries/posts.json") ?? [];
 		unset($archivo_publicaciones_dato[$CONVERTIDO['ruta_archivo_slash']]);
-		DATA->Save("post/entries/posts", $archivo_publicaciones_dato);
+		Daamper::$data->Save("post/entries/posts", $archivo_publicaciones_dato);
 
 		Historial($Web, 'Eliminar ~ Publicación: '.$FILE_JSON_DATA);
 
-		sendAlert->Success(Language("post-deleted", "alert", ["value" => "<b>".$FILE_JSON_DATA."</b>"]), "../admin.php?ap=creator&disable-entries=true");
+		Daamper::$sendAlert->Success(Language("post-deleted", "alert", ["value" => "<b>".$FILE_JSON_DATA."</b>"]), "../admin.php?ap=creator&disable-entries=true");
 	}
 } ?>
 

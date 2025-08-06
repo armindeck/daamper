@@ -12,11 +12,11 @@ foreach ($list['procesa'] as $key => $value) {
 }
 require_once $Web['directorio'] . 'app/controller/admin.php';
 
-if (file_exists(DATA->UserRoute()) && empty(DATA->User())) { unlink(DATA->UserRoute()); }
-if (!file_exists(DATA->UserRoute()) && file_exists(DATA->UserRoute(true))) { unlink(DATA->UserRoute(true)); }
+if (file_exists(Daamper::$data->UserRoute()) && empty(Daamper::$data->User())) { unlink(Daamper::$data->UserRoute()); }
+if (!file_exists(Daamper::$data->UserRoute()) && file_exists(Daamper::$data->UserRoute(true))) { unlink(Daamper::$data->UserRoute(true)); }
 
 if (!isset($TIPO)) {
-	sendAlert->Warning(Language('no-access-file', 'auth'), "{$Web['directorio']}auth/login{$Web['config']['php']}");
+	Daamper::$sendAlert->Warning(Language('no-access-file', 'auth'), "{$Web['directorio']}auth/login{$Web['config']['php']}");
 }
 
 $DIRECCION = $TIPO . $Web['config']['php'];
@@ -25,7 +25,7 @@ if (in_array($DIRECCION, ['olvide_contrasena', 'cambiar_contrasena'])) {
 }
 
 if (!isset($_POST['resultado']) || !isset($_POST['resultado_verificar'])) {
-	sendAlert->Error(Language('do-not-modify-hidden-fields', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}");
+	Daamper::$sendAlert->Error(Language('do-not-modify-hidden-fields', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}");
 }
 
 if ($TIPO == 'iniciar') {
@@ -77,42 +77,42 @@ if ($TIPO == 'configuracion') {
 				$DIRECCION = 'config' . $Web['config']['php'] . '?up=delete-account';
 				break;
 			default:
-				sendAlert->Error(Language('do-not-modify-hidden-fields', 'auth'), "{$Web['directorio']}auth/config" . $Web['config']['php']);
+				Daamper::$sendAlert->Error(Language('do-not-modify-hidden-fields', 'auth'), "{$Web['directorio']}auth/config" . $Web['config']['php']);
 				break;
 		}
 	} else {
-		sendAlert->Error(Language('something-went-wrong', 'auth'), "{$Web['directorio']}auth/config" . $Web['config']['php']);
+		Daamper::$sendAlert->Error(Language('something-went-wrong', 'auth'), "{$Web['directorio']}auth/config" . $Web['config']['php']);
 	}
 }
 
 
 foreach ($list['datos_procesa'] as $key => $value) {
 	if ($value == 'usuario') {
-		$pos[$value] = isset($_POST[$value]) ? SCRIPTS->sinEnes(SCRIPTS->sinAcentos(SCRIPTS->sinEspacios(SCRIPTS->darFormatoNoSimbolos(SCRIPTS->normalizar2($_POST[$value]))))) : '';
+		$pos[$value] = isset($_POST[$value]) ? Daamper::$scripts->sinEnes(Daamper::$scripts->sinAcentos(Daamper::$scripts->sinEspacios(Daamper::$scripts->darFormatoNoSimbolos(Daamper::$scripts->normalizar2($_POST[$value]))))) : '';
 	} else {
-		$pos[$value] = isset($_POST[$value]) ? SCRIPTS->normalizar2($_POST[$value]) : '';
+		$pos[$value] = isset($_POST[$value]) ? Daamper::$scripts->normalizar2($_POST[$value]) : '';
 	}
 }
 
 $list['datos_procesa_verificar'] = ['resultado', 'resultado_verificar'];
 
-if (SCRIPTS->SimpleToken(SCRIPTS->normalizar2($_POST['resultado'])) != SCRIPTS->normalizar2($_POST['resultado_verificar'])) {
+if (Daamper::$scripts->SimpleToken(Daamper::$scripts->normalizar2($_POST['resultado'])) != Daamper::$scripts->normalizar2($_POST['resultado_verificar'])) {
 	if ($TIPO == 'no_cambiar_contrasena') {
 		$TIPO = 'cambiar_contrasena';
 	}
-	sendAlert->Error(Language('incorrect-sum', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+	Daamper::$sendAlert->Error(Language('incorrect-sum', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 }
 
 if ($TIPO == 'no_cambiar_contrasena') {
 	if (isset($_SESSION['id'])) {
 		unset($_SESSION['cambiar_contrasena']);
-		sendAlert->Error(Language('recommend-password-change', 'auth'), "{$Web['directorio']}p/".(DATA->User()[$_SESSION["id"]]["usuario"])."{$Web['config']['php']}");
+		Daamper::$sendAlert->Error(Language('recommend-password-change', 'auth'), "{$Web['directorio']}p/".(Daamper::$data->User()[$_SESSION["id"]]["usuario"])."{$Web['config']['php']}");
 	}
 }
 
 foreach ($list['datos_procesa'] as $key => $value) {
 	if (!isset($_POST[$value])) {
-		sendAlert->Error(Language('fill-required-fields', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+		Daamper::$sendAlert->Error(Language('fill-required-fields', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 		break;
 	}
 }
@@ -180,34 +180,34 @@ if ($TIPO == 'cambiar_contrasena') {
 
 
 if (!$verificar) {
-	sendAlert->Error(Language('fill-fields-with-data', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+	Daamper::$sendAlert->Error(Language('fill-fields-with-data', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 }
 
 if ($TIPO == 'registrar') {
 	if ($pos['contrasena'] != $pos['contrasena_confirmar']) {
-		sendAlert->Error(Language('password-mismatch', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+		Daamper::$sendAlert->Error(Language('password-mismatch', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 	}
 }
 
 if ($TIPO == 'cambiar_contrasena') {
 	if ($pos['nueva_contrasena'] != $pos['nueva_contrasena_confirmar']) {
-		sendAlert->Error(Language('password-mismatch', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}");
+		Daamper::$sendAlert->Error(Language('password-mismatch', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}");
 	}
 }
 
-SCRIPTS->CrearCarpetas("database/user/");
-SCRIPTS->CrearCarpetas("p/");
+Daamper::$scripts->CrearCarpetas("database/user/");
+Daamper::$scripts->CrearCarpetas("p/");
 
-if (file_exists(DATA->UserRoute())) {
-	$usu = DATA->Read("user/user");
-	if (file_exists(DATA->UserRoute(true)) && !empty($usu)) {
-		$usu = SCRIPTS->UnirArrays($usu, DATA->Read("user/extras"));
+if (file_exists(Daamper::$data->UserRoute())) {
+	$usu = Daamper::$data->Read("user/user");
+	if (file_exists(Daamper::$data->UserRoute(true)) && !empty($usu)) {
+		$usu = Daamper::$scripts->UnirArrays($usu, Daamper::$data->Read("user/extras"));
 	}
 }
 
 if ($TIPO != 'registrar') {
 	if (!isset($usu)) {
-		sendAlert->Error(Language('no-users-or-database', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+		Daamper::$sendAlert->Error(Language('no-users-or-database', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 	}
 }
 
@@ -215,7 +215,7 @@ if ($TIPO == 'iniciar') {
 	foreach ($usu as $key => $value) {
 		if (strtolower($pos['usuario']) == strtolower($value['usuario']) && md5($pos['contrasena']) == $value['contrasena']) {
 			if ($value['estado'] != 'publico') {
-				sendAlert->Error(Language('profile-suspended-or-deleted', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+				Daamper::$sendAlert->Error(Language('profile-suspended-or-deleted', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 			}
 			$id_usuario = $value['id'];
 			break;
@@ -228,7 +228,7 @@ if ($TIPO == 'configuracion') {
 		foreach ($usu as $key => $value) {
 			if ($pos['email'] == $value['email']) {
 				if ($_SESSION['id'] != $value['id']) {
-					sendAlert->Error(Language('email-already-used', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+					Daamper::$sendAlert->Error(Language('email-already-used', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 				}
 			}
 		}
@@ -251,11 +251,11 @@ if ($TIPO == 'olvide_contrasena') {
 if ($TIPO == 'cambiar_contrasena') {
 	if (!isset($_SESSION['cambiar_contrasena'])) {
 		if (md5($pos['contrasena']) != $usu[$_SESSION['id']]['contrasena']) {
-			sendAlert->Error(Language('incorrect-password', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}");
+			Daamper::$sendAlert->Error(Language('incorrect-password', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}");
 		}
 	}
 	if (md5($pos['nueva_contrasena']) == $usu[$_SESSION['id']]['contrasena']) {
-		sendAlert->Error(Language('use-another-password', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}");
+		Daamper::$sendAlert->Error(Language('use-another-password', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}");
 	}
 	$pos['nueva_contrasena'] = md5($pos['nueva_contrasena']);
 }
@@ -263,37 +263,37 @@ if ($TIPO == 'cambiar_contrasena') {
 
 if ($TIPO == 'configuracion') {
 	if (md5($pos['contrasena']) != $usu[$_SESSION['id']]['contrasena']) {
-		sendAlert->Error(Language('incorrect-password', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+		Daamper::$sendAlert->Error(Language('incorrect-password', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 	} else {
 		unset($pos['contrasena']);
 	}
 
 	if ($_POST['tipo'] == 'eliminar_cuenta') {
 		if ($pos['confirmar'] != 'Si eliminar') {
-			sendAlert->Error(Language('confirm-deletion', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+			Daamper::$sendAlert->Error(Language('confirm-deletion', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 		}
 
 		unset($pos['confirmar']);
-		$pos['fecha_eliminado'] = SCRIPTS->fecha_hora();
+		$pos['fecha_eliminado'] = Daamper::$scripts->fecha_hora();
 	} else {
-		$pos['fecha_modificado'] = SCRIPTS->fecha_hora();
+		$pos['fecha_modificado'] = Daamper::$scripts->fecha_hora();
 	}
 }
 
 
 if ($TIPO == 'iniciar') {
 	if (!isset($id_usuario)) {
-		sendAlert->Error(Language('incorrect-user-or-password', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+		Daamper::$sendAlert->Error(Language('incorrect-user-or-password', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 	}
-	$pos['fecha_inicio_sesion'] = SCRIPTS->fecha_hora();
+	$pos['fecha_inicio_sesion'] = Daamper::$scripts->fecha_hora();
 }
 
 if ($TIPO == 'olvide_contrasena') {
 	if (!isset($id_usuario)) {
-		sendAlert->Error(Language('incorrect-user-or-email', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+		Daamper::$sendAlert->Error(Language('incorrect-user-or-email', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 	}
 	if ($pos["pin"] != $usu[$id_usuario]["pin"]) {
-		sendAlert->Error(Language('pin-incorrect', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+		Daamper::$sendAlert->Error(Language('pin-incorrect', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 	}
 }
 
@@ -307,19 +307,19 @@ if ($TIPO == 'registrar') {
 		foreach ($usu as $key => $value) {
 			if (strtolower($pos['usuario']) == strtolower($value['usuario'])) {
 				if ($value['estado'] == 'publico') {
-					sendAlert->Error(Language('user-already-in-use', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+					Daamper::$sendAlert->Error(Language('user-already-in-use', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 					break;
 				} else {
-					sendAlert->Error(Language('selected-user-suspended-or-deleted', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+					Daamper::$sendAlert->Error(Language('selected-user-suspended-or-deleted', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 					break;
 				}
 			}
 			if ($pos['email'] == $value['email']) {
 				if ($value['estado'] == 'publico') {
-					sendAlert->Error(Language('email-already-in-use', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+					Daamper::$sendAlert->Error(Language('email-already-in-use', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 					break;
 				} else {
-					sendAlert->Error(Language('selected-email-suspended-or-deleted', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
+					Daamper::$sendAlert->Error(Language('selected-email-suspended-or-deleted', 'auth'), "{$Web['directorio']}auth/{$DIRECCION}", $pos);
 					break;
 				}
 			}
@@ -332,32 +332,32 @@ if ($TIPO == 'registrar') {
 	$pos['id'] = $usu_idr;
 	$pos['estado'] = 'publico';
 	$pos['rol'] = 'Usuario';
-	$pos['fecha_registrado'] = SCRIPTS->fecha_hora();
+	$pos['fecha_registrado'] = Daamper::$scripts->fecha_hora();
 	unset($pos['contrasena_confirmar']);
 	$pos['contrasena'] = md5($pos['contrasena']);
-	$pos['pin'] = SCRIPTS->GenerarPin();
+	$pos['pin'] = Daamper::$scripts->GenerarPin();
 }
 
 
 if ($TIPO == 'registrar') {
-	DATA->InsertUser($pos);
-	DATA->CreateEntry("p/" . $pos['usuario'], "../");
+	Daamper::$data->InsertUser($pos);
+	Daamper::$data->CreateEntry("p/" . $pos['usuario'], "../");
 }
 
 if ($TIPO == 'iniciar' || $TIPO == 'cambiar_contrasena' || $TIPO == 'configuracion') {
-	if (!file_exists(DATA->UserRoute(true))) { DATA->Save(DATA->UserRoute(true, false), []); }
+	if (!file_exists(Daamper::$data->UserRoute(true))) { Daamper::$data->Save(Daamper::$data->UserRoute(true, false), []); }
 
-	$leer = DATA->User("extras") ?? [];
+	$leer = Daamper::$data->User("extras") ?? [];
 }
 
 if (in_array($TIPO, ['iniciar', 'registrar'])) {
-	$leer[($TIPO == "iniciar" ? $id_usuario : $pos['id'])]['fecha_inicio_sesion'] = SCRIPTS->fecha_hora();
-	DATA->UpdateUser($leer, true);
+	$leer[($TIPO == "iniciar" ? $id_usuario : $pos['id'])]['fecha_inicio_sesion'] = Daamper::$scripts->fecha_hora();
+	Daamper::$data->UpdateUser($leer, true);
 }
 
 if ($TIPO == 'cambiar_contrasena') {
 	$leer[$_SESSION['id']]['contrasena'] = $pos['nueva_contrasena'];
-	$leer[$_SESSION['id']]['fecha_contrasena_modificada'] = SCRIPTS->fecha_hora();
+	$leer[$_SESSION['id']]['fecha_contrasena_modificada'] = Daamper::$scripts->fecha_hora();
 }
 
 
@@ -383,26 +383,26 @@ if ($TIPO == 'configuracion') {
 			}
 		}
 	} else {
-		$POS["pin"] = SCRIPTS->GenerarPin();
+		$POS["pin"] = Daamper::$scripts->GenerarPin();
 	}
-	$leer = SCRIPTS->UnirArrays(DATA->User("extras"), [$_SESSION["id"] => $POS]);
+	$leer = Daamper::$scripts->UnirArrays(Daamper::$data->User("extras"), [$_SESSION["id"] => $POS]);
 }
 
 if (in_array($TIPO, ['olvide_contrasena'])) {
 	$POS = [];
-	$POS['fechas'][SCRIPTS->fecha_hora()] = "Forgot password";
-	$POS['fecha_inicio_sesion'] = SCRIPTS->fecha_hora();
-	$leer = SCRIPTS->UnirArrays(DATA->User("extras"), [$id_usuario => $POS]);
+	$POS['fechas'][Daamper::$scripts->fecha_hora()] = "Forgot password";
+	$POS['fecha_inicio_sesion'] = Daamper::$scripts->fecha_hora();
+	$leer = Daamper::$scripts->UnirArrays(Daamper::$data->User("extras"), [$id_usuario => $POS]);
 }
 
 if (in_array($TIPO, ['cambiar_contrasena', 'configuracion', 'olvide_contrasena'])) {
-	DATA->UpdateUser($leer, true);
+	Daamper::$data->UpdateUser($leer, true);
 }
 
 if (!in_array($TIPO, ['cambiar_contrasena', 'configuracion'])) {
 	$_SESSION['id'] = $TIPO == "registrar" ? $pos['id'] : $id_usuario;
 	if($TIPO == "registrar"){
-		$usu = DATA->UserAll();
+		$usu = Daamper::$data->UserAll();
 	}
 	$_SESSION['rol'] = $usu[($TIPO == "registrar" ? $pos['id'] : $id_usuario)]['rol'];
 }
@@ -410,18 +410,18 @@ if (!in_array($TIPO, ['cambiar_contrasena', 'configuracion'])) {
 # DIRECCIONES EXITO
 
 if (in_array($TIPO, ['iniciar', 'registrar'])) {
-	sendAlert->Success(Language($TIPO == 'iniciar' ? 'welcome-back' : 'user-registered-success', 'auth'), "{$Web['directorio']}p/".($usu[($TIPO == 'iniciar' ? $id_usuario : $pos["id"])]['usuario'])."{$Web['config']['php']}");
+	Daamper::$sendAlert->Success(Language($TIPO == 'iniciar' ? 'welcome-back' : 'user-registered-success', 'auth'), "{$Web['directorio']}p/".($usu[($TIPO == 'iniciar' ? $id_usuario : $pos["id"])]['usuario'])."{$Web['config']['php']}");
 }
 
 if ($TIPO == 'cambiar_contrasena') {
 	if(isset($_SESSION['cambiar_contrasena'])){ unset($_SESSION['cambiar_contrasena']); }
-	sendAlert->Success(Language('password-changed-success', 'auth'), "{$Web['directorio']}p/{$usu[$_SESSION['id']]['usuario']}{$Web['config']['php']}");
+	Daamper::$sendAlert->Success(Language('password-changed-success', 'auth'), "{$Web['directorio']}p/{$usu[$_SESSION['id']]['usuario']}{$Web['config']['php']}");
 }
 if ($TIPO == 'olvide_contrasena') {
 	$_SESSION['cambiar_contrasena'] = true;
-	sendAlert->Success(Language('want-to-change-password', 'auth'), "{$Web['directorio']}p/{$usu[$id_usuario]['usuario']}{$Web['config']['php']}");
+	Daamper::$sendAlert->Success(Language('want-to-change-password', 'auth'), "{$Web['directorio']}p/{$usu[$id_usuario]['usuario']}{$Web['config']['php']}");
 }
 
 if ($TIPO == 'configuracion') {
-	sendAlert->Success(Language('data-save'), "{$Web['directorio']}auth/{$DIRECCION}");
+	Daamper::$sendAlert->Success(Language('data-save'), "{$Web['directorio']}auth/{$DIRECCION}");
 }

@@ -1,7 +1,7 @@
 <?php if (substr($Web['ruta'], 0, 2) == 'p/'):
 	$usuario = str_replace(".php", "", basename($Web['ruta']));
-	if(!empty(DATA->UserByUser($usuario))){
-		$idUsuario = DATA->UserByUser($usuario)["id"];
+	if(!empty(Daamper::$data->UserByUser($usuario))){
+		$idUsuario = Daamper::$data->UserByUser($usuario)["id"];
 	}
 
 	function AlertaMensaje(string $string){
@@ -12,7 +12,7 @@
 		return AlertaMensaje(Language('user-not-exist-value', 'alert', ['value' => $usuario]));
 	}
 	
-	$usuario = DATA->UserByID($idUsuario);
+	$usuario = Daamper::$data->UserByID($idUsuario);
 
 	if ($usuario['estado'] != 'publico') {
 		return AlertaMensaje(Language('user-suspended-deleted', 'alert'));
@@ -32,7 +32,7 @@
 			</p><br>
 			<table border="1">
 				<?php
-					$default = DATA->Config("default")["auth"]["update-data"];
+					$default = Daamper::$data->Config("default")["auth"]["update-data"];
 					foreach ([
 						Language('user') => 'usuario',
 						Language('role') => 'rol',

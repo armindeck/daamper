@@ -55,6 +55,6 @@
 	<section class="form">
 		<?= pInput(['type'=>'submit','class'=>'boton','name'=>"procesa_{$Apartado}",'value'=>Language('update'),'des_session'=>true]) ?>
 		<hr>
-		<?= SCRIPTS->xv($Apartado) ?>
+		<?= Daamper::$scripts->xv($Apartado) ?>
 	</section>
 </form>

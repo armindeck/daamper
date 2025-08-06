@@ -1,10 +1,10 @@
-<?php function listaContenido(string $archivo_publicaciones = 'posts', string $tipo = 'normal', string $opcion = '', array $lista, array $titulo, string $ruta)
+<?php function listaContenido(string $archivo_publicaciones = 'posts', string $tipo = 'normal', string $opcion = '', array $lista = [], array $titulo = [], string $ruta = "")
 {
 	global $Web;
 	$archivo_publicaciones = empty($archivo_publicaciones) ? "posts" : $archivo_publicaciones;
 	$archivo_publicaciones = "database/post/entries/" . str_replace([".php", ".json"], "", $archivo_publicaciones) . ".json";
 	if (file_exists(RAIZ . $archivo_publicaciones)) {
-		$lista_publicaciones = DATA->Read($archivo_publicaciones) ?? [];
+		$lista_publicaciones = Daamper::$data->Read($archivo_publicaciones) ?? [];
 		if (!empty($lista_publicaciones)) {
 			$titulos = empty($ruta) ? $titulo['titulo'] : $titulo['titulo-alternativo'];
 			echo '<hr>';
@@ -16,8 +16,8 @@
 				$archivo_json = str_replace(".php", "", $archivo) . ".json";
 				$archivo_db = "database/post/$archivo_json";
 				if (file_exists(RAIZ . $archivo_db)) {
-					$ACR = DATA->Read($archivo_db)["ACR"];
-					$AC = DATA->Read($archivo_db)["AC"];
+					$ACR = Daamper::$data->Read($archivo_db)["ACR"];
+					$AC = Daamper::$data->Read($archivo_db)["AC"];
 					if ($tipo == 'normal'): ?>
 						<a href="<?= $Web['directorio'] . $AC['ruta'] . str_replace(array('index', '.php'), '', $AC['archivo']) . (basename($AC['archivo']) == 'index.php' ? '' : $Web['config']['php']); ?>">
 							<div class="con-entrada">
@@ -29,7 +29,7 @@
 								</div>
 								<div class="texto">
 									<p><?php if (isset($AC['referencia']) && !empty($AC['referencia'])) {
-											$AC = DATA->Post($AC['referencia'])["AC"];
+											$AC = Daamper::$data->Post($AC['referencia'])["AC"];
 										} ?>
 										<?= $AC['titulo'] ?? ''; ?></p>
 								</div>
@@ -38,7 +38,7 @@
 					<?php endif; ?>
 					<?php if ($tipo == 'poster'): ?>
 						<div class="elemento">
-							<a href="<?= $Web['directorio'] . $AC['ruta'] . SCRIPTS->quitarEPHP($AC['archivo']) . $Web['config']['php'] ?>">
+							<a href="<?= $Web['directorio'] . $AC['ruta'] . Daamper::$scripts->quitarEPHP($AC['archivo']) . $Web['config']['php'] ?>">
 								<div class="imagen">
 									<img loading="lazy" src="<?= ImagenesACX($AC, $Web['directorio'] . AssetsImg('logo.png')) ?>" alt="<?= Language('poster-of', 'global', ['value' => $AC['titulo']]) . ' - ' . ($Web['config']['nombre_web'] ?? '') ?>">
 								</div>

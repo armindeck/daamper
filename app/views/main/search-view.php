@@ -1,12 +1,12 @@
 <?php
-$db = DATA->Config("default")["search"];
-$search = isset($_GET['q']) ? SCRIPTS->normalizar2($_GET['q']) : false;
-$search_by = isset($_GET['search-by']) && !empty($_GET['search-by']) && in_array($_GET['search-by'], $db['search-by']) ? SCRIPTS->normalizar2($_GET['search-by']) : $db['search-by'][1];
-$search_limit = isset($_GET['search-limit']) && is_numeric($_GET['search-limit']) ? SCRIPTS->normalizar2($_GET['search-limit']) : $db['limit'];
+$db = Daamper::$data->Config("default")["search"];
+$search = isset($_GET['q']) ? Daamper::$scripts->normalizar2($_GET['q']) : false;
+$search_by = isset($_GET['search-by']) && !empty($_GET['search-by']) && in_array($_GET['search-by'], $db['search-by']) ? Daamper::$scripts->normalizar2($_GET['search-by']) : $db['search-by'][1];
+$search_limit = isset($_GET['search-limit']) && is_numeric($_GET['search-limit']) ? Daamper::$scripts->normalizar2($_GET['search-limit']) : $db['limit'];
 $hide_images = isset($_GET['hide-images']) && !empty($_GET['hide-images']) ? true : false;
 $hide_path = isset($_GET['hide-path']) && !empty($_GET['hide-path']) ? true : false;
 $hide_title = isset($_GET['hide-title']) && !empty($_GET['hide-title']) ? true : false;
-$page = isset($_GET['page']) && is_numeric($_GET['page']) ? SCRIPTS->normalizar2($_GET['page']) : 1;
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? Daamper::$scripts->normalizar2($_GET['page']) : 1;
 ?>
 <section style="padding: 6px;">
     <form class="formulario flex-column" style="margin: 0px auto; max-width: 1024px;" action="<?= $Web['directorio'] ?>search<?= $Web['config']['php'] ?>" method="get">
@@ -26,7 +26,7 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? SCRIPTS->normalizar2
             <?= pCheckboxBoton(["nameidclass" => "hide-path", "texto" => Language("route"), "checked" => $hide_path]) ?>
         </section>
         <input class="boton" type="submit" value="&#xf002 <?= Language('search') ?>">
-        <hr><span style="font-size: 12px;">v<?= VERSION['other']['search']['version'] . ' ' . VERSION['other']['search']['state'] . ' ~ ' . VERSION['other']['search']['updated'] ?></span>
+        <hr><span style="font-size: 12px;">v<?= Daamper::$version['other']['search']['version'] . ' ' . Daamper::$version['other']['search']['state'] . ' ~ ' . Daamper::$version['other']['search']['updated'] ?></span>
     </form>
 </section>
 <?php if ($search && strlen($search) >= 4): ?>
@@ -38,8 +38,8 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? SCRIPTS->normalizar2
     $mostrar = [];
     for($i = 0; $i < count($archivos); $i++) {
         if(!in_array(str_replace(".json", "", basename($archivos[$i])), $db["remove"])){
-            $ACR = DATA->Post(basename($archivos[$i]))["ACR"];
-            $AC = DATA->Post(basename($archivos[$i]))["AC"];
+            $ACR = Daamper::$data->Post(basename($archivos[$i]))["ACR"];
+            $AC = Daamper::$data->Post(basename($archivos[$i]))["AC"];
 
             $continua = true;
             if(in_array(trim($AC["ruta"], "/"), $db["remove-route"])){
@@ -89,8 +89,8 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? SCRIPTS->normalizar2
         $min = ($page - 1) * $limit;
         $max = $min + $limit;
         for($i = $min; $i < $max; $i++) { if( isset($mostrar[$i]) && file_exists($mostrar[$i])){
-            $ACR = DATA->Post(basename($mostrar[$i]))["ACR"];
-            $AC = DATA->Post(basename($mostrar[$i]))["AC"];
+            $ACR = Daamper::$data->Post(basename($mostrar[$i]))["ACR"];
+            $AC = Daamper::$data->Post(basename($mostrar[$i]))["AC"];
             
             if(file_exists(RAIZ . "app/actions/admin/content/global/creators/mod/{$ACR['creador']}.php")){
                 require RAIZ . "app/actions/admin/content/global/creators/mod/{$ACR['creador']}.php";

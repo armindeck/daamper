@@ -1,11 +1,11 @@
 <?php
-$cantidad_contenedores = SCRIPTS->normalizar($_POST['cantidad_contenedores']);
-$cargar_scripts = SCRIPTS->normalizar($_POST['cargar_scripts']);
-$archivo_plantilla = isset($_POST['archivo_plantilla']) && !empty($_POST['archivo_plantilla']) ? SCRIPTS->archivoAceptado(str_replace(['.php', '.json'], '', $_POST['archivo_plantilla']) . '.json') : false;
+$cantidad_contenedores = Daamper::$scripts->normalizar($_POST['cantidad_contenedores']);
+$cargar_scripts = Daamper::$scripts->normalizar($_POST['cargar_scripts']);
+$archivo_plantilla = isset($_POST['archivo_plantilla']) && !empty($_POST['archivo_plantilla']) ? Daamper::$scripts->archivoAceptado(str_replace(['.php', '.json'], '', $_POST['archivo_plantilla']) . '.json') : false;
 
 $_POST['cargar_scripts_errores'] = '';
 
-SCRIPTS->CrearCarpetas("database/template/");
+Daamper::$scripts->CrearCarpetas("database/template/");
 
 $template_scripts = __DIR__."/src/template.php";
 
@@ -35,7 +35,7 @@ for ($i = 1; $i <= $cantidad_contenedores; $i++){
 		if($value == 'mostrar_contenedor_'.$i){
 			$lista_enteros[$i]='mostrar_contenedor_'.$i;
 		}
-		$pos[$value] = isset($_POST[$value]) ? SCRIPTS->quitarComilla($_POST[$value]) : '';
+		$pos[$value] = isset($_POST[$value]) ? Daamper::$scripts->quitarComilla($_POST[$value]) : '';
 	}
 
 	for ($ii=1; $ii<=$pos['cantidad_elementos_contenedor_'.$i]; $ii++){
@@ -50,7 +50,7 @@ for ($i = 1; $i <= $cantidad_contenedores; $i++){
 			'comandos_campos_default_elemento_'.$ii.'_contenedor_'.$i
 		];
 		foreach ($lista_contenedores_elementos[$i] as $key => $value) {
-			$pos[$value] = isset($_POST[$value]) ? SCRIPTS->quitarComilla($_POST[$value]) : '';
+			$pos[$value] = isset($_POST[$value]) ? Daamper::$scripts->quitarComilla($_POST[$value]) : '';
 		}
 	}	
 
@@ -67,13 +67,13 @@ foreach ($pos as $key => $value) {
 if(file_exists("../app/plantilla/plantillas/")){
 	$files_conver = glob(__DIR__."/plantillas/*", GLOB_BRACE);
 	foreach ($files_conver as $key => $value) {
-		DATA->Save("template/" . basename($value), require $value);
+		Daamper::$data->Save("template/" . basename($value), require $value);
 	}
 }
-DATA->Save("template/template", $post);
+Daamper::$data->Save("template/template", $post);
 
 if ($archivo_plantilla) {
-	DATA->Save("template/$archivo_plantilla", $post);
+	Daamper::$data->Save("template/$archivo_plantilla", $post);
 }
 
 $post = null; $pos = null;
@@ -82,4 +82,4 @@ if(!empty($cargar_scripts) && file_exists($template_scripts)){
 	require $template_scripts;
 }
 
-sendAlert->Success(Language('data-save'), $Web['directorio']."admin/admin.php?ap=template");
+Daamper::$sendAlert->Success(Language('data-save'), $Web['directorio']."admin/admin.php?ap=template");

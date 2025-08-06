@@ -4,19 +4,19 @@ $LISTA_DATOS_POST=[
 	'ano_publicada','language','https_imagen','php','errores','api',
 ];
 
-foreach (DATA->Config("default")["api"]["show"] as $key => $value) {
+foreach (Daamper::$data->Config("default")["api"]["show"] as $key => $value) {
 	foreach ($value as $key2 => $value2) {
 		$LISTA_DATOS_POST[] = "show-api-$key-$value2";
 	}
 }
 
-foreach (DATA->Config("default")["api"]["auto"] as $value) {
+foreach (Daamper::$data->Config("default")["api"]["auto"] as $value) {
 	$LISTA_DATOS_POST[] = "show-api-auto-$value";
 }
 
 foreach ($LISTA_DATOS_POST as $key => $value) {
 	if(!isset($_POST[$value])){ $_POST[$value]=''; }
-	$_POST[$value]=SCRIPTS->normalizar2($_POST[$value]);
+	$_POST[$value]=Daamper::$scripts->normalizar2($_POST[$value]);
 }
 
 $_POST['enlace_web'] = rtrim($_POST['enlace_web'], '/');

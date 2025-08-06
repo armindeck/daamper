@@ -4,14 +4,14 @@
 <?php # CONTENIDO
   global $AX, $AXR;
   if (!isset($AXR['fecha_publicado'])) {
-    $AXR['fecha_publicado'] = SCRIPTS->fecha_hora();
+    $AXR['fecha_publicado'] = Daamper::$scripts->fecha_hora();
   }
   if (isset($AX['contenido']) && !empty($AX['contenido'])) {
     if (isset($AX['tipo'])) {
       echo in_array(strtolower($AX['tipo']), ['', 'normal']) ? '<div class="con">' : '';
       if (in_array(strtolower($AX['tipo']), ['blog', 'normal-blog'])) { Views("main/blog"); }
     } ?>
-	<?= SCRIPTS->Commands($AX['contenido']) ?>
+	<?= Daamper::$scripts->Commands($AX['contenido']) ?>
 	<?= isset($AX['tipo']) && in_array(strtolower($AX['tipo']), ['', 'normal', 'blog', 'normal-blog']) ? (in_array(strtolower($AX['tipo']), ['blog']) && isset($AXR['fecha_modificado']) && !empty($AXR['fecha_modificado']) ? '<hr><small>' . $AXR['fecha_modificado'] . '</small>' : '') . '</div>' : ''; ?>
 	<?= isset($AX['tipo']) && in_array(strtolower($AX['tipo']), ['blog', 'normal-blog']) ? '</div>' : ''; ?>
 <?php } ?>
@@ -20,7 +20,7 @@
 <?php # LISTA DE ENTRADAS
   if ($AX['archivo'] == 'index.php' && file_exists(__DIR__."/../components/list-of-entries-view.php")) {
     require_once __DIR__."/../components/list-of-entries-view.php";
-    $lista = file_exists(RAIZ . "database/creator/list-of-entries.json") ? DATA->Read("creator/list-of-entries") : [];
+    $lista = file_exists(RAIZ . "database/creator/list-of-entries.json") ? Daamper::$data->Read("creator/list-of-entries") : [];
     $mostrar = [];
     $posicion = [];
     $poster = [];

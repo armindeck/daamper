@@ -1,5 +1,5 @@
 <?php
-function Ruta($Tipo = null, $Ruta, $Contenido) {
+function Ruta($Tipo = null, $Ruta = null, $Contenido = null) {
 	if (is_string($Ruta)){ global $Web;
         # RUTA 100% ORIGINAL -> GET - POST
 		if ($Tipo == null && $Web['ruta_completa'] == $Ruta) {
@@ -74,7 +74,7 @@ function CrearCarpetas(string $ruta){ global $Web;
 }
 
 function Language($keys, string $option = 'global', array $list = null) {
-    $language = LANGUAGE[$option];
+    $language = Daamper::$language[$option];
 	
     if (is_string($keys)) {
         $keys = [$keys];
@@ -95,7 +95,7 @@ function getNestedValue($array, $keys, array $list = null) {
 			return null;
 		}
 	}
-	$array = $array[isset($_SESSION['tmp']['language']) ? $_SESSION['tmp']['language'] : CONFIG['language']] ?? null;
+	$array = $array[isset($_SESSION['tmp']['language']) ? $_SESSION['tmp']['language'] : Daamper::$config['language']] ?? null;
 	if ($list != null){
 		foreach ($list as $key => $item){
 			if (is_string($key) && $item != NULL){

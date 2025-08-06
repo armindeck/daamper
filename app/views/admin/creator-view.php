@@ -30,13 +30,13 @@
 						<label class="flex-between">
 							<span><?= Language('quantity') ?>:</span>
 							<input type="text" name="ap" value="creator" hidden required>
-							<?php $p = file_exists(RAIZ . 'database/creator/list-of-entries.json') ? DATA->Read("creator/list-of-entries") : []; ?>
-							<?= pInput(['class' => 'form-campo-pequeno', 'placeholder' => 1, 'type' => 'number', 'min' => 0, 'max' => 99, 'name' => 'cantidad-entradas', 'value' => (isset($_GET['cantidad-entradas']) ? SCRIPTS->normalizar2($_GET['cantidad-entradas']) : (isset($p) ? count($p) : 1))]) ?>
+							<?php $p = file_exists(RAIZ . 'database/creator/list-of-entries.json') ? Daamper::$data->Read("creator/list-of-entries") : []; ?>
+							<?= pInput(['class' => 'form-campo-pequeno', 'placeholder' => 1, 'type' => 'number', 'min' => 0, 'max' => 99, 'name' => 'cantidad-entradas', 'value' => (isset($_GET['cantidad-entradas']) ? Daamper::$scripts->normalizar2($_GET['cantidad-entradas']) : (isset($p) ? count($p) : 1))]) ?>
 						</label>
 						<details open>
 							<summary><?= Language(['creator', 'list-of-entries'], 'dashboard') ?></summary>
 							<section class="flex-between">
-								<?php for ($j = 0; $j < (isset($_GET['cantidad-entradas']) ? SCRIPTS->normalizar2($_GET['cantidad-entradas']) : count($p)); $j++) { ?>
+								<?php for ($j = 0; $j < (isset($_GET['cantidad-entradas']) ? Daamper::$scripts->normalizar2($_GET['cantidad-entradas']) : count($p)); $j++) { ?>
 									<section>
 										<input type="text" name="entrada-<?= $j ?>" value="<?= $p[$j]['entrada'] ?? '' ?>" placeholder="<?= !$j ? Language(['creator', 'do-not-touch-this-field'], 'dashboard') : 'Post' ?>" title="<?= !$j ? Language(['creator', 'do-not-touch-this-field'], 'dashboard') : 'blog / post / juego / web / ...' ?>">
 										<?= pCheckboxBoton(['name' => "entrada-poster-$j", 'id' => "entrada-poster-$j", 'icono' => 'fas fa-eye', 'title' => Language(['creator', 'image-type-poster'], 'dashboard'), 'checked' => (isset($p[$j]['poster']) && !empty($p[$j]['poster']) ? true : false)]) ?>
@@ -61,7 +61,7 @@
 	</section>
 </section>
 <?php if (isset($_GET['creador'])) {
-	$Global['get_creador'] = SCRIPTS->normalizar2($_GET['creador']);
+	$Global['get_creador'] = Daamper::$scripts->normalizar2($_GET['creador']);
 	$ruta_creador = __DIR__ . "/creators/{$Global['get_creador']}-view.php"; ?>
 	<?= !file_exists($ruta_creador) ?
 		"<section class='panel'><section class='form'><p>".(Language(['creator', 'creator-no-exists'], 'dashboard', ['value' => "<strong>{$Global['get_creador']}</strong>"]))."</p></section></section>" : '' ?>
@@ -77,7 +77,7 @@
 			
 			$ruta_campos_predeterminados = "database/creator/field-default.json";
 			if (file_exists(RAIZ .  $ruta_campos_predeterminados)) {
-				$Predeterminados = DATA->Read("creator/field-default")[$Global["get_creador"]];
+				$Predeterminados = Daamper::$data->Read("creator/field-default")[$Global["get_creador"]];
 			} else {
 				echo "<section class='form t-center'><p>" . Language("file-no-exists", "global", ["value" => $ruta_campos_predeterminados]) . "</p></section>";
 			}
@@ -161,7 +161,7 @@
 						<?= pInput(['type' => 'submit', 'class' => 'boton', 'name' => 'mostrar', 'value' => Language('show'). ' &#xf06e;', 'des_session' => true]) ?>
 					</section>
 					<hr>
-					<?= SCRIPTS->xv("creator"); ?>
+					<?= Daamper::$scripts->xv("creator"); ?>
 				</section>
 		</form>
 <?php }

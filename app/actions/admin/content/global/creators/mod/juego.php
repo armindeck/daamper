@@ -5,7 +5,7 @@ $AC['descripcion'] = $AC['sinopsis'];
 $AC['meta_descripcion'] = $AC['sinopsis'];
 require __DIR__.'/../script/juego.php';
 $descarga_para = ''; $descarga_para_solo = '';
-foreach ($lista_os  as $os) { $os_name = SCRIPTS->archivoAceptado($os);
+foreach ($lista_os  as $os) { $os_name = Daamper::$scripts->archivoAceptado($os);
 	if (isset($AC["os_{$os_name}"]) && !empty($AC["os_{$os_name}"])) {
 		$descarga_para .= Language(['creator', 'other', 'juego', 'title'], 'dashboard', ['name' => $AC['titulo'], 'os' => $os]).", ";
 		$descarga_para_solo .= "$os - ";

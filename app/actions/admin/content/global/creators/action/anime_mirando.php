@@ -16,21 +16,21 @@ if(!empty($ACR_FORMULARIO['pubo'])){
 }
 if (empty($AC_FORMULARIO['referencia'])) {
 	if(!$Post['existe_el_archivo_creador']){
-		sendAlert->Error(Language(['creator', 'please-select-a-reference'], 'dashboard'), "../admin.php?ap=creator&creador={$AC_FORMULARIO['creador']}");
+		Daamper::$sendAlert->Error(Language(['creator', 'please-select-a-reference'], 'dashboard'), "../admin.php?ap=creator&creador={$AC_FORMULARIO['creador']}");
 	} else {
-		sendAlert->Error(Language(['creator', 'please-select-a-reference'], 'dashboard'), "../admin.php?ap=creator&creador={$ACR_FORMULARIO['creador']}&tipo={$ACR_FORMULARIO['pubo']}&archivo={$ACR_FORMULARIO['db_archivo']}");
+		Daamper::$sendAlert->Error(Language(['creator', 'please-select-a-reference'], 'dashboard'), "../admin.php?ap=creator&creador={$ACR_FORMULARIO['creador']}&tipo={$ACR_FORMULARIO['pubo']}&archivo={$ACR_FORMULARIO['db_archivo']}");
 	}
 }
 
 
 if(file_exists(RAIZ . 'database/post/'.$AC_FORMULARIO['referencia'])){
-	$ACR = DATA->Post($AC_FORMULARIO['referencia'])["ACR"];
-	$AC = DATA->Post($AC_FORMULARIO['referencia'])["AC"];
+	$ACR = Daamper::$data->Post($AC_FORMULARIO['referencia'])["ACR"];
+	$AC = Daamper::$data->Post($AC_FORMULARIO['referencia'])["AC"];
 } else {
 	if(!$Post['existe_el_archivo_creador']){
-		sendAlert->Error(Language(['creator', 'reference-does-not-exist'], 'dashboard'), "../admin.php?ap=creator&creador={$AC_FORMULARIO['creador']}");
+		Daamper::$sendAlert->Error(Language(['creator', 'reference-does-not-exist'], 'dashboard'), "../admin.php?ap=creator&creador={$AC_FORMULARIO['creador']}");
 	} else {
-		sendAlert->Error(Language(['creator', 'reference-does-not-exist'], 'dashboard'), "../admin.php?ap=creator&creador={$ACR_FORMULARIO['creador']}&tipo={$ACR_FORMULARIO['pubo']}&archivo={$ACR_FORMULARIO['db_archivo']}");
+		Daamper::$sendAlert->Error(Language(['creator', 'reference-does-not-exist'], 'dashboard'), "../admin.php?ap=creator&creador={$ACR_FORMULARIO['creador']}&tipo={$ACR_FORMULARIO['pubo']}&archivo={$ACR_FORMULARIO['db_archivo']}");
 	}
 }
 
@@ -38,7 +38,7 @@ $AC_FORM_POST = [
 	'mostrar_en_index'=>true,
 	'directorio'=>'../',
 	'ruta'=>'ver/',
-	'archivo'=>str_replace('.php', '', SCRIPTS->quitarEPHP($AC['archivo'])).'-'.$AC_FORMULARIO['episodio'].'.php'
+	'archivo'=>str_replace('.php', '', Daamper::$scripts->quitarEPHP($AC['archivo'])).'-'.$AC_FORMULARIO['episodio'].'.php'
 ];
 
 // Se eliminan los datos cargados

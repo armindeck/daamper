@@ -28,7 +28,7 @@ class Model
         $route = RAIZ . "database/$file";
         $dirname = dirname($file) != "." ? dirname($file) . "/" : "";
         $basename = basename($file);
-        if(!empty($dirname)){ SCRIPTS->CrearCarpetas("database/$dirname"); }
+        if(!empty($dirname)){ Daamper::$scripts->CrearCarpetas("database/$dirname"); }
         return file_put_contents($route, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 
@@ -49,7 +49,7 @@ class Model
 
     public function UserAll()
     {
-        return SCRIPTS->UnirArrays($this->User(), $this->User("extras") ?? []);
+        return Daamper::$scripts->UnirArrays($this->User(), $this->User("extras") ?? []);
     }
 
     public function UserByID(int $id)
@@ -96,7 +96,7 @@ class Model
     {
         $user = $this->Read("comment/comment");
         $user_extras = $this->Read("comment/extras") ?? [];
-        return SCRIPTS->UnirArrays($user, $user_extras);
+        return Daamper::$scripts->UnirArrays($user, $user_extras);
     }
 
     public function UpdateComment(array $data, bool $extras = false)
@@ -121,8 +121,8 @@ class Model
 
     public function CreateEntry(string $route, string $directorio = "./")
     {
-        return SCRIPTS->CreateEntry($route, $directorio);
+        return Daamper::$scripts->CreateEntry($route, $directorio);
     }
 }
 
-define("DATA", new Model);
+Daamper::$data = new Model;

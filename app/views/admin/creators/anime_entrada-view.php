@@ -5,7 +5,7 @@
 	<section>
 		<?php require RAIZ . "app/actions/admin/content/global/creators/script/anime_entrada.php";
 		foreach ($lista_categorias as $key => $value) {
-			echo pCheckboxBoton(['name' => $key, 'id'=> "input-check-".SCRIPTS->archivoAceptado($value), 'texto'=>$value]).' ';
+			echo pCheckboxBoton(['name' => $key, 'id'=> "input-check-".Daamper::$scripts->archivoAceptado($value), 'texto'=>$value]).' ';
 		} ?>
 	</section>
 </details>

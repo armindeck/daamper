@@ -1,4 +1,4 @@
-<?php $rules_admin = DATA->Config("rules")["admin"]; ?>
+<?php $rules_admin = Daamper::$data->Config("rules")["admin"]; ?>
 <?php if(!isset($_GET['ap'])): ?>
 	<section class="con">
         <strong><?= Language(['dashboard', 'wellcome-dashboard'], 'dashboard') ?></strong><hr>
@@ -6,7 +6,7 @@
     </section>
 <?php endif; ?>
 <?php if(isset($_GET['ap'])):
-  $httpGET['ap'] = SCRIPTS->normalizar2($_GET['ap']);
+  $httpGET['ap'] = Daamper::$scripts->normalizar2($_GET['ap']);
   $File = __DIR__ . "/../admin/{$httpGET['ap']}-view.php";
   if(!file_exists($File)): ?>
     <section class="con">
@@ -25,7 +25,7 @@
         <?php }
       }
     } ?>
-		<a target="_blank" href="<?= INFO['page-url'] ?>"><i class="fas fa-history"></i> <?= Language('update') ?></a>
+		<a target="_blank" href="<?= Daamper::$info['page-url'] ?>"><i class="fas fa-history"></i> <?= Language('update') ?></a>
 		<a href="?ap=info"><i class="fas fa-tractor"></i> <?= Language('information') ?></a>
 	</section>
 </details>

@@ -47,7 +47,7 @@
 			</aside>
 			<div class="con der-content">
 				<h3><?= Language('information') ?></h3><hr>
-				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= SCRIPTS->Commands($AX['sinopsis']); ?></p><hr>
+				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= Daamper::$scripts->Commands($AX['sinopsis']); ?></p><hr>
 				<details class="t-14" open>
 					<summary><?= Language('details') ?></summary>
 					<ul class="t-14">
@@ -62,9 +62,9 @@
 							Language('completed') => ["name" => "Terminado"]
 							] as $key => $item) {
 							if (!is_string($key)) {
-								$key_name = SCRIPTS->archivoAceptado($item);
+								$key_name = Daamper::$scripts->archivoAceptado($item);
 							} else {
-								$key_name = SCRIPTS->archivoAceptado((isset($item['name']) ? $item['name'] : $key));
+								$key_name = Daamper::$scripts->archivoAceptado((isset($item['name']) ? $item['name'] : $key));
 							}
 							if (isset($AX[$key_name]) && !empty($AX[$key_name])) {
 								echo "<li>";
@@ -81,7 +81,7 @@
 				</details>
 				<?php require RAIZ . "app/actions/admin/content/global/creators/script/juego.php"; ?>
 				<?php foreach ($lista_os_requisitos as $os) {
-					$os_name = SCRIPTS->archivoAceptado($os);
+					$os_name = Daamper::$scripts->archivoAceptado($os);
 					if (isset($AX['os_'.$os_name]) && !empty($AX['os_'.$os_name])){
 						$mostrar_requisitos = true; break;
 					}
@@ -91,10 +91,10 @@
 						<summary><?= Language($value == 'minimo' ? 'minimum-requirements' : 'recommended-requirements') ?></summary>
 						<section>
 							<section style="margin-bottom: 4px;">
-								<?php foreach ($lista_os_requisitos as $os){ $os_name = SCRIPTS->archivoAceptado($os);
+								<?php foreach ($lista_os_requisitos as $os){ $os_name = Daamper::$scripts->archivoAceptado($os);
 								if (isset($AX['os_'.$os_name]) && !empty($AX['os_'.$os_name])){ ?>
 								<details><summary><?= $os ?></summary><section><ul>
-									<?php foreach (['versión', 'procesador', 'targeta_grafica', 'ram', 'ram_mb_or_gb', 'espacio', 'espacio_mb_or_gb'] as $valor){ $valor_name = SCRIPTS->archivoAceptado($valor);
+									<?php foreach (['versión', 'procesador', 'targeta_grafica', 'ram', 'ram_mb_or_gb', 'espacio', 'espacio_mb_or_gb'] as $valor){ $valor_name = Daamper::$scripts->archivoAceptado($valor);
 									 if(isset($AX["requisito_{$value}_os_{$os_name}_{$valor_name}"]) && !empty(($AX["requisito_{$value}_os_{$os_name}_{$valor_name}"]))) {
 									 	if(!in_array($valor_name, ['ram_mb_or_gb', 'peso_mb_or_gb', 'espacio_mb_or_gb'])) {
 										 	echo "<li>".(Language($valor == 'versión' ? 'version' : ($valor == 'procesador' ? 'processor' : ($valor == 'targeta_grafica' ? 'graphics-card' : ($valor == 'espacio' ? 'storage' : 'ram'))))).": ". $AX["requisito_{$value}_os_{$os_name}_{$valor_name}"];
@@ -122,8 +122,8 @@
 					<summary class="t-14"><?= Language('genres') ?></summary>
 					<section>
 						<?php foreach ($lista_generos as $key => $value) {
-							if(isset($AX["genre_".SCRIPTS->archivoAceptado($value)]) &&
-								!empty($AX["genre_".SCRIPTS->archivoAceptado($value)])
+							if(isset($AX["genre_".Daamper::$scripts->archivoAceptado($value)]) &&
+								!empty($AX["genre_".Daamper::$scripts->archivoAceptado($value)])
 							){
 								echo '<a class="boton-2 t-14 boton-mini" href="#">'.(Language(["games-tags", $value], "global") ?? $value).'</a>';
 							}
@@ -134,8 +134,8 @@
 					<summary class="t-14"><?= Language('operating-systems') ?></summary>
 					<section>
 						<?php foreach ($lista_os as $key => $value) {
-							if(isset($AX["os_".SCRIPTS->archivoAceptado($value)]) &&
-								!empty($AX["os_".SCRIPTS->archivoAceptado($value)])
+							if(isset($AX["os_".Daamper::$scripts->archivoAceptado($value)]) &&
+								!empty($AX["os_".Daamper::$scripts->archivoAceptado($value)])
 							){
 								echo '<a class="boton-2 t-14 boton-mini" href="#">'.($value).'</a>';
 							}
@@ -147,8 +147,8 @@
 					<summary class="t-14"><?= Language('engines') ?></summary>
 					<section>
 						<?php foreach ($lista_motores as $key => $value) {
-							if(isset($AX["engine_".SCRIPTS->archivoAceptado($value)]) &&
-								!empty($AX["engine_".SCRIPTS->archivoAceptado($value)])
+							if(isset($AX["engine_".Daamper::$scripts->archivoAceptado($value)]) &&
+								!empty($AX["engine_".Daamper::$scripts->archivoAceptado($value)])
 							){
 								echo '<a class="boton-2 t-14 boton-mini" href="#">'.(Language(["game-engine", $value], "global") ?? $value).'</a>';
 							}
@@ -177,7 +177,7 @@
 		<section class="con">
 			<details open><summary><?= Language('download-zone') ?></summary>
 				<section>
-					<?php foreach ($lista_os as $os){ $os_name = SCRIPTS->archivoAceptado($os);
+					<?php foreach ($lista_os as $os){ $os_name = Daamper::$scripts->archivoAceptado($os);
 						if (isset($AX['os_'.$os_name]) && !empty($AX['os_'.$os_name])){ ?>
 						<details><summary><?= $os ?></summary><section>
 							<?php if (isset($AX["descarga_cantidad_os_{$os_name}"]) && !empty($AX["descarga_cantidad_os_{$os_name}"])){

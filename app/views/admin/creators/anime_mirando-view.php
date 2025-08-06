@@ -1,8 +1,8 @@
 <?= pSelectArchivos(['style' => 'width: 100%;', 'name'=>'referencia','referencia' => ['anime','hentai'],'texto'=>Language('reference'),'ruta'=>$Web['directorio'].'database/post/','tipo_archivos'=>'json','value-devuelve'=>'basename']) ?>
 <?= pInput(['name'=>'stream_default','type'=>'url','placeholder'=>Language('stream-default'),'texto'=>Language('stream-default'),'required'=>true]) ?>
 
-<?php $lista_servidores['stream'] = DATA->Read('creator/default')['server']['streams'] ?? [];
-$lista_servidores['descarga'] = DATA->Read('creator/default')['server']['downloads'] ?? [];
+<?php $lista_servidores['stream'] = Daamper::$data->Read('creator/default')['server']['streams'] ?? [];
+$lista_servidores['descarga'] = Daamper::$data->Read('creator/default')['server']['downloads'] ?? [];
 
 $anime_mirando['cantidad_servidor_stream'] = 3;
 $anime_mirando['cantidad_servidor_descarga'] = 2;

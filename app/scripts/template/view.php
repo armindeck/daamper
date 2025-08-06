@@ -1,6 +1,6 @@
 <?php
 # NUEVO SCRIPT
-function ViewsPlantilla(string $File = null, $Elementos = false) { global $Web;
+function ViewsPlantilla(string $File = null, bool $Elementos = false) { global $Web;
 	if (!isset($Web['template']) || !isset($Web['template']['cantidad_contenedores']) ||
 		!$Web['template']['cantidad_contenedores'] || isset($_GET['view'])) {
 			return Views('main');
@@ -29,7 +29,7 @@ function ViewsPlantilla(string $File = null, $Elementos = false) { global $Web;
 	}
 }
 
-function ViewsPlantillaContenido ($File = null, $Elementos = false, $i) { global $Web;
+function ViewsPlantillaContenido ($File = null, bool $Elementos = false, int $i = 0) { global $Web;
 	if (
 		isset($Web['template']['mostrar_contenedor_' . $i]) &&
 		!empty($Web['template']['mostrar_contenedor_' . $i])
@@ -84,7 +84,7 @@ function ViewsPlantillaElementos ($i) { global $Web;
 	}
 }
 
-function BuscarContenedorPlantilla(string $File, $SeEncuentra = false, $Contenido) { global $Web;
+function BuscarContenedorPlantilla(string $File, bool $SeEncuentra = false, $Contenido = null) { global $Web;
 	$encontro = false;
 	for ($i = 1; $i <= $Web['template']['cantidad_contenedores']; $i++){
 		if (
@@ -102,4 +102,3 @@ function BuscarContenedorPlantilla(string $File, $SeEncuentra = false, $Contenid
 }
 
 require __DIR__.'/scripts.php';
-?>

@@ -6,7 +6,7 @@
 			<small class="ruta">
 				<a href="<?= $Web['directorio']; ?>"><i class="fas fa-inicio"></i> <?= Language('home') ?></a> >
 				<a href="<?= $Web['directorio'].$AX['ruta_referencia'] ?>"><?= str_replace('/', '', ucfirst($AX['ruta_referencia'])) ?></a> >
-				<a href="<?= $Web['directorio'].$AX['ruta_referencia'].SCRIPTS->quitarEPHP($AX['archivo_referencia']).$Web['config']['php'] ?>"><?= $AX['titulo_normal'] ?></a> >
+				<a href="<?= $Web['directorio'].$AX['ruta_referencia'].Daamper::$scripts->quitarEPHP($AX['archivo_referencia']).$Web['config']['php'] ?>"><?= $AX['titulo_normal'] ?></a> >
 				<?= $AX['titulo'] ?>
 			</small>
 			<h2><?= $AX['titulo']; ?></h2>
@@ -36,7 +36,7 @@
 						<?php }
 					} ?>
 				<?= BotonMinMax() ?>
-				<a class="boton t-14" href="<?= $Web['directorio'].$AX['ruta_referencia'].SCRIPTS->quitarEPHP($AX['archivo_referencia']).$Web['config']['php'] ?>"><i class="fas fa-bars"></i> <?= Language('list') ?></a>
+				<a class="boton t-14" href="<?= $Web['directorio'].$AX['ruta_referencia'].Daamper::$scripts->quitarEPHP($AX['archivo_referencia']).$Web['config']['php'] ?>"><i class="fas fa-bars"></i> <?= Language('list') ?></a>
 				<?= BotonMinMax(true) ?>
 				</div>
 				<input type="checkbox" id="check-boton" hidden>
@@ -61,7 +61,7 @@
 		</main>
 		<footer><?php FormComentario() ?></footer>
 	</section>
-	<?php $default = DATA->Config("default")["entries"]["anime_mirando"]["ads"] ?? []; ?>
+	<?php $default = Daamper::$data->Config("default")["entries"]["anime_mirando"]["ads"] ?? []; ?>
 	<?php if(!empty($default["ads-show"])): ?>
 	<article>
 		<?php if(!empty($default["title-show"])): ?>

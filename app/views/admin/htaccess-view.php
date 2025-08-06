@@ -1,5 +1,5 @@
 <?php $Apartado='htaccess';
-$Web["htaccess"] = DATA->Config()["htaccess"] ?? [];
+$Web["htaccess"] = Daamper::$data->Config()["htaccess"] ?? [];
 ?>
 <section class="panel">
 	<form method="post" action="process/actions.php">
@@ -23,6 +23,6 @@ $Web["htaccess"] = DATA->Config()["htaccess"] ?? [];
 			<?= pInput(['type'=>'submit','class'=>'boton','name'=>'procesa_'.$Apartado,'value'=>Language('update')]) ?>
 		</section>
 		<hr>
-		<?= SCRIPTS->xv($Apartado) ?>
+		<?= Daamper::$scripts->xv($Apartado) ?>
 	</form>
 </section>

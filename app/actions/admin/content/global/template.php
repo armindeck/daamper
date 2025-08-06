@@ -1,6 +1,6 @@
 <?php function PlantillaAccion() { global $Web;
 	if(isset($_GET['accion']) && in_array(strtolower($_GET['accion']), ['restaurar'])) {
-		$_GET['accion'] = SCRIPTS->normalizar(strtolower($_GET['accion']));
+		$_GET['accion'] = Daamper::$scripts->normalizar(strtolower($_GET['accion']));
 		if (in_array($_GET['accion'], ['restaurar'])) {
 			#$eliminar = ['web-template.php', 'web-template-scripts.php'];
 			$eliminar = ['template.json', 'scr-template.json'];
@@ -12,20 +12,20 @@
 		}
 	}
 	if (isset($_GET['plantilla']) && !empty($_GET['plantilla'])) {
-		$archivo_plantilla = SCRIPTS->normalizar($_GET['plantilla']);
+		$archivo_plantilla = Daamper::$scripts->normalizar($_GET['plantilla']);
 		#$ruta_plantilla = __DIR__."/plantillas/{$archivo_plantilla}";
 		#$ruta_plantilla_scripts = __DIR__."/plantillas/scr-{$archivo_plantilla}";
 		$ruta_plantilla = $Web["directorio"]."database/template/{$archivo_plantilla}";
 		$ruta_plantilla_scripts = $Web["directorio"]."database/template/scr-{$archivo_plantilla}";
 		if (file_exists($ruta_plantilla)) {
 			if(isset($_GET['accion']) && in_array(strtolower($_GET['accion']), ['mostrar', 'eliminar'])) {
-				$_GET['accion'] = SCRIPTS->normalizar(strtolower($_GET['accion']));
+				$_GET['accion'] = Daamper::$scripts->normalizar(strtolower($_GET['accion']));
 				
 				if (in_array($_GET['accion'], ['mostrar'])) {
 					#$Web['template'] = require $ruta_plantilla;
 					#$Web['template']['scr'] = require $ruta_plantilla_scripts;
-					$Web['template'] = DATA->Read("template/" . basename($ruta_plantilla));
-					$Web['template']['scr'] = DATA->Read("template/" . basename($ruta_plantilla_scripts));
+					$Web['template'] = Daamper::$data->Read("template/" . basename($ruta_plantilla));
+					$Web['template']['scr'] = Daamper::$data->Read("template/" . basename($ruta_plantilla_scripts));
 				}
 				if (in_array($_GET['accion'], ['eliminar'])) {
 					if(file_exists($ruta_plantilla)) { $mensaje_confirmar = unlink($ruta_plantilla); }

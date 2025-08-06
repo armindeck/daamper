@@ -1,4 +1,4 @@
-<?php global $AXR, $AX; $usu = DATA->UserAll(); ?>
+<?php global $AXR, $AX; $usu = Daamper::$data->UserAll(); ?>
 <div class="con con-blog <?= in_array(strtolower($AX['tipo']), array('blog', 'normal-blog')) ? 'con-blog--max-size' : '' ?>">
     <div class="blog">
         <section class="con-blog__miniatura">

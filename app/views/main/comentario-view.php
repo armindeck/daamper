@@ -1,8 +1,8 @@
-<?php function Comentario($value){ global $Web; $usu = DATA->UserAll() ?? []; ?>
+<?php function Comentario($value){ global $Web; $usu = Daamper::$data->UserAll() ?? []; ?>
 <?php if (empty($value['id_comentario']) && $value['estado'] == 'publico' && $Web['ruta'] != 'report.php'): ?>
-<input type="checkbox" class="responder-comentario" id="responder-comentario-<?= SCRIPTS->SimpleToken($value['id']) ?>" hidden>
+<input type="checkbox" class="responder-comentario" id="responder-comentario-<?= Daamper::$scripts->SimpleToken($value['id']) ?>" hidden>
 <?php endif; ?>
-<div id="<?= SCRIPTS->SimpleToken($value['id']) ?>" class="form comentarios <?= $value["estado"] != "publico" && $Web["ruta_completa"] == "../admin/admin.php" ? "comment-alert" : '' ?>"<?= !empty($value['id_comentario']) ? ' style="width: 95%; max-width: 800px;"' : '' ?>>
+<div id="<?= Daamper::$scripts->SimpleToken($value['id']) ?>" class="form comentarios <?= $value["estado"] != "publico" && $Web["ruta_completa"] == "../admin/admin.php" ? "comment-alert" : '' ?>"<?= !empty($value['id_comentario']) ? ' style="width: 95%; max-width: 800px;"' : '' ?>>
     <?php if ($value['estado'] == 'publico' || in_array($value['estado'], ['publico', 'revision']) && $Web["ruta_completa"] == "../admin/admin.php"){ ?>
     <header>
         <div>
@@ -23,7 +23,7 @@
         </div>
         <?php if ($Web['ruta'] != 'report.php') { ?>
         <form method="post" action="<?= $Web['directorio'] ?>process/reaction.php<?= $Web['ruta_completa'] == '../admin/admin.php' ? '?sub-ruta=admin-comments' : '' ?>">
-            <?= pInput(['type' => 'hidden', 'placeholder' => 'Token', 'name' => 'token-comentario', 'value' =>  SCRIPTS->SimpleToken($value['id']), 'minlength' => '4', 'maxlength' => 30, 'required' => true, 'des_session' => true]) ?>
+            <?= pInput(['type' => 'hidden', 'placeholder' => 'Token', 'name' => 'token-comentario', 'value' =>  Daamper::$scripts->SimpleToken($value['id']), 'minlength' => '4', 'maxlength' => 30, 'required' => true, 'des_session' => true]) ?>
             <?php
             foreach (['me_gusta' => '&#xf164;', 'no_me_gusta' => '&#xf165;'] as $item => $item_value) {
                 echo '<label>';
@@ -82,10 +82,10 @@
     </section>
     <footer>
         <?php if (empty($value['id_comentario']) && $value['estado'] == 'publico' && $Web['ruta'] != 'report.php'){ ?>
-        <?php if (!isset($_GET['view'])){ ?><label for="responder-comentario-<?= SCRIPTS->SimpleToken($value['id']) ?>"><?= Language('reply') ?></label><?php } else { echo '<span></span>'; } ?>
+        <?php if (!isset($_GET['view'])){ ?><label for="responder-comentario-<?= Daamper::$scripts->SimpleToken($value['id']) ?>"><?= Language('reply') ?></label><?php } else { echo '<span></span>'; } ?>
         <?php } else { echo '<label></label>'; } ?>
         <?php if ($Web['ruta'] != 'report.php') { ?>
-        <a target="_blank" href="<?= $Web['directorio'] . 'report' . $Web['config']['php'] . '?r=' . SCRIPTS->SimpleToken($value['id']); ?>"><?= Language('report') ?></a>
+        <a target="_blank" href="<?= $Web['directorio'] . 'report' . $Web['config']['php'] . '?r=' . Daamper::$scripts->SimpleToken($value['id']); ?>"><?= Language('report') ?></a>
         <?php } ?>
     </footer>
     <?php } elseif ($value['estado'] == 'revision') {
@@ -96,7 +96,7 @@
     <?php if ($Web["ruta_completa"] == "../admin/admin.php"): ?>
         <hr>
         <form action="<?= $Web["directorio"] ?>admin/process/actions.php" method="post" class="flex-between">
-            <input type="hidden" name="id_comentario" value="<?= SCRIPTS->hash($value["ruta"], $value["comentario"], $value["id"]) ?>" required>
+            <input type="hidden" name="id_comentario" value="<?= Daamper::$scripts->hash($value["ruta"], $value["comentario"], $value["id"]) ?>" required>
             <label><span><?= Language("status") ?>:</span>
                 <select name="estado_comentario">
                     <?php foreach (["publico" => "public", "revision" => "review", "eliminado" => "deleted"] as $key_aqui => $value_aqui) {

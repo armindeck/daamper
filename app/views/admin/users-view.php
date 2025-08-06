@@ -4,7 +4,7 @@
 		<strong><?= Language('users') ?></strong>
 	</div>
 	<form method="post" action="process/actions.php" style="margin-top: 0;">
-	<?php foreach (DATA->UserAll() as $key => $value) { ?>
+	<?php foreach (Daamper::$data->UserAll() as $key => $value) { ?>
 		<details <?= $key < 3 ? 'open' : '' ?>><summary><strong><?= $value['nombre'] ?></strong></summary>
 			<ul class="flex-column">
 			<?php foreach ($value as $key_value => $value_2) { if(!in_array($key_value, ['id', 'contrasena', 'pin'])){?>
@@ -30,6 +30,6 @@
 		</details><hr>
 	<?php } ?>
 	<?= pInput(['type'=>'submit','class'=>'boton','name'=>'procesa_'.$Apartado,'value'=>Language('update')]) ?><hr>
-	<?= SCRIPTS->xv($Apartado) ?>
+	<?= Daamper::$scripts->xv($Apartado) ?>
 	</form>
 </section>

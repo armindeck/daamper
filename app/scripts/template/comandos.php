@@ -1,4 +1,4 @@
-<?php function PlantillaComandosReemplazar ($comando, $comando_valor, $comando_atributos, $Contenedor, $Elemento) { global $Web, $WEBSITE;
+<?php function PlantillaComandosReemplazar ($comando, $comando_valor, $comando_atributos, $Contenedor, $Elemento) { global $Web;
 	if (in_array($comando, ['Form', 'Return', 'Post'])) {
         if (in_array($comando_valor, ['Input'])) {
 			$comando_atributos['name'] = ($comando_atributos['name'] ?? 'empty') . "_elemento_{$Elemento}_contenedor_{$Contenedor}";
@@ -45,7 +45,7 @@
 		] as $key => $value) {
 			if($comando_valor == 'Web'.(is_string($key) ? $key : $value)) {
 				$return = strtolower($value);
-				return $WEBSITE->$return;
+				return Daamper::$projectInfo->$return;
 			}
 		}
 
@@ -55,11 +55,11 @@
 			case 'Directorio': return $Web['directorio'] ?? './'; break;
 			case 'Php': return $Web['config']['php'] ?? ''; break;
 			case 'Copy': return '&copy; ' . (isset($Web['config']['ano_publicada']) && $Web['config']['ano_publicada'] != date("Y") ? $Web['config']['ano_publicada'] . ' -' : '') .' '. date("Y") . ' ' . ($Web['config']['nombre_web'] ?? '').'.'; break;
-			#case 'WebVersion&Estado': return 'v'.$WEBSITE->version .' ' . $WEBSITE->estado; break;
-			case 'WebVersionCompleta': return $WEBSITE->web(); break;
+			#case 'WebVersion&Estado': return 'v'.Daamper::$projectInfo->version .' ' . Daamper::$projectInfo->estado; break;
+			case 'WebVersionCompleta': return Daamper::$projectInfo->render(); break;
 			case 'ElementoContenedor': return "_elemento_{$Elemento}_contenedor_{$Contenedor}" ?? ''; break;
 			case 'WebVersionesOnline': return '<iframe frameborder="0" width="100%" style="min-height: 250px;" src="https://dbproject.rf.gd/main_external.php?tema='.(isset($_SESSION['tmp']['tema']) ? $_SESSION['tmp']['tema'] : 'blue-aero').'&cantidad=7&background=none&contenido=daamper-actualizaciones&font-size=14px&max-width=100%"></iframe>'; break;
-			case 'Visitas': return DATA->Read('other/visits')['total'] ?? 0; break;
+			case 'Visitas': return Daamper::$data->Read('other/visits')['total'] ?? 0; break;
 			case 'Iframe':
 				$comando_atributos['get'] = isset($comando_atributos['get']) ? '?' . str_replace('~', '=', $comando_atributos['get']) : '';
 				if (substr($comando_atributos['src'], 0, 4) != 'http') {
@@ -77,7 +77,7 @@
 				$string = file_get_contents($comando_atributos['src']);
 				foreach (['salto', 'espacio'] as $valor) {
 					if (isset($comando_atributos[$valor]) && $comando_atributos[$valor] == true) {
-						$string = $valor == 'salto' ? SCRIPTS->saltoToBr($string) : SCRIPTS->espacios_left($string);
+						$string = $valor == 'salto' ? Daamper::$scripts->saltoToBr($string) : Daamper::$scripts->espacios_left($string);
 					}
 				}
 				if ($comando_valor == 'FileReturnVersion') {

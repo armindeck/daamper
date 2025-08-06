@@ -40,10 +40,10 @@
 		<?php if (isset($_GET['plantilla']) && !empty($_GET['plantilla']) && file_exists("../database/template/{$_GET['plantilla']}")): $get_plantilla = true; ?>
 		<section class="form" style="margin-bottom: 0; margin-top: 0;">
 			<details open>
-				<summary><?= Language('template') ?>: <?= SCRIPTS->normalizar($_GET['plantilla']) ?></summary>
+				<summary><?= Language('template') ?>: <?= Daamper::$scripts->normalizar($_GET['plantilla']) ?></summary>
 				<section class="flex-between">
 					<a href="#procesa_actualizar" class="boton-2 boton-mini"><?= Language('use') ?></a>
-					<a class="boton boton-mini" href="?ap=template&plantilla=<?= SCRIPTS->normalizar($_GET['plantilla']) ?>&accion=eliminar"><i class="fas fa-trash"></i> <?= Language('delete') ?></a>
+					<a class="boton boton-mini" href="?ap=template&plantilla=<?= Daamper::$scripts->normalizar($_GET['plantilla']) ?>&accion=eliminar"><i class="fas fa-trash"></i> <?= Language('delete') ?></a>
 				</section>
 			</details>
 		</section>
@@ -146,7 +146,7 @@
 		<section class="form">
 		<?= pInput(['type'=>'submit','class'=>'boton','id'=>'procesa_actualizar','name'=>"procesa_$Apartado",'value'=>isset($get_plantilla) ? Language('use') : Language('update')]) ?>
 		<hr>
-		<?= SCRIPTS->xv($Apartado) ?>
+		<?= Daamper::$scripts->xv($Apartado) ?>
 		</section>
 	</section>
 </form>

@@ -1,8 +1,8 @@
 <?php
 if(file_exists($Web["directorio"]."database/theme/theme.json")){
-    $Web['theme'] = DATA->Read("theme/theme") ?? [];
+    $Web['theme'] = Daamper::$data->Read("theme/theme") ?? [];
     if(isset($Web['theme']['tema']) && !empty($Web['theme']['tema']) && file_exists($Web["directorio"]."database/theme/".($Web['theme']['archivo']))){
-        $Web['theme']['styles'] = DATA->Read("theme/" . $Web['theme']['archivo']) ?? [];
+        $Web['theme']['styles'] = Daamper::$data->Read("theme/" . $Web['theme']['archivo']) ?? [];
         if(isset($Web['theme']['styles'])){
             echo "<!-- Tema: ". (isset($Web['theme']['styles']['nombre_tema']) ? $Web['theme']['styles']['nombre_tema'] : 'Indefinido') . " -->\n<style type='text/css'>\n";
             foreach ($Web['theme']['styles'] as $key => $value) {

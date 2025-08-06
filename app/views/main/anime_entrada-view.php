@@ -47,7 +47,7 @@
 			</aside>
 			<div class="con der-content">
 				<h3><?= Language('synopsis') ?></h3><hr>
-				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= SCRIPTS->Commands($AX['sinopsis']); ?></p><hr>
+				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= Daamper::$scripts->Commands($AX['sinopsis']); ?></p><hr>
 				<details open>
 					<summary><small><?= Language('details') ?></small></summary>
 					<ul class="t-14">
@@ -62,8 +62,8 @@
 				<p class="t-14" style="margin-bottom: 8px;"><b><?= Language('genres') ?></b></p>
 				<?php require RAIZ . "app/actions/admin/content/global/creators/script/anime_entrada.php";
 				foreach ($lista_categorias as $key => $value) {
-					if(isset($AX[SCRIPTS->archivoAceptado($key)]) &&
-						!empty($AX[SCRIPTS->archivoAceptado($key)])
+					if(isset($AX[Daamper::$scripts->archivoAceptado($key)]) &&
+						!empty($AX[Daamper::$scripts->archivoAceptado($key)])
 					){
 						echo '<a class="boton-2 t-14 boton-mini" href="#">'.$value.'</a>';
 					}
@@ -78,15 +78,15 @@
 		<form method="get" class="formulario t-14 flex-between" style="margin: 4px 6px 0px 6px;">
 			<p style="font-size: 16px; font-weight: bold; text-transform: uppercase;"><i class="fas fa-list-ol"></i> <?= Language('episode-list') ?></p>
 			<section>
-				<?= pSelect(['name'=>'ordenar_episodios','texto'=>Language('sort-by'),'option'=>['asc' => Language('ascending'),'desc' => Language('descending')],'des_session'=>true,'value'=>(isset($_GET['ordenar_episodios']) ? SCRIPTS->normalizar2($_GET['ordenar_episodios']) : '')]).' '.
-				pInput(['type'=>'number','min'=>0,'max'=>$AX['episodios'],'name'=>'cantidad_episodios','class'=>'form-campo-pequeno','value'=>(isset($_GET['cantidad_episodios']) && is_numeric($_GET['cantidad_episodios']) && $_GET['cantidad_episodios'] <= $AX['episodios'] ? SCRIPTS->normalizar2($_GET['cantidad_episodios']) : $AX['episodios']),'label'=>true,'des_session'=>true,'texto'=>Language('quantity')]).' '.
+				<?= pSelect(['name'=>'ordenar_episodios','texto'=>Language('sort-by'),'option'=>['asc' => Language('ascending'),'desc' => Language('descending')],'des_session'=>true,'value'=>(isset($_GET['ordenar_episodios']) ? Daamper::$scripts->normalizar2($_GET['ordenar_episodios']) : '')]).' '.
+				pInput(['type'=>'number','min'=>0,'max'=>$AX['episodios'],'name'=>'cantidad_episodios','class'=>'form-campo-pequeno','value'=>(isset($_GET['cantidad_episodios']) && is_numeric($_GET['cantidad_episodios']) && $_GET['cantidad_episodios'] <= $AX['episodios'] ? Daamper::$scripts->normalizar2($_GET['cantidad_episodios']) : $AX['episodios']),'label'=>true,'des_session'=>true,'texto'=>Language('quantity')]).' '.
 				pInput(['type'=>'submit','class'=>'boton','value'=>Language('sort'),'des_session'=>true]);
 				?>
 			</section>
 		</form>
 		<div class="div-episodios scrolls campo">
 		<?php
-			$anime_entrada['ruta_archivos_buscar']=$Web['directorio'].'ver/'.SCRIPTS->sinEPHP($AX['archivo']);
+			$anime_entrada['ruta_archivos_buscar']=$Web['directorio'].'ver/'.Daamper::$scripts->sinEPHP($AX['archivo']);
 			$anime_entrada['episodios_buscar']=glob($anime_entrada['ruta_archivos_buscar'].'*.{php}', GLOB_BRACE);
 			
 			sort($anime_entrada['episodios_buscar'], SORT_NATURAL | SORT_FLAG_CASE);
@@ -98,7 +98,7 @@
 
 			$anime_entrada['get_cantidad_episodios']=$AX['episodios'];
 			if(isset($_GET['cantidad_episodios']) && is_numeric($_GET['cantidad_episodios']) && $_GET['cantidad_episodios'] <= $AX['episodios']){
-				$anime_entrada['get_cantidad_episodios'] = SCRIPTS->normalizar2($_GET['cantidad_episodios']);
+				$anime_entrada['get_cantidad_episodios'] = Daamper::$scripts->normalizar2($_GET['cantidad_episodios']);
 			}
 			
 			$i_sigue=0;
@@ -111,7 +111,7 @@
 				}
 
 				if(isset($anime_entrada['sigue'])){
-					$value=SCRIPTS->sinEPHP($value);
+					$value=Daamper::$scripts->sinEPHP($value);
 					$anime_entrada['valor_a']=str_replace($anime_entrada['ruta_archivos_buscar'], '', $value);
 					$anime_entrada['valor_a'] = substr($anime_entrada['valor_a'], 1, strlen($anime_entrada['valor_a']));
 

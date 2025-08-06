@@ -13,22 +13,22 @@ CMD (Commands)
 	cmd[directory_image_complete]; → https://.com/assets/img/ | ./assets/img/ | Se mostrara el directorio/enlace de la pagina con el directorio de las imagenes. 
 */
 global $Web;
-$commands = DATA->Config("commands");
+$commands = Daamper::$data->Config("commands");
 
 $text_social = "";
-foreach (INFO["social-networks"] as $key => $value) {
+foreach (Daamper::$info["social-networks"] as $key => $value) {
 	$text_social .= "link-external[{$value['link']}]/[icon[{$value['icono']}]icon; {$value['name']}]link; ";
 }
 
 $cmd = [
-	"cmd[version];" => VERSION["system"]["version"],
-	"cmd[state];" => VERSION["system"]["state"],
-	"cmd[updated];" => VERSION["system"]["updated"],
-	"cmd[created];" => VERSION["system"]["created"],
-	"cmd[license];" => file_exists(RAIZ . "license.txt") ? str_replace("\n", "<br>", file_get_contents(RAIZ . "LICENSE.txt")) : VERSION["system"]["license"],
-	"cmd[creator];" => INFO["author"],
-	"cmd[creator-page-name];" => INFO["author-page-name"],
-	"cmd[creator-page-link];" => INFO["author-page-url"],
+	"cmd[version];" => Daamper::$version["system"]["version"],
+	"cmd[state];" => Daamper::$version["system"]["state"],
+	"cmd[updated];" => Daamper::$version["system"]["updated"],
+	"cmd[created];" => Daamper::$version["system"]["created"],
+	"cmd[license];" => file_exists(RAIZ . "license.txt") ? str_replace("\n", "<br>", file_get_contents(RAIZ . "LICENSE.txt")) : Daamper::$version["system"]["license"],
+	"cmd[creator];" => Daamper::$info["author"],
+	"cmd[creator-page-name];" => Daamper::$info["author-page-name"],
+	"cmd[creator-page-link];" => Daamper::$info["author-page-url"],
 	"cmd[creator-social-networks];" => strtr($text_social, $commands),
 	"cmd[directory];" => $Web["directorio"],
 	"cmd[directory_image_complete];" => (isset($Web['config']['https_imagen']) ? $Web['config']['https_imagen'] : '') . 'assets/img/'

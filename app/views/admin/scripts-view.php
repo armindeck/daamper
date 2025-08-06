@@ -17,6 +17,6 @@
 			<hr>
 			<?= pInput(['type'=>'submit','class'=>'boton','name'=>'procesa_'.$Apartado,'value'=>Language('update')]) ?>
 		</section><hr>
-		<?= SCRIPTS->xv($Apartado) ?>
+		<?= Daamper::$scripts->xv($Apartado) ?>
 	</form>
 </section>

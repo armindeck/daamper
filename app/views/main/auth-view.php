@@ -65,12 +65,12 @@ if($Web['ruta_completa'] == '../auth/login.php' || $Web['ruta_completa'] == '../
 			<?php /*------------------ UPDATE DATA --------------------*/ ?>
 			<?php if($_GET['up'] == 'update-data'): ?>
 			<b><?= Language('update-data') ?></b><hr>
-			<?php $default = DATA->Config("default")["auth"]["update-data"];
-			echo pInput(['name'=>'nombre','placeholder'=>Language('name'),'pattern'=>'[a-zA-Z ]+','minlength'=>4,'maxlength'=>50,'label'=>true,'texto'=>Language('name'),'value'=>DATA->UserByID($_SESSION['id'])['nombre'],'required'=>true]).
-			pTextarea(['name'=>'descripcion','placeholder'=>Language('description'),'minlength'=>4,'maxlength'=>50,'label'=>true,'texto'=>Language('description'),'value'=>(isset(DATA->UserByID($_SESSION['id'])['descripcion']) ? DATA->UserByID($_SESSION['id'])['descripcion'] : $default["description"]),'required'=>true]).
-			pInput(['name'=>'email','placeholder'=>Language('email'),'minlength'=>4,'maxlength'=>50,'label'=>true,'texto'=>Language('email'),'value'=>DATA->UserByID($_SESSION['id'])['email'],'required'=>true]).
-			pInput(['name'=>'red_social_nombre','placeholder'=>Language('social-name'),'minlength'=>1,'maxlength'=>50,'label'=>true,'texto'=>Language('social-name'),'value'=>(isset(DATA->UserByID($_SESSION['id'])['red_social_nombre']) ? DATA->UserByID($_SESSION['id'])['red_social_nombre'] : $default["social-network-name"]),'required'=>true]).
-			pInput(['type'=>'url','name'=>'red_social_enlace','placeholder'=>Language('social-link'),'minlength'=>5,'maxlength'=>100,'label'=>true,'texto'=>Language('social-link'),'value'=>(isset(DATA->UserByID($_SESSION['id'])['red_social_enlace']) ? DATA->UserByID($_SESSION['id'])['red_social_enlace'] : $default["social-network-link"]),'required'=>true]).
+			<?php $default = Daamper::$data->Config("default")["auth"]["update-data"];
+			echo pInput(['name'=>'nombre','placeholder'=>Language('name'),'pattern'=>'[a-zA-Z ]+','minlength'=>4,'maxlength'=>50,'label'=>true,'texto'=>Language('name'),'value'=>Daamper::$data->UserByID($_SESSION['id'])['nombre'],'required'=>true]).
+			pTextarea(['name'=>'descripcion','placeholder'=>Language('description'),'minlength'=>4,'maxlength'=>50,'label'=>true,'texto'=>Language('description'),'value'=>(isset(Daamper::$data->UserByID($_SESSION['id'])['descripcion']) ? Daamper::$data->UserByID($_SESSION['id'])['descripcion'] : $default["description"]),'required'=>true]).
+			pInput(['name'=>'email','placeholder'=>Language('email'),'minlength'=>4,'maxlength'=>50,'label'=>true,'texto'=>Language('email'),'value'=>Daamper::$data->UserByID($_SESSION['id'])['email'],'required'=>true]).
+			pInput(['name'=>'red_social_nombre','placeholder'=>Language('social-name'),'minlength'=>1,'maxlength'=>50,'label'=>true,'texto'=>Language('social-name'),'value'=>(isset(Daamper::$data->UserByID($_SESSION['id'])['red_social_nombre']) ? Daamper::$data->UserByID($_SESSION['id'])['red_social_nombre'] : $default["social-network-name"]),'required'=>true]).
+			pInput(['type'=>'url','name'=>'red_social_enlace','placeholder'=>Language('social-link'),'minlength'=>5,'maxlength'=>100,'label'=>true,'texto'=>Language('social-link'),'value'=>(isset(Daamper::$data->UserByID($_SESSION['id'])['red_social_enlace']) ? Daamper::$data->UserByID($_SESSION['id'])['red_social_enlace'] : $default["social-network-link"]),'required'=>true]).
 			pInput(['name'=>'contrasena','type'=>'password','placeholder'=> Language('password'),'minlength'=>8,'maxlength'=>50,'label'=>true,'texto'=> Language('password'),'required'=>true]).
 			pInput(['name'=>'tipo','type'=>'hidden','value'=>'actualizar_datos_configuracion','des_session'=>true,'placeholder'=>'tipo','required'=>true]);
 			?>
@@ -81,7 +81,7 @@ if($Web['ruta_completa'] == '../auth/login.php' || $Web['ruta_completa'] == '../
 			<b><?= Language('upload-avatar') ?></b><hr>
 			<p><?= Language(['upload-image', 'recommended'], 'dashboard', ['value' => '<a target="_blank" rel="nofollow" href="https://tinypng.com/">TinyPNG</a>']) ?></p><hr>
 			<?=
-			pInput(['type'=>'file','accept'=>'.jpg,.jpeg,.png,.gif','name'=>'imagen','placeholder'=>'Avatar','label'=>true,'texto'=>Language('upload-avatar'),'value'=>(isset(DATA->UserByID($_SESSION['id'])['avatar']) ? DATA->UserByID($_SESSION['id'])['avatar'] : 'default'),'required'=>true]).
+			pInput(['type'=>'file','accept'=>'.jpg,.jpeg,.png,.gif','name'=>'imagen','placeholder'=>'Avatar','label'=>true,'texto'=>Language('upload-avatar'),'value'=>(isset(Daamper::$data->UserByID($_SESSION['id'])['avatar']) ? Daamper::$data->UserByID($_SESSION['id'])['avatar'] : 'default'),'required'=>true]).
 			pInput(['name'=>'contrasena','type'=>'password','placeholder'=> Language('password'),'minlength'=>8,'maxlength'=>50,'label'=>true,'texto'=> Language('password'),'required'=>true]).
 			pInput(['name'=>'tipo','type'=>'hidden','value'=>'actualizar_datos_avatar','des_session'=>true,'placeholder'=>'tipo','required'=>true]);
 			?>
@@ -109,7 +109,7 @@ if($Web['ruta_completa'] == '../auth/login.php' || $Web['ruta_completa'] == '../
 				<input type="checkbox" class="show-key" id="show-pin" hidden>
 				<label for="show-pin"><a class="boton-2"><i class="fas fa-eye"></i></a></label>
 				<section class="campo flex-1 key-show t-center">
-					<p class="key-show__key" hidden><?= DATA->UserAll()[$_SESSION["id"]]["pin"] ?? Language("undefined"); ?></p>
+					<p class="key-show__key" hidden><?= Daamper::$data->UserAll()[$_SESSION["id"]]["pin"] ?? Language("undefined"); ?></p>
 					<p class="key-show__hidden">*********</p>
 				</section>
 			</div><br>
@@ -125,9 +125,9 @@ if($Web['ruta_completa'] == '../auth/login.php' || $Web['ruta_completa'] == '../
 		<?php endif; ?>
 		<?php if($Web['ruta_completa'] == '../auth/config.php' && isset($_GET['up']) && in_array($_GET["up"], ["update-data", "change-avatar", "change-password", "delete-account", "pin"]) or $Web['ruta_completa'] != '../auth/config.php'): ?>
 		<hr>
-		<?php $suma = SCRIPTS->SimpleSuma(); ?>
+		<?php $suma = Daamper::$scripts->SimpleSuma(); ?>
 		<label><?= Language('math-question', 'global', ['value' => $suma["a"], 'value2' => $suma["b"]]) ?>: <input type="number" min="<?= $suma["min-input"] ?>" max="<?= $suma["max-input"] ?>" maxlength="1" name="resultado" pattern="[0-9]" required></label>
-		<input type="hidden" name="resultado_verificar" value="<?= SCRIPTS->SimpleToken($suma["c"]); ?>" required><hr>
+		<input type="hidden" name="resultado_verificar" value="<?= Daamper::$scripts->SimpleToken($suma["c"]); ?>" required><hr>
 		<?php endif; ?>
 
 		<?php if($Web['ruta_completa'] == '../auth/login.php'): ?>

@@ -6,7 +6,7 @@ $LISTA_DATOS_POST=[
 $post=[];
 foreach ($LISTA_DATOS_POST as $key => $value) {
 	if(!isset($_POST[$value])){ $_POST[$value]=''; }
-	$post[$value]=SCRIPTS->normalizar2($_POST[$value]);
+	$post[$value]=Daamper::$scripts->normalizar2($_POST[$value]);
 }
 
 $guardar = '';

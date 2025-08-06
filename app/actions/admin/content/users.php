@@ -1,6 +1,6 @@
 <?php
 $lista = ["estado", "rol"];
-$usuarios = DATA->User();
+$usuarios = Daamper::$data->User();
 $rol_permitido = [
 	"CEO Founder" => ["Usuario", "Editor", "Administrador", "CEO Founder"],
 	"Administrador" => ["Usuario", "Editor"]
@@ -38,7 +38,7 @@ foreach ($usuarios as $id => $datos) {
 					}
 				}
 				if($pasa){
-					$usuarios[$datos["id"]][$key] = SCRIPTS->normalizar($_POST["$key-us-{$datos['id']}"]);
+					$usuarios[$datos["id"]][$key] = Daamper::$scripts->normalizar($_POST["$key-us-{$datos['id']}"]);
 					if ($key == "estado"){
 						$usuarios[$datos["id"]][$key] = strtolower($usuarios[$datos["id"]][$key]);
 					}
@@ -50,20 +50,20 @@ foreach ($usuarios as $id => $datos) {
 
 function Historial($status = false) {
 	$file = RAIZ . "database/files/txt/history/users.txt";
-	if (!file_exists($file)) { file_put_contents($file, 'Generado: ' . SCRIPTS->fecha_hora()); }
+	if (!file_exists($file)) { file_put_contents($file, 'Generado: ' . Daamper::$scripts->fecha_hora()); }
 	$leer = file_get_contents($file);
-	$guardar = SCRIPTS->fecha_hora() . ' ~ '.($status ? 'Modificado' : 'Fallo').' → ' . $_SESSION['id'];
+	$guardar = Daamper::$scripts->fecha_hora() . ' ~ '.($status ? 'Modificado' : 'Fallo').' → ' . $_SESSION['id'];
 	file_put_contents($file, "$guardar\n$leer");
 }
 
-$confirmar = DATA->UpdateUser($usuarios);
+$confirmar = Daamper::$data->UpdateUser($usuarios);
 
 if(!$confirmar){
 	Historial(false);
-	sendAlert->Error(Language('data-no-save'), "../admin.php?ap=$Apartado");
+	Daamper::$sendAlert->Error(Language('data-no-save'), "../admin.php?ap=$Apartado");
 }
 
 Historial(true);
-sendAlert->Success(Language('data-save'), "../admin.php?ap=$Apartado");
+Daamper::$sendAlert->Success(Language('data-save'), "../admin.php?ap=$Apartado");
 
 $DATOS_DEFAULT = false;

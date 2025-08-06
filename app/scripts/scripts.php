@@ -1,5 +1,5 @@
 <?php
-class scripts
+class Scripts
 {
     public function zona()
     {
@@ -108,9 +108,9 @@ class scripts
         $return = '';
         foreach (['version', 'state', 'updated'] as $value) {
             if (empty($other)) {
-                $return .= VERSION['dashboard'][$apartado][$value] . ' ';
+                $return .= Daamper::$version['dashboard'][$apartado][$value] . ' ';
             } else {
-                $return .= VERSION['dashboard'][$apartado]['other'][$value] . ' ';
+                $return .= Daamper::$version['dashboard'][$apartado]['other'][$value] . ' ';
             }
         }
 
@@ -375,7 +375,7 @@ class scripts
         return md5($route . ($text != null ? "|" . $this->limpiarTextoPlano($text) : "") . ($id_user != null ? "|" . $id_user : ""));
     }
 }
-define('SCRIPTS', $SCRIPTS = new scripts);
+Daamper::$scripts = new Scripts;
 
 foreach (
     [

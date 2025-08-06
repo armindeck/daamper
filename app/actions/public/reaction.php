@@ -3,7 +3,7 @@ $Web['directorio'] = '../'; $Web['ruta'] = 'process/reaction.php';
 require_once $Web['directorio'].'app/controller/admin.php';
 
 if (!isset($_POST['me_gusta']) && !isset($_POST['no_me_gusta']) || !isset($_SESSION['id'])) {
-    sendAlert->Warning(Language("login-or-do-not-modify-hidden-fields", "alert"), $Web['directorio']);
+    Daamper::$sendAlert->Warning(Language("login-or-do-not-modify-hidden-fields", "alert"), $Web['directorio']);
 }
 
 if (isset($_POST['me_gusta'])) { $TIPO = 'me_gusta'; } elseif (isset($_POST['no_me_gusta'])) { $TIPO = 'no_me_gusta'; }
@@ -11,22 +11,22 @@ if (isset($_POST['me_gusta'])) { $TIPO = 'me_gusta'; } elseif (isset($_POST['no_
 $lista = ['token-comentario'];
 foreach ($lista as $key => $value) {
     if (!isset($_POST[$value]) || empty($_POST[$value])) {
-        sendAlert->Error(Language("fill-all-fields", "alert"), $Web['directorio']);
+        Daamper::$sendAlert->Error(Language("fill-all-fields", "alert"), $Web['directorio']);
     }
-    $post[$value] = SCRIPTS->normalizar2($_POST[$value]);
+    $post[$value] = Daamper::$scripts->normalizar2($_POST[$value]);
 }
 
-$file_comentarios = DATA->CommentRoute();
+$file_comentarios = Daamper::$data->CommentRoute();
 $comentarios = [];
-if (file_exists($file_comentarios)){ $comentarios = DATA->CommentAll(); }
+if (file_exists($file_comentarios)){ $comentarios = Daamper::$data->CommentAll(); }
 if (count($comentarios) <= 0) {
-    sendAlert->Error(Language("no-comments-yet", "alert"), $Web['directorio']);
+    Daamper::$sendAlert->Error(Language("no-comments-yet", "alert"), $Web['directorio']);
 }
 for ($i = 1; $i <= count($comentarios); $i++) {
-    if (SCRIPTS->SimpleToken($i) == $post['token-comentario']) { $id = $i; $encontro = true; break; }
+    if (Daamper::$scripts->SimpleToken($i) == $post['token-comentario']) { $id = $i; $encontro = true; break; }
 }
 if (!isset($encontro)) {
-    sendAlert->Error(Language("comment-to-react-not-exist", "alert"), $Web['directorio']);
+    Daamper::$sendAlert->Error(Language("comment-to-react-not-exist", "alert"), $Web['directorio']);
 }
 
 if ($comentarios[$id]['estado'] != 'publico') {
@@ -44,10 +44,10 @@ if ($TIPO == 'me_gusta') {
     $post['no_me_gusta'] = 1;
 }
 
-$post['fecha'] = SCRIPTS->fecha_hora();
+$post['fecha'] = Daamper::$scripts->fecha_hora();
 
-if (!file_exists(DATA->CommentRoute(true))) { DATA->Save(DATA->CommentRoute(true, false), []); }
-$file_comentarios_extras_leer = DATA->Comment("extras");
+if (!file_exists(Daamper::$data->CommentRoute(true))) { Daamper::$data->Save(Daamper::$data->CommentRoute(true, false), []); }
+$file_comentarios_extras_leer = Daamper::$data->Comment("extras");
 
 $reacciones = 1;
 $conteo = 1;
@@ -67,8 +67,8 @@ if (isset($comentarios[$id]['reacciones'])) { $reacciones = count($comentarios[$
     }
 }
 $file_comentarios_extras_leer[$id]['reacciones'][$reacciones] = ['id_usuario' => $_SESSION['id'], 'me_gusta' => $post['me_gusta'], 'no_me_gusta' => $post['no_me_gusta'], 'fecha' => $post['fecha']];
-$resultado = DATA->UpdateComment($file_comentarios_extras_leer, true);
-$usu = DATA->UserAll();
+$resultado = Daamper::$data->UpdateComment($file_comentarios_extras_leer, true);
+$usu = Daamper::$data->UserAll();
 
 $nombre = '<strong>' . (!empty($comentarios[$id]['apodo']) ? $comentarios[$id]['apodo'] : $usu[($comentarios[$id]['id_usuario'])]['nombre']) . '</strong>';
 
@@ -77,7 +77,7 @@ if (isset($_GET['sub-ruta']) && $_GET['sub-ruta'] == 'admin-comments') {
 }
 
 if (!$resultado) {
-    sendAlert->Error(Language("failed-to-react-comment", "alert", ['value' => $nombre]), $ruta);
+    Daamper::$sendAlert->Error(Language("failed-to-react-comment", "alert", ['value' => $nombre]), $ruta);
 }
 
-sendAlert->Success(Language("reacted-to-comment", "alert", ['value' => $nombre]), $ruta);
+Daamper::$sendAlert->Success(Language("reacted-to-comment", "alert", ['value' => $nombre]), $ruta);

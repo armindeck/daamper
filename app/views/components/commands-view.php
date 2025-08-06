@@ -254,39 +254,39 @@
             <div class="flex-column">
                 <label class="flex-between">
                     <span><?= Language("version") ?>:</span>
-                    <p class="campo" title="<?= VERSION["system"]["version"] ?>"><span class="text-command">cmd[version];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["system"]["version"] ?>"><span class="text-command">cmd[version];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("state") ?>:</span>
-                    <p class="campo" title="<?= VERSION["system"]["state"] ?>"><span class="text-command">cmd[state];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["system"]["state"] ?>"><span class="text-command">cmd[state];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("updated") ?>:</span>
-                    <p class="campo" title="<?= VERSION["system"]["updated"] ?>"><span class="text-command">cmd[updated];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["system"]["updated"] ?>"><span class="text-command">cmd[updated];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("created") ?>:</span>
-                    <p class="campo" title="<?= VERSION["system"]["created"] ?>"><span class="text-command">cmd[created];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["system"]["created"] ?>"><span class="text-command">cmd[created];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("license") ?>:</span>
-                    <p class="campo" title="<?= VERSION["system"]["license"] ?>"><span class="text-command">cmd[license];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["system"]["license"] ?>"><span class="text-command">cmd[license];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("creator") ?>:</span>
-                    <p class="campo" title="<?= INFO["author"] ?>"><span class="text-command">cmd[creator];</span></p>
+                    <p class="campo" title="<?= Daamper::$info["author"] ?>"><span class="text-command">cmd[creator];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("social-name") ?>:</span>
-                    <p class="campo" title="<?= INFO["author-page-name"] ?>"><span class="text-command">cmd[creator-page-name];</span></p>
+                    <p class="campo" title="<?= Daamper::$info["author-page-name"] ?>"><span class="text-command">cmd[creator-page-name];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("social-link") ?>:</span>
-                    <p class="campo" title="<?= INFO["author-page-url"] ?>"><span class="text-command">cmd[creator-page-link];</span></p>
+                    <p class="campo" title="<?= Daamper::$info["author-page-url"] ?>"><span class="text-command">cmd[creator-page-link];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("social-networks") ?>:</span>
-                    <?php $social_system = ""; foreach (INFO["social-networks"] as $key => $value) {
+                    <?php $social_system = ""; foreach (Daamper::$info["social-networks"] as $key => $value) {
                         $social_system .= '<a target="_blank" href="'.($value["link"]).'"><i class="'.($value["icono"]).'"></i> '.($value["name"]).'</a> ';
                     } ?>
                     <p class="campo" title="<?= htmlspecialchars($social_system) ?>"><span class="text-command">cmd[creator-social-networks];</span></p>

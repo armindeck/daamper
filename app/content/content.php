@@ -1,16 +1,16 @@
 <?php require_once __DIR__ . '/adaptabilidad.php';
-$ruta_publicaciones_json = str_replace(".php", ".json", SCRIPTS->eslasToGuion($Web['ruta']));
+$ruta_publicaciones_json = str_replace(".php", ".json", Daamper::$scripts->eslasToGuion($Web['ruta']));
 $ruta_publicaciones = RAIZ . 'database/post/' . $ruta_publicaciones_json;
 if(file_exists($ruta_publicaciones)){
-	$ACR = DATA->Post($ruta_publicaciones_json)["ACR"] ?? [];
-	$AC = DATA->Post($ruta_publicaciones_json)["AC"] ?? [];
+	$ACR = Daamper::$data->Post($ruta_publicaciones_json)["ACR"] ?? [];
+	$AC = Daamper::$data->Post($ruta_publicaciones_json)["AC"] ?? [];
 	if(!isset($ACR['creador'])){ die(Language('file-no-identifier', 'alert')); }
 } else {
 	if(substr($Web['ruta'], 0, 2) == 'p/'){
 		$ruta_perfil = RAIZ . 'database/post/p-perfil.json';
 		if(file_exists($ruta_perfil)){
-			$ACR = DATA->Post("p-perfil")["ACR"] ?? [];
-			$AC = DATA->Post("p-perfil")["AC"] ?? [];
+			$ACR = Daamper::$data->Post("p-perfil")["ACR"] ?? [];
+			$AC = Daamper::$data->Post("p-perfil")["AC"] ?? [];
 			} else { die(Language('profile-data-missing', 'alert')); }
 	} else { die(Language('data-file-missing', 'alert')); }
 }

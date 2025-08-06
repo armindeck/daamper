@@ -1,14 +1,14 @@
 <?php
 $post = [];
-$post['nombre_tema'] = SCRIPTS->normalizar($_POST["nombre_tema"]);
-$post['archivo'] = SCRIPTS->archivoAceptado($_POST["archivo"]);
-$post['cantidad'] = isset($_POST['cantidad']) && !empty($_POST['cantidad']) ? SCRIPTS->normalizar($_POST['cantidad']) : 1;
+$post['nombre_tema'] = Daamper::$scripts->normalizar($_POST["nombre_tema"]);
+$post['archivo'] = Daamper::$scripts->archivoAceptado($_POST["archivo"]);
+$post['cantidad'] = isset($_POST['cantidad']) && !empty($_POST['cantidad']) ? Daamper::$scripts->normalizar($_POST['cantidad']) : 1;
 $lista_post = ['titulo','id','id_hidden','class','bg','co','br','pd','mr'];
 for ($i=0; $i < $post['cantidad']; $i++) {
 	foreach ($lista_post as $key => $value) {
-		$post["{$value}_{$i}"] = isset($_POST["{$value}_{$i}"]) ? SCRIPTS->normalizar($_POST["{$value}_{$i}"]) : '';
+		$post["{$value}_{$i}"] = isset($_POST["{$value}_{$i}"]) ? Daamper::$scripts->normalizar($_POST["{$value}_{$i}"]) : '';
 	}
-	$post["otros_{$i}"] = isset($_POST["otros_{$i}"]) ? SCRIPTS->quitarComilla($_POST["otros_{$i}"]) : '';
+	$post["otros_{$i}"] = isset($_POST["otros_{$i}"]) ? Daamper::$scripts->quitarComilla($_POST["otros_{$i}"]) : '';
 }
 $post["archivo"] = str_replace([".php", ".json"], "", $post["archivo"]) . ".json";
 $guardar = "<?php\n return [\n";
@@ -30,17 +30,17 @@ for ($i=0; $i < $post['cantidad']; $i++) {
 }
 
 $guardar .= "];\n?>";
-SCRIPTS->CrearCarpetas("database/temp/");
+Daamper::$scripts->CrearCarpetas("database/temp/");
 file_put_contents($Web["directorio"] . "database/temp/" . str_replace(".json", ".php", $post['archivo']), $guardar);
 $leer = require $Web["directorio"] . "database/temp/" . str_replace(".json", ".php", $post['archivo']);
-SCRIPTS->CrearCarpetas("database/$Apartado/");
-$confirmar = DATA->Save("$Apartado/{$post['archivo']}", $leer);
+Daamper::$scripts->CrearCarpetas("database/$Apartado/");
+$confirmar = Daamper::$data->Save("$Apartado/{$post['archivo']}", $leer);
 unlink($Web["directorio"] . "database/temp/" . str_replace(".json", ".php", $post['archivo']));
 
 if(!$confirmar){
-	sendAlert->Error(Language('data-no-save'), "../admin.php?ap=$Apartado&tema={$post['archivo']}");
+	Daamper::$sendAlert->Error(Language('data-no-save'), "../admin.php?ap=$Apartado&tema={$post['archivo']}");
 }
 
-sendAlert->Success(Language('data-save'), "../admin.php?ap=$Apartado&tema={$post['archivo']}");
+Daamper::$sendAlert->Success(Language('data-save'), "../admin.php?ap=$Apartado&tema={$post['archivo']}");
 
 $DATOS_DEFAULT = false;

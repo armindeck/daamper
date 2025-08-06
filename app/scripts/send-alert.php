@@ -1,6 +1,6 @@
-<?php class sendAlert {
-	private function Send(string $type = "success", string $text, string $route, array $tmp = []){
-		$types = DATA->Config("default")["other"]["alert-types"] ?? [];
+<?php class SendAlert {
+	private function Send(string $type = "success", string $text = "", string $route = "", array $tmp = []){
+		$types = Daamper::$data->Config("default")["other"]["alert-types"] ?? [];
 		$type = !in_array($type, $types) ? "default" : $type;
 		
 		$_SESSION['sendAlert'] = ["type" => $type, "text" => $text];
@@ -23,4 +23,4 @@
 		return $this->Send("refresh", $text, $route, $tmp);
 	}
 }
-define("sendAlert", new sendAlert);
+Daamper::$sendAlert = new SendAlert;

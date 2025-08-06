@@ -10,7 +10,7 @@
 		<input style="display:none;" type="checkbox" class="check-bt-eliminar-archivo" id="check-bt-eliminar-archivo">
 		<form method="post" class="flex-column">
 			<?php $images = []; $is_image = false;
-			foreach (DATA->Config("default")["global"]["upload-image"]["support"] as $key => $value) {
+			foreach (Daamper::$data->Config("default")["global"]["upload-image"]["support"] as $key => $value) {
 				$images[] = str_replace("image/", "", $value);
 			}
 			if(in_array(pathinfo(basename($Panel['ap_directorio_dir_completo']), PATHINFO_EXTENSION), $images)){
@@ -48,14 +48,14 @@
 			<input class="boton" type="submit" name="eliminar_archivo_boton" value="<?= Language('delete-file') ?>">
 		</form>
 		<?php $filedbhistory = $Web["directorio"] . "database/files/txt/history/editor/" .
-			SCRIPTS->eslasToGuion(
-				SCRIPTS->quitarPuntoEslas($Panel['ap_directorio_dir_completo'].'.txt')
+			Daamper::$scripts->eslasToGuion(
+				Daamper::$scripts->quitarPuntoEslas($Panel['ap_directorio_dir_completo'].'.txt')
 			);  ?>
 		<?php if(file_exists($filedbhistory)){ ?>
 			<hr>Historial<hr>
 			<textarea style="min-height: 100px;"><?php echo trim(htmlspecialchars(file_get_contents($filedbhistory))); ?></textarea>
 		<?php } ?>
 	<?php endif; ?>
-	<hr><?php echo SCRIPTS->xv('editor'); ?>
+	<hr><?php echo Daamper::$scripts->xv('editor'); ?>
 </div>
 </section>

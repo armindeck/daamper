@@ -1,6 +1,6 @@
 <?php
 if(isset($_FILES['imagen']) && $_FILES['imagen']['error'] !== UPLOAD_ERR_NO_FILE){
-    $VERSION = VERSION["components"]["upload-image"];
+    $VERSION = Daamper::$version["components"]["upload-image"];
     if ($tipo_de_seccion == "auth"){ $Apartado = "auth"; }
     $ruta_mspan = [
         "admin" => "admin/admin".$Web["config"]["php"]."?ap=$Apartado",
@@ -15,16 +15,16 @@ if(isset($_FILES['imagen']) && $_FILES['imagen']['error'] !== UPLOAD_ERR_NO_FILE
     $file_error = $_FILES[$file]['error'];
     $file_tmp = $_FILES[$file]['tmp_name'];
     if($file_error>0){
-        sendAlert->Error(Language(['upload-image', 'error-upload-image'], 'dashboard'), $Web["directorio"].$ruta_a);
+        Daamper::$sendAlert->Error(Language(['upload-image', 'error-upload-image'], 'dashboard'), $Web["directorio"].$ruta_a);
     } else {
-        $default_data = DATA->Config("default");
+        $default_data = Daamper::$data->Config("default");
         if(in_array($file_tipo, $default_data["global"]["upload-image"]["support"])){
             #$unMegabyteEnBytes = 1024 * 1024 = 1048576; // 1mb
             #echo "Un megabyte equivale a: $unMegabyteEnBytes bytes";
             $peso_maximo_megas = $default_data[$tipo_de_seccion]["upload-image"]["max-size"] ?? 1; # ??mb or 1mb
             $peso_maximo_total = 1048576 * $peso_maximo_megas;
             if($file_tamano>$peso_maximo_total){
-                sendAlert->Error(Language(['upload-image', 'image-max-size'], 'dashboard', ["value" => "{$peso_maximo_megas}mb"]), $Web["directorio"].$ruta_a);
+                Daamper::$sendAlert->Error(Language(['upload-image', 'image-max-size'], 'dashboard', ["value" => "{$peso_maximo_megas}mb"]), $Web["directorio"].$ruta_a);
             }{
                 $ubicacion_imagen = $Web['directorio'].'assets/img/' . ($tipo_de_seccion == "auth" ? "avatar/" : "");
                 $extencion_path = pathinfo($file_nombre, PATHINFO_EXTENSION);
@@ -33,9 +33,9 @@ if(isset($_FILES['imagen']) && $_FILES['imagen']['error'] !== UPLOAD_ERR_NO_FILE
                     $nombre_final = $usu[$_SESSION['id']]['usuario'].'.jpg';
                 }
                 if ($tipo_de_seccion == "admin"){
-                    $_POST['imagen_nombre'] = SCRIPTS->normalizar(SCRIPTS->archivoAceptado($_POST['imagen_nombre'] ?? ''));
+                    $_POST['imagen_nombre'] = Daamper::$scripts->normalizar(Daamper::$scripts->archivoAceptado($_POST['imagen_nombre'] ?? ''));
                     $nuevo_nombre = !empty($_POST['imagen_nombre']) ?
-                        SCRIPTS->normalizar(SCRIPTS->archivoAceptado($_POST['imagen_nombre'])) : $file_nombre;
+                        Daamper::$scripts->normalizar(Daamper::$scripts->archivoAceptado($_POST['imagen_nombre'])) : $file_nombre;
                     
                     $explode = explode(".", $nuevo_nombre);
                     var_dump(count($explode));
@@ -54,18 +54,18 @@ if(isset($_FILES['imagen']) && $_FILES['imagen']['error'] !== UPLOAD_ERR_NO_FILE
                 $ruta_a = isset($ruta_mspan_exito[$tipo_de_seccion]) ? $ruta_mspan_exito[$tipo_de_seccion] : $ruta_a;
                 //echo $ruta_a;
                 move_uploaded_file($file_tmp, $ubicacion_imagen.$nombre_final);
-                sendAlert->Success(Language(['upload-image', 'uploaded-image'], 'dashboard') . (
+                Daamper::$sendAlert->Success(Language(['upload-image', 'uploaded-image'], 'dashboard') . (
                     $tipo_de_seccion == "admin" ?
                         ': <a target="_blank" href="../assets/img/'.$nombre_final.'">'.(Language('show')).' <i class="fas fa-external-link-alt"></i></a>'
                     : ''), $Web["directorio"].$ruta_a
                 );
             }
         } else {
-            sendAlert->Error(Language(['upload-image', 'format-accept'], 'dashboard'), $Web["directorio"].$ruta_a);
+            Daamper::$sendAlert->Error(Language(['upload-image', 'format-accept'], 'dashboard'), $Web["directorio"].$ruta_a);
         }
     }
 } else {
-    sendAlert->Error(Language(['upload-image', 'error-uploading'], 'dashboard'), $Web["directorio"].$ruta_a);
+    Daamper::$sendAlert->Error(Language(['upload-image', 'error-uploading'], 'dashboard'), $Web["directorio"].$ruta_a);
 }
 
 $DATOS_DEFAULT = false;

@@ -1,22 +1,22 @@
 <?php
 if (isset($_GET['tipo']) && !empty($_GET['tipo'])) {
-	$Global['get_tipo'] = SCRIPTS->normalizar2($_GET['tipo']);
+	$Global['get_tipo'] = Daamper::$scripts->normalizar2($_GET['tipo']);
 } else {
 	$Global['get_tipo'] = '';
 }
 
 if (isset($_GET['archivo']) && !empty($_GET['archivo'])) {
-	$Global['get_archivo'] = SCRIPTS->normalizar2($_GET['archivo']);
+	$Global['get_archivo'] = Daamper::$scripts->normalizar2($_GET['archivo']);
 } else {
 	$Global['get_archivo'] = '';
 }
 
 if (isset($_POST['refrescar']) && !empty($_POST['refrescar'])) {
 	$ruta_get = '?ap=creator';
-	$ruta_get .= isset($_GET['creador']) ? '&creador=' . SCRIPTS->normalizar2($_GET['creador']) : '';
-	$ruta_get .= isset($_GET['tipo']) ? '&tipo=' . SCRIPTS->normalizar2($_GET['tipo']) : '';
-	$ruta_get .= isset($_GET['archivo']) ? '&archivo=' . SCRIPTS->normalizar2($_GET['archivo']) : '';
-	sendAlert->Refresh(Language('refreshed'), $ruta_get, $_POST);
+	$ruta_get .= isset($_GET['creador']) ? '&creador=' . Daamper::$scripts->normalizar2($_GET['creador']) : '';
+	$ruta_get .= isset($_GET['tipo']) ? '&tipo=' . Daamper::$scripts->normalizar2($_GET['tipo']) : '';
+	$ruta_get .= isset($_GET['archivo']) ? '&archivo=' . Daamper::$scripts->normalizar2($_GET['archivo']) : '';
+	Daamper::$sendAlert->Refresh(Language('refreshed'), $ruta_get, $_POST);
 }
 if (isset($_POST['mostrar']) && !empty($_POST['mostrar'])) {
 	$_SESSION['tmpForm'] = $_POST;
@@ -44,9 +44,9 @@ if (
 	isset($_GET['tipo']) && !empty($_GET['tipo']) &&
 	isset($_GET['archivo']) && !empty($_GET['archivo'])
 ) {
-	$Creador['get_creador'] = SCRIPTS->normalizar2($_GET['creador']);
-	$Creador['get_tipo'] = SCRIPTS->normalizar2($_GET['tipo']);
-	$Creador['get_archivo'] = SCRIPTS->normalizar2($_GET['archivo']);
+	$Creador['get_creador'] = Daamper::$scripts->normalizar2($_GET['creador']);
+	$Creador['get_tipo'] = Daamper::$scripts->normalizar2($_GET['tipo']);
+	$Creador['get_archivo'] = Daamper::$scripts->normalizar2($_GET['archivo']);
 
 	if ($Creador['get_tipo'] == 'publicacion' || $Creador['get_tipo'] == 'borrador') {
 		if ($Creador['get_tipo'] == 'publicacion') {
@@ -57,17 +57,17 @@ if (
 		}
 		$ruta_archivo = RAIZ . $Creador['ruta_archivo'] . $Creador['get_archivo'];
 		if (!file_exists($ruta_archivo)) {
-			sendAlert->Error(Language('file-no-exists', 'global', ['value' => '<strong>' . $Creador['get_archivo'] . '</strong>']), "?ap=creator");
+			Daamper::$sendAlert->Error(Language('file-no-exists', 'global', ['value' => '<strong>' . $Creador['get_archivo'] . '</strong>']), "?ap=creator");
 		}
-		$ACR = DATA->Read(($Creador['get_tipo'] == "publicacion" ? "post" : "draft") . "/" . $Creador['get_archivo'])["ACR"];
-		$AC = DATA->Read(($Creador['get_tipo'] == "publicacion" ? "post" : "draft") . "/" . $Creador['get_archivo'])["AC"];
+		$ACR = Daamper::$data->Read(($Creador['get_tipo'] == "publicacion" ? "post" : "draft") . "/" . $Creador['get_archivo'])["ACR"];
+		$AC = Daamper::$data->Read(($Creador['get_tipo'] == "publicacion" ? "post" : "draft") . "/" . $Creador['get_archivo'])["AC"];
 		if (!isset($ACR['creador'])) {
-			sendAlert->Error(Language('file-exists-no-data-or-incomplete', 'alert'), "?ap=creator");
+			Daamper::$sendAlert->Error(Language('file-exists-no-data-or-incomplete', 'alert'), "?ap=creator");
 		}
 		$Creador['lista_datos_necesarios'] = ['creador', 'db_ruta'];
 		foreach ($Creador['lista_datos_necesarios'] as $key => $value) {
 			if (!isset($ACR[$value])) {
-				sendAlert->Error(Language('file-no-data-creator-or-ruta', 'alert'), "?ap=creator");
+				Daamper::$sendAlert->Error(Language('file-no-data-creator-or-ruta', 'alert'), "?ap=creator");
 			}
 		}
 		if ($Creador['get_creador'] != $ACR['creador']) {
@@ -98,7 +98,7 @@ if (
 
 if (isset($_GET['actualizar-entradas']) && isset($_GET['cantidad-entradas']) && !empty($_GET['cantidad-entradas'])) {
 	$post = [];
-	for ($j = 0; $j < SCRIPTS->normalizar2($_GET['cantidad-entradas']); $j++) {
+	for ($j = 0; $j < Daamper::$scripts->normalizar2($_GET['cantidad-entradas']); $j++) {
 		$post[] = [
 			'entrada' => strtolower($_GET["entrada-$j"] ?? ''),
 			'poster' => $_GET["entrada-poster-$j"] ?? '',
@@ -107,9 +107,9 @@ if (isset($_GET['actualizar-entradas']) && isset($_GET['cantidad-entradas']) && 
 		];
 	}
 
-	$confirmar = DATA->Save("creator/list-of-entries", $post);
+	$confirmar = Daamper::$data->Save("creator/list-of-entries", $post);
 	if (!$confirmar) {
-		sendAlert->Error(Language('data-no-save'), "admin.php?ap=creator");
+		Daamper::$sendAlert->Error(Language('data-no-save'), "admin.php?ap=creator");
 	}
-	sendAlert->Success(Language('data-save'), "admin.php?ap=creator");
+	Daamper::$sendAlert->Success(Language('data-save'), "admin.php?ap=creator");
 }

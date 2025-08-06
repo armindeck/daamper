@@ -15,11 +15,11 @@
 		<section>
 			<?php foreach ($lista as $opcion) {
 				if($key == "os"){
-					echo pCheckboxBoton(['nameidclass' => $key . "_" . SCRIPTS->archivoAceptado($opcion), 'texto' => $opcion]) . ' ';
+					echo pCheckboxBoton(['nameidclass' => $key . "_" . Daamper::$scripts->archivoAceptado($opcion), 'texto' => $opcion]) . ' ';
 				} else {
 					echo pCheckboxBoton([
-						'name' => $key . "_" . SCRIPTS->archivoAceptado($opcion),
-						'id' => $key . "_" . SCRIPTS->archivoAceptado($opcion),
+						'name' => $key . "_" . Daamper::$scripts->archivoAceptado($opcion),
+						'id' => $key . "_" . Daamper::$scripts->archivoAceptado($opcion),
 						'texto' => (Language(["games-tags", $opcion], "global") ?? $opcion)
 					]) . ' ';
 				}
@@ -84,7 +84,7 @@
 	</section>
 </details>
 <?php foreach ($lista_os_requisitos as $os) {
-	$os_name = SCRIPTS->archivoAceptado($os);
+	$os_name = Daamper::$scripts->archivoAceptado($os);
 	if (isset($_SESSION['tmpForm']['os_' . $os_name]) && !empty($_SESSION['tmpForm']['os_' . $os_name])) {
 		$mostrar_requisitos = true;
 		break;
@@ -96,7 +96,7 @@ if (isset($mostrar_requisitos)): ?>
 			<summary><?= Language($value == 'minimo' ? 'minimum-requirements' : 'recommended-requirements') ?></summary>
 			<section>
 				<section style="margin-bottom: 4px;">
-					<?php foreach ($lista_os_requisitos as $os): $os_name = SCRIPTS->archivoAceptado($os);
+					<?php foreach ($lista_os_requisitos as $os): $os_name = Daamper::$scripts->archivoAceptado($os);
 						if (isset($_SESSION['tmpForm']["os_{$os_name}"]) && !empty($_SESSION['tmpForm']["os_{$os_name}"])) : ?>
 							<details>
 								<summary><?= $os ?></summary>
@@ -120,7 +120,7 @@ if (isset($mostrar_requisitos)): ?>
 	<summary><?= Language('downloads') ?></summary>
 	<section>
 		<section>
-			<?php foreach ($lista_os as $os): $os_name = SCRIPTS->archivoAceptado($os);
+			<?php foreach ($lista_os as $os): $os_name = Daamper::$scripts->archivoAceptado($os);
 				if (isset($_SESSION['tmpForm']["os_{$os_name}"]) && !empty($_SESSION['tmpForm']["os_{$os_name}"])) : ?>
 					<details>
 						<summary><?= $os ?></summary>
@@ -134,7 +134,7 @@ if (isset($mostrar_requisitos)): ?>
 										<?= pSelect(['name' => "descarga_peso_{$i_local}_{$os_name}_mb_or_gb", 'label' => false, 'texto' => 'MB o GB', 'option' => ['MB', 'GB']]) ?>
 									</section>
 									<section>
-										<?= pSelect(['name' => "descarga_servidor_{$i_local}_{$os_name}", 'label' => false, 'texto' => Language('server'), 'option' => DATA->Read('creator/default')['server']['downloads'] ?? []]) ?>
+										<?= pSelect(['name' => "descarga_servidor_{$i_local}_{$os_name}", 'label' => false, 'texto' => Language('server'), 'option' => Daamper::$data->Read('creator/default')['server']['downloads'] ?? []]) ?>
 										<?= pInput(['name' => "descarga_enlace_directo_{$i_local}_{$os_name}", 'type' => 'url', 'placeholder' => Language('link'), 'label' => false, 'texto' => Language('link')]) ?>
 										<?= pInput(['name' => "descarga_enlace_acortado_{$i_local}_{$os_name}", 'type' => 'url', 'placeholder' => Language('shortened-link'), 'label' => false, 'texto' => Language('shortened-link')]) ?>
 									</section>

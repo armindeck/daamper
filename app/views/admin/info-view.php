@@ -7,10 +7,10 @@
 			$show = [];
 			if($list){
 				$count = count($list);
-				if($count == 1) { $show = VERSION[$list[0]]; }
-				if($count == 2) { $show = VERSION[$list[0]][$list[1]]; }
-				if($count == 3) { $show = VERSION[$list[0]][$list[1]][$list[2]]; }
-				if($count == 4) { $show = VERSION[$list[0]][$list[1]][$list[2]][$list[3]]; }
+				if($count == 1) { $show = Daamper::$version[$list[0]]; }
+				if($count == 2) { $show = Daamper::$version[$list[0]][$list[1]]; }
+				if($count == 3) { $show = Daamper::$version[$list[0]][$list[1]][$list[2]]; }
+				if($count == 4) { $show = Daamper::$version[$list[0]][$list[1]][$list[2]][$list[3]]; }
 			}
 			$return = '';
 			foreach (['version', 'state', 'updated', 'created'] as $v) {
@@ -25,11 +25,11 @@
 				<ul>
 					<?php if ($opcion == 'system') {
 						foreach (['creator' => 'author-and-page-name', 'project' => 'page-name', 'version' => 'version', 'state' => 'state', 'updated' => 'updated', 'created' => 'created', 'license' => 'license'] as $sistema => $valor) {
-							echo '<li class="flex-between boton-2 boton-mini"><span>'. (Language($sistema)) . ':</span> '. ($valor == "state" ? (Language(INFOVERSION[$valor] == "Estable" ? "stable" : strtolower(INFOVERSION[$valor]))) : INFOVERSION[$valor]) .'</li>';
+							echo '<li class="flex-between boton-2 boton-mini"><span>'. (Language($sistema)) . ':</span> '. ($valor == "state" ? (Language(Daamper::$infoversion[$valor] == "Estable" ? "stable" : strtolower(Daamper::$infoversion[$valor]))) : Daamper::$infoversion[$valor]) .'</li>';
 						}
 					} ?>
 					<?= $opcion == "language" ? '<li class="flex-between boton-2 boton-mini"><span>'. (Language("language")) . ':</span> '. Version(["language"]) .'</li>' : ""; ?>
-					<?php if (in_array($opcion, ['dashboard', 'other', 'components'])) { $lista = DATA->Read("config/version")[$opcion] ?? [];
+					<?php if (in_array($opcion, ['dashboard', 'other', 'components'])) { $lista = Daamper::$data->Read("config/version")[$opcion] ?? [];
 						foreach ($lista as $key => $value) {
 							echo '<li class="flex-between boton-2 boton-mini"><span>' . Language($key) . ':</span> ';
 							echo Version([$opcion, $key]);
@@ -55,7 +55,7 @@
 						}
 					} ?>
 					<?php if ($opcion == 'social-networks') {
-						foreach (INFO['social-networks'] as $red => $valor) {
+						foreach (Daamper::$info['social-networks'] as $red => $valor) {
 							echo '<a class="flex-between boton-2 boton-mini" href="'.$valor['link'].'" target="_blank"><span>' . $red . ':</span> <span>'.$valor['name'].'</span></a>';
 						}
 					} ?>
@@ -63,6 +63,6 @@
 			</section>
 		</details>
 		<?php endforeach; ?>
-		<small class="t-center" style="margin-top: 15px;">&copy; <?= INFO['anio'] ?> - <?= SCRIPTS->anio(); ?> <?= INFO['author-and-page-name'] ?>.</small>
+		<small class="t-center" style="margin-top: 15px;">&copy; <?= Daamper::$info['anio'] ?> - <?= Daamper::$scripts->anio(); ?> <?= Daamper::$info['author-and-page-name'] ?>.</small>
 	</div>
 </section>

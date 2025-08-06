@@ -49,13 +49,13 @@ foreach (glob($Panel['ap_directorio_dir'].'*') as $key => $value) {
 }
 echo count($directories) > 0 ? "<small>" . Language("directories") . "</small>" : "";
 foreach ($directories as $key => $value) {
-	echo '<a class="boton-2" href="?ap=directory&dir='.$value.'/"><i class="fas fa-folder-open"></i> '.basename(SCRIPTS->quitarPuntoEslas($value)).'</a>';
+	echo '<a class="boton-2" href="?ap=directory&dir='.$value.'/"><i class="fas fa-folder-open"></i> '.basename(Daamper::$scripts->quitarPuntoEslas($value)).'</a>';
 }
 
 echo count($directories) > 0 && count($files) > 0 ? "<br>" : "";
 echo count($files) > 0 ? "<small>" . Language("files") . "</small>" : "";
 $images = [];
-foreach (DATA->Config("default")["global"]["upload-image"]["support"] as $key => $value) {
+foreach (Daamper::$data->Config("default")["global"]["upload-image"]["support"] as $key => $value) {
 	$images[] = str_replace("image/", "", $value);
 }
 
@@ -67,7 +67,7 @@ foreach ($files as $key => $value) {
 }
 foreach ($files as $key => $value) {
 	if(!in_array(pathinfo($value, PATHINFO_EXTENSION), $images)){
-		echo '<a class="boton" href="?ap=editor&dir='.$value.'" target="_blank"><i class="fas fa-file-code"></i> '.basename(SCRIPTS->quitarPuntoEslas($value)).'</a>';
+		echo '<a class="boton" href="?ap=editor&dir='.$value.'" target="_blank"><i class="fas fa-file-code"></i> '.basename(Daamper::$scripts->quitarPuntoEslas($value)).'</a>';
 	} else { ?>
 		<section class="flex-column">
 			<a href="<?= $value ?>" target="_blank">
@@ -91,6 +91,6 @@ if($Panel['ap_directorio_dir'] != '../'){
 	echo '<hr><div><a href="?ap=directory&dir='.dirname($Panel['ap_directorio_dir']).'/" class="boton-2"><i class="fas fa-arrow-left"></i> '.Language('back').'</a></div>';
 }
 ?>
-<hr><?= SCRIPTS->xv('directory'); ?>
+<hr><?= Daamper::$scripts->xv('directory'); ?>
 </div>
 </section>
