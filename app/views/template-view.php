@@ -1,15 +1,15 @@
 <?php # Nuevo Codigo
-Views('privado-error');
+Daamper::views('privado-error');
 ViewsPlantilla(null, true);
 /*
 # CARGAR INDIVIDUALMENTE
-Views('componenets/acciones');
+Daamper::views('componenets/acciones');
 ViewsPlantilla("header-estatico", true);
 ViewsPlantilla("header-bar", true);
 ViewsPlantilla("sidebar", true);
 ?>
 <?= ViewsPlantilla("open-content", true) ?>
-  <?= Views("main/comentario", true) ?>
+  <?= Daamper::views("main/comentario", true) ?>
   <?= ViewsPlantilla("main-header", true) ?>
   <?= ViewsPlantilla("main", true) ?>
   <?= ViewsPlantilla("main-footer", true) ?>

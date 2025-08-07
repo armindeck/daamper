@@ -9,7 +9,7 @@
   if (isset($AX['contenido']) && !empty($AX['contenido'])) {
     if (isset($AX['tipo'])) {
       echo in_array(strtolower($AX['tipo']), ['', 'normal']) ? '<div class="con">' : '';
-      if (in_array(strtolower($AX['tipo']), ['blog', 'normal-blog'])) { Views("main/blog"); }
+      if (in_array(strtolower($AX['tipo']), ['blog', 'normal-blog'])) { Daamper::views("main/blog"); }
     } ?>
 	<?= Daamper::$scripts->Commands($AX['contenido']) ?>
 	<?= isset($AX['tipo']) && in_array(strtolower($AX['tipo']), ['', 'normal', 'blog', 'normal-blog']) ? (in_array(strtolower($AX['tipo']), ['blog']) && isset($AXR['fecha_modificado']) && !empty($AXR['fecha_modificado']) ? '<hr><small>' . $AXR['fecha_modificado'] . '</small>' : '') . '</div>' : ''; ?>

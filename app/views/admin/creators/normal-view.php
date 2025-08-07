@@ -1,6 +1,6 @@
 <?php echo
 	pTextarea(['name' => 'fragmento', 'placeholder' => Language('fragment'), 'label' => false, 'texto' => Language('fragment'), 'style' => 'min-height:50px']);
-	Views("components/commands");
+	Daamper::views("components/commands");
 	echo 
 	pTextarea(['name' => 'contenido', 'placeholder' => Language('content'), 'label' => false, 'texto' => Language('content'), 'style' => 'min-height:250px']) .
 	pSelect(['name' => 'tipo', 'texto' => Language('type'), 'option' => [

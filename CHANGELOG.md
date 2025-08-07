@@ -1,6 +1,15 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.4 Stable] - 07/08/2025
+Reestructuración interna y limpieza de controladores:
+
+- Se eliminaron los archivos `recursos.php` y `system.php`.
+- El contenido fue migrado y unificado en la clase estática `Daamper` ubicada en [daamper](./app/controller/daamper.php).
+- Las funciones de recursos fueron reemplazadas por sus equivalentes en las nuevas ubicaciones.
+- Se eliminaron las referencias a recursos y system en [controller](./app/controller/controller.php).
+- Ajustes y refactorización en más de 20 archivos para adaptarse a la nueva estructura.
+
 ## [0.3.3 Stable] - 06/08/2025
 Reestructuración interna para mejorar la arquitectura del sistema:
 

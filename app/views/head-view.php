@@ -3,8 +3,8 @@
 		$ruta .= isset($Web['config']['php']) && empty($Web['config']['php']) ? str_replace('.php', '', $Web['ruta']) : $Web['ruta'];
 	} ?>
 	<title><?= $AX['titulo'] ?? '' ?> ~ <?= $Web['config']['nombre_web'] ?? Daamper::$projectInfo->nombre ?></title>
-	<link rel="preload" href="<?= $Web['config']['https_imagen'] . AssetsImg('logo.png') ?>" as="image">
-	<link rel="icon" type="image/png" href="<?= $Web['config']['https_imagen'] . AssetsImg('logo.png') ?>" sizes="128x128">
+	<link rel="preload" href="<?= $Web['config']['https_imagen'] . Daamper::imgPath('logo.png') ?>" as="image">
+	<link rel="icon" type="image/png" href="<?= $Web['config']['https_imagen'] . Daamper::imgPath('logo.png') ?>" sizes="128x128">
 	<meta name="description" content="<?= $AX['descripcion'] ?? '' ?>" />
 	<meta property="og:title" content="<?= $AX['titulo'] ?? '' ?>" />
 	<meta property="og:description" content="<?= $AX['descripcion'] ?? '' ?>" />

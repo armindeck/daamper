@@ -40,7 +40,7 @@
 						<div class="elemento">
 							<a href="<?= $Web['directorio'] . $AC['ruta'] . Daamper::$scripts->quitarEPHP($AC['archivo']) . $Web['config']['php'] ?>">
 								<div class="imagen">
-									<img loading="lazy" src="<?= ImagenesACX($AC, $Web['directorio'] . AssetsImg('logo.png')) ?>" alt="<?= Language('poster-of', 'global', ['value' => $AC['titulo']]) . ' - ' . ($Web['config']['nombre_web'] ?? '') ?>">
+									<img loading="lazy" src="<?= ImagenesACX($AC, $Web['directorio'] . Daamper::imgPath('logo.png')) ?>" alt="<?= Language('poster-of', 'global', ['value' => $AC['titulo']]) . ' - ' . ($Web['config']['nombre_web'] ?? '') ?>">
 								</div>
 								<p><?= $AC['titulo'] ?></p>
 							</a>

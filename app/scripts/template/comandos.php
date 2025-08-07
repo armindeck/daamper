@@ -103,7 +103,7 @@
 		return 'Fallo al leer el comando<i hidden></i>';
 	}
 	if ($comando == 'View') {
-		if (file_exists($Web['directorio'].AppViews($comando_valor))) { require $Web['directorio'].AppViews($comando_valor); }
+		if (file_exists($Web['directorio'].Daamper::viewsPath($comando_valor))) { require $Web['directorio'].Daamper::viewsPath($comando_valor); }
 		return '<i hidden></i>';
 	}
 } ?>

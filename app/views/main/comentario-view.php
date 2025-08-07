@@ -9,10 +9,10 @@
         <?= !empty($value['id_usuario']) ? '<a href="'. $Web['directorio'] .'p/'. $usu[$value['id_usuario']]['usuario'] . $Web['config']['php'] .'">' : '' ?>
         <img loading="lazy" width="25" style="border-radius: 50%;" src="<?php
             if (!empty($value['id_usuario'])) {
-                echo file_exists($Web['directorio'] . AssetsImg('avatar/' . $usu[$value['id_usuario']]['usuario'] . '.jpg')) ?
-                    $Web['directorio'] . AssetsImg('avatar/' . $usu[$value['id_usuario']]['usuario'] . '.jpg') :
-                    $Web['directorio'] . AssetsImg('avatar-profile.png');
-            } else { echo $Web['directorio'] . AssetsImg('avatar-profile.png'); }
+                echo file_exists($Web['directorio'] . Daamper::imgPath('avatar/' . $usu[$value['id_usuario']]['usuario'] . '.jpg')) ?
+                    $Web['directorio'] . Daamper::imgPath('avatar/' . $usu[$value['id_usuario']]['usuario'] . '.jpg') :
+                    $Web['directorio'] . Daamper::imgPath('avatar-profile.png');
+            } else { echo $Web['directorio'] . Daamper::imgPath('avatar-profile.png'); }
         ?>">
         <strong>
             <?= !empty($value['id_usuario']) ? $usu[$value['id_usuario']]['nombre'] : $value['apodo'] ?>

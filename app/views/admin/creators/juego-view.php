@@ -1,5 +1,5 @@
 <?= pInput(['name' => 'titulo', 'type' => 'text', 'placeholder' => Language(['creator', 'name-of-the-game'], 'dashboard'), 'label' => false, 'texto' => Language(['creator', 'name-of-the-game'], 'dashboard'), 'required' => true]) ?>
-<?php Views("components/commands"); ?>
+<?php Daamper::views("components/commands"); ?>
 <?= pTextarea(['name' => 'sinopsis', 'placeholder' => Language('synopsis'), 'label' => false, 'texto' => Language('synopsis'), 'style' => 'min-height: 100px', 'required' => true]) ?>
 <details>
 	<summary><?= Language('optional') ?></summary>

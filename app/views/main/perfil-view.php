@@ -21,7 +21,7 @@
 <section class="perfil">
 	<center>
 	<?= isset($_SESSION['id']) && $_SESSION['id'] == $idUsuario ? '<a href="'.$Web['directorio'].'auth/config'.$Web['config']['php'].'?up=change-avatar">' : '' ?>
-	<img loading="lazy" src="<?= $Web['directorio'] . (file_exists($Web['directorio'].AssetsImg('avatar/'.($usuario['usuario']).'.jpg')) ? AssetsImg('avatar/'.($usuario['usuario']).'.jpg') : AssetsImg('avatar-profile.png')) ?>">
+	<img loading="lazy" src="<?= $Web['directorio'] . (file_exists($Web['directorio'].Daamper::imgPath('avatar/'.($usuario['usuario']).'.jpg')) ? Daamper::imgPath('avatar/'.($usuario['usuario']).'.jpg') : Daamper::imgPath('avatar-profile.png')) ?>">
 	<?= isset($_SESSION['id']) && $_SESSION['id'] == $idUsuario ? '</a>' : '' ?>
 	</center>
 	<div class="info">

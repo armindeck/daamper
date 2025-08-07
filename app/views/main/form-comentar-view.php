@@ -12,12 +12,12 @@
     } else { $usu = Daamper::$data->UserAll() ?? []; ?>
     <h2 style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px">
         <a target="_blank" style="text-decoration: none; display: flex; flex-wrap: wrap; align-items: center; gap: 4px" href="<?= $Web['directorio'] . 'p/' . $usu[$_SESSION['id']]['usuario'] . $Web['config']['php'] ?>">
-            <img loading="lazy" width="30" style="border-radius: 50%;" src="<?= file_exists($Web['directorio'] . AssetsImg("avatar/" . $usu[$_SESSION['id']]['usuario']).'.jpg') ? $Web['directorio'] . AssetsImg("avatar/" . $usu[$_SESSION['id']]['usuario']).'.jpg' : $Web['directorio'] . AssetsImg("avatar-profile").'.png' ?>" alt="Avatar de <?= $usu[$_SESSION['id']]['usuario'] ?>">
+            <img loading="lazy" width="30" style="border-radius: 50%;" src="<?= file_exists($Web['directorio'] . Daamper::imgPath("avatar/" . $usu[$_SESSION['id']]['usuario']).'.jpg') ? $Web['directorio'] . Daamper::imgPath("avatar/" . $usu[$_SESSION['id']]['usuario']).'.jpg' : $Web['directorio'] . Daamper::imgPath("avatar-profile").'.png' ?>" alt="Avatar de <?= $usu[$_SESSION['id']]['usuario'] ?>">
             <?= $usu[$_SESSION['id']]['nombre'] ?>
         </a> <?= !isset($responder) ? Language('leaves-comment', 'form') : Language('replies-comment', 'form') ?>
     </h2>
     <?php } ?>
-    <details class="t-14"><summary><?= Language('emojis') ?></summary><section><?= Views('components/emojis') ?></section></details>
+    <details class="t-14"><summary><?= Language('emojis') ?></summary><section><?= Daamper::views('components/emojis') ?></section></details>
     <?=
     pTextarea(['placeholder' => Language('wow-message', 'form'), 'name' => 'comentario', 'value' => isset($responder['comentario']) ? $responder['comentario'].' ' : '', 'minlength' => '20', 'maxlength' => 5000, 'required' => true]).'<div>'.
     pInput(['type' => 'url', 'placeholder' => Language('link').' ('.Language('optional').')', 'name' => 'enlace', 'minlength' => '4', 'maxlength' => 400, 'label' => false, 'texto' => Language('link')]).' '.

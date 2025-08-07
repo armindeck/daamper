@@ -1,8 +1,8 @@
 {
 	"system": {
-		"version": "0.3.3",
+		"version": "0.3.4",
 		"state": "Stable",
-		"updated": "06.08.2025",
+		"updated": "07.08.2025",
 		"created": "12.06.2024",
 		"license": "Uso No Transferible – Prohibida la venta del código fuente"
 	},
@@ -20,9 +20,9 @@
 	},
 	"other": {
 		"form-comment": {
-			"version": "0.1.5",
+			"version": "0.1.6",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "07.08.2025",
 			"created": "07.11.2024"
 		},
 		"search": {
@@ -83,22 +83,22 @@
 			"updated": "06.08.2025",
 			"created": "01.07.2024",
 			"preview": {
-				"version": "0.1.7",
+				"version": "0.1.8",
 				"state": "Stable",
-				"updated": "06.08.2025",
+				"updated": "07.08.2025",
 				"created": "01.07.2024"
 			},
 			"other": {
 				"normal": {
-					"version": "0.1.8",
+					"version": "0.1.9",
 					"state": "Stable",
-					"updated": "06.08.2025",
+					"updated": "07.08.2025",
 					"created": "30.07.2024"
 				},
 				"anime_entrada": {
-					"version": "0.1.7",
+					"version": "0.1.8",
 					"state": "Stable",
-					"updated": "06.08.2025",
+					"updated": "07.08.2025",
 					"created": "01.07.2024"
 				},
 				"anime_mirando": {
@@ -108,9 +108,9 @@
 					"created": "02.07.2024"
 				},
 				"juego": {
-					"version": "0.1.5",
+					"version": "0.1.6",
 					"state": "Stable",
-					"updated": "06.08.2025",
+					"updated": "07.08.2025",
 					"created": "29.12.2024"
 				}
 			}

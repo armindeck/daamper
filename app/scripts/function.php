@@ -29,7 +29,7 @@ function FormComentario (string $string = null) { global $AX, $Web;
 			$mostrar = $value == "form-comentar" ? false : true;
 		}
 		if ($mostrar) {
-			Views("main/{$value}");
+			Daamper::views("main/{$value}");
 		}
 	}
 }
@@ -51,7 +51,7 @@ function EliminarLinea($filename, $coincidencia) {
 function ImagenesACX($AC = [], $defecto = false, $lista = ['poster','poster_url','miniatura','miniatura_url']) { global $Web;
 	foreach ($lista as $imagen) {
 		if (ConfirmarImagen($imagen, $AC)) { return ConfirmarImagen($imagen, $AC); }
-	} return $defecto === true ? $Web['directorio'].AssetsImg('miniatura.png') :
+	} return $defecto === true ? $Web['directorio'].Daamper::imgPath('miniatura.png') :
 		(!is_bool($defecto) ? $defecto : '');
 }
 

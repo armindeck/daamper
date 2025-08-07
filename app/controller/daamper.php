@@ -1,4 +1,4 @@
-<?php # Project info
+<?php // daamper settings
 class Daamper{
     public static array $info;
     public static array $version;
@@ -9,14 +9,37 @@ class Daamper{
     public static $scripts;
     public static $data;
     public static $sendAlert;
+
+    public static function init(): void{
+        self::$info = self::loadData('config/info');
+        self::$version = self::loadData('config/version');
+        self::$language = self::loadData('config/language');
+        self::$config = self::loadData('config/config')["config"];
+        self::$infoversion = array_merge(self::$info, self::$version['system']);
+        self::$projectInfo = new ProjectInfo();
+    }
+    
+    // Paths
+    public static function globalPath(string $file = "global"): string { return "app/global/{$file}.php"; }
+    public static function contentPath(string $file = "content"): string { return "app/content/{$file}.php"; }
+    public static function viewsPath(string $file = "layout"): string { return "app/views/{$file}-view.php"; }
+    public static function cssPath(string $file = "styles"): string { return "assets/css/{$file}.css"; }
+    public static function imgPath(string $file = ""): string { return "assets/img/{$file}"; }
+    
+    // Functions
+    public static function loadData(string $route, string $otherRoute = ""){ global $Web;
+        $route = $Web['directorio'] . "database/{$route}".(!empty($otherRoute) ? "/{$otherRoute}" : '').'.json';
+        return !file_exists($route) ? [] : json_decode(file_get_contents($route), true);
+    }
+    
+    public static function views(string $file = 'main', ...$Var) { global $Web;
+        $file = $Web['directorio'] . self::viewsPath($file);
+        if (!file_exists($file)) { die("El archivo {$file}, no existe!"); }
+        require $file;
+    }
 }
 
-Daamper::$info = Database('config/info');
-Daamper::$version = Database('config/version');
-Daamper::$language = Database('config/language');
-Daamper::$config = Database('config/config')["config"];
-Daamper::$infoversion = array_merge(Daamper::$info, Daamper::$version['system']);
-
+# Project info
 class ProjectInfo {
     public string $nombre;
     public string $enlace;
@@ -46,7 +69,7 @@ class ProjectInfo {
         $this->redes = Daamper::$info['social-networks'] ?? [];
     }
 
-    public function redes_sociales(): array {
+    public function social_networks(): array {
         return $this->redes;
     }
 
@@ -57,5 +80,5 @@ class ProjectInfo {
     }
 }
 
-Daamper::$projectInfo = new ProjectInfo();
 const RAIZ = __DIR__ . "/../../";
+Daamper::init();

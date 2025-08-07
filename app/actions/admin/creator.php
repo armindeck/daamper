@@ -168,7 +168,7 @@ if(isset($ACR_CARGADO['db_ruta'])){
 
 if(!isset($_POST['guardar']) && !isset($_POST['publicar']) && !isset($_POST['eliminar'])):
 
-require RAIZ . AppContent('creator');
+require RAIZ . Daamper::contentPath("creator");
 ?>
 <style type="text/css">
 	.procesa-creador-borrador-header {
@@ -410,6 +410,6 @@ unset($ACR_CARGADO);
 unset($AC_CARGA);
 unset($LISTA_ACR);
 $_SESSION['creador-key-hidden'] = $_SESSION['tmpForm'];
-require RAIZ . AppViews();
+require RAIZ . Daamper::viewsPath();
 endif;
 ?>

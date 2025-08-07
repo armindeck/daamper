@@ -3,7 +3,7 @@
 function ViewsPlantilla(string $File = null, bool $Elementos = false) { global $Web;
 	if (!isset($Web['template']) || !isset($Web['template']['cantidad_contenedores']) ||
 		!$Web['template']['cantidad_contenedores'] || isset($_GET['view'])) {
-			return Views('main');
+			return Daamper::views('main');
 	}
 	for ($i = 1; $i <= ($Web['template']['cantidad_contenedores'] ?? 1); $i++){	
 		if (isset($Web['template']['tipo_contenedor_' . $i])) {
@@ -15,7 +15,7 @@ function ViewsPlantilla(string $File = null, bool $Elementos = false) { global $
 			}
 		}
 	}
-	if (!isset($encontro['main'])) { Views('main'); return; }
+	if (!isset($encontro['main'])) { Daamper::views('main'); return; }
 
 	for ($i = 1; $i <= ($Web['template']['cantidad_contenedores'] ?? 0); $i++){
 		if ($File !== null) {
@@ -36,15 +36,15 @@ function ViewsPlantillaContenido ($File = null, bool $Elementos = false, int $i 
 	){
 		echo isset($Web['template']['div_abrir_contenedor_'.$i]) ? PlantillaComandos($Web['template']['div_abrir_contenedor_'.$i], $i) : '';
 		if (isset($Web['template']['tipo_contenedor_' . $i]) && $Web['template']['tipo_contenedor_' . $i] == 'main') {
-			Views('main');
+			Daamper::views('main');
 		} elseif ($File != null) {
 			if(isset($Web['template']['tipo_contenedor_' . $i]) && $Web['template']['tipo_contenedor_' . $i] == $File){
-				if (!$Elementos){ Views($Web['template']['tipo_contenedor_' . $i]); } else {
+				if (!$Elementos){ Daamper::views($Web['template']['tipo_contenedor_' . $i]); } else {
 					ViewsPlantillaElementos($i);
 				}
 			}
 		} else {
-			if (!$Elementos){ Views($Web['template']['tipo_contenedor_' . $i]); } else {
+			if (!$Elementos){ Daamper::views($Web['template']['tipo_contenedor_' . $i]); } else {
 				ViewsPlantillaElementos($i);
 			}
 		}

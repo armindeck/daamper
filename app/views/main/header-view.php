@@ -1,2 +1,2 @@
-<?= Views("components/alert"); ?>
-<?= Views("components/anuncio-nav"); ?>
+<?= Daamper::views("components/alert"); ?>
+<?= Daamper::views("components/anuncio-nav"); ?>

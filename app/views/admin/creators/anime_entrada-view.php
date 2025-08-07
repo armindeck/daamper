@@ -1,4 +1,4 @@
-<?php Views("components/commands"); ?>
+<?php Daamper::views("components/commands"); ?>
 <?= pTextarea(['name'=>'sinopsis','placeholder'=>Language(['synopsis']),'label'=>false,'texto'=>Language(['synopsis']),'style'=>'min-height:100px','required'=>true]) ?>
 <details>
 	<summary><?= Language('categories') ?></summary>
