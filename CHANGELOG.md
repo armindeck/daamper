@@ -1,6 +1,19 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.3 Stable] - 06/08/2025
+Reestructuración interna para mejorar la arquitectura del sistema:
+
+- Se eliminó el uso incorrecto de `define()` con objetos (lo cual no es permitido en PHP 8.2+).
+- Se creó la clase estática `Daamper` para almacenar datos de configuración global del sistema:
+  - `$info`, `$version`, `$language`, `$config`, `$infoversion`, `$projectInfo`, `$scripts`, `$data`, `$sendAlert`.
+- Se instancian ahora con `Daamper::$info` en lugar de constantes como `INFO`, `VERSION`, `LANGUAGE`, etc.
+- Se creó la clase `ProjectInfo` para encapsular y organizar los datos del proyecto.
+- Se actualizaron más de 80 archivos para adaptarlos a la nueva estructura.
+- Mejora de seguridad, mantenibilidad y compatibilidad con versiones modernas de PHP.
+- Se solucionaron advertencias `Deprecated` relacionadas con el orden de parámetros opcionales en funciones para compatibilidad con PHP 8.0+.
+
+
 ## [0.3.2 Stable] - 25/07/2025
 - Reemplazo de define() con objeto por variable global segura ($WEBSITE)
 
