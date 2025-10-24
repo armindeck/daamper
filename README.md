@@ -23,6 +23,12 @@ Para saber más sobre esta página, ver imágenes y demás, puedes visitar el si
 3. Modifica todo el contenido según tus necesidades.  
 5. Listo!  
 
+## 🎲 Créditos y dependencias
+
+Este proyecto utiliza [PHP Markdown Lib](https://github.com/michelf/php-markdown)
+(c) 2004–2022 Michel Fortin — Licencia BSD (basada en Markdown por John Gruber).
+
+
 ## 📜 Licencia  
 Esta versión introduce la **Licencia de Uso No Transferible**, que prohíbe la venta del código.  
 Consulta el archivo [`LICENSE`](./LICENSE.txt) para conocer los términos de uso y restricciones.  

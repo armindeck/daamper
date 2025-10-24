@@ -21,8 +21,10 @@
             </section>
             <?= !empty($fragmento) ? "<br>{$fragmento}<br><br>" : "" ?>
         <?php endif; ?>
-
-        <?= Daamper::$scripts->Commands($contenido) ?>
+        <?php
+        $contenido = Daamper::$scripts->Commands($contenido);
+        echo Michelf\MarkdownExtra::defaultTransform($contenido);
+        ?>
 
         <?= in_array($tipo, ['blog']) && !empty($fecha_modificado) ? "<hr><small style='font-size: small;'>{$fecha_modificado}</small>" : '' ?>
     </div>

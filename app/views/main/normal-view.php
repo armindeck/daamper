@@ -3,6 +3,8 @@
 
 	// Importar contenido
 	global $AX, $AXR;
+  require_once RAIZ . 'app/scripts/lib/Markdown.php';
+  require_once RAIZ . 'app/scripts/lib/MarkdownExtra.php';
 
   // Contenido y tipo de contenido
   if (!empty($AX['contenido'])) {
@@ -22,7 +24,8 @@
 				Daamper::view("main/blog", $data);
 			} else {
 	      echo in_array(strtolower($AX['tipo']), ['', 'normal']) ? '<div class="con">' : '';
-				echo Daamper::$scripts->Commands($AX['contenido']);
+        $contenido = Daamper::$scripts->Commands($AX["contenido"]);
+        echo Michelf\MarkdownExtra::defaultTransform($contenido);
 	      echo in_array(strtolower($AX['tipo']), ['', 'normal']) ? '</div>' : '';
 			}
     }

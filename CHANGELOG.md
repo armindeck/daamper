@@ -1,6 +1,14 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.6 Stable] - 24/10/2025
+Formato Markdown para las publicaciones
+
+- Ahora se puede usar el formato Markdown en las publicaciones normales.
+
+Utilize [PHP Markdown Lib](https://github.com/michelf/php-markdown)
+(c) 2004–2022 Michel Fortin — Licencia BSD (basada en Markdown por John Gruber).
+
 ## [0.3.5 Stable] - 23/10/2025
 Selección de tema (daamper) y optimización
 
