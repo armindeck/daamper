@@ -3,8 +3,10 @@ if(isset($_GET['cerrar-sesion']) && $_GET['cerrar-sesion'] === "true" && isset($
 	unset($_SESSION['id']); unset($_SESSION['rol']); unset($_SESSION['cambiar_contrasena']);
 	Daamper::$sendAlert->Success(Language('farewell', 'alert'), "{$Web['directorio']}auth/login{$Web['config']['php']}");
 }
-# TEMA
-if (!empty($_GET['tema'])) {
+
+# Color del tema
+$_SESSION['tmp']['tema'] = $_SESSION['tmp']['tema'] ?? $Web["config"]["default_color"];
+if(!empty($_GET['tema'])){
     $_SESSION['tmp']['tema'] = Daamper::$scripts->normalizar2($_GET['tema']);
 }
 

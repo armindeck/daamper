@@ -351,6 +351,7 @@
 		"ignore-commands": {"es": "Ignorar comandos", "en": "Ignore commands", "jp": "コマンドを無視"},
 		"spacings": {"es": "Espaciados", "en": "Spacings", "jp": "スペーシング"},
 		"image-directory": {"es": "Directorio de la imagen", "en": "Image directory", "jp": "画像ディレクトリ"},
+		"default-color": {"es": "Color predeterminado", "en": "Default color", "jp": "デフォルトの色"},
 		"categories-tags": {
 			"action": {"es": "Acción", "en": "Action", "jp": "アクション"},
 			"martial-arts": {"es": "Artes Marciales", "en": "Martial Arts", "jp": "マーシャルアーツ"},

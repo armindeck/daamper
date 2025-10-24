@@ -2,12 +2,15 @@
 Descubre las nuevas novedades de daamper!
 
 ## [0.3.6 Stable] - 24/10/2025
-Formato Markdown para las publicaciones
+Formato Markdown para las publicaciones y selector de color predeterminado
 
 - Ahora se puede usar el formato Markdown en las publicaciones normales.
 
-Utilize [PHP Markdown Lib](https://github.com/michelf/php-markdown)
+Utilice [PHP Markdown Lib](https://github.com/michelf/php-markdown)
 (c) 2004–2022 Michel Fortin — Licencia BSD (basada en Markdown por John Gruber).
+
+- Solucione un bug en el selector de idioma por defecto en la configuración del panel.
+- Agregue un selector del color del tema por defecto en la configuración del panel.
 
 ## [0.3.5 Stable] - 23/10/2025
 Selección de tema (daamper) y optimización

@@ -5,6 +5,7 @@ $Web["scripts"] = Daamper::$data->Config()["scripts"] ?? [];
 $Web["template"] = Daamper::$data->Read("template/template") ?? [];
 
 $Web["config"]["theme"] = $Web["config"]["theme"] ?? "daamper.css";
+$Web["config"]["default_color"] = $Web["config"]["default_color"] ?? "blue-aero";
 
 if(
 	file_exists(RAIZ . 'database/template/scr-template.json') &&

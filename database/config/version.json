@@ -7,9 +7,9 @@
 		"license": "Uso No Transferible – Prohibida la venta del código fuente"
 	},
 	"language": {
-		"version": "0.1.5",
+		"version": "0.1.6",
 		"state": "Beta",
-		"updated": "13.06.2025",
+		"updated": "24.10.2025",
 		"created": "11.03.2025"
 	},
 	"api": {
@@ -72,9 +72,9 @@
 			"created": "02.01.2025"
 		},
 		"config": {
-			"version": "0.1.7",
+			"version": "0.1.8",
 			"state": "Stable",
-			"updated": "23.10.2025",
+			"updated": "24.10.2025",
 			"created": "08.07.2024"
 		},
 		"creator": {
