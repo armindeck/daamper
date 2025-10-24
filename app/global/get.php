@@ -4,10 +4,8 @@ if(isset($_GET['cerrar-sesion']) && $_GET['cerrar-sesion'] === "true" && isset($
 	Daamper::$sendAlert->Success(Language('farewell', 'alert'), "{$Web['directorio']}auth/login{$Web['config']['php']}");
 }
 # TEMA
-if (isset($_GET['tema']) && !empty($_GET['tema'])) {
-    if (file_exists($Web['directorio'] . Daamper::cssPath('template/daamper/theme/'.Daamper::$scripts->normalizar2($_GET['tema'])))) {
-        $_SESSION['tmp']['tema'] = Daamper::$scripts->normalizar2($_GET['tema']);
-    }
+if (!empty($_GET['tema'])) {
+    $_SESSION['tmp']['tema'] = Daamper::$scripts->normalizar2($_GET['tema']);
 }
 
 # IDIOMAS

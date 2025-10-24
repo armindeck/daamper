@@ -1,7 +1,7 @@
 <?php
 $LISTA_DATOS_POST=[
 	'nombre_web','enlace_web','enlace_web_simple','timezone',
-	'ano_publicada','language','https_imagen','php','errores','api',
+	'ano_publicada','language','theme','https_imagen','php','errores','api',
 ];
 
 foreach (Daamper::$data->Config("default")["api"]["show"] as $key => $value) {

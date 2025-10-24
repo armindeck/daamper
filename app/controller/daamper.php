@@ -37,6 +37,16 @@ class Daamper{
         if (!file_exists($file)) { die("El archivo {$file}, no existe!"); }
         require $file;
     }
+
+    public static function view(string $file, array $data = []) : void {
+        global $Web;
+        $file = $Web['directorio'] . self::viewsPath($file);
+        if (!file_exists($file)) { die("El archivo {$file}, no existe!"); }
+        if (!empty($data)) {
+            extract($data, EXTR_SKIP);
+        }
+        require $file;
+    }
 }
 
 # Project info

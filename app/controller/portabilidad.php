@@ -4,6 +4,8 @@ $Web["ads"] = Daamper::$data->Config()["ads"] ?? [];
 $Web["scripts"] = Daamper::$data->Config()["scripts"] ?? [];
 $Web["template"] = Daamper::$data->Read("template/template") ?? [];
 
+$Web["config"]["theme"] = $Web["config"]["theme"] ?? "daamper.css";
+
 if(
 	file_exists(RAIZ . 'database/template/scr-template.json') &&
 	isset($Web['template']['cargar_scripts']) && !empty($Web['template']['cargar_scripts'])

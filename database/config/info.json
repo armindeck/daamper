@@ -18,8 +18,8 @@
             "icono": "fab fa-facebook"
         },
         "YouTube": {
-            "link": "https://youtube.com/@SoyArminDeck",
-            "name": "SoyArminDeck",
+            "link": "https://youtube.com/@tobix64",
+            "name": "Tobix64",
             "icono": "fab fa-youtube"
         },
         "X": {
@@ -37,14 +37,9 @@
             "name": "ArminVT",
             "icono": "fab fa-tiktok"
         },
-        "Patreon": {
-            "link": "https://patreon.com/arminvtch",
-            "name": "ArminVT",
-            "icono": "fab fa-patreon"
-        },
         "Kofi": {
-            "link": "https://ko-fi.com/arminvtch",
-            "name": "ArminVT",
+            "link": "https://ko-fi.com/armindeck",
+            "name": "Armin Deck",
             "icono": "fas fa-mug-hot"
         }
     }

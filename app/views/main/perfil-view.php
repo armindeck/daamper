@@ -35,7 +35,6 @@
 					$default = Daamper::$data->Config("default")["auth"]["update-data"];
 					foreach ([
 						Language('user') => 'usuario',
-						Language('role') => 'rol',
 						Language('social-network') => 'red_social',
 						Language('registered') => 'fecha_registrado',
 						Language('start-profile') => 'fecha_inicio_sesion'

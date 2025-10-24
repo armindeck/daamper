@@ -374,6 +374,17 @@ class Scripts
     public function hash(string $route, string $text = null, int $id_user = null){
         return md5($route . ($text != null ? "|" . $this->limpiarTextoPlano($text) : "") . ($id_user != null ? "|" . $id_user : ""));
     }
+    
+    public function optenerTemas(string $urlCss, bool $all = false) : array {
+        $css = file_get_contents($urlCss);
+        preg_match_all('/\[data-theme="([^"]+)"\]/', $css, $matches);
+
+        if(!$all && !empty($matches)){
+            $matches = $matches[1];
+        }
+
+        return $matches ?? [];
+    }
 }
 Daamper::$scripts = new Scripts;
 

@@ -1,23 +1,34 @@
-<?php if (!isset($_GET['view']) || isset($_GET['view']) && in_array($_GET['view'], ['main'])): ?>
-<?php /* -------------------------------- CONTENIDO ----------------------------------- */ ?>
+<?php if (!isset($_GET['view']) || isset($_GET['view']) && in_array($_GET['view'], ['main'])):
+/* -------------------------------- CONTENIDO ----------------------------------- */
 
-<?php # CONTENIDO
-  global $AX, $AXR;
-  if (!isset($AXR['fecha_publicado'])) {
-    $AXR['fecha_publicado'] = Daamper::$scripts->fecha_hora();
-  }
-  if (isset($AX['contenido']) && !empty($AX['contenido'])) {
+	// Importar contenido
+	global $AX, $AXR;
+
+  // Contenido y tipo de contenido
+  if (!empty($AX['contenido'])) {
     if (isset($AX['tipo'])) {
-      echo in_array(strtolower($AX['tipo']), ['', 'normal']) ? '<div class="con">' : '';
-      if (in_array(strtolower($AX['tipo']), ['blog', 'normal-blog'])) { Daamper::views("main/blog"); }
-    } ?>
-	<?= Daamper::$scripts->Commands($AX['contenido']) ?>
-	<?= isset($AX['tipo']) && in_array(strtolower($AX['tipo']), ['', 'normal', 'blog', 'normal-blog']) ? (in_array(strtolower($AX['tipo']), ['blog']) && isset($AXR['fecha_modificado']) && !empty($AXR['fecha_modificado']) ? '<hr><small>' . $AXR['fecha_modificado'] . '</small>' : '') . '</div>' : ''; ?>
-	<?= isset($AX['tipo']) && in_array(strtolower($AX['tipo']), ['blog', 'normal-blog']) ? '</div>' : ''; ?>
-<?php } ?>
-
-
-<?php # LISTA DE ENTRADAS
+      if (in_array(strtolower($AX['tipo']), ['blog', 'normal-blog'])) {
+				$data = [
+					"id_publicador" => $AXR["id_publicador"] ?? "",
+					"fecha_publicado" => $AXR["fecha_publicado"] ?? Daamper::$scripts->fecha_hora(),
+					"fecha_modificado" => $AXR["fecha_modificado"] ?? "",
+					"tipo" => strtolower($AX["tipo"] ?? ""),
+					"titulo" => $AX["titulo"] ?? "",
+					"contenido" => $AX["contenido"] ?? "",
+					"miniatura" => $AX["miniatura"] ?? "",
+					"fragmento" => $AX["fragmento"] ?? "",
+					"user_data" => !empty($AXR["id_publicador"]) ? (Daamper::$data->UserAll()[$AXR["id_publicador"]] ?? null) : null
+				];
+				Daamper::view("main/blog", $data);
+			} else {
+	      echo in_array(strtolower($AX['tipo']), ['', 'normal']) ? '<div class="con">' : '';
+				echo Daamper::$scripts->Commands($AX['contenido']);
+	      echo in_array(strtolower($AX['tipo']), ['', 'normal']) ? '</div>' : '';
+			}
+    }
+	}
+	
+	# LISTA DE ENTRADAS
   if ($AX['archivo'] == 'index.php' && file_exists(__DIR__."/../components/list-of-entries-view.php")) {
     require_once __DIR__."/../components/list-of-entries-view.php";
     $lista = file_exists(RAIZ . "database/creator/list-of-entries.json") ? Daamper::$data->Read("creator/list-of-entries") : [];

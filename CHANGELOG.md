@@ -1,6 +1,19 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.5 Stable] - 23/10/2025
+Selección de tema (daamper) y optimización
+
+- Optimice el codigo de las paginas (normal, blog).
+- Moví todo el código de la vista **head & template** hacia la vista **layout** y elimine la vistas.
+- Cambie el código del sistema de temas y ahora se puede seleccionar el tema desde la configuración (admin).
+    - El tema que sigue por defecto es daamper.
+    - Ahora los temas se sacan directamente del archivo css del tema.
+- Elimine bastantes archivos del tema que estaban separados y los junte en un solo archivo.
+- En el perfil ya no se muestra el rol.
+
+Un pequeño paso para la versión 0.4.0 🙂
+
 ## [0.3.4 Stable] - 07/08/2025
 Reestructuración interna y limpieza de controladores:
 

@@ -174,7 +174,12 @@ function pSelectArchivos($list){
 					}
 				}
 			}
-			$return .= '>'.basename($value).'</option>';
+			$endValueName = basename($value);
+			$hidden_extension_value = $list['hidden-extension-value'] ?? null;
+			if($hidden_extension_value){
+				$endValueName = substr($endValueName, 0, strrpos($endValueName, "."));
+			}
+			$return .= '>'.$endValueName.'</option>';
 		}
 	}
 	$return .= '</select>';
