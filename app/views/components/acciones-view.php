@@ -1,1 +1,0 @@
-<input type="checkbox" class="check-sidebar" id="check-sidebar" hidden>

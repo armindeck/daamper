@@ -1,16 +1,22 @@
 {
-    "author": "Armin",
+    "author": "Armin Deck",
     "author-page-name": "dbproject",
-    "author-and-page-name": "Armin / dbproject",
+    "author-and-page-name": "Armin Deck / dbproject",
     "author-page-url": "https://dbproject.rf.gd",
     "page-name": "daamper",
     "page-url": "https://dbproject.rf.gd/web/daamper",
+    "github-project-url": "https://github.com/armindeck/daamper",
     "anio": 2024,
     "social-networks": {
         "dbproject": {
             "link": "https://dbproject.rf.gd",
             "name": "dbproject",
             "icono": "fas fa-hamburger"
+        },
+        "GitHub": {
+            "link": "https://github.com/armindeck",
+            "name": "Armin Deck",
+            "icono": "fab fa-github"
         },
         "Facebook": {
             "link": "https://facebook.com/armionegai",
@@ -26,11 +32,6 @@
             "link": "https://x.com/armindeck",
             "name": "Armin Deck",
             "icono": "fab fa-twitter"
-        },
-        "GitHub": {
-            "link": "https://github.com/armindeck",
-            "name": "Armin Deck",
-            "icono": "fab fa-github"
         },
         "TikTok": {
             "link": "https://tiktok.com/@arminvtch",

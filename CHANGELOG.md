@@ -1,6 +1,54 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.7 Stable] - 05/11/2025
+Limpieza, mejoras visuales y eliminación de API
+
+La mayoría de las mejoras las tome de la versión 0.4.0 dev. 
+
+- Mejoras en las plantillas y estilos predeterminadas.
+- Ahora la pagina principal tiene las instrucciones y configuraciones.
+- Ahora en los idioma se mostrara un circulo con un check en medio y los demás estarán con un circulo vacío.
+- Ahora se mostrara un texto en la alerta de guardar pin/cambiar pin: *Por favor cambie el pin de recuperación, está usando el predeterminado*
+- Quite todo lo relacionado con la Api, incluyéndola.
+    - No es bueno usarla por la seguridad, además mostraba datos sensibles.
+- Los sub-menus de la barra superior se mostraran mejor.
+- El sidebar por defecto esta oculto, ahora se usa un sub menú. 
+- Para mostrar el sidebar acceda al panel, sección plantilla: 
+    - Sidebar: Habilite el boton mostrar
+    - Header bar, Elementos, Elemento #1: Habilite el boton mostrar
+    - Guarda los datos, ahora aparecerá un nuevo boton, al darle clic aparecerá el sidebar. 
+    - Si quiere ocultar el otro menu, deshabilite el elemento #2. 
+- Le cambie el nombre al archivo portabilidad.php por normalize-web.php
+- Uni los tres archivos de las funciones de template en uno solo (view.php, scripts.php, comandos.php).
+- Ahora los textos de los iframe de las versiones en linea se muestran con los colores correspondientes.
+- Solucione el error donde no se mostraban los iconos de me gusta y no me gusta en los comentarios.
+- En los creadores los botones de refrescar y mostrar ahora muestran los iconos.
+
+### Dashboard
+- Menú de entradas:
+    - Elimine la entrada de actualizar (solo era un enlace externo).
+
+- Apartados modificados:
+    - Configuración: Quite la api, y ahora funciona bien la selección de color predeterminado.
+    - Información: Ordene un poco el contenido.
+    - Scripts:
+        - Quite el código que usaba para los iconos de Font Awesome, ahora se usara el cdn versión 5.15.4.
+        - Ahora los scripts ingresados se guardan en config.json.
+
+### Eliminados
+
+Ahora las plantillas tienen el html y muestran lo necesario.
+
+- up-view.php (Boton volver arriba)
+- acciones-view.php (Input checkbox para mostrar el sidebar)
+- header-view.php (Mostrar anuncios)
+- bienvenida.php|bienvenida.json (Ahora el index muestra lo necesario)
+- api.php|api.json
+- admin-list-view.php (Ahora las entradas estan en admin.json)
+- rules.json (Ahora los datos estan en admin.json)
+- adaptabilidad.php (Los codigos ahora estan en normalize-web.php)
+
 ## [0.3.6 Stable] - 24/10/2025
 Formato Markdown para las publicaciones y selector de color predeterminado
 

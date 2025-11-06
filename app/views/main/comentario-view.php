@@ -25,7 +25,7 @@
         <form method="post" action="<?= $Web['directorio'] ?>process/reaction.php<?= $Web['ruta_completa'] == '../admin/admin.php' ? '?sub-ruta=admin-comments' : '' ?>">
             <?= pInput(['type' => 'hidden', 'placeholder' => 'Token', 'name' => 'token-comentario', 'value' =>  Daamper::$scripts->SimpleToken($value['id']), 'minlength' => '4', 'maxlength' => 30, 'required' => true, 'des_session' => true]) ?>
             <?php
-            foreach (['me_gusta' => '&#xf164;', 'no_me_gusta' => '&#xf165;'] as $item => $item_value) {
+            foreach (['me_gusta' => 'thumbs-up', 'no_me_gusta' => 'thumbs-down'] as $item => $item_value) {
                 echo '<label>';
                 $cantidad = 0; $style_input = '';
                 if (isset($value['reacciones'])) {
@@ -38,7 +38,7 @@
                     }
                 }
                 echo !empty($cantidad) ? $cantidad . ' ' : '';
-                echo "<input $style_input type='submit' name='$item' value='$item_value'>";
+                echo "<button $style_input type='submit' name='$item' value='true'><i class='far fa-$item_value'></i></button>";
                 echo '</label> ';
             }
             ?>

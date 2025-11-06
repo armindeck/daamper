@@ -1,5 +1,20 @@
 {
-    "admin":{
+    "entries": [
+        {"icon": "fas fa-plus", "text": "creator", "section": "creator"},
+        {"icon": "fas fa-comments", "text": "comments", "section": "comments"},
+        {"icon": "fas fa-user-circle", "text": "users", "section": "users"},
+        {"icon": "fas fa-image", "text": "upload-image", "section": "upload-image"},
+        {"icon": "fas fa-newspaper", "text": "announcements", "section": "ads"},
+        {"icon": "fab fa-js", "text": "scripts", "section": "scripts"},
+        {"icon": "fas fa-cog", "text": "settings", "section": "config"},
+        {"icon": "fab fa-html5", "text": "template", "section": "template"},
+        {"icon": "fab fa-css3", "text": "theme", "section": "theme"},
+        {"icon": "fas fa-sitemap", "text": "directory", "section": "directory"},
+        {"icon": "fas fa-file-invoice", "text": "htaccess", "section": "htaccess"},
+        {"icon": "fas fa-history", "text": "updates", "section": "updates"},
+        {"icon": "fas fa-tractor", "text": "information", "section": "info"}
+    ],
+    "rules": {
         "ceo founder": [
             "creator",
             "comments",
@@ -24,10 +39,15 @@
             "updates",
             "info"
         ],
-        "editor": ["creator", "comments", "upload-image", "updates", "info"],
-        "usuario": []
+        "editor": [
+            "creator",
+            "comments",
+            "upload-image",
+            "updates",
+            "info"
+        ]
     },
-    "creator":{
+    "creator": {
         "publish": {
             "access": {
                 "rules": ["ceo founder"],
@@ -39,7 +59,6 @@
                     "auth/config",
                     "auth/forgot-password",
                     "auth/change-password",
-                    "api",
                     "p/perfil"
                 ]
             },

@@ -3,7 +3,10 @@
 	['titulo' => 'publish', 'archivos' => glob(__DIR__ . '/creators/*')],
 	['titulo' => 'posts', 'archivos' => glob(RAIZ . "database/post/*.json")],
 	['titulo' => 'drafts', 'archivos' => glob(RAIZ . "database/draft/*.json")],
-]; ?>
+];
+$creator_title = ["anime_entrada", "anime_mirando", "juego", "normal"];
+$creator_translate = ["anime_entrada" => "anime-entry", "anime_mirando" => "anime-watching", "juego" => "game", "normal" => "normal"];
+?>
 <section class="panel">
 	<section class="form">
 		<section><small><?= Language(['creator', 'message'], 'dashboard') ?></small></section>
@@ -17,7 +20,10 @@
 						<?php foreach ($elemento['archivos'] as $archivo) {
 							echo '<a ';
 							echo isset($_GET['creador']) && $_GET['creador'] == basename($archivo) || isset($_GET['archivo']) && $_GET['archivo'] == basename($archivo) ? 'style="color: var(--a-hover-co);"' : '';
-							echo ' href="?ap=creator&creador=' . ($elemento['titulo'] == 'publish' ? str_replace("-view.php", "", basename($archivo)) : 'normal&tipo=' . ($elemento['titulo'] == 'posts' ? 'publicacion' : 'borrador') . '&archivo=' . basename($archivo)) . '">' . (str_replace(["-view.php", "pu_", "bo_", ".php", ".json"], "", basename($archivo))) . '</a>';
+							echo ' href="?ap=creator&creador=' . ($elemento['titulo'] == 'publish' ? str_replace("-view.php", "", basename($archivo)) : 'normal&tipo=' . ($elemento['titulo'] == 'posts' ? 'publicacion' : 'borrador') . '&archivo=' . basename($archivo)) . '">';
+							$title_file = str_replace(["-view.php", "pu_", "bo_", ".php", ".json"], "", basename($archivo));
+							echo in_array($title_file, $creator_title) ? Language($creator_translate[$title_file]) : $title_file;
+							echo '</a>';
 						} ?>
 					</section>
 				</details>
@@ -157,8 +163,8 @@
 						<?= pInput(['type' => 'hidden', 'name' => 'creador', 'value' => $Global['get_creador'], 'des_session' => true]) ?>
 						<?= pInput(['type' => 'hidden', 'name' => 'pubo', 'value' => $Global['get_tipo'], 'des_session' => true]) ?>
 						<?= pInput(['type' => 'hidden', 'name' => 'db_archivo', 'value' => $Global['get_archivo'], 'des_session' => true]) ?>
-						<?= pInput(['type' => 'submit', 'class' => 'boton2', 'name' => 'refrescar', 'value' => '&#xf021; '. Language('refresh'), 'des_session' => true]) ?>
-						<?= pInput(['type' => 'submit', 'class' => 'boton', 'name' => 'mostrar', 'value' => Language('show'). ' &#xf06e;', 'des_session' => true]) ?>
+						<button type="submit" name="refrescar" value="true" class="boton-2"><i class="fas fa-sync-alt"></i> <?= Language('refresh') ?></button>
+						<button type="submit" name="mostrar" value="true" class="boton"><i class="fas fa-eye"></i> <?= Language('show') ?></button>
 					</section>
 					<hr>
 					<?= Daamper::$scripts->xv("creator"); ?>

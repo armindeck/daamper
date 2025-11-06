@@ -138,7 +138,7 @@ $CONVERTIDO = [
 $CONVERTIDO['ruta_archivo_slash_json'] = str_replace([".php", ".json"], "", $CONVERTIDO['ruta_archivo_slash']) . ".json";
 $FILE_JSON_DATA = $CONVERTIDO['ruta_archivo_slash_json'];
 
-$default = Daamper::$data->Config("rules")["creator"]["publish"];
+$default = Daamper::$data->Config("admin")["creator"]["publish"];
 if(in_array(str_replace(".php", "", $CONVERTIDO["ruta_archivo"]), $default["access"]["files"]) && !in_array(strtolower($_SESSION["rol"]), $default["access"]["rules"])){
 	Daamper::$sendAlert->Error(Language(["creator", "need-higher-role-to-modify-post"], "dashboard"), "../admin.php?ap=creator&creador={$ACR_FORM['creador']}");
 }

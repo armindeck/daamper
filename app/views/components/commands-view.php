@@ -250,27 +250,27 @@
             </div>
         </details>
         <details>
-            <summary><?= Language("system") ?></summary>
+            <summary><?= Language("core") ?></summary>
             <div class="flex-column">
                 <label class="flex-between">
                     <span><?= Language("version") ?>:</span>
-                    <p class="campo" title="<?= Daamper::$version["system"]["version"] ?>"><span class="text-command">cmd[version];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["core"]["version"] ?>"><span class="text-command">cmd[version];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("state") ?>:</span>
-                    <p class="campo" title="<?= Daamper::$version["system"]["state"] ?>"><span class="text-command">cmd[state];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["core"]["state"] ?>"><span class="text-command">cmd[state];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("updated") ?>:</span>
-                    <p class="campo" title="<?= Daamper::$version["system"]["updated"] ?>"><span class="text-command">cmd[updated];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["core"]["updated"] ?>"><span class="text-command">cmd[updated];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("created") ?>:</span>
-                    <p class="campo" title="<?= Daamper::$version["system"]["created"] ?>"><span class="text-command">cmd[created];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["core"]["created"] ?>"><span class="text-command">cmd[created];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("license") ?>:</span>
-                    <p class="campo" title="<?= Daamper::$version["system"]["license"] ?>"><span class="text-command">cmd[license];</span></p>
+                    <p class="campo" title="<?= Daamper::$version["core"]["license"] ?>"><span class="text-command">cmd[license];</span></p>
                 </label>
                 <label class="flex-between">
                     <span><?= Language("creator") ?>:</span>

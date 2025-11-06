@@ -105,6 +105,7 @@ if($Web['ruta_completa'] == '../auth/login.php' || $Web['ruta_completa'] == '../
 			<?php /*------------------ PIN --------------------*/ ?>
 			<?php if($_GET['up'] == 'pin'): ?>
 			<b><?= Language('recovery-pin') ?></b><hr>
+			<?= (Daamper::$data->UserAll()[$_SESSION["id"]]["pin"] ?? "") == "55LE-99Q9R-TFU5V39" ? "<p>" . Language("please-change-recovery-pin-default") . "</p>" : "" ?>
 			<div class="flex-evenly items-center">
 				<input type="checkbox" class="show-key" id="show-pin" hidden>
 				<label for="show-pin"><a class="boton-2"><i class="fas fa-eye"></i></a></label>

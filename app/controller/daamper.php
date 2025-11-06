@@ -15,7 +15,7 @@ class Daamper{
         self::$version = self::loadData('config/version');
         self::$language = self::loadData('config/language');
         self::$config = self::loadData('config/config')["config"];
-        self::$infoversion = array_merge(self::$info, self::$version['system']);
+        self::$infoversion = array_merge(self::$info, self::$version['core']);
         self::$projectInfo = new ProjectInfo();
     }
     
@@ -56,6 +56,7 @@ class ProjectInfo {
     public string $creador;
     public string $creador_nombre_web;
     public string $creador_enlace;
+    public string $github_project_url;
     public int $anio;
     public string $version;
     public string $estado;
@@ -70,12 +71,13 @@ class ProjectInfo {
         $this->creador = Daamper::$info['author'] ?? 'Desconocido';
         $this->creador_nombre_web = Daamper::$info['author-page-name'] ?? 'No disponible';
         $this->creador_enlace = Daamper::$info['author-page-url'] ?? '#';
+        $this->github_project_url = Daamper::$info['github-project-url'] ?? '#';
         $this->anio = Daamper::$info['anio'] ?? 2024;
-        $this->version = Daamper::$version['system']['version'] ?? '0.0.0';
-        $this->estado = Daamper::$version['system']['state'] ?? 'Desconocido';
+        $this->version = Daamper::$version['core']['version'] ?? '0.0.0';
+        $this->estado = Daamper::$version['core']['state'] ?? 'Desconocido';
         $this->version_estado = "v" . $this->version . " " . $this->estado;
-        $this->creada = Daamper::$version['system']['created'] ?? 'No disponible';
-        $this->mod = Daamper::$version['system']['updated'] ?? 'No disponible';
+        $this->creada = Daamper::$version['core']['created'] ?? 'No disponible';
+        $this->mod = Daamper::$version['core']['updated'] ?? 'No disponible';
         $this->redes = Daamper::$info['social-networks'] ?? [];
     }
 
@@ -85,8 +87,18 @@ class ProjectInfo {
 
     public function render(): string {
         return '<span style="font-size: 14px;">'.
-            Language("copy", "system", ["author" => "<a target=\"_blank\" href=\"".$this->creador_enlace."\">".$this->creador."</a>", "system-name" => "<a target=\"_blank\" href=\"".$this->enlace."\">".$this->nombre."</a>", "version" => $this->version, "state" => (Language(strtolower($this->estado == "Estable" ? "stable" : $this->estado))), "updated" => $this->mod]). '<br>'.Language("license", "system")
+            Language("copy", "core", ["author" => "<a target=\"_blank\" href=\"".$this->creador_enlace."\">".$this->creador."</a>", "core-name" => "<a target=\"_blank\" href=\"".$this->enlace."\">".$this->nombre."</a>", "version" => $this->version, "state" => (Language(strtolower($this->estado == "Estable" ? "stable" : $this->estado))), "updated" => $this->mod]). '<br>'.Language("license", "core")
             .'</span>';
+    }
+    
+    public function developedBy(): string {
+        return
+            Language(
+                "developed-by", "core", [
+                "core-name" => "<a target=\"_blank\" href=\"".$this->github_project_url."\">".$this->nombre."</a>",
+                "version" => $this->version, "state" => (Language(strtolower($this->estado))),
+                "updated" => $this->mod
+            ]);
     }
 }
 

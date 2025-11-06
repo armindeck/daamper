@@ -459,17 +459,20 @@ function EnlaceExtructura($Web, $Apartado, $list = [], $Contenedor = null, $Elem
 							: ''
 						), '" '],
 					'externo' => 'target="_blank"',
-					'icono' => ['<i class="', '"></i> '],
-					'texto' => ''
+					'icono' => ['<span class="icon icon--left"><i class="', '"></i></span>'],
+					'texto' => ['<span class="text">', '</span>'],
 			];
 			if (
 				isset($Carga[(isset($list['name']) ? $list['name'].'_' : '').'icono_posicion'.$name]) &&
 				$Carga[(isset($list['name']) ? $list['name'].'_' : '').'icono_posicion'.$name] == 'derecha') {
 				unset($lista['icono']);
-				$lista['icono'] = [' <i class="', '"></i>'];
+				$lista['icono'] = ['<span class="icon icon--right"><i class="', '"></i></span>'];
 			}
 			if (isset($list['solo']) && !empty($list['solo'])) {
-				if($list['solo'] == 'icono') { unset($lista['texto']); }
+				if($list['solo'] == 'icono') {
+					unset($lista['texto']);
+					$lista["icono"][0] = str_replace(["icon--left", "icon--right"], "", $lista["icono"][0]);
+				}
 				if($list['solo'] == 'texto') { unset($lista['icono']); }
 			}
 			foreach ($lista as $key => $value) {	
@@ -483,7 +486,7 @@ function EnlaceExtructura($Web, $Apartado, $list = [], $Contenedor = null, $Elem
 					);
 				$return .= $key == 'externo' ? '>' : '';
 			}
-			$return .= '</a>';
+			$return .= '</a> ';
 			}
 		}
 	}

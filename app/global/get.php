@@ -5,9 +5,8 @@ if(isset($_GET['cerrar-sesion']) && $_GET['cerrar-sesion'] === "true" && isset($
 }
 
 # Color del tema
-$_SESSION['tmp']['tema'] = $_SESSION['tmp']['tema'] ?? $Web["config"]["default_color"];
 if(!empty($_GET['tema'])){
-    $_SESSION['tmp']['tema'] = Daamper::$scripts->normalizar2($_GET['tema']);
+    $_SESSION['tmp']['color'] = Daamper::$scripts->normalizar2($_GET['tema']);
 }
 
 # IDIOMAS

@@ -21,33 +21,7 @@
     "upload-image": {
       "max-size": 5,
       "support": ["image/png", "image/jpeg", "image/jpg", "image/gif"]
-    },
-    "config": {
-      "api": {
-        "config": ["info"],
-        "other": [
-          "api-post",
-          "api-post-entries",
-          "api-comment",
-          "api-user",
-          "api-config",
-          "api-creator",
-          "api-other",
-          "api-template",
-          "api-theme"
-        ]
-      }
     }
-  },
-  "api": {
-    "show": {
-      "config": ["info", "version", "config", "default", "rules", "language", "commands"],
-      "comment": ["comment", "extras"],
-      "user": ["user", "extras"],
-      "creator": ["default", "list-of-entries", "field-default", "list-tags"],
-      "other": ["visits"]
-    },
-    "auto": ["post", "draft", "template", "theme"]
   },
   "search": {
     "limit": 15,
@@ -64,8 +38,7 @@
       "p-perfil",
       "search",
       "report",
-      "error",
-      "api"
+      "error"
     ],
     "remove-route": ["ver", "ejmplo/ruta"]
   },

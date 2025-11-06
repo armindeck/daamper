@@ -1,6 +1,6 @@
 <?php
 if(isset($_FILES['imagen']) && $_FILES['imagen']['error'] !== UPLOAD_ERR_NO_FILE){
-    $VERSION = Daamper::$version["components"]["upload-image"];
+    $VERSION = Daamper::$version["other"]["upload-image"];
     if ($tipo_de_seccion == "auth"){ $Apartado = "auth"; }
     $ruta_mspan = [
         "admin" => "admin/admin".$Web["config"]["php"]."?ap=$Apartado",

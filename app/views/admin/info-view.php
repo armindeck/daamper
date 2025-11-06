@@ -1,4 +1,4 @@
-<?php /* 04/01/2025 | 11/03/2025 | 15/05/2025 */ ?>
+<?php /* 04/01/2025 | 11/03/2025 | 15/05/2025 | 05/11/2025 */ ?>
 <section class="panel">
 	<div class="form">
 		<strong><?= Language('information') ?></strong><hr>
@@ -18,17 +18,16 @@
 			}
 			return $return ?? '';
 		} ?>
-		<?php foreach (['system', 'language', 'dashboard', 'other', 'components', 'social-networks'] as $opcion): ?>
+		<?php foreach (['core', 'dashboard', 'other', 'social-networks'] as $opcion): ?>
 		<details open>
 			<summary><?= Language($opcion) ?><?= $opcion == 'social-networks' ? ' <i class="fas fa-external-link-alt"></i>' : '' ?></summary>
 			<section>
 				<ul>
-					<?php if ($opcion == 'system') {
-						foreach (['creator' => 'author-and-page-name', 'project' => 'page-name', 'version' => 'version', 'state' => 'state', 'updated' => 'updated', 'created' => 'created', 'license' => 'license'] as $sistema => $valor) {
+					<?php if ($opcion == 'core') {
+						foreach (['creator' => 'author-and-page-name', 'name' => 'page-name', 'version' => 'version', 'state' => 'state', 'updated' => 'updated', 'created' => 'created', 'license' => 'license'] as $sistema => $valor) {
 							echo '<li class="flex-between boton-2 boton-mini"><span>'. (Language($sistema)) . ':</span> '. ($valor == "state" ? (Language(Daamper::$infoversion[$valor] == "Estable" ? "stable" : strtolower(Daamper::$infoversion[$valor]))) : Daamper::$infoversion[$valor]) .'</li>';
 						}
 					} ?>
-					<?= $opcion == "language" ? '<li class="flex-between boton-2 boton-mini"><span>'. (Language("language")) . ':</span> '. Version(["language"]) .'</li>' : ""; ?>
 					<?php if (in_array($opcion, ['dashboard', 'other', 'components'])) { $lista = Daamper::$data->Read("config/version")[$opcion] ?? [];
 						foreach ($lista as $key => $value) {
 							echo '<li class="flex-between boton-2 boton-mini"><span>' . Language($key) . ':</span> ';

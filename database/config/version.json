@@ -1,22 +1,10 @@
 {
-	"system": {
-		"version": "0.3.6",
+	"core": {
+		"version": "0.3.7",
 		"state": "Stable",
-		"updated": "24.10.2025",
+		"updated": "05.11.2025",
 		"created": "12.06.2024",
 		"license": "Uso No Transferible – Prohibida la venta del código fuente"
-	},
-	"language": {
-		"version": "0.1.6",
-		"state": "Beta",
-		"updated": "24.10.2025",
-		"created": "11.03.2025"
-	},
-	"api": {
-		"version": "0.1.1",
-		"state": "Beta",
-		"updated": "06.08.2025",
-		"created": "22.05.2025"
 	},
 	"other": {
 		"form-comment": {
@@ -32,9 +20,9 @@
 			"created": "02.04.2024"
 		},
 		"auth": {
-			"version": "0.2.2",
+			"version": "0.2.3",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "05.11.2025",
 			"created": "12.06.2024"
 		},
 		"report": {
@@ -48,14 +36,18 @@
 			"state": "Stable",
 			"updated": "06.08.2025",
 			"created": "07.11.2024"
-		}
-	},
-	"components": {
+		},
 		"upload-image": {
-			"version": "0.1.5",
+			"version": "0.1.6",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "05.11.2025",
 			"created": "23.08.2023"
+		},
+		"language": {
+			"version": "0.1.7",
+			"state": "Beta",
+			"updated": "05.11.2025",
+			"created": "11.03.2025"
 		}
 	},
 	"dashboard": {
@@ -72,20 +64,20 @@
 			"created": "02.01.2025"
 		},
 		"config": {
-			"version": "0.1.8",
+			"version": "0.1.9",
 			"state": "Stable",
-			"updated": "24.10.2025",
+			"updated": "05.11.2025",
 			"created": "08.07.2024"
 		},
 		"creator": {
-			"version": "0.1.8",
+			"version": "0.1.9",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "05.11.2025",
 			"created": "01.07.2024",
 			"preview": {
-				"version": "0.1.8",
+				"version": "0.1.9",
 				"state": "Stable",
-				"updated": "07.08.2025",
+				"updated": "05.11.2025",
 				"created": "01.07.2024"
 			},
 			"other": {
@@ -122,9 +114,9 @@
 			"created": "29.06.2024"
 		},
 		"editor": {
-			"version": "0.1.5",
+			"version": "0.1.6",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "05.11.2025",
 			"created": "30.06.2024"
 		},
 		"htaccess": {
@@ -134,27 +126,27 @@
 			"created": "08.07.2024"
 		},
 		"info": {
-			"version": "0.1.4",
+			"version": "0.1.5",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "05.11.2025",
 			"created": "26.12.2024"
 		},
 		"template": {
-			"version": "0.2.4",
+			"version": "0.2.5",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "05.11.2025",
 			"created": "09.07.2024"
 		},
 		"scripts": {
-			"version": "0.1.6",
+			"version": "0.1.7",
 			"state": "Stable",
-			"updated": "23.10.2025",
+			"updated": "05.11.2025",
 			"created": "08.07.2024"
 		},
 		"upload-image": {
-			"version": "0.1.5",
+			"version": "0.1.6",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "05.11.2025",
 			"created": "09.07.2024"
 		},
 		"theme": {

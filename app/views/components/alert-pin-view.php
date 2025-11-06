@@ -8,6 +8,7 @@
         <?php if(!isset(Daamper::$data->UserAll()[$_SESSION["id"]]["pin"])){ ?>
             <a class="boton-2" href="<?= "{$Web['directorio']}auth/config{$Web['config']['php']}" ?>?up=pin">Generar pin</a>
         <?php } else { ?>
+        <?= (Daamper::$data->UserAll()[$_SESSION["id"]]["pin"] ?? "") == "55LE-99Q9R-TFU5V39" ? "<p>" . Language("please-change-recovery-pin-default") . "</p>" : "" ?>
         <div class="flex-evenly items-center">
             <input type="checkbox" class="show-key" id="show-pin" hidden>
             <label for="show-pin"><a class="boton-2"><i class="fas fa-eye"></i></a></label>

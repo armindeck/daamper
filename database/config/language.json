@@ -1,14 +1,21 @@
 {
-	"system": {
+	"core": {
 		"title": {"es": "daamper", "en": "daamper", "jp": "daamper"},
 		"copy": {
-			"es": "Desarrollado por {{author}}: {{system-name}} v{{version}} {{state}} ~ {{updated}}.",
-			"en": "Powered by {{author}}: {{system-name}} v{{version}} {{state}} ~ {{updated}}.",
-			"jp": "{{author}} 提供: {{system-name}} v{{version}} {{state}} ~ {{updated}}."
+			"es": "Desarrollado por {{author}}: {{core-name}} v{{version}} {{state}} ~ {{updated}}.",
+			"en": "Powered by {{author}}: {{core-name}} v{{version}} {{state}} ~ {{updated}}.",
+			"jp": "{{author}} 提供: {{core-name}} v{{version}} {{state}} ~ {{updated}}."
 		},
-		"license": {"es": "Licencia: Uso No Transferible.", "en": "License: Non-Transferable Use.", "jp": "ライセンス: 譲渡不可の使用。"}
+		"developed-by": {
+			"es": "Desarrollado por {{core-name}} v{{version}} ({{state}} ~ {{updated}}) - Licencia: Uso No Transferible.",
+			"en": "Developed by {{core-name}} v{{version}} ({{state}} ~ {{updated}}) - License: Non-Transferable Use.",
+			"jp": "{{core-name}} v{{version}}（{{state}} ～ {{updated}}）によって開発 - ライセンス: 譲渡不可の使用。"
+		},
+		"license": {"es": "Licencia: Uso No Transferible.", "en": "License: Non-Transferable Use.", "jp": "ライセンス: 譲渡不可の使用。"},
+		"license-extra": {"es": "Uso No Transferible – Prohibida la venta del código fuente", "en": "Non-Transferable Use – Sale of source code prohibited", "jp": "譲渡不可の使用 – ソースコードの販売は禁止されています"}
 	},
 	"global": {
+		"core": {"es": "Núcleo", "en": "Core", "jp": "コア"},
 		"system": {"es": "Sistema", "en": "System", "jp": "システム"},
 		"dashboard": {"es": "Panel", "en": "Dashboard", "jp": "パネル"},
 		"upload-image": {"es": "Subir imagen", "en": "Upload image", "jp": "画像をアップロードする"},
@@ -284,6 +291,7 @@
 		"new-pin": {"es": "Nuevo pin", "en": "New pin", "jp": "新しい暗証番号"},
 		"recovery-pin": {"es": "Pin de recuperación", "en": "Recovery pin", "jp": "回復用暗証番号"},
 		"show-pin": {"es": "Mostrar pin", "en": "Show pin", "jp": "暗証番号を表示"},
+		"please-change-recovery-pin-default": {"es": "Por favor cambie el pin de recuperación, está usando el predeterminado", "en": "Please change the recovery pin, you are using the default one", "jp": "復旧PINを変更してください。デフォルトのまま使用しています"},
 		"log-out": {"es": "Cerrar sesión", "en": "Log out", "jp": "ログアウト"},
 		"ads": {"es": "Anuncios", "en": "Ads", "jp": "広告"},
 		"config": {"es": "Configuración", "en": "Config", "jp": "設定"},

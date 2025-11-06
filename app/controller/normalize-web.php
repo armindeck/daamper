@@ -5,7 +5,15 @@ $Web["scripts"] = Daamper::$data->Config()["scripts"] ?? [];
 $Web["template"] = Daamper::$data->Read("template/template") ?? [];
 
 $Web["config"]["theme"] = $Web["config"]["theme"] ?? "daamper.css";
-$Web["config"]["default_color"] = $Web["config"]["default_color"] ?? "blue-aero";
+$Web["config"]["color"] = $Web["config"]["color"] ?? "light";
+
+$Web["config"]["php"] = !empty($Web["config"]["php"]) ? ".php" : "";
+
+if(empty($Web['config']['https_imagen']) or !isset($Web['config']['https_imagen'])){
+	$Web['config']['https_imagen'] = $Web['directorio'];
+}
+
+if(!empty($Web['config']['timezone'])){ date_default_timezone_set($Web['config']['timezone']); }
 
 if(
 	file_exists(RAIZ . 'database/template/scr-template.json') &&

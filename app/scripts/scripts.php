@@ -392,7 +392,7 @@ foreach (
     [
         'send-alert',
         'input',
-        'template/view',
+        'template',
         'function'
     ] as $key => $value
 ) {

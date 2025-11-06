@@ -72,7 +72,7 @@
 		</section>
 		<?php endif; ?>
 		<?php if(!empty($default["iframe-show"])): ?>
-		<?= PlantillaComandos('[Return=Iframe height="890px" src="'.($default["link-iframe"]).'" get="view~main&tema~'.(isset($_SESSION['tmp']['tema']) ? $_SESSION['tmp']['tema'] : 'blue-aero').'"]', 0, 0) ?>
+		<?= PlantillaComandos('[Return=Iframe height="890px" src="'.($default["link-iframe"]).'" get="view~main&tema~'.($_SESSION['tmp']['color'] ?? $Web["config"]["color"] ?? 'light').'"]', 0, 0) ?>
 		<?php endif; ?>
 	</article>
 	<?php endif; ?>

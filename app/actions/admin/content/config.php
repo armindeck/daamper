@@ -1,18 +1,8 @@
 <?php
 $LISTA_DATOS_POST=[
 	'nombre_web','enlace_web','enlace_web_simple','timezone',
-	'ano_publicada','language','theme','https_imagen','php','errores','api',
+	'ano_publicada','language','theme', 'color','https_imagen','php','errores',
 ];
-
-foreach (Daamper::$data->Config("default")["api"]["show"] as $key => $value) {
-	foreach ($value as $key2 => $value2) {
-		$LISTA_DATOS_POST[] = "show-api-$key-$value2";
-	}
-}
-
-foreach (Daamper::$data->Config("default")["api"]["auto"] as $value) {
-	$LISTA_DATOS_POST[] = "show-api-auto-$value";
-}
 
 foreach ($LISTA_DATOS_POST as $key => $value) {
 	if(!isset($_POST[$value])){ $_POST[$value]=''; }

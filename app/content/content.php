@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/adaptabilidad.php';
+<?php
 $ruta_publicaciones_json = str_replace(".php", ".json", Daamper::$scripts->eslasToGuion($Web['ruta']));
 $ruta_publicaciones = RAIZ . 'database/post/' . $ruta_publicaciones_json;
 if(file_exists($ruta_publicaciones)){

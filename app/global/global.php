@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . '/get.php';
 foreach ([
-	'usuario', 'routes/auth', 'routes/admin', 'routes/api'
+	'usuario', 'routes/auth', 'routes/admin',
 	] as $value) { require_once __DIR__ . "/{$value}.php"; }
 if ($Web['ruta_completa'] == '../p/perfil.php') { header("Location: ../auth/login.php"); }
 

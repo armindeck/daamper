@@ -21,11 +21,11 @@ foreach (Daamper::$info["social-networks"] as $key => $value) {
 }
 
 $cmd = [
-	"cmd[version];" => Daamper::$version["system"]["version"],
-	"cmd[state];" => Daamper::$version["system"]["state"],
-	"cmd[updated];" => Daamper::$version["system"]["updated"],
-	"cmd[created];" => Daamper::$version["system"]["created"],
-	"cmd[license];" => file_exists(RAIZ . "license.txt") ? str_replace("\n", "<br>", file_get_contents(RAIZ . "LICENSE.txt")) : Daamper::$version["system"]["license"],
+	"cmd[version];" => Daamper::$version["core"]["version"],
+	"cmd[state];" => Daamper::$version["core"]["state"],
+	"cmd[updated];" => Daamper::$version["core"]["updated"],
+	"cmd[created];" => Daamper::$version["core"]["created"],
+	"cmd[license];" => file_exists(RAIZ . "license.txt") ? str_replace("\n", "<br>", file_get_contents(RAIZ . "LICENSE.txt")) : Daamper::$version["core"]["license"],
 	"cmd[creator];" => Daamper::$info["author"],
 	"cmd[creator-page-name];" => Daamper::$info["author-page-name"],
 	"cmd[creator-page-link];" => Daamper::$info["author-page-url"],

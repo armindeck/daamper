@@ -1,5 +1,6 @@
 <?php
 /* Versions
+→ v0.2.1 BETA 05.11.2025
 → v0.2 BETA 23.05.2025
 → v0.1 BETA 09.07.2024
 */
@@ -16,7 +17,7 @@ if(!isset($Apartado)){
 	Daamper::$sendAlert->Warning(Language('no-access-file'), "../admin.php");
 }
 
-$rules_admin = Daamper::$data->Config("rules")["admin"];
+$rules_admin = Daamper::$data->Config("admin")["rules"];
 if (!isset($rules_admin[strtolower($_SESSION["rol"])]) || !in_array($Apartado, $rules_admin[strtolower($_SESSION["rol"])])){
 	Daamper::$sendAlert->Success(Language(['dashboard', 'higher-role-required'], 'dashboard'), "../admin.php");
 }
@@ -38,8 +39,12 @@ if(isset($DATOS_DEFAULT) && $DATOS_DEFAULT){
 	unset($post); unset($guardar);
 	$post=[];	
 	foreach ($LISTA_DATOS_POST as $key => $value) {
-		if(!isset($_POST[$value])){ $_POST[$value]=''; }
-		$post[$value]=Daamper::$scripts->normalizar2($_POST[$value]);
+		if(!isset($_POST[$value])){ $_POST[$value] = ''; }
+		if(!empty($LISTA_DATOS_POST_ESCAPE_CONVERT) && in_array($value, $LISTA_DATOS_POST_ESCAPE_CONVERT)){
+			$post[$value] = $_POST[$value];
+		} else {
+			$post[$value] = Daamper::$scripts->normalizar2($_POST[$value]);
+		}
 	}
 
 	if ($Apartado == 'config') {

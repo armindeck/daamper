@@ -13,7 +13,7 @@
           "dark" => "moon",
           default => "fill-drip"
         }; ?>
-        <a href="?tema=<?= $theme ?>"><i class="fas fa-<?= $icon ?>"></i> <?= ucwords(str_replace(['-', '_'], ' ', $theme)) ?></a>
+        <a href="?tema=<?= $theme ?>"><span class="icon icon--left"><i class="fas fa-<?= $icon ?>"></i></span><span class="text"><?= ucwords(str_replace(['-', '_'], ' ', $theme)) ?></span></a>
       <?php } ?>
     </nav>
   </div>

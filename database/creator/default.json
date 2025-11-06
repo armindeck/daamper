@@ -1,6 +1,6 @@
 {
     "titles": [
-        "error", "report", "search", "admin-admin", "p-perfil", "api",
+        "error", "report", "search", "admin-admin", "p-perfil",
         "auth-login", "auth-register", "auth-forgot-password", "auth-change-password", "auth-config"
     ],
     "server": {

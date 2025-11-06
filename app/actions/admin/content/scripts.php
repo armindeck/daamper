@@ -1,21 +1,10 @@
 <?php
-$LISTA_DATOS_POST = [
-	'scripts_google','scripts_font_awesome','scripts_otros',
-];
+$LISTA_DATOS_POST_ESCAPE_CONVERT = ["google_scripts", "font_awesome_scripts", "other_scripts"];
 
-foreach ($LISTA_DATOS_POST as $key => $value) {
-	if(isset($_POST[$value]) && !empty($_POST[$value])){
-		file_put_contents($Web["directorio"].'database/files/html/'.$value.'.html', trim($_POST[$value]));
-	} else {
-		if(file_exists($Web["directorio"].'database/files/html/'.$value.'.html')){
-			unlink($Web["directorio"].'database/files/html/'.$value.'.html');
-		}
-	}
-}
-
-$LISTA_DATOS_POST = [
-	'mostrar_scripts_google','mostrar_scripts_font_awesome',
-	'mostrar_scripts_otros',
-];
+$LISTA_DATOS_POST = array_merge($LISTA_DATOS_POST_ESCAPE_CONVERT, [
+	"show_google_scripts",
+	"show_font_awesome_scripts",
+	"show_other_scripts",
+]);
 
 $DATOS_DEFAULT = true;
