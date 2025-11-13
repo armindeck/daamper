@@ -36,21 +36,24 @@
 <body data-theme="<?= $_SESSION['tmp']['color'] ?? $Web["config"]["color"] ?? "light" ?>">
 	<?php // Vistas
 	Daamper::views('privado-error'); // Pagina de error
-	ViewsPlantilla(null, true); // Cargar todas las vistas necesarias
+
+	$template = new Template($Web["template"] ?? [], $Web);
+	$template->render(); // Cargar todas las vistas automaticamente
 	
 	# CARGAR INDIVIDUALMENTE ----------
 	/*
-	<?= ViewsPlantilla("components", true) ?>
-	<?= ViewsPlantilla("header", true) ?>
-	<?= ViewsPlantilla("header-bar", true) ?>
-	<?= ViewsPlantilla("sidebar", true) ?>
-	<?= ViewsPlantilla("open-content", true) ?>
-		<?= ViewsPlantilla("main-header", true) ?>
-			<?= ViewsPlantilla("main", true) ?>
-		<?= ViewsPlantilla("main-footer", true) ?>
-		<?= ViewsPlantilla("article", true) ?>
-	<?= ViewsPlantilla("close-content", true) ?>
-	<?= ViewsPlantilla("footer", true) ?>
+	<?= $template->render("components") ?>
+	<?= $template->render("header") ?>
+	<?= $template->render("header-bar") ?>
+	<?= $template->render("sidebar") ?>
+	<?= $template->render("open-content") ?>
+		<?= $template->render("main-header") ?>
+			<?= $template->render("main") ?>
+		<?= $template->render("main-footer") ?>
+		<?= $template->render("aside") ?>
+	<?= $template->render("close-content") ?>
+	<?= $template->render("footer") ?>
+	<?= $template->render("copyright") ?>
 	*/
 	?>
 	<?php unset($_SESSION["sendAlert"]); ?>

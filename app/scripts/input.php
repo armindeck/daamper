@@ -1,4 +1,45 @@
 <?php
+/**************************************************************************/
+/*  Licencia de Uso No Transferible - daamper                             */
+/**************************************************************************/
+/*  input.php                                                             */
+/**************************************************************************/
+/*                        This file is part of:                           */
+/*                              daamper                                   */
+/*                 https://github.com/armindeck/daamper                   */
+/**************************************************************************/
+/* Copyright (c) 2025 DBHS / daamper                                      */
+/*                                                                        */
+/* Se concede permiso, de forma gratuita, a cualquier persona para usar,  */
+/* modificar y ejecutar el código fuente de este software, incluyendo su  */
+/* uso en proyectos comerciales (como monetización por publicidad o       */
+/* donaciones).                                                           */
+/*                                                                        */
+/* Restricciones estrictas:                                               */
+/* - No está permitido vender, sublicenciar o distribuir el código        */
+/*   fuente —total o parcialmente— con fines de lucro.                    */
+/* - No está permitido convertir el código en privativo ni eliminar       */
+/*   esta licencia.                                                       */
+/* - No está permitido reclamar la autoría del código original.           */
+/*                                                                        */
+/* Uso permitido:                                                         */
+/* - Se permite modificar y usar el código con fines personales,          */
+/*   educativos y/o comerciales, siempre que no se venda.                 */
+/* - Se permite usar este software como base para otros proyectos,        */
+/*   siempre que esta licencia se mantenga.                               */
+/*                                                                        */
+/* El autor (DBHS / daamper) se reserva el derecho de modificar esta      */
+/* licencia en futuras versiones del software.                            */
+/*                                                                        */
+/* EL SOFTWARE SE ENTREGA "TAL CUAL", SIN GARANTÍAS DE NINGÚN TIPO,       */
+/* EXPRESAS O IMPLÍCITAS, INCLUYENDO, SIN LIMITACIÓN, GARANTÍAS DE        */
+/* COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO           */
+/* INFRACCIÓN. EN NINGÚN CASO LOS AUTORES SERÁN RESPONSABLES POR          */
+/* RECLAMACIONES, DAÑOS U OTRAS RESPONSABILIDADES, YA SEA EN UNA ACCIÓN   */
+/* CONTRACTUAL, EXTRACONTRACTUAL O DE OTRO TIPO, DERIVADAS DE O EN        */
+/* CONEXIÓN CON EL SOFTWARE, SU USO O OTRO TIPO DE MANEJO.                */
+/**************************************************************************/
+
 function exLabel($list) {
 	$return = '';
 	if(isset($list['label']) && $list['label']){
@@ -81,6 +122,7 @@ function pSelect($list){
 	$return .= '<select ';
 
 	$return .= 'name="'. (isset($list['name']) ? $list['name'] : '') . '"';
+	$return .= 'title="'. (isset($list['title']) ? $list['title'] : '') . '"';
 	$return .= isset($list['style']) ? ' style="'.$list['style'].'"' : '';
 	$return .= isset($list['required']) ? ' required' : '';
 	$return .= '>';
@@ -349,7 +391,7 @@ function ExtructuraEnlace () {
 			['name'=>'icono_posicion','texto'=>'P. Icono','title'=>'Posición del icono.', 'class' => 'form-campo-pequeno']
 		],
 		'input' => [
-			['name'=>'icono','texto'=>'Icono','placeholder'=>'fas fa-inicio','title'=>'Icono.'],
+			['name'=>'icono','texto'=>'Icono','placeholder'=>'fas fa-home','title'=>'Icono.'],
 			['name'=>'texto','texto'=>'Texto','placeholder'=>'Inicio','title'=>'Texto.'],
 			['name'=>'url','texto'=>'Enlace','placeholder'=>'blogs / https','title'=>'Directorio local u enlace externo.'],
 			['name'=>'class','texto'=>'Class','placeholder'=>'Class','title'=>'Class.']
@@ -366,8 +408,8 @@ function pInputEnlace($Web, $Apartado, $list = [], $Contenedor = null, $Elemento
 	$lista = ExtructuraEnlace();
 	
 	$Carga = is_string($Apartado) ? ($Web[$Apartado] ?? '') : ($Web[$Apartado[0]][$Apartado[1]] ?? '');
-	$return = '<details><summary>Enlaces</summary>';
-	$return .= '<section style="display: flex; flex-wrap: wrap; gap: 4px; flex-direction: column;">';
+	//$return = '<details><summary>Enlaces</summary>';
+	$return = '<section style="display: flex; flex-wrap: wrap; gap: 4px; flex-direction: column;">';
 	$return .= '<section class="flex-between">';
 	$return .= pInput([
 		'placeholder' => 1,
@@ -426,7 +468,7 @@ function pInputEnlace($Web, $Apartado, $list = [], $Contenedor = null, $Elemento
 			$return .= '</section>';
 		}
 	}
-	$return .= '</details>';
+	//$return .= '</details>';
 	return $return;
 }
 
@@ -491,7 +533,7 @@ function EnlaceExtructura($Web, $Apartado, $list = [], $Contenedor = null, $Elem
 		}
 	}
 	$return .= '</section>';
-	return PlantillaComandos($return, $Contenedor, $Elemento);
+	return (new Template($Web["template"], $Web))->commands($return, $Contenedor, $Elemento);
 }
 
 ?>

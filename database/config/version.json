@@ -1,8 +1,8 @@
 {
 	"core": {
-		"version": "0.3.7",
+		"version": "0.3.8",
 		"state": "Stable",
-		"updated": "05.11.2025",
+		"updated": "13.11.2025",
 		"created": "12.06.2024",
 		"license": "Uso No Transferible – Prohibida la venta del código fuente"
 	},
@@ -44,9 +44,9 @@
 			"created": "23.08.2023"
 		},
 		"language": {
-			"version": "0.1.7",
+			"version": "0.1.8",
 			"state": "Beta",
-			"updated": "05.11.2025",
+			"updated": "13.11.2025",
 			"created": "11.03.2025"
 		}
 	},
@@ -94,9 +94,9 @@
 					"created": "01.07.2024"
 				},
 				"anime_mirando": {
-					"version": "0.1.6",
+					"version": "0.1.7",
 					"state": "Stable",
-					"updated": "06.08.2025",
+					"updated": "13.11.2025",
 					"created": "02.07.2024"
 				},
 				"juego": {
@@ -132,9 +132,9 @@
 			"created": "26.12.2024"
 		},
 		"template": {
-			"version": "0.2.5",
+			"version": "0.2.6",
 			"state": "Stable",
-			"updated": "05.11.2025",
+			"updated": "13.11.2025",
 			"created": "09.07.2024"
 		},
 		"scripts": {

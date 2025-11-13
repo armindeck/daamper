@@ -1,9 +1,9 @@
-<?php # 21/06/2024 ~ 10:39pm ~ Create file
+<?php
 
 /**************************************************************************/
 /*  Licencia de Uso No Transferible - daamper                             */
 /**************************************************************************/
-/*  controller.php                                                        */
+/*  Local.php                                                             */
 /**************************************************************************/
 /*                        This file is part of:                           */
 /*                              daamper                                   */
@@ -41,18 +41,80 @@
 /* CONEXIÓN CON EL SOFTWARE, SU USO O OTRO TIPO DE MANEJO.                */
 /**************************************************************************/
 
-session_start();
-require_once __DIR__.'/daamper.php';
-require_once __DIR__.'/../core/Local.php';
-require_once __DIR__.'/../core/Template.php';
-require_once __DIR__.'/../core/Render.php';
-require_once __DIR__.'/../scripts/scripts.php';
-require_once __DIR__.'/folder.php';
-require_once __DIR__.'/../model/model.php';
-require_once __DIR__.'/normalize-web.php';
+class Local{
 
-if (!isset($PROCESS_ADMIN)) {
-	require_once RAIZ . Daamper::globalPath();
-	require_once RAIZ . Daamper::contentPath();
-	require_once RAIZ . Daamper::viewsPath();
+    protected static string $baseDB = __DIR__ . '/../../database/';
+
+    /*
+    protected static function update(string $file, array $data): array {
+        $route = self::path($file);
+
+        if(!file_exists($route)){
+            return ["success" => false, "message" => "El archivo no existe.", "error_code" => 404];
+        }
+
+        $write = self::write($file, $data);
+
+        if(!$write['success']){
+            return ["success" => false, "message" => "Error al actualizar el archivo.", "error_code" => 500];
+        }
+
+        return ["success" => true, "message" => "El archivo se actualizó correctamente.", "error_code" => 200];
+    }
+    */
+
+    protected static function write(string $file, array $data): array {
+        $route = self::path($file);
+
+        $content = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+        if($content === false){
+            return ["success" => false, "message" => "Error al convertir los datos a JSON.", "error_code" => 500];
+        }
+
+        $write = file_put_contents($route, $content, LOCK_EX);
+        if($write === false){
+            return ["success" => false, "message" => "Error al escribir en el archivo.", "error_code" => 500];
+        }
+
+        return ["success" => true, "message" => "El archivo se escribió correctamente.", "error_code" => 200];
+    }
+
+    protected static function read(string $file): array{
+        $route = self::path($file);
+
+        if(!file_exists($route)){
+            return ["success" => false, "message" => "El archivo no existe", "error_code" => 404];
+        }
+
+        $content = file_get_contents($route);
+
+        if($content === false){
+            return ["success" => false, "message" => "Error al leer el archivo.", "error_code" => 500];
+        }
+
+        $decode = json_decode($content, true);
+
+        if($decode === null && json_last_error() !== JSON_ERROR_NONE){
+            return ["success" => false, "message" => "Error al decodificar el JSON: " . json_last_error_msg(), "error_code" => 500];
+        }
+
+        return $decode ?? [];
+    }
+
+    protected static function path(string $file): string {
+        $file = str_replace(".json", "", $file);
+        return self::$baseDB . $file . ".json";
+    }
+
+    protected static function exists(string $file) : bool {
+        return file_exists(self::path($file));
+    }
+
+    protected static function scan(string $folder): array {
+        $dir = self::$baseDB . $folder;
+        if (!is_dir($dir)) return [];
+        $files = scandir($dir);
+        return array_values(array_filter($files, fn($f) => !in_array($f, ['.', '..'])));
+    }
 }

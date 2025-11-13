@@ -1,6 +1,25 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.8 Stable] - 13/11/2025
+Nuevo diseño del apartado Plantilla en el panel administrativo.
+
+### ✨ Nuevas funciones
+
+- Implementada la clase Template para el renderizado dinámico de vistas y manejo de comandos.
+- Nuevos métodos para procesar contenedores y elementos según la configuración establecida.
+- Soporte ampliado para comandos definidos en template-commands.json.
+
+### 🧩 Nuevos componentes
+
+- dropdown-view.php: componente para menús desplegables interactivos con casillas de verificación y soporte multilenguaje.
+
+- modal-view.php: componente para ventanas modales con contenido dinámico y compatibilidad con traducciones (título y botón de cierre).
+
+### 🧹 Mantenimiento
+
+- Agregado template-commands.json con nuevos mapeos y soporte para los componentes recientemente añadidos.
+
 ## [0.3.7 Stable] - 05/11/2025
 Limpieza, mejoras visuales y eliminación de API
 
