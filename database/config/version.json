@@ -1,8 +1,8 @@
 {
 	"core": {
-		"version": "0.3.8",
-		"state": "Stable",
-		"updated": "13.11.2025",
+		"version": "0.3.9",
+		"state": "Dev",
+		"updated": "07.02.2026",
 		"created": "12.06.2024",
 		"license": "Uso No Transferible – Prohibida la venta del código fuente"
 	},
@@ -38,35 +38,35 @@
 			"created": "07.11.2024"
 		},
 		"upload-image": {
-			"version": "0.1.6",
+			"version": "0.1.7",
 			"state": "Stable",
-			"updated": "05.11.2025",
+			"updated": "04.02.2026",
 			"created": "23.08.2023"
 		},
 		"language": {
-			"version": "0.1.8",
+			"version": "0.1.9",
 			"state": "Beta",
-			"updated": "13.11.2025",
+			"updated": "04.02.2026",
 			"created": "11.03.2025"
 		}
 	},
 	"dashboard": {
 		"ads": {
-			"version": "0.1.7",
+			"version": "0.1.8",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "06.02.2026",
 			"created": "08.07.2024"
 		},
 		"comments": {
-			"version": "0.1.4",
+			"version": "0.1.5",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "06.02.2026",
 			"created": "02.01.2025"
 		},
 		"config": {
-			"version": "0.1.9",
+			"version": "0.2.0",
 			"state": "Stable",
-			"updated": "05.11.2025",
+			"updated": "06.02.2026",
 			"created": "08.07.2024"
 		},
 		"creator": {
@@ -108,57 +108,51 @@
 			}
 		},
 		"directory": {
-			"version": "0.1.5",
+			"version": "0.1.7",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "06.02.2026",
 			"created": "29.06.2024"
 		},
 		"editor": {
-			"version": "0.1.6",
+			"version": "0.1.8",
 			"state": "Stable",
-			"updated": "05.11.2025",
+			"updated": "07.02.2026",
 			"created": "30.06.2024"
 		},
 		"htaccess": {
-			"version": "0.1.5",
+			"version": "0.1.6",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "06.02.2026",
 			"created": "08.07.2024"
 		},
 		"info": {
-			"version": "0.1.5",
+			"version": "0.2.0",
 			"state": "Stable",
-			"updated": "05.11.2025",
+			"updated": "06.02.2026",
 			"created": "26.12.2024"
 		},
 		"template": {
-			"version": "0.2.6",
+			"version": "0.2.7",
 			"state": "Stable",
-			"updated": "13.11.2025",
+			"updated": "06.02.2026",
 			"created": "09.07.2024"
 		},
 		"scripts": {
-			"version": "0.1.7",
+			"version": "0.1.8",
 			"state": "Stable",
-			"updated": "05.11.2025",
+			"updated": "06.02.2026",
 			"created": "08.07.2024"
 		},
 		"upload-image": {
-			"version": "0.1.6",
+			"version": "0.1.7",
 			"state": "Stable",
-			"updated": "05.11.2025",
+			"updated": "06.02.2026",
 			"created": "09.07.2024"
 		},
-		"theme": {
-			"version": "0.1.6",
-			"state": "Stable",
-			"updated": "06.08.2025",
-			"created": "24.08.2024"
-		},
 		"users": {
-			"version": "0.1.4",
+			"version": "0.1.5",
 			"state": "Stable",
-			"updated": "06.08.2025",
+			"updated": "06.02.2026",
 			"created": "07.01.2025"
 		}
 	}

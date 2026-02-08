@@ -25,13 +25,11 @@
 	<meta name="twitter:description" content="<?= $AX['descripcion'] ?? '' ?>">
 	<meta name="twitter:image" content="<?= ImagenesACX($AX, false, ['miniatura', 'miniatura_url']) ?>">
 	<meta name="keywords" content="<?= ($AX['meta_etiquetas'] ?? '') . ', '.($Web['config']['nombre_web'] ?? '').', '.($Web['config']['enlace_web_simple'] ?? '').', '.($Web['config']['enlace_web'] ?? '') ?>">
+	<link rel="stylesheet" href="<?= "{$Web['directorio']}assets/css/global.css" ?>">
 	<link rel="stylesheet" href="<?= "{$Web['directorio']}assets/css/{$Web["config"]["theme"]}" ?>">
 	<?php foreach (['google_scripts','font_awesome_scripts','other_scripts'] as $key => $value){
 		if(!empty($Web['scripts']['show_'.$value])){ echo ($Web['scripts'][$value] ?? "") . "\n"; }
 	} ?>
-	<?php if(file_exists($Web['directorio'].'app/actions/admin/content/src/theme.php')){
-        require_once $Web['directorio'] . 'app/actions/admin/content/src/theme.php';
-   } ?>
 </head>
 <body data-theme="<?= $_SESSION['tmp']['color'] ?? $Web["config"]["color"] ?? "light" ?>">
 	<?php // Vistas

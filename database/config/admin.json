@@ -1,6 +1,6 @@
 {
     "entries": [
-        {"icon": "fas fa-plus", "text": "creator", "section": "creator"},
+        {"icon": "fas fa-plus", "text": "publish", "section": "creator"},
         {"icon": "fas fa-comments", "text": "comments", "section": "comments"},
         {"icon": "fas fa-user-circle", "text": "users", "section": "users"},
         {"icon": "fas fa-image", "text": "upload-image", "section": "upload-image"},
@@ -8,9 +8,7 @@
         {"icon": "fab fa-js", "text": "scripts", "section": "scripts"},
         {"icon": "fas fa-cog", "text": "settings", "section": "config"},
         {"icon": "fab fa-html5", "text": "template", "section": "template"},
-        {"icon": "fab fa-css3", "text": "theme", "section": "theme"},
-        {"icon": "fas fa-sitemap", "text": "directory", "section": "directory"},
-        {"icon": "fas fa-file-invoice", "text": "htaccess", "section": "htaccess"},
+        {"icon": "fas fa-sitemap", "text": "explorer", "section": "directory"},
         {"icon": "fas fa-history", "text": "updates", "section": "updates"},
         {"icon": "fas fa-tractor", "text": "information", "section": "info"}
     ],
@@ -24,7 +22,6 @@
             "scripts",
             "config",
             "template",
-            "theme",
             "directory",
             "editor",
             "htaccess",

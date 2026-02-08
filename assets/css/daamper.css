@@ -19,6 +19,7 @@ hr {
 .boton,
 .boton2,
 .boton-2,
+.boton-3,
 .boton-check,
 .botones a,
 .botones-2 a {
@@ -60,6 +61,21 @@ hr {
   background-color: var(--boton-2-hover-bg);
 }
 
+.boton-3,
+.botones-3 a {
+  border: var(--boton-3-border);
+  border-radius: var(--boton-border-radius);
+  color: var(--boton-3-co);
+  background-color: var(--boton-3-bg);
+}
+
+.boton-3:hover,
+.botones-3 a:hover {
+  color: var(--boton-3-hover-co);
+  background-color: var(--boton-3-hover-bg);
+  border: var(--boton-3-border-hover);
+}
+
 .boton-mini,
 .botones-mini a {
   padding: 2px 4px;
@@ -89,6 +105,13 @@ input[type="checkbox"]:checked + .check-boton + .check-div {
   box-shadow: var(--formulario-box-shadow);
   color: var(--formulario-co);
   background-color: var(--formulario-bg);
+  transition: ease .2s;
+}
+
+.formulario:hover,
+.formulario:focus {
+  box-shadow: 0px 0px 0px var(--local-contenedores-border-px) var(--formulario-campo-focus-border-co);
+  border-color: var(--formulario-campo-focus-border-co);
 }
 
 input[type="text"],
@@ -375,6 +398,10 @@ textarea {
   font-size: 20px;
 }
 
+.t-small {
+  font-size: small;
+}
+
 .text-command {
   color: green;
 }
@@ -465,8 +492,11 @@ label {
 .gap-4 { gap: 4px; }
 .gap-6 { gap: 6px; }
 .gap-8 { gap: 8px; }
+.gap-10 { gap: 10px; }
+.gap-12 { gap: 12px; }
 
 .w-100p { width: 100%; }
+.max-w-150 { max-width: 150px; }
 
 /* ----------------------- Themes ----------------------- */
 
@@ -479,7 +509,8 @@ label {
   /* ----------- LOCALES ------------ */
   --local-contenedores-co: var(--body-co);
   --local-contenedores-bg: #fff;
-  --local-contenedores-border: 1px solid rgb(0, 0, 0, 0.2);
+  --local-contenedores-border-px : 1px;
+  --local-contenedores-border: var(--local-contenedores-border-px) solid rgb(0, 0, 0, 0.2);
   --local-contenedores-border-radius: 4px;
   --local-contenedores-box-shadow: none;
   --local-botones-border-radius: 4px;
@@ -504,6 +535,14 @@ label {
   --boton-2-hover-bg: var(--a-hover-co);
   --boton-2-border: 1px solid rgb(0, 0, 0, 0.4);
   --boton-2-border-radius: var(--local-botones-border-radius);
+
+  --boton-3-co: var(--body-co);
+  --boton-3-bg: transparent;
+  --boton-3-hover-co: var(--body-co);
+  --boton-3-hover-bg: transparent;
+  --boton-3-border: 1px solid transparent;
+  --boton-3-border-hover: 1px solid var(--formulario-campo-focus-border-co);
+  --boton-3-border-radius: var(--local-botones-border-radius);
 
   /* Header */
   --header-co: var(--body-co);
@@ -748,7 +787,8 @@ label {
   /* ----------- LOCALES ------------ */
   --local-contenedores-co: var(--body-co);
   --local-contenedores-bg: #fff;
-  --local-contenedores-border: 1px solid rgb(0, 0, 0, 0.2);
+  --local-contenedores-border-px : 1px;
+  --local-contenedores-border: var(--local-contenedores-border-px) solid rgb(0, 0, 0, 0.2);
   --local-contenedores-border-radius: 4px;
   --local-contenedores-box-shadow: none;
   --local-botones-border-radius: 4px;
@@ -773,6 +813,14 @@ label {
   --boton-2-hover-bg: var(--a-hover-co);
   --boton-2-border: 1px solid rgb(0, 0, 0, 0.4);
   --boton-2-border-radius: var(--local-botones-border-radius);
+
+  --boton-3-co: var(--body-co);
+  --boton-3-bg: transparent;
+  --boton-3-hover-co: var(--body-co);
+  --boton-3-hover-bg: transparent;
+  --boton-3-border: 1px solid transparent;
+  --boton-3-border-hover: 1px solid var(--formulario-campo-focus-border-co);
+  --boton-3-border-radius: var(--local-botones-border-radius);
 
   /* Header */
   --header-co: var(--body-co);
@@ -1016,7 +1064,8 @@ label {
   /* ----------- LOCALES ------------ */
   --local-contenedores-co: var(--body-co);
   --local-contenedores-bg: #363a3f;
-  --local-contenedores-border: 1px solid rgba(0, 0, 0, 0.4);
+  --local-contenedores-border-px : 1px;
+  --local-contenedores-border: var(--local-contenedores-border-px) solid rgba(0, 0, 0, 0.4);
   --local-contenedores-border-radius: 4px;
   --local-contenedores-box-shadow: none;
   --local-botones-border-radius: 4px;
@@ -1041,6 +1090,14 @@ label {
   --boton-2-hover-bg: darkslateblue;
   --boton-2-border: 1px solid rgb(0, 0, 0, 0.4);
   --boton-2-border-radius: var(--local-botones-border-radius);
+
+  --boton-3-co: var(--body-co);
+  --boton-3-bg: transparent;
+  --boton-3-hover-co: var(--body-co);
+  --boton-3-hover-bg: transparent;
+  --boton-3-border: 1px solid transparent;
+  --boton-3-border-hover: 1px solid var(--formulario-campo-focus-border-co);
+  --boton-3-border-radius: var(--local-botones-border-radius);
 
   /* Header */
   --header-co: var(--body-co);
@@ -1284,7 +1341,8 @@ label {
   /* ----------- LOCALES ------------ */
   --local-contenedores-co: var(--body-co);
   --local-contenedores-bg: #363a3f;
-  --local-contenedores-border: 1px solid rgba(0, 0, 0, 0.4);
+  --local-contenedores-border-px : 1px;
+  --local-contenedores-border: var(--local-contenedores-border-px) solid rgba(0, 0, 0, 0.4);
   --local-contenedores-border-radius: 4px;
   --local-contenedores-box-shadow: none;
   --local-botones-border-radius: 4px;
@@ -1309,6 +1367,14 @@ label {
   --boton-2-hover-bg: darkslateblue;
   --boton-2-border: 1px solid rgb(0, 0, 0, 0.4);
   --boton-2-border-radius: var(--local-botones-border-radius);
+
+  --boton-3-co: var(--body-co);
+  --boton-3-bg: transparent;
+  --boton-3-hover-co: var(--body-co);
+  --boton-3-hover-bg: transparent;
+  --boton-3-border: 1px solid transparent;
+  --boton-3-border-hover: 1px solid var(--formulario-campo-focus-border-co);
+  --boton-3-border-radius: var(--local-botones-border-radius);
 
   /* Header */
   --header-co: var(--body-co);
@@ -1552,7 +1618,8 @@ label {
   /* ----------- LOCALES ------------ */
   --local-contenedores-co: var(--body-co);
   --local-contenedores-bg: rgba(43, 43, 43);
-  --local-contenedores-border: 0px;
+  --local-contenedores-border-px : 0px;
+  --local-contenedores-border: var(--local-contenedores-border-px);
   --local-contenedores-border-radius: 4px;
   --local-contenedores-box-shadow: 0 0 1px 0.2px rgb(0, 0, 0, 0.3);
   --local-botones-border-radius: 4px;
@@ -1577,6 +1644,14 @@ label {
   --boton-2-hover-bg: var(--boton-bg);
   --boton-2-border: 1px solid rgb(255, 255, 255, 0.4);
   --boton-2-border-radius: var(--local-botones-border-radius);
+
+  --boton-3-co: var(--body-co);
+  --boton-3-bg: transparent;
+  --boton-3-hover-co: var(--body-co);
+  --boton-3-hover-bg: transparent;
+  --boton-3-border: 1px solid transparent;
+  --boton-3-border-hover: 1px solid var(--formulario-campo-focus-border-co);
+  --boton-3-border-radius: var(--local-botones-border-radius);
 
   /* Header */
   --header-co: var(--body-co);
@@ -1820,7 +1895,8 @@ label {
   /* ----------- LOCALES ------------ */
   --local-contenedores-co: var(--body-co);
   --local-contenedores-bg: rgba(38, 51, 85, 0.747);
-  --local-contenedores-border: 1px solid rgba(255, 255, 255, 0.2);
+  --local-contenedores-border-px : 1px;
+  --local-contenedores-border: var(--local-contenedores-border-px) solid rgba(255, 255, 255, 0.2);
   --local-contenedores-border-radius: 4px;
   --local-contenedores-box-shadow: none;
   --local-botones-border-radius: 4px;
@@ -1845,6 +1921,14 @@ label {
   --boton-2-hover-bg: var(--boton-bg);
   --boton-2-border: 1px solid rgb(255, 255, 255, 0.4);
   --boton-2-border-radius: var(--local-botones-border-radius);
+
+  --boton-3-co: var(--body-co);
+  --boton-3-bg: transparent;
+  --boton-3-hover-co: var(--body-co);
+  --boton-3-hover-bg: transparent;
+  --boton-3-border: 1px solid transparent;
+  --boton-3-border-hover: 1px solid var(--formulario-campo-focus-border-co);
+  --boton-3-border-radius: var(--local-botones-border-radius);
 
   /* Header */
   --header-co: var(--body-co);
@@ -2088,7 +2172,8 @@ label {
   /* ----------- LOCALES ------------ */
   --local-contenedores-co: var(--body-co);
   --local-contenedores-bg: rgba(38, 51, 85, 0.747);
-  --local-contenedores-border: 1px solid rgba(255, 255, 255, 0.2);
+  --local-contenedores-border-px : 1px;
+  --local-contenedores-border: var(--local-contenedores-border-px) solid rgba(255, 255, 255, 0.2);
   --local-contenedores-border-radius: 4px;
   --local-contenedores-box-shadow: none;
   --local-botones-border-radius: 4px;
@@ -2113,6 +2198,14 @@ label {
   --boton-2-hover-bg: var(--boton-bg);
   --boton-2-border: 1px solid rgb(255, 255, 255, 0.4);
   --boton-2-border-radius: var(--local-botones-border-radius);
+
+  --boton-3-co: var(--body-co);
+  --boton-3-bg: transparent;
+  --boton-3-hover-co: var(--body-co);
+  --boton-3-hover-bg: transparent;
+  --boton-3-border: 1px solid transparent;
+  --boton-3-border-hover: 1px solid var(--formulario-campo-focus-border-co);
+  --boton-3-border-radius: var(--local-botones-border-radius);
 
   /* Header */
   --header-co: var(--body-co);
@@ -3617,6 +3710,11 @@ input[type="checkbox"].check-modal:checked + .modal .modal__main,
   .modal__main > nav {
     flex-direction: column;
   }
+
+  .flex-column-mobil { flex-direction: column; }
+  .w-100p-mobil { width: 100%; }
+  .max-w-100p-mobil { max-width: 100%; }
+  .max-w-350-mobil { max-width: 350px; }
 }
 
 @media (max-width: 1252px) {

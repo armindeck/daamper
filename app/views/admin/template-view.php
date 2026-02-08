@@ -40,7 +40,7 @@
 /* CONEXIÓN CON EL SOFTWARE, SU USO O OTRO TIPO DE MANEJO.                */
 /**************************************************************************/
 ?>
-<form method="post" action="process/actions.php" style="max-width: 99%; padding: 4px 8px;">
+<form method="post" action="process/actions.php">
 <?php $Apartado='template'; $template = $Web["template"] ?? [];
 $glob_templates = glob('../database/template/*.json');
 $show_use_template = !empty($_GET['plantilla']) && file_exists("../database/template/{$_GET['plantilla']}") ? true : false;

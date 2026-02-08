@@ -1,24 +1,118 @@
-<?php $Apartado='ads'; ?>
-<section class="panel">
-	<style>.label-a > label { display: flex; flex-wrap:wrap; flex-direction: column; gap: 4px; }</style>
-	<form method="post" class="label-a" action="process/actions.php">
-		<b><?= Language(['ads', 'title'], 'dashboard') ?></b><hr>
-		<b><?= Language('links') ?>:</b><hr>
-		<?php
-		echo pInput(['type'=>'url','name'=>'enlace_anuncio_mensaje_movimiento','value'=>(isset($Web[$Apartado]['enlace_anuncio_mensaje_movimiento']) ? $Web[$Apartado]['enlace_anuncio_mensaje_movimiento'] : ''),'placeholder'=>'https://'.(strtolower(Language('link'))).'.com','texto'=>Language(['ads', 'moving-message'], 'dashboard'),'label'=>true]).
-		pInput(['type'=>'url','name'=>'enlace_anuncio_mini_banner','value'=>(isset($Web[$Apartado]['enlace_anuncio_mini_banner']) ? $Web[$Apartado]['enlace_anuncio_mini_banner'] : ''),'placeholder'=>'https://'.(strtolower(Language('link'))).'.com','texto'=>Language(['ads', 'long-image'], 'dashboard'),'label'=>true]).
-		pInput(['type'=>'url','name'=>'enlace_anuncio_miniatura_article','value'=>(isset($Web[$Apartado]['enlace_anuncio_miniatura_article']) ? $Web[$Apartado]['enlace_anuncio_miniatura_article'] : ''),'placeholder'=>'https://'.(strtolower(Language('link'))).'.com','texto'=>Language(['ads', 'article-thumbnail'], 'dashboard'),'label'=>true]).'<hr><div>'.
-		pEnlace(['texto'=>Language('upload-image'),'icono'=>'fas fa-external-link-alt','class'=>'boton-2 boton-mini','target'=>'_blank','href'=>'?ap=upload-image']).'</div><hr>'.
-		pSelectArchivos(['name'=>'imagen_anuncio_mini_banner','label'=>true,'texto'=>Language(['ads', 'long-image'], 'dashboard'),'ruta'=>$Web['directorio'].'assets/img/','tipo_archivos'=>'png,jpg,jpeg,gif','value'=>(isset($Web[$Apartado]['imagen_anuncio_mini_banner']) ? $Web[$Apartado]['imagen_anuncio_mini_banner'] : '')]).
-		pSelectArchivos(['name'=>'imagen_anuncio_miniatura_article','label'=>true,'texto'=>Language(['ads', 'article-thumbnail'], 'dashboard'),'ruta'=>$Web['directorio'].'assets/img/','tipo_archivos'=>'png,jpg,jpeg,gif','value'=>(isset($Web[$Apartado]['imagen_anuncio_miniatura_article']) ? $Web[$Apartado]['imagen_anuncio_miniatura_article'] : '')]).'<hr>'.
-		pTextarea(['placeholder'=>Language(['ads', 'placeholder-textarea'], 'dashboard'),'required'=>true,'name'=>'anuncio_mensaje_movimiento_texto','value'=>(isset($Web[$Apartado]['anuncio_mensaje_movimiento_texto']) ? $Web[$Apartado]['anuncio_mensaje_movimiento_texto'] : ''),'style'=>'min-height:150px;','label'=>true,'texto'=>Language(['ads', 'moving-message'], 'dashboard')]).
-		'<hr><b>'.(Language('show')).'</b><div>'.
-		pCheckboxBotonActivoDesaptivo($Web, $Apartado, ['nameidclass'=>'mostrar_anuncio_mensaje_movimiento','texto2'=>Language(['ads', 'moving-message'], 'dashboard'),'title'=>Language(['ads', 'moving-message-title'], 'dashboard')]).' '.
-		pCheckboxBotonActivoDesaptivo($Web, $Apartado, ['nameidclass'=>'mostrar_anuncio_mini_banner','texto2'=>Language(['ads', 'long-image'], 'dashboard'),'title'=>Language(['ads', 'long-image-title'], 'dashboard')]).' '.
-		pCheckboxBotonActivoDesaptivo($Web, $Apartado, ['nameidclass'=>'mostrar_anuncio_miniatura_article','texto2'=>Language(['ads', 'article-thumbnail'], 'dashboard'),'title'=>Language(['ads', 'article-thumbnail-title'], 'dashboard')]).'<hr>'.
-		pInput(['type'=>'submit','class'=>'boton','name'=>'procesa_'.$Apartado,'value'=>(Language('update'))]).
-		'</div>'.'<hr>';
-		?>
-		<?= Daamper::$scripts->xv($Apartado) ?>
-	</form>
-</section>
+<?php
+$data = Daamper::$data->Config();
+$formAds = function ($section, $allData, $input, $render) use ($Web) {
+	$data = $allData[$section] ?? [];
+
+	$content = "<div class=\"flex flex-column gap-4 flex-1\">";
+
+	// Message
+	$content .= "<p>" . Language("update-messages-and-announcements") . "<p><hr>";
+
+	// Files accept
+	$support = Daamper::$data->Read("config/default")["admin"]["upload-image"]["support"] ?? [];
+	$accept  = implode(",", $support); // Array to string
+	$accept  = str_replace("image/", "", $accept); // Replace
+
+	// Search images
+	$images = Daamper::$scripts->readDirectory("assets/img/", ["files" => $accept ?? "", "show" => "route|basename", "extension" => "true|true"]);
+
+	// Text links
+	$content .= "<strong>" . Language("links") . ":</strong>";
+
+	foreach ([
+		["title" => "moving-message", "name" => "enlace_anuncio_mensaje_movimiento"],
+		["title" => "long-image", "name" => "enlace_anuncio_mini_banner"],
+		["title" => "aside-thumbnail", "name" => "enlace_anuncio_miniatura_article"],
+	] as $key => $value) {
+		// Input links
+		$content .= $input->labelText([
+			"label_content" => Language($value["title"]),
+			"label_class" => "flex flex-between items-center flex-column-mobil",
+			"title" => Language($value["title"]),
+			"placeholder" => "https://.com",
+			"name" => $value["name"],
+			"value" => $data[$value["name"]] ?? "",
+			"type" => "url",
+		]);
+	}
+
+	// Text images
+	$content .= "<hr><strong>" . Language("images") . ":</strong>";
+
+	foreach ([
+		["title" => "long-image", "name" => "imagen_anuncio_mini_banner"],
+		["title" => "aside-thumbnail", "name" => "imagen_anuncio_miniatura_article"],
+	] as $key => $value) {
+		// Input selected images
+		$content .= $input->labelSelect([
+			"label_content" => Language($value["title"]),
+			"label_class" => "flex flex-between items-center flex-column-mobil",
+			"title" => Language($value["title"]),
+			"name" => $value["name"],
+			"selected" => $data[$value["name"]] ?? "",
+			"option" => $images ?? [],
+		]);
+	}
+
+	// Text images
+	$content .= "<hr><strong>" . Language("moving-message") . ":</strong>";
+
+	// Textarea moving message
+	$content .= $input->textarea([
+		"title" => Language("moving-message"),
+		"placeholder" => Language("moving-message"),
+		"name" => "anuncio_mensaje_movimiento_texto",
+		"value" => $data['anuncio_mensaje_movimiento_texto'] ?? "",
+		"rows" => 4
+	]);
+
+	// Text show
+	$content .= "<hr><strong>" . Language("show") . ":</strong>";
+
+	foreach ([
+		["title" => "moving-message", "name" => "mostrar_anuncio_mensaje_movimiento"],
+		["title" => "long-image", "name" => "mostrar_anuncio_mini_banner"],
+		["title" => "aside-thumbnail", "name" => "mostrar_anuncio_miniatura_article"],
+	] as $key => $value) {
+		// Input enable
+		$content .= $input->labelSelect([
+			"label_content" => Language($value["title"]),
+			"label_class" => "flex flex-between items-center flex-column-mobil",
+			"title" => Language($value["title"]),
+			"name" => $value["name"],
+			"selected" => !empty($data[$value["name"]]) ? 1 : 0,
+			"option" => [
+				"" => Language("no"),
+				1 => Language("yes"),
+			],
+		]);
+	}
+
+	$content .= "<hr>";
+
+	// Input submit
+	$content .= $input->submit([
+		"class" => "boton",
+		"name" => "procesa_" . $section,
+		"value" => Language("update"),
+	]);
+
+	$content .= "<hr>";
+
+	// Scripts version
+	$content .= Daamper::$scripts->xv($section);
+
+	$content .= "</div>";
+
+	// Print
+	return $render->dropdown([
+		"id" => "form-config",
+		"title" => $section,
+		"checked" => true,
+		"content" => $content
+	]);
+};
+?>
+<form method="post" action="process/actions.php">
+	<?= $formAds("ads", $data, $input, $render) ?>
+</form>

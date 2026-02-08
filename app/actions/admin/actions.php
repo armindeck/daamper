@@ -1,12 +1,13 @@
 <?php
 /* Versions
+→ v0.3 BETA 04.02.2026
 → v0.2.1 BETA 05.11.2025
 → v0.2 BETA 23.05.2025
 → v0.1 BETA 09.07.2024
 */
 $Web=['directorio'=>'../../','ruta'=>'admin/process/admin.php'];
 require_once $Web['directorio'].'app/controller/admin.php';
-$LISTA_POST=['scripts', 'htaccess', 'ads', 'config', 'upload-image', 'theme', 'users', 'template', 'comments'];
+$LISTA_POST=['scripts', 'htaccess', 'ads', 'config', 'upload-image', 'users', 'template', 'comments'];
 
 foreach ($LISTA_POST as $key => $value) {
 	if(isset($_POST['procesa_'.$value]) && !empty($_POST['procesa_'.$value])){
@@ -28,12 +29,14 @@ if($Apartado == "upload-image"){
 } elseif(file_exists(__DIR__."/content/$Apartado.php")){
 	require __DIR__."/content/$Apartado.php";
 } else {
-	Daamper::$sendAlert->Success(Language('file-not-exist-section'), "../admin.php?ap=$Apartado");
+	$Apartado = $Apartado == "htaccess" ? "config" : $Apartado;
+	Daamper::$sendAlert->Warning(Language('file-not-exist-section'), "../admin.php?ap=$Apartado");
 }
 
 if(isset($DATOS_DEFAULT) && $DATOS_DEFAULT){
 	if(!isset($LISTA_DATOS_POST)){
-		Daamper::$sendAlert->Success(Language('data-list-not-exist'), "../admin.php?ap=$Apartado");
+		$Apartado = $Apartado == "htaccess" ? "config" : $Apartado;
+		Daamper::$sendAlert->Error(Language('data-list-not-exist'), "../admin.php?ap=$Apartado");
 	}
 
 	unset($post); unset($guardar);
@@ -61,11 +64,12 @@ if(isset($DATOS_DEFAULT) && $DATOS_DEFAULT){
 		Daamper::$scripts->CrearCarpetas("database/$Apartado/");
 		$confirmar = Daamper::$data->Save("$Apartado/$Apartado", $post);
 	}
+	$Apartado = $Apartado == "htaccess" ? "config" : $Apartado;
 	if($confirmar){
 		Daamper::$sendAlert->Success(Language('data-save'), "../admin.php?ap=$Apartado");
 	} else {
-		Daamper::$sendAlert->Success(Language('data-no-save'), "../admin.php?ap=$Apartado");
+		Daamper::$sendAlert->Error(Language('data-no-save'), "../admin.php?ap=$Apartado");
 	}
 }
-
+$Apartado = $Apartado == "htaccess" ? "config" : $Apartado;
 Daamper::$sendAlert->Warning(Language('cannot-stay-here'), "../admin.php?ap=$Apartado");

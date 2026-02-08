@@ -289,8 +289,12 @@ class Render {
 
         $render = '<select name="' . ($name ?? "") . '" title="' . (empty($escape_title) ? (Language($title ?? "") ?? $title ?? "") : ($title ?? "")) . '" class="' . ($class ?? "") . '"' . (!empty($required) ? " required" : "") . '>';
         if(!empty($option) && is_array($option)):
+            $unique_value = $unique_value ?? false;
             foreach ($option as $key => $value):
-                $render .= '<option value="' . ($key) . '"' . (!empty($selected) && $selected == $key ? " selected" : "") . '>' . (empty($escape_option_translate) ? Language($value ?? "text") : ($value ?? "")) . '</option>';
+                $render .= '<option ';
+                $render .= empty($unique_value) ? 'value="' . ($key) . '"' : "";
+                $render .= (!empty($selected) && $selected == ($unique_value ? $value : $key) ? " selected" : "");
+                $render .= '>' . (empty($escape_option_translate) ? Language($value ?? "text") : ($value ?? "")) . '</option>';
             endforeach;
         endif;
 
@@ -302,7 +306,7 @@ class Render {
         extract($data, EXTR_SKIP);
 
         $render = '<input type="checkbox" class="check-modal" id="modal-' . ($id ?? "empty") . '" hidden>'.
-        '<div class="modal">'.
+        '<div class="modal' . (!empty($class) ? " " . $class : "") . '">'.
             '<label for="modal-' . ($id ?? "empty") . '" class="modal__header">'.
                 '<span class="icon"><i class="fas fa-chevron-circle-right"></i></span>'.
                 '<span>' . (empty($escape_title) ? (Language($title) ?? $title) : ($title ?? "")) . '</span>'.

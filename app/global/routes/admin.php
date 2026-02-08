@@ -19,7 +19,7 @@ Ruta(null, "../admin/admin.php", function () use ($Web) {
 if($Web['ruta_completa'] == '../admin/admin.php' && isset($_GET['ap'])){
 	$rules_admin = Daamper::$data->Config("admin")["rules"];
 	if (isset($rules_admin[strtolower($_SESSION["rol"])]) && in_array($_GET['ap'], $rules_admin[strtolower($_SESSION["rol"])])){
-		if(in_array($_GET['ap'], ['creator', 'directory', 'editor', 'theme', 'template'])){
+		if(in_array($_GET['ap'], ['creator', 'directory', 'editor', 'template'])){
 			if(file_exists($Web['directorio'].'app/actions/admin/content/global/'.Daamper::$scripts->normalizar($_GET['ap']).'.php')){
 				require_once $Web['directorio'].'app/actions/admin/content/global/'.Daamper::$scripts->normalizar($_GET['ap']).'.php';
 			}

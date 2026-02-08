@@ -166,6 +166,21 @@ class Scripts
         }
         return $return;
     }
+    public function version (array $list = ["dashboard", "creator", "other", "normal"]) : string {
+        $show = [];
+        if($list){
+            $count = count($list);
+            if($count == 1) { $show = Daamper::$version[$list[0]]; }
+            if($count == 2) { $show = Daamper::$version[$list[0]][$list[1]]; }
+            if($count == 3) { $show = Daamper::$version[$list[0]][$list[1]][$list[2]]; }
+            if($count == 4) { $show = Daamper::$version[$list[0]][$list[1]][$list[2]][$list[3]]; }
+        }
+        $return = '';
+        foreach (['version', 'state', 'updated', 'created'] as $v) {
+            $return .= $show[$v] ? ($v == 'created' ? '- ' : '') . ($v == "state" ? Language(strtolower($show["state"])) : $show[$v]) . ' ' : '';
+        }
+        return $return ?? '';
+    }
     public function RutaConvertir($string)
     {
         $string = trim($string);
@@ -425,6 +440,50 @@ class Scripts
         }
 
         return $matches ?? [];
+    }
+
+    public function readDirectory(string $directory = "", array $list = ["files" => "php,js,json,css,html,png,jpg,jpeg,gif,ico,txt,md", "show" => "route|basename", "extension" => "true|true", "type" => false]): array {
+        $dir = RAIZ . $directory;
+
+        $show = $list["show"] ?? "route|basename"; // route|basename - route|route - basename|basename
+        $extension = $list["extension"] ?? "true|true"; // true|true - false|false - true|false - false|true
+
+        $files = glob("{$dir}*". (!empty($list["files"]) ? ".{{$list['files']}}" : ""), GLOB_BRACE);
+	    sort($files, SORT_NATURAL | SORT_FLAG_CASE);
+
+        $return = (array) [];
+
+        foreach ($files as $file) {
+            $is_dir = is_dir($file);
+            $file = str_replace(RAIZ, "", $file);
+            $file .= $is_dir ? "/" : "";
+            $value = [];
+
+            $type = $is_dir ? "folder" : pathinfo($file, PATHINFO_EXTENSION);
+
+            switch ($show) {
+                case 'route|basename': $value[0] = $file; $value[1] = basename($file); break;
+                case 'route|route': $value[0] = $file; $value[1] = $file; break;
+                case 'basename|basename': $value[0] = basename($file); $value[1] = basename($file); break;
+                default: return ["Error: show incorrecto" => "Error: show incorrecto"]; break;
+            }
+
+            switch ($extension) {
+                case 'false|false': $value[0] = substr($value[0], 0, strrpos($value[0], ".")); $value[1] = substr($value[1], 0, strrpos($value[1], ".")); break;
+                case 'false|true': $value[0] = substr($value[0], 0, strrpos($value[0], ".")); break;
+                case 'true|false': $value[1] = substr($value[1], 0, strrpos($value[1], ".")); break;
+                case 'true|true': break;
+                default: return ["Error: valor de mostrar extencion incorrecta" => "Error: valor de mostrar extencion incorrecta"]; break;
+            }
+
+            if(!empty($list["type"])){
+                $return[$value[0]] = [0 => $value[1], "type" => $type];
+            } else {
+                $return[$value[0]] = $value[1];
+            }
+        }
+
+        return $return;
     }
 }
 Daamper::$scripts = new Scripts;

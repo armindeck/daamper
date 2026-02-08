@@ -1,25 +1,246 @@
-<?php $Apartado='config'; ?>
-<section class="panel">
-	<style>.label-a > label { display: flex; flex-wrap:wrap; flex-direction: column; gap: 4px; }</style>
-	<form method="post" class="label-a" action="process/actions.php">
-		<b><?= Language('settings') ?></b><hr>
-		<?= pInput(['name'=>'nombre_web','value'=>(isset($Web[$Apartado]['nombre_web']) ? $Web[$Apartado]['nombre_web'] : ''),'placeholder'=>Language(['config', 'page-name'], 'dashboard'),'texto'=>Language(['config', 'page-name'], 'dashboard'),'label'=>true]).
-		pInput(['type'=>'url','name'=>'enlace_web','value'=>(isset($Web[$Apartado]['enlace_web']) ? $Web[$Apartado]['enlace_web'] : ''),'placeholder'=>'https://'.(strtolower(Language('link'))).'.com','texto'=>Language(['config', 'page-link'], 'dashboard'),'label'=>true]).
-		pInput(['name'=>'timezone','value'=>(isset($Web[$Apartado]['timezone']) ? $Web[$Apartado]['timezone'] : ''),'placeholder'=>'America/Bogota','texto'=>Language(['config', 'time-zone'], 'dashboard'),'label'=>true]).
-		pInput(['type'=>'number','name'=>'ano_publicada','value'=>(isset($Web[$Apartado]['ano_publicada']) ? $Web[$Apartado]['ano_publicada'] : ''),'placeholder'=>'2024','texto'=>Language(['config', 'year-of-page-publication'], 'dashboard'),'label'=>true]).
-		pSelect(['name' => 'language', 'label' => true, 'value' => Daamper::$config['language'], 'texto' => Language('language'), 'option' => Daamper::$data->Read('config/language')['global']['languages-options'][(isset($_SESSION['tmp']['language']) ? $_SESSION['tmp']['language'] : Daamper::$config['language'])]]) ?>
-		<?= pSelectArchivos(['name' => 'theme', 'style' => 'width: 100%', 'value' => $Web[$Apartado]["theme"] ?? "", 'label' => true, 'texto' => Language('theme'), 'ruta' => $Web['directorio'].'assets/css/', 'tipo_archivos' => 'css', 'value-devuelve' => 'basename', 'hidden-extension-value' => true]) ?>
-		<?= pSelect(['name' => 'color', 'style' => 'width: 100%', 'label' => true, 'value' => $Web[$Apartado]["color"], 'texto' => Language('default-color'), 'option' => Daamper::$scripts->optenerTemas("{$Web['directorio']}assets/css/{$Web["config"]["theme"]}")]) ?>
-		<?=
-		'<hr>'.(Language('enable')).':<div>'.
-		pCheckboxBoton(['nameidclass'=>'https_imagen','texto'=>Language(['config', 'https-image'], 'dashboard'),'checked'=>(isset($Web[$Apartado]['https_imagen']) && $Web[$Apartado]['https_imagen']==$Web[$Apartado]['enlace_web'].'/' ? true : false)]).
-		pCheckboxBotonActivoDesaptivo($Web, $Apartado, ['nameidclass'=>'php','texto2'=>'.PHP','title'=>Language(['config', 'php-title'], 'dashboard')]).
-		pCheckboxBotonActivoDesaptivo($Web, $Apartado, ['nameidclass'=>'errores','texto2'=>Language(['config', 'errors'], 'dashboard'),'title'=>Language(['config', 'errors-title'], 'dashboard')])
-		?>
-		<?= "<hr>".
-		pInput(['type'=>'submit','class'=>'boton','name'=>'procesa_'.$Apartado,'value'=>Language('update')]).
-		'</div>'.'<hr>';
-		?>
-		<?= Daamper::$scripts->xv($Apartado); ?>
-	</form>
-</section>
+<?php
+$data = Daamper::$data->Config();
+$formConfig = function ($section, $allData, $input, $render) use ($Web) {
+	$data = $allData[$section] ?? [];
+	$languages = Daamper::$data->Read('config/language')['global']['languages-options'][(isset($_SESSION['tmp']['language']) ? $_SESSION['tmp']['language'] : Daamper::$config['language'])] ?? [];
+	$timezones = Daamper::$data->Read("config/timezone") ?? [];
+	// Convert timezones to associative array with key => value (value and value)
+	$timezones = !empty($timezones) ? array_combine(array_values($timezones), array_values($timezones)) : [];
+
+	// Get templates
+	$glob_templates_files = glob("{$Web['directorio']}assets/css/*.css");
+	$glob_templates = [];
+	foreach ($glob_templates_files as $template) {
+		$base = basename($template); // with extension
+		$glob_templates[$base] = trim($base, ".css");
+	}
+
+	// Get colors
+	$colors_search = Daamper::$scripts->optenerTemas("{$Web['directorio']}assets/css/{$data["theme"]}");
+	$colors = [];
+	foreach ($colors_search as $color) {
+		$base = basename($color); // with extension
+		$colors[$base] = $base;
+	}
+
+	$content = "<div class=\"flex flex-column gap-4 flex-1\">";
+
+	// Input page name
+	$content .= $input->labelText([
+		"label_content" => Language("page-name"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("page-name"),
+		"placeholder" => Language("page-name"),
+		"name" => "nombre_web",
+		"value" => $data['nombre_web'] ?? "",
+	]);
+
+	// Input page link
+	$content .= $input->labelText([
+		"label_content" => Language("page-link"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("page-link"),
+		"placeholder" => Language("page-link"),
+		"name" => "enlace_web",
+		"type" => "url",
+		"value" => $data['enlace_web'] ?? ""
+	]);
+
+	// Input selected timezone
+	$content .= $input->labelSelect([
+		"label_content" => Language("time-zone"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("time-zone"),
+		"name" => "timezone",
+		"selected" => $data['timezone'] ?? "",
+		"option" => $timezones ?? [],
+	]);
+
+	// Input year of page publication
+	$content .= $input->labelText([
+		"label_content" => Language("year-of-page-publication"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("year-of-page-publication"),
+		"placeholder" => Language("year-of-page-publication"),
+		"name" => "ano_publicada",
+		"type" => "number",
+		"min" => 1969,
+		"value" => $data['ano_publicada'] ?? ""
+	]);
+
+	// Input selected language
+	$content .= $input->labelSelect([
+		"label_content" => Language("language"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("language"),
+		"name" => "language",
+		"selected" => $data['language'] ?? "",
+		"option" => $languages ?? [],
+	]);
+
+	// Input selected template
+	$content .= $input->labelSelect([
+		"label_content" => Language("theme"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("theme"),
+		"name" => "theme",
+		"selected" => $data['theme'] ?? "",
+		"option" => $glob_templates ?? [],
+	]);
+
+	// Input selected color
+	$content .= $input->labelSelect([
+		"label_content" => Language("default-color"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("default-color"),
+		"name" => "color",
+		"selected" => $data['color'] ?? "",
+		"option" => $colors ?? [],
+	]);
+
+	$content .= "<hr>";
+
+	// Input enable https image
+	$content .= $input->labelSelect([
+		"label_content" => Language("use-internal-image"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("use-internal-image"),
+		"name" => "https_imagen",
+		"selected" => !empty($data['https_imagen']) && $data['https_imagen'] == $data["enlace_web"] . '/' ? 1 : 0,
+		"option" => [
+			"" => Language("no"),
+			1 => Language("yes"),
+		],
+	]);
+
+	// Input enable php extension
+	$content .= $input->labelSelect([
+		"label_content" => Language("use-internal-php-extension"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("use-internal-php-extension"),
+		"name" => "php",
+		"type" => "checkbox",
+		"selected" => !empty($data['php']) ? true : false,
+		"option" => [
+			"" => Language("no"),
+			1 => Language("yes"),
+		],
+	]);
+
+	// Input show errors
+	$content .= $input->labelSelect([
+		"label_content" => Language("show-errors"),
+		"label_class" => "flex flex-between items-center flex-column-mobil",
+		"title" => Language("show-errors"),
+		"name" => "errores",
+		"type" => "checkbox",
+		"selected" => !empty($data['errores']) ? true : false,
+		"option" => [
+			"" => Language("no"),
+			1 => Language("yes"),
+		],
+	]);
+
+	$content .= "<hr>";
+
+	// Input submit
+	$content .= $input->submit([
+		"class" => "boton",
+		"name" => "procesa_" . $section,
+		"value" => Language("update"),
+	]);
+
+	$content .= "<hr>";
+
+	// Scripts version
+	$content .= Daamper::$scripts->xv($section);
+
+	$content .= "</div>";
+
+	// Print
+	return $render->dropdown([
+		"id" => "form-config",
+		"title" => "settings",
+		"checked" => true,
+		"content" => $content
+	]);
+};
+
+$formHtaccess = function ($section, $allData, $input, $render) {
+	$data = $allData[$section] ?? [];
+	$lista_errores = [
+		400 => "bad-request",
+		401 => "unauthorized",
+		403 => "forbidden",
+		404 => "not-found",
+		500 => "internal-server-error",
+		503 => "service-unavailable"
+	];
+
+	$enable_list = ['todo_https' => 'ssl-https', 'errores' => 'errors', 'timezone' => 'time-zone'];
+
+	$content = "<div class=\"flex flex-column gap-4 flex-1\">";
+
+	foreach ($lista_errores as $key => $value) {
+		// Input links
+		$content .= $input->labelText([
+			"label_content" => $key . " - " . Language($value),
+			"label_class" => "flex flex-between items-center flex-column-mobil",
+			"title" => Language($value),
+			"placeholder" => "https://.com/{$key}",
+			"name" => "error_{$key}",
+			"value" => $data["error_{$key}"] ?? "",
+			"required" => true,
+			"type" => "url"
+		]);
+	}
+
+	$content .= "<hr>";
+
+	foreach ($enable_list as $key => $value) {
+		// Input enable
+		$content .= $input->labelSelect([
+			"label_content" => Language($value),
+			"label_class" => "flex flex-between items-center flex-column-mobil",
+			"title" => Language($value),
+			"name" => $key,
+			"selected" => !empty($data[$key]) ? true : false,
+			"option" => [
+				"" => Language("no"),
+				1 => Language("yes"),
+			],
+		]);
+	}
+
+	$content .= "<hr>";
+
+	// Input submit
+	$content .= $input->submit([
+		"class" => "boton",
+		"name" => "procesa_" . $section,
+		"value" => Language("update"),
+	]);
+
+	$content .= "<hr>";
+
+	// Scripts version
+	$content .= Daamper::$scripts->xv($section);
+
+	$content .= "</div>";
+
+	// Print
+	return $render->dropdown([
+		"id" => "form-htaccess",
+		"title" => "htaccess",
+		"checked" => false,
+		"content" => $content
+	]);
+};
+?>
+
+<form method="post" action="process/actions.php">
+	<?= $formConfig("config", $data, $input, $render) ?>
+</form>
+<form method="post" action="process/actions.php">
+	<?= $formHtaccess("htaccess", $data, $input, $render) ?>
+</form>

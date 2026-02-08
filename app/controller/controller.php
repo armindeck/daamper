@@ -46,6 +46,7 @@ require_once __DIR__.'/daamper.php';
 require_once __DIR__.'/../core/Local.php';
 require_once __DIR__.'/../core/Template.php';
 require_once __DIR__.'/../core/Render.php';
+require_once __DIR__.'/../helper/Form.php';
 require_once __DIR__.'/../scripts/scripts.php';
 require_once __DIR__.'/folder.php';
 require_once __DIR__.'/../model/model.php';

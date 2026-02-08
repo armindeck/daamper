@@ -1,6 +1,14 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.9 Dev] - 07/02/2025...
+
+- Nuvas mejoras para el panel administrativo:
+    - Se cambio el diseño del apartado Configuración, ademas se unio el apartado Htaccess.
+    - Actualice el archivo de las acciones para que se pudiera re-dirigir a las configuraciones cuando se actualice el htaccess.
+    - Nuevo diseño para: (información, actualizaciones, explorador de archivos, subir imagen, anuncios, scripts, usuarios, editor).
+    - Elimine el apartado `Tema`.
+
 ## [0.3.8 Stable] - 13/11/2025
 Nuevo diseño del apartado Plantilla en el panel administrativo.
 
