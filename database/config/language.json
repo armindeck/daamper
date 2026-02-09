@@ -457,7 +457,7 @@
 		"wellcome-dashboard-text": {"es": "En la parte inferior encontrarás los apartados.", "en": "At the bottom, you will find the sections.", "jp": "下部にセクションがあります。"},
 		"section-not-found-or-under-construction": {"es": "Parece que la sección {{value}} no existe o está en construcción", "en": "It seems the section {{value}} does not exist or is under construction", "jp": "セクション{{value}}は存在しないか、作成中のようです"},
 		"higher-role-required": {"es": "Necesita un rol más elevado para acceder a esta sección.", "en": "You need a higher role to access this section.", "jp": "このセクションにアクセスするには、より高いロールが必要です。"},
-		"posts": {"es": "Posts", "en": "Posts", "jp": "投稿"},
+		"posts": {"es": "Publicaciones", "en": "Posts", "jp": "投稿"},
 		"pages": {"es": "Páginas", "en": "Pages", "jp": "ページ"},
 		"new-page": {"es": "Nueva página", "en": "New page", "jp": "新しいページ"},
 		"edit-page": {"es": "Editar página", "en": "Edit page", "jp": "ページを編集"},
@@ -482,6 +482,9 @@
 		"confirm-delete-file": {"es": "¿Estás seguro de que quieres eliminar este archivo?", "en": "Are you sure you want to delete this file?", "jp": "このファイルを削除してもよろしいですか？"},
 		"create": {"es": "Crear", "en": "Create", "jp": "作成"},
 		"edit-file": {"es": "Editar archivo", "en": "Edit file", "jp": "ファイルを編集"},
+		"actions": {"es": "Acciones", "en": "Actions", "jp": "アクション"},
+		"drafts": {"es": "Borradores", "en": "Drafts", "jp": "下書き"},
+		"freely": {"es": "Libre", "en": "Freely", "jp": "自由に"},
 		"categories-tags": {
 			"action": {"es": "Acción", "en": "Action", "jp": "アクション"},
 			"martial-arts": {"es": "Artes Marciales", "en": "Martial Arts", "jp": "マーシャルアーツ"},
