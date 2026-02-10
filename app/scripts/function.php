@@ -74,20 +74,32 @@ function CrearCarpetas(string $ruta){ global $Web;
 }
 
 function Language($keys, string $option = 'global', array $list = null) {
-    $language = Daamper::$language[$option];
-	
-    if (is_string($keys)) {
-        $keys = [$keys];
-    }
+	static $cache = [];
+	$language = Daamper::$language[$option] ?? [];
+	$langKey = isset($_SESSION['tmp']['language']) ? $_SESSION['tmp']['language'] : (Daamper::$config['language'] ?? null);
 
-    if (is_array($keys) && is_array(reset($keys))) {
-        return array_map(fn($keyGroup) => getNestedValue($language, $keyGroup), $keys);
-    }
+	if (is_string($keys)) {
+		$keys = [$keys];
+	}
 
-    return getNestedValue($language, $keys, $list);
+	if (is_array($keys) && is_array(reset($keys))) {
+		return array_map(function($keyGroup) use ($language, $langKey, $list, $option, &$cache) {
+			$cacheKey = $option . '|' . $langKey . '|' . implode('.', $keyGroup);
+			if (isset($cache[$cacheKey])) return $cache[$cacheKey];
+			$val = getNestedValue($language, $keyGroup, $list, $langKey);
+			$cache[$cacheKey] = $val;
+			return $val;
+		}, $keys);
+	}
+
+	$cacheKey = $option . '|' . $langKey . '|' . implode('.', $keys);
+	if (isset($cache[$cacheKey])) return $cache[$cacheKey];
+	$val = getNestedValue($language, $keys, $list, $langKey);
+	$cache[$cacheKey] = $val;
+	return $val;
 }
 
-function getNestedValue($array, $keys, array $list = null) {
+function getNestedValue($array, $keys, array $list = null, $langKey = null) {
 	foreach ($keys as $key) {
 		if (isset($array[$key])) {
 			$array = $array[$key];
@@ -95,7 +107,8 @@ function getNestedValue($array, $keys, array $list = null) {
 			return null;
 		}
 	}
-	$array = $array[isset($_SESSION['tmp']['language']) ? $_SESSION['tmp']['language'] : Daamper::$config['language']] ?? null;
+	$langKey = $langKey ?? (isset($_SESSION['tmp']['language']) ? $_SESSION['tmp']['language'] : (Daamper::$config['language'] ?? null));
+	$array = $array[$langKey] ?? null;
 	if ($list != null){
 		foreach ($list as $key => $item){
 			if (is_string($key) && $item != NULL){
