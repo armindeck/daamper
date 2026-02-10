@@ -2,7 +2,7 @@
 	"core": {
 		"version": "0.3.9",
 		"state": "Dev",
-		"updated": "07.02.2026",
+		"updated": "09.02.2026",
 		"created": "12.06.2024",
 		"license": "Uso No Transferible – Prohibida la venta del código fuente"
 	},
@@ -44,9 +44,9 @@
 			"created": "23.08.2023"
 		},
 		"language": {
-			"version": "0.1.9",
+			"version": "0.2.0",
 			"state": "Beta",
-			"updated": "04.02.2026",
+			"updated": "09.02.2026",
 			"created": "11.03.2025"
 		}
 	},
@@ -70,9 +70,9 @@
 			"created": "08.07.2024"
 		},
 		"creator": {
-			"version": "0.1.9",
+			"version": "0.2.0",
 			"state": "Stable",
-			"updated": "05.11.2025",
+			"updated": "09.02.2026",
 			"created": "01.07.2024",
 			"preview": {
 				"version": "0.1.9",
