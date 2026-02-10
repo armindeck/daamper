@@ -89,119 +89,115 @@ echo "<pre>";
 var_dump($search($ruta, $visits));
 echo "</pre>";
 */
-?>
 
-<?php $containerPublish = function ($section, $allData, $input, $render) use ($Web, $creator_translate, $visits, $list_of_entries) {
-	$data = $allData ?? [];
+$view_creator_entries = function ($quantity, $text_quantity, $text_attention_update) {
+    return <<<HTML
+        <p class="t-center" style="background-color: red; color: white; font-weight: bold; padding: 2px 6px 2px 6px; margin-bottom: 4px;">$text_attention_update</p>
+        <input type="text" name="ap" value="creator" readonly hidden required>
+        <label class="flex flex-between gap-4">
+            <span>$text_quantity:</span>
+            <input class="form-campo-pequeno" placeholder="1" type="number" min="0" max="99" name="cantidad-entradas" value="{$quantity}">
+        </label>
+    HTML;
+};
+
+$view_creator_entries_details = function ($j, $type, $j_entry, $j_title, $j_title_alternative, $title_zero, $title_zero_title, $title_summary, $disabled_input, $disabled_input_select, $is_poster, $title, $games, $thumbnail, $poster, $the_best_games, $title_in_the_entries) {
+    return <<<HTML
+        <details>
+            <summary>$title_summary</summary>
+            <section class="flex flex-column gap-2">
+                <div class="flex flex-between gap-8">
+                    <input $disabled_input class="flex-1" type="text" name="entrada-{$j}" value="{$j_entry}" placeholder="{$title_zero}" title="{$title_zero_title}">
+                    <select $disabled_input name="entrada-poster-{$j}" title="{$type}">
+                        <option value="" $disabled_input_select>$thumbnail</option>
+                        <option value="on" $is_poster>$poster</option>
+                    </select>
+                </div>
+                <section class="flex flex-between flex-column-mobil">
+                    <input class="flex-1" type="text" name="entrada-titulo-{$j}" value="{$j_title}" placeholder="{$title}" title="{$games}">
+                    <input class="flex-1" type="text" name="entrada-titulo-alternativo-{$j}" value="{$j_title_alternative}" placeholder="{$title_in_the_entries}" title="{$the_best_games}">
+                </section>
+            </section>
+        </details>
+    HTML;
+};
+
+$view_buttons_section = function ($type, $list) use ($creator_translate): string {
+	$return = "";
+
+	foreach ($list as $value) {
+		$link = "?ap=creator&creador=";
+			// Creator
+			$link .= ($type == "publish" ? $value["base_not_extension_and_view"] : "normal");
+			// Type
+			$link .= ($type != "publish" ? "&tipo=" . ($type == "posts" ? "publicacion" : "borrador") : "");
+			// File
+			$link .= $type != "publish" ? "&archivo={$value['base']}" : "";
+
+		$label = $type == "publish" ? Language($creator_translate[$value["base_not_extension_and_view"]]) : $value["base_not_extension_and_view"];
+		$visit = $value["visits"] ?? 0;
+		$visits_span = $type != "publish" && $visit > 0 ? "<small><i class=\"fas fa-eye\"></i> {$visit}</small>" : "";
+
+		$return .= "<a class=\"boton-2 flex flex-between gap-4\" href=\"$link\"><span>{$label}</span>{$visits_span}</a>";
+	}
+
+	return $return;
+};
+
+// Form entries
+$formEntries = function() use ($list_of_entries, $view_creator_entries, $view_creator_entries_details): string {
+	$form = "<div class=\"flex flex-column gap-8\">";
+	
+	$form .= $view_creator_entries($list_of_entries["quantity"], Language("quantity"), Language(['creator', 'attention-update'], 'dashboard'));
+	$form .= $list_of_entries["quantity"] > 0 ? "<hr>" : "";
+
+	$do_not_touch_this_field = Language(['creator', 'do-not-touch-this-field'], 'dashboard');
+
+	for ($j = 0; $j < $list_of_entries["quantity"]; $j++) {
+		$j_entry = $list_of_entries["load"][$j]["entrada"] ?? "";
+
+		$form .= $view_creator_entries_details(
+			j: $j,
+			type: Language('type'),
+			j_entry: $j_entry,
+			j_title: $list_of_entries["load"][$j]["titulo"] ?? "",
+			j_title_alternative: $list_of_entries["load"][$j]['titulo-alternativo'] ?? '',
+			title_zero: !$j ? $do_not_touch_this_field : 'Post',
+			title_zero_title: !$j ? $do_not_touch_this_field : 'blog / post / juego / web / ...',
+			title_summary: !$j ? Language('home') : ($j_entry ? $j_entry : Language('freely')),
+			disabled_input: !$j ? "disabled" : "",
+			disabled_input_select: !$j ? "selected" : "",
+			is_poster: $j > 0 && !empty($list_of_entries["load"][$j]["poster"] ?? "") ? "selected" : "",
+			title: Language('title'),
+			games: Language('games'),
+			thumbnail: Language('thumbnail'),
+			poster: Language('poster'),
+			the_best_games: Language(['creator', 'the-best-games'], 'dashboard'),
+			title_in_the_entries: Language(['creator', 'title-in-the-entries'], 'dashboard')
+		);
+	
+		$form .= $j < $list_of_entries["quantity"] - 1 ? "<hr>" : "";
+	}
+	
+	$form .= "<hr><input class=\"boton\" type=\"submit\" name=\"actualizar-entradas\" value=\"" . Language('update') . "\">";
+	$form .= "</div>";
+
+	return !isset($_GET['creador']) && !isset($_GET['disable-entries']) ?
+		"<form method=\"get\">{$form}</form>"
+		: "<a href=\"?ap=creator\" class=\"boton-2\"><i class=\"fas fa-eye\"></i> " . Language("show") . "</a>";
+};
+
+$containerPublish = function ($allData) use ($render, $view_buttons_section, $formEntries) {
 	$content = "<div class=\"flex flex-column gap-8\">";
 	
-	foreach ($data as $key => $value) {
-		$buttons = function ($type, $list) use ($creator_translate) {
-			$return = "";
-
-			foreach ($list as $key => $value) {
-				$link = "?ap=creator&creador=";
-					// Creator
-					$link .= ($type == "publish" ? $value["base_not_extension_and_view"] : "normal");
-					// Type
-					$link .= ($type != "publish" ? "&tipo=" . ($type == "posts" ? "publicacion" : "borrador") : "");
-					// File
-					$link .= $type != "publish" ? "&archivo={$value['base']}" : "";
-
-				$label = $type == "publish" ? Language($creator_translate[$value["base_not_extension_and_view"]]) : $value["base_not_extension_and_view"];
-				$visit = $value["visits"] ?? 0;
-				$visits_span = $type != "publish" && $visit > 0 ? "<small><i class=\"fas fa-eye\"></i> {$visit}</small>" : "";
-
-				$return .= "<a class=\"boton-2 flex flex-between gap-4\" href=\"$link\"><span>{$label}</span>{$visits_span}</a>";
-			}
-
-			return $return;
-		};
-
+	foreach ($allData as $key => $value) {
 		$content .= $render->dropdown([
 			"id" => "container-publish-{$key}",
 			"title" => $key,
 			"checked" => false,
-			"content" => "<div class=\"flex flex-column gap-4\">" . ($buttons($key, $value)) . "</div>"
+			"content" => "<div class=\"flex flex-column gap-4\">" . ($view_buttons_section($key, $value)) . "</div>"
 		]);
 	}
-
-	// Form entries
-	$formEntries = function() use ($input, $list_of_entries) {
-		$quantity_entries = Language(['creator', 'quantity-entries'], 'dashboard');
-		$quantity = Language('quantity');
-		$title = Language('title');
-		$home = Language('home');
-		$freely = Language('freely');
-		$titles = Language('titles');
-		$games = Language('games');
-		$update = Language('update');
-		$type = Language('type');
-		$thumbnail = Language('thumbnail');
-		$poster = Language('poster');
-		$do_not_touch_this_field = Language(['creator', 'do-not-touch-this-field'], 'dashboard');
-		$the_best_games = Language(['creator', 'the-best-games'], 'dashboard');
-		$title_in_the_entries = Language(['creator', 'title-in-the-entries'], 'dashboard');
-		$attention_update = Language(['creator', 'attention-update'], 'dashboard');
-
-		$show = !isset($_GET['creador']) && !isset($_GET['disable-entries']);
-		$button_show = "<a href=\"?ap=creator\" class=\"boton-2\"><i class=\"fas fa-eye\"></i> " . Language("show") . "</a>";
-
-		$form = "<div class=\"flex flex-column gap-8\">";
-
-		$form .= <<<HTML
-			<p class="t-center" style="background-color: red; color: white; font-weight: bold; padding: 2px 6px 2px 6px; margin-bottom: 4px;">{$attention_update}</p>
-			<input type="text" name="ap" value="creator" readonly hidden required>
-			<label class="flex flex-between gap-4">
-				<span>$quantity:</span>
-				<input class="form-campo-pequeno" placeholder="1" type="number" min="0" max="99" name="cantidad-entradas" value="{$list_of_entries["quantity"]}">
-			</label>
-		HTML;
-
-		$form .= $list_of_entries["quantity"] > 0 ? "<hr>" : "";
-
-		for ($j = 0; $j < $list_of_entries["quantity"]; $j++) {
-			$j_title = $list_of_entries["load"][$j]["titulo"] ?? "";
-			$j_entry = $list_of_entries["load"][$j]["entrada"] ?? "";
-			$is_poster = $j > 0 && !empty($list_of_entries["load"][$j]["poster"] ?? "") ? "selected" : "";
-			$j_title_alternative = $list_of_entries["load"][$j]['titulo-alternativo'] ?? '';
-			$disabled_input = !$j ? "disabled" : "";
-			$disabled_input_select = !$j ? "selected" : "";
-			$title_summary = !$j ? $home : ($j_entry ? $j_entry : $freely);
-
-			$title_zero = !$j ? $do_not_touch_this_field : 'Post';
-			$title_zero_title = !$j ? $do_not_touch_this_field : 'blog / post / juego / web / ...';
-
-			$form .= <<<HTML
-				<details>
-					<summary>$title_summary</summary>
-					<section class="flex flex-column gap-2">
-						<div class="flex flex-between gap-8">
-							<input $disabled_input class="flex-1" type="text" name="entrada-{$j}" value="{$j_entry}" placeholder="{$title_zero}" title="{$title_zero_title}">
-							<select $disabled_input name="entrada-poster-{$j}" title="{$type}">
-								<option value="" $disabled_input_select>$thumbnail</option>
-								<option value="on" $is_poster>$poster</option>
-							</select>
-						</div>
-						<section class="flex flex-between flex-column-mobil">
-							<input class="flex-1" type="text" name="entrada-titulo-{$j}" value="{$j_title}" placeholder="{$title}" title="{$games}">
-							<input class="flex-1" type="text" name="entrada-titulo-alternativo-{$j}" value="{$j_title_alternative}" placeholder="{$title_in_the_entries}" title="{$the_best_games}">
-						</section>
-					</section>
-				</details>
-			HTML;
-		
-			$form .= $j < $list_of_entries["quantity"] - 1 ? "<hr>" : "";
-		}
-		
-		$form .= <<<HTML
-			<hr><input class="boton" type="submit" name="actualizar-entradas" value="{$update}">
-		HTML;
-
-		$form .= "</div>";
-
-		return $show ? "<form method=\"get\">{$form}</form>" : $button_show;
-	};
 
 	$content .= $render->dropdown([
 		"id" => "container-publish-entries",
@@ -221,9 +217,11 @@ echo "</pre>";
 		"content" => $content
 	]);
 };
-?>
 
-<?= $containerPublish("creator", $search($ruta, $visits), $input, $render) ?>
+// Render the view
+echo $containerPublish($search($ruta, $visits));
+
+?>
 
 
 <?php if (isset($_GET['creador'])) {
