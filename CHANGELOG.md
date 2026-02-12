@@ -1,7 +1,7 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
-## [0.3.9 Dev] - 07/02/2025...10/02/2026
+## [0.3.9 Stable] - 12/02/2026
 
 - Nuvas mejoras para el panel administrativo:
     - Se cambio el diseño del apartado Configuración, ademas se unio el apartado Htaccess.
@@ -10,9 +10,9 @@ Descubre las nuevas novedades de daamper!
     - Cambie el nombre de **Directorio** por **Explorador** y **Creador** por **Publicar**.
     - Elimine el apartado `Tema`.
     - Mejore el diseño del apartado creador, por ahora solo la parte superior.
-    - Mejore y cambie el diseño de los formularios para publicar `normal`, `entrada anime` y `mirando anime`.
+    - Mejore y cambie el diseño de los formularios para publicar `normal`, `entrada anime`, `mirando anime` y `juego`.
 - Corregi un bug con el cierre de la etiqueta label en los input antiguos.
-- Ahora se puede usar el formato Markdown en la sinopsis de los animes.
+- Ahora se puede usar el formato Markdown en la sinopsis de los animes y juego, ademas en la información extra en juego.
 
 ## [0.3.8 Stable] - 13/11/2025
 Nuevo diseño del apartado Plantilla en el panel administrativo.
