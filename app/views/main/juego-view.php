@@ -1,4 +1,52 @@
-<?php if (!isset($_GET['view']) || isset($_GET['view']) && in_array($_GET['view'], ['main'])): ?>
+<?php
+
+/**************************************************************************/
+/*  Licencia de Uso No Transferible - daamper                             */
+/**************************************************************************/
+/*  juego-view.php                                                        */
+/**************************************************************************/
+/*                        This file is part of:                           */
+/*                              daamper                                   */
+/*                 https://github.com/armindeck/daamper                   */
+/**************************************************************************/
+/* Copyright (c) 2025 DBHS / daamper                                      */
+/*                                                                        */
+/* Se concede permiso, de forma gratuita, a cualquier persona para usar,  */
+/* modificar y ejecutar el código fuente de este software, incluyendo su  */
+/* uso en proyectos comerciales (como monetización por publicidad o       */
+/* donaciones).                                                           */
+/*                                                                        */
+/* Restricciones estrictas:                                               */
+/* - No está permitido vender, sublicenciar o distribuir el código        */
+/*   fuente —total o parcialmente— con fines de lucro.                    */
+/* - No está permitido convertir el código en privativo ni eliminar       */
+/*   esta licencia.                                                       */
+/* - No está permitido reclamar la autoría del código original.           */
+/*                                                                        */
+/* Uso permitido:                                                         */
+/* - Se permite modificar y usar el código con fines personales,          */
+/*   educativos y/o comerciales, siempre que no se venda.                 */
+/* - Se permite usar este software como base para otros proyectos,        */
+/*   siempre que esta licencia se mantenga.                               */
+/*                                                                        */
+/* El autor (DBHS / daamper) se reserva el derecho de modificar esta      */
+/* licencia en futuras versiones del software.                            */
+/*                                                                        */
+/* EL SOFTWARE SE ENTREGA "TAL CUAL", SIN GARANTÍAS DE NINGÚN TIPO,       */
+/* EXPRESAS O IMPLÍCITAS, INCLUYENDO, SIN LIMITACIÓN, GARANTÍAS DE        */
+/* COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO           */
+/* INFRACCIÓN. EN NINGÚN CASO LOS AUTORES SERÁN RESPONSABLES POR          */
+/* RECLAMACIONES, DAÑOS U OTRAS RESPONSABILIDADES, YA SEA EN UNA ACCIÓN   */
+/* CONTRACTUAL, EXTRACONTRACTUAL O DE OTRO TIPO, DERIVADAS DE O EN        */
+/* CONEXIÓN CON EL SOFTWARE, SU USO O OTRO TIPO DE MANEJO.                */
+/**************************************************************************/
+
+if (!isset($_GET['view']) || isset($_GET['view']) && in_array($_GET['view'], ['main'])): ?>
+<?php
+// Import Markdown libraries
+require_once RAIZ . 'app/scripts/lib/Markdown.php';
+require_once RAIZ . 'app/scripts/lib/MarkdownExtra.php';
+?>
 <?php global $AXR, $AX; if (
 	isset($AX['banner']) && !empty($AX['banner']) && file_exists($Web['directorio'].$AX['banner']) ||
 	isset($AX['banner_url']) && !empty($AX['banner_url'])
@@ -47,7 +95,7 @@
 			</aside>
 			<div class="con der-content">
 				<h3><?= Language('information') ?></h3><hr>
-				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= Daamper::$scripts->Commands($AX['sinopsis']); ?></p><hr>
+				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= Michelf\MarkdownExtra::defaultTransform($AX["sinopsis"] ?? "") ?></p><hr>
 				<details class="t-14" open>
 					<summary><?= Language('details') ?></summary>
 					<ul class="t-14">
@@ -170,7 +218,7 @@
 		<?php if (isset($AX['informacion_extra']) && !empty($AX['informacion_extra'])): ?>
 		<section class="con">
 			<details open><summary><?= Language('extra-information') ?></summary>
-				<section><?= $AX['informacion_extra'] ?></section>
+				<section><?= Michelf\MarkdownExtra::defaultTransform($AX["informacion_extra"] ?? "") ?></section>
 			</details>
 		</section>
 		<?php endif; ?>
