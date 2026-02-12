@@ -41,7 +41,7 @@
 /* CONEXIÓN CON EL SOFTWARE, SU USO O OTRO TIPO DE MANEJO.                */
 /**************************************************************************/
 
-global $Global, $Creador;
+global $Creator;
 
 $ruta = [
 	['titulo' => 'publish', 'archivos' => glob(__DIR__ . '/creators/*')],
@@ -84,11 +84,6 @@ $search = function(array $type_and_routes, array $visits): array {
 
 $creator_title = ["anime_entrada", "anime_mirando", "juego", "normal"];
 $creator_translate = ["anime_entrada" => "anime-entry", "anime_mirando" => "anime-watching", "juego" => "game", "normal" => "normal"];
-/*
-echo "<pre>";
-var_dump($search($ruta, $visits));
-echo "</pre>";
-*/
 
 $view_creator_entries = function ($quantity, $text_quantity, $text_attention_update) {
     return <<<HTML
@@ -221,112 +216,27 @@ $containerPublish = function ($allData) use ($render, $view_buttons_section, $fo
 // Render the view
 echo $containerPublish($search($ruta, $visits));
 
-?>
 
+/* ------------------- Creators --------------------- */
+$confirm_get_creator_and_route_file_path_exists = $Creator["submit_get_creator"] && $Creator["creator_route_file_path_exists"];
 
-<?php if (isset($_GET['creador'])) {
-	$Global['get_creador'] = Daamper::$scripts->normalizar2($_GET['creador']);
-	$ruta_creador = __DIR__ . "/creators/{$Global['get_creador']}-view.php"; ?>
-	<?= !file_exists($ruta_creador) ?
-		"<section class='panel'><section class='form'><p>".(Language(['creator', 'creator-no-exists'], 'dashboard', ['value' => "<strong>{$Global['get_creador']}</strong>"]))."</p></section></section>" : '' ?>
-	<?php if (file_exists($ruta_creador)) { ?>
-		<form method="post" class="panel" style="gap: 8px;">
-			<?php $files = glob("{$Web['directorio']}*");
-			$directorios = [];
-			foreach ($files as $file) {
-				if (!is_file($file) && !in_array(basename($file), ['app', 'assets', 'auth', 'p', 'admin', 'process', 'database'])) {
-					$directorios[basename($file) . '/'] = ucfirst(basename($file)) . '/';
-				}
-			}
-			
-			$ruta_campos_predeterminados = "database/creator/field-default.json";
-			if (file_exists(RAIZ .  $ruta_campos_predeterminados)) {
-				$Predeterminados = Daamper::$data->Read("creator/field-default")[$Global["get_creador"]];
-			} else {
-				echo "<section class='form t-center'><p>" . Language("file-no-exists", "global", ["value" => $ruta_campos_predeterminados]) . "</p></section>";
-			}
-			if (isset($Predeterminados)){
-				for ($i = 1; $i <= 3; $i++) {
-					if (!isset($Predeterminados['contenedor_predeterminado'][$i]) or isset($Predeterminados['contenedor_predeterminado'][$i]) && $Predeterminados['contenedor_predeterminado'][$i]) { ?>
-						<section class="form" style="margin-top: 0; margin-bottom: 0;">
-					<?php if ($i == 2) {
-							echo '<strong>'.(Language('creator')).' ~ ' . $Global['get_creador'] . '</strong><hr>';
-							require $ruta_creador;
-						}
-						if ($i == 1 || $i == 3) {
-							#echo '<section>';
-							$lista_campos_predeterminados[1] = [
-								['name' => 'titulo', 'contenido' =>
-								pInput(['name' => 'titulo', 'placeholder' => (Language('title')), 'label' => false, 'texto' => (Language('title')), 'required' => true])],
-								['name' => 'descripcion', 'contenido' =>
-								pInput(['name' => 'descripcion', 'placeholder' => (Language(['creator', 'description'], 'dashboard')), 'label' => false, 'texto' => (Language(['creator', 'description'], 'dashboard')), 'required' => true])],
-								['name' => 'meta_descripcion', 'contenido' =>
-								pInput(['name' => 'meta_descripcion', 'placeholder' => (Language(['creator', 'meta-description'], 'dashboard')), 'label' => false, 'texto' => (Language(['creator', 'meta-description'], 'dashboard')), 'required' => true])],
-								['name' => 'catalogo', 'contenido' =>
-								pInput(['name' => 'catalogo', 'placeholder' => (Language(['creator', 'catalog'], 'dashboard')), 'label' => false, 'texto' => (Language(['creator', 'catalog'], 'dashboard')), 'required' => true])],
-								['name' => 'meta_etiquetas', 'contenido' =>
-								pInput(['name' => 'meta_etiquetas', 'placeholder' => (Language(['creator', 'meta-tags'], 'dashboard')), 'label' => false, 'texto' => (Language(['creator', 'meta-tags'], 'dashboard')), 'required' => true])]
-							];
+$alert_view = <<<HTML
+	<section class="boton-2" style="background-color: red; color: white; font-weight: bold;"><i class="fas fa-exclamation-triangle"></i> %s</section>
+HTML;
 
-							$lista_campos_predeterminados[3] = [
-								['name' => 'a_subir_imagen', 'contenido' =>
-								pEnlace(['class' => '', 'texto' => (Language('upload-image')), 'icono' => 'fas fa-external-link-alt', 'target' => '_blank', 'href' => '?ap=upload-image'])],
-								['name' => 'miniatura', 'contenido' =>
-								pSelectArchivos(['name' => 'miniatura', 'label' => true, 'texto' => (Language('thumbnail')), 'ruta' => $Web['directorio'] . 'assets/img/', 'tipo_archivos' => 'png,jpg,jpeg,gif'])],
-								['name' => 'miniatura_url', 'contenido' =>
-								pInput(['name' => 'miniatura_url', 'type' => 'url', 'placeholder' => (Language('thumbnail')) . ' URL ('.(Language('optional')).')', 'label' => false, 'texto' => (Language('thumbnail')) . ' URL']) . '<hr>'],
-								['name' => 'anuncio', 'contenido' =>
-								pCheckboxBoton(['nameidclass' => 'anuncio', 'texto' => (Language('announcement')), 'icono' => 'fas fa-newspaper', 'checked' => true])],
-								['name' => 'privado', 'contenido' =>
-								pCheckboxBoton(['nameidclass' => 'privado', 'texto' => (Language(['creator', 'private'], 'dashboard')), 'icono' => 'fas fa-eye-slash'])],
-								['name' => 'comentar', 'contenido' =>
-								pCheckboxBoton(['nameidclass' => 'comentar', 'texto' => (Language('comment')), 'icono' => 'fas fa-comment-alt', 'checked' => true])],
-								['name' => 'comentarios', 'contenido' =>
-								pCheckboxBoton(['nameidclass' => 'comentarios', 'texto' => (Language('comments')), 'icono' => 'fas fa-comments', 'checked' => true]) . '<hr>'],
-								['name' => 'ruta', 'contenido' =>
-								pInput(['name' => 'ruta', 'placeholder' => (Language('route')).'/', 'style' => 'width: 100%;', 'label' => false, 'texto' => (Language('route')), 'title' => (Language('post-route')), 'minlength' => 1])],
-								['name' => 'archivo', 'contenido' =>
-								pInput(['name' => 'archivo', 'placeholder' => (Language('file')), 'style' => 'width: 100%;', 'label' => false, 'texto' => (Language('file')), 'title' => (Language('file')), 'minlength' => 1, 'required' => true])]
-							];
+echo $Creator["submit_get_creator"] && !$Creator["creator_route_file_path_exists"] ?
+	sprintf($alert_view, Language(
+		['creator', 'creator-no-exists'], 'dashboard',
+		['value' => "<strong>{$Creator['get_creator']}</strong>"]
+)) : '';
 
-							foreach ($lista_campos_predeterminados[$i] as $value) {
-								if (!isset($Predeterminados['campo_predeterminado'][$value['name']]) or isset($Predeterminados['campo_predeterminado'][$value['name']]) && $Predeterminados['campo_predeterminado'][$value['name']]) {
-									echo $value['contenido'] . ($Predeterminados['campo_predeterminado'][$value['name']] !== true ? $Predeterminados['campo_predeterminado'][$value['name']] : ' ');
-								}
-							}
-							if ($i == 3) {
-								if (!isset($Predeterminados['campo_predeterminado']['mostrar_en_index']) or isset($Predeterminados['campo_predeterminado']['mostrar_en_index']) && $Predeterminados['campo_predeterminado']['mostrar_en_index']) {
-									if (!file_exists(RAIZ . 'database/post/' . str_replace('bo_', '', $Global['get_archivo']))) {
-										echo '<hr>' . pCheckboxBoton(['nameidclass' => 'mostrar_en_index', 'texto' => (Language(['creator', 'show-in-the-list'], 'dashboard')), 'icono' => 'fas fa-eye', 'checked' => true]);
-									}
-								}
-							}
-						}
-						echo '</section>';
-					}
-				}
-			} ?>
-				<section class="form">
-					<?php if (isset($_GET['tipo']) && isset($_GET['archivo'])) {
-						if (in_array($_GET['tipo'], ['borrador', 'publicacion'])) {
-							if (file_exists(RAIZ . 'database/post/' . str_replace('bo_', '', $Global['get_archivo']))) {
-								echo '<section class="flex-between">' .
-									pCheckboxBoton(['nameidclass' => 'volver_a_mostrarlo_como_nuevo', 'texto' => (Language(['creator', 'show-it-as-new'], 'dashboard')), 'icono' => 'fas fa-history', 'checked' => false]) .
-									pCheckboxBoton(['nameidclass' => 'quitarlo_del_index', 'texto' => (Language(['creator', 'remove-it-from-the-list'], 'dashboard')), 'icono' => 'fas fa-times-circle', 'checked' => false]) .
-									'</section><hr>';
-							}
-						}
-					} ?>
-					<section class="flex-between">
-						<?= pInput(['type' => 'hidden', 'name' => 'creador', 'value' => $Global['get_creador'], 'des_session' => true]) ?>
-						<?= pInput(['type' => 'hidden', 'name' => 'pubo', 'value' => $Global['get_tipo'], 'des_session' => true]) ?>
-						<?= pInput(['type' => 'hidden', 'name' => 'db_archivo', 'value' => $Global['get_archivo'], 'des_session' => true]) ?>
-						<button type="submit" name="refrescar" value="true" class="boton-2"><i class="fas fa-sync-alt"></i> <?= Language('refresh') ?></button>
-						<button type="submit" name="mostrar" value="true" class="boton"><i class="fas fa-eye"></i> <?= Language('show') ?></button>
-					</section>
-					<hr>
-					<?= Daamper::$scripts->xv("creator"); ?>
-				</section>
-		</form>
-<?php }
-} ?>
+if ($confirm_get_creator_and_route_file_path_exists) { ?>
+	<form method="post" >
+		<?= $render->dropdown([
+			"id" => "container-creator",
+			"title" => $creator_translate[$Creator["get_creator"]],
+			"checked" => true,
+			"content" => "<div class=\"flex flex-column gap-4\">" . (require RAIZ . 'app/views/admin/partial/creator-view.php') . "</div>"
+		]); ?>
+	</form>
+<?php } ?>
