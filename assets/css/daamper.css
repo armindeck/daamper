@@ -114,6 +114,19 @@ input[type="checkbox"]:checked + .check-boton + .check-div {
   border-color: var(--formulario-campo-focus-border-co);
 }
 
+.sub_container {
+  padding: 6px 8px;
+  border-radius: var(--formulario-border-radius);
+  box-shadow: var(--formulario-box-shadow);
+  transition: ease .2s;
+}
+
+.sub_container:hover,
+.sub_container:focus {
+  box-shadow: 0px 0px 0px var(--local-contenedores-border-px) var(--formulario-campo-focus-border-co);
+  border-color: var(--formulario-campo-focus-border-co);
+}
+
 input[type="text"],
 input[type="number"],
 input[type="url"],
