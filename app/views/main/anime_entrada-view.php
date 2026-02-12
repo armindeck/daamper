@@ -1,4 +1,9 @@
 <?php if (!isset($_GET['view']) || isset($_GET['view']) && in_array($_GET['view'], ['main'])): ?>
+<?php
+// Import Markdown libraries
+require_once RAIZ . 'app/scripts/lib/Markdown.php';
+require_once RAIZ . 'app/scripts/lib/MarkdownExtra.php';
+?>
 <?php global $AXR, $AX; if (
 	isset($AX['banner']) && !empty($AX['banner']) && file_exists($Web['directorio'].$AX['banner']) ||
 	isset($AX['banner_url']) && !empty($AX['banner_url'])
@@ -47,7 +52,7 @@
 			</aside>
 			<div class="con der-content">
 				<h3><?= Language('synopsis') ?></h3><hr>
-				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= Daamper::$scripts->Commands($AX['sinopsis']); ?></p><hr>
+				<p class="t-14 sinopsis scrolls" style="margin: 8px 0px;"><?= Michelf\MarkdownExtra::defaultTransform($AX["sinopsis"] ?? "") ?></p><hr>
 				<details open>
 					<summary><small><?= Language('details') ?></small></summary>
 					<ul class="t-14">
