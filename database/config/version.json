@@ -2,7 +2,7 @@
 	"core": {
 		"version": "0.3.9",
 		"state": "Dev",
-		"updated": "09.02.2026",
+		"updated": "10.02.2026",
 		"created": "12.06.2024",
 		"license": "Uso No Transferible – Prohibida la venta del código fuente"
 	},
@@ -46,7 +46,7 @@
 		"language": {
 			"version": "0.2.0",
 			"state": "Beta",
-			"updated": "09.02.2026",
+			"updated": "10.02.2026",
 			"created": "11.03.2025"
 		}
 	},
@@ -72,7 +72,7 @@
 		"creator": {
 			"version": "0.2.0",
 			"state": "Stable",
-			"updated": "09.02.2026",
+			"updated": "10.02.2026",
 			"created": "01.07.2024",
 			"preview": {
 				"version": "0.1.9",
@@ -82,26 +82,26 @@
 			},
 			"other": {
 				"normal": {
-					"version": "0.1.9",
+					"version": "0.2.0",
 					"state": "Stable",
-					"updated": "07.08.2025",
+					"updated": "10.02.2026",
 					"created": "30.07.2024"
 				},
 				"anime_entrada": {
-					"version": "0.1.8",
+					"version": "0.2.0",
 					"state": "Stable",
-					"updated": "07.08.2025",
+					"updated": "10.02.2026",
 					"created": "01.07.2024"
 				},
 				"anime_mirando": {
-					"version": "0.1.7",
+					"version": "0.2.0",
 					"state": "Stable",
-					"updated": "13.11.2025",
+					"updated": "10.02.2026",
 					"created": "02.07.2024"
 				},
 				"juego": {
 					"version": "0.1.6",
-					"state": "Stable",
+					"state": "Dev",
 					"updated": "07.08.2025",
 					"created": "29.12.2024"
 				}
