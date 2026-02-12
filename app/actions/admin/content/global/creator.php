@@ -1,97 +1,179 @@
 <?php
-if (isset($_GET['tipo']) && !empty($_GET['tipo'])) {
-	$Global['get_tipo'] = Daamper::$scripts->normalizar2($_GET['tipo']);
-} else {
-	$Global['get_tipo'] = '';
-}
 
-if (isset($_GET['archivo']) && !empty($_GET['archivo'])) {
-	$Global['get_archivo'] = Daamper::$scripts->normalizar2($_GET['archivo']);
-} else {
-	$Global['get_archivo'] = '';
-}
+/**************************************************************************/
+/*  Licencia de Uso No Transferible - daamper                             */
+/**************************************************************************/
+/*  creator.php                                                           */
+/**************************************************************************/
+/*                        This file is part of:                           */
+/*                              daamper                                   */
+/*                 https://github.com/armindeck/daamper                   */
+/**************************************************************************/
+/* Copyright (c) 2025 DBHS / daamper                                      */
+/*                                                                        */
+/* Se concede permiso, de forma gratuita, a cualquier persona para usar,  */
+/* modificar y ejecutar el código fuente de este software, incluyendo su  */
+/* uso en proyectos comerciales (como monetización por publicidad o       */
+/* donaciones).                                                           */
+/*                                                                        */
+/* Restricciones estrictas:                                               */
+/* - No está permitido vender, sublicenciar o distribuir el código        */
+/*   fuente —total o parcialmente— con fines de lucro.                    */
+/* - No está permitido convertir el código en privativo ni eliminar       */
+/*   esta licencia.                                                       */
+/* - No está permitido reclamar la autoría del código original.           */
+/*                                                                        */
+/* Uso permitido:                                                         */
+/* - Se permite modificar y usar el código con fines personales,          */
+/*   educativos y/o comerciales, siempre que no se venda.                 */
+/* - Se permite usar este software como base para otros proyectos,        */
+/*   siempre que esta licencia se mantenga.                               */
+/*                                                                        */
+/* El autor (DBHS / daamper) se reserva el derecho de modificar esta      */
+/* licencia en futuras versiones del software.                            */
+/*                                                                        */
+/* EL SOFTWARE SE ENTREGA "TAL CUAL", SIN GARANTÍAS DE NINGÚN TIPO,       */
+/* EXPRESAS O IMPLÍCITAS, INCLUYENDO, SIN LIMITACIÓN, GARANTÍAS DE        */
+/* COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO           */
+/* INFRACCIÓN. EN NINGÚN CASO LOS AUTORES SERÁN RESPONSABLES POR          */
+/* RECLAMACIONES, DAÑOS U OTRAS RESPONSABILIDADES, YA SEA EN UNA ACCIÓN   */
+/* CONTRACTUAL, EXTRACONTRACTUAL O DE OTRO TIPO, DERIVADAS DE O EN        */
+/* CONEXIÓN CON EL SOFTWARE, SU USO O OTRO TIPO DE MANEJO.                */
+/**************************************************************************/
 
-if (isset($_POST['refrescar']) && !empty($_POST['refrescar'])) {
+$name = [
+	"refresh" => "refrescar",
+	"show" => "mostrar",
+	"publish" => "publicacion",
+	"draft" => "borrador",
+	"creator" => "creador",
+	"type" => "tipo",
+	"file" => "archivo",
+];
+
+$route_posts = "database/post/";
+$route_drafts = "database/draft/";
+$creator_routes = "app/views/admin/creators/";
+
+$submit_refresh = isset($_POST[$name["refresh"]]) && !empty($_POST[$name["refresh"]]);
+$submit_show = isset($_POST[$name["show"]]) && !empty($_POST[$name["show"]]);
+$submit_publish = isset($_POST[$name["publish"]]) && !empty($_POST[$name["publish"]]);
+$submit_draft = isset($_POST[$name["draft"]]) && !empty($_POST[$name["draft"]]);
+$submit_publish_or_draft = $submit_publish ? $name["publish"] : ($submit_draft ? $name["draft"] : '');
+
+$submit_get_creator = isset($_GET[$name['creator']]) && !empty($_GET[$name['creator']]);
+$submit_get_type = isset($_GET[$name['type']]) && !empty($_GET[$name['type']]);
+$submit_get_file = isset($_GET[$name['file']]) && !empty($_GET[$name['file']]);
+
+$get_creator = $submit_get_creator ? Daamper::$scripts->normalizar2($_GET[$name['creator']]) : '';
+$get_type = $submit_get_type ? Daamper::$scripts->normalizar2($_GET[$name['type']]) : '';
+$get_file = $submit_get_file ? Daamper::$scripts->normalizar2($_GET[$name['file']]) : '';
+
+
+
+$route_get_type = $get_type == 'publicacion' ? $route_posts : ($get_type == 'borrador' ? $route_drafts : '');
+$route_get_type_file = $route_get_type . $get_file;
+$route_get_type_file_path = RAIZ . $route_get_type . $get_file;
+$route_get_type_file_path_exists = file_exists($route_get_type_file_path);
+
+$submit_get_show_creator = $submit_get_creator && $submit_get_type && $submit_get_file;
+$submit_get_type_confirm = in_array($get_type, ['publicacion', 'borrador']);
+
+$data_list_required = [$name['creator'], 'db_ruta'];
+
+$creator_routes_path = RAIZ . $creator_routes;
+$creator_routes_path_files = glob($creator_routes_path . "*-view.php");
+$creator_route_file = "{$creator_routes}{$get_creator}-view.php";
+$creator_route_file_path = RAIZ . $creator_route_file;
+$creator_route_file_path_exists = file_exists($creator_route_file_path);
+
+$Creator = [
+	'get_tipo' => $get_type,
+	'get_archivo' => $get_file,
+	'get_creador' => $get_creator,
+	'submit_get_creator' => $submit_get_creator,
+	'submit_get_type' => $submit_get_type,
+	'submit_get_file' => $submit_get_file,
+	'get_creator' => $get_creator,
+	'get_type' => $get_type,
+	'get_file' => $get_file,
+	'route_posts' => $route_posts,
+	'route_drafts' => $route_drafts,
+	'route_get_type' => $route_get_type,
+	'route_get_type_file' => $route_get_type_file,
+	'route_get_type_file_path' => $route_get_type_file_path,
+	'route_get_type_file_path_exists' => $route_get_type_file_path_exists,
+	'submit_get_show_creator' => $submit_get_show_creator,
+	'submit_get_type_confirm' => $submit_get_type_confirm,
+	'creator_routes' => $creator_routes,
+	'creator_routes_path' => $creator_routes_path,
+	'creator_routes_path_files' => $creator_routes_path_files,
+	'creator_route_file' => $creator_route_file,
+	'creator_route_file_path' => $creator_route_file_path,
+	'creator_route_file_path_exists' => $creator_route_file_path_exists,
+];
+
+if ($submit_refresh) {
 	$ruta_get = '?ap=creator';
-	$ruta_get .= isset($_GET['creador']) ? '&creador=' . Daamper::$scripts->normalizar2($_GET['creador']) : '';
-	$ruta_get .= isset($_GET['tipo']) ? '&tipo=' . Daamper::$scripts->normalizar2($_GET['tipo']) : '';
-	$ruta_get .= isset($_GET['archivo']) ? '&archivo=' . Daamper::$scripts->normalizar2($_GET['archivo']) : '';
+	$ruta_get .= $submit_get_creator ? '&creador=' . $get_creator : '';
+	$ruta_get .= $submit_get_type ? '&tipo=' . $get_type : '';
+	$ruta_get .= $submit_get_file ? '&archivo=' . $get_file : '';
 	Daamper::$sendAlert->Refresh(Language('refreshed'), $ruta_get, $_POST);
 }
-if (isset($_POST['mostrar']) && !empty($_POST['mostrar'])) {
+
+if ($submit_show) {
 	$_SESSION['tmpForm'] = $_POST;
 	$_SESSION['instance_destroy'] = true;
 	header("Location: process/creator.php");
 	exit;
 }
 
-if (
-	isset($_POST['publicacion']) && !empty($_POST['publicacion']) ||
-	isset($_POST['borrador']) && !empty($_POST['borrador'])
-) {
-	if (isset($_POST['publicacion'])) {
-		$Creador['tipo'] = 'publicacion';
-	}
-	if (isset($_POST['borrador'])) {
-		$Creador['tipo'] = 'borrador';
-	}
-	header("Location: ?ap=creator&creador=normal&tipo={$Creador['tipo']}&archivo={$_POST[$Creador['tipo']]}");
+if ($submit_publish || $submit_draft) {
+	header("Location: ?ap=creator&creador=normal&tipo={$submit_publish_or_draft}&archivo={$_POST[$submit_publish_or_draft]}"); /// ?????? deprecated ????
 	exit;
 }
 
-if (
-	isset($_GET['creador']) && !empty($_GET['creador']) &&
-	isset($_GET['tipo']) && !empty($_GET['tipo']) &&
-	isset($_GET['archivo']) && !empty($_GET['archivo'])
-) {
-	$Creador['get_creador'] = Daamper::$scripts->normalizar2($_GET['creador']);
-	$Creador['get_tipo'] = Daamper::$scripts->normalizar2($_GET['tipo']);
-	$Creador['get_archivo'] = Daamper::$scripts->normalizar2($_GET['archivo']);
+if ($submit_get_show_creator && $submit_get_type_confirm && !$route_get_type_file_path_exists) {
+	Daamper::$sendAlert->Error(Language('file-no-exists', 'global', ['value' => '<strong>' . $get_file . '</strong>']), "?ap=creator");
+	exit;
+}
 
-	if ($Creador['get_tipo'] == 'publicacion' || $Creador['get_tipo'] == 'borrador') {
-		if ($Creador['get_tipo'] == 'publicacion') {
-			$Creador['ruta_archivo'] = 'database/post/';
-		}
-		if ($Creador['get_tipo'] == 'borrador') {
-			$Creador['ruta_archivo'] = 'database/draft/';
-		}
-		$ruta_archivo = RAIZ . $Creador['ruta_archivo'] . $Creador['get_archivo'];
-		if (!file_exists($ruta_archivo)) {
-			Daamper::$sendAlert->Error(Language('file-no-exists', 'global', ['value' => '<strong>' . $Creador['get_archivo'] . '</strong>']), "?ap=creator");
-		}
-		$ACR = Daamper::$data->Read(($Creador['get_tipo'] == "publicacion" ? "post" : "draft") . "/" . $Creador['get_archivo'])["ACR"];
-		$AC = Daamper::$data->Read(($Creador['get_tipo'] == "publicacion" ? "post" : "draft") . "/" . $Creador['get_archivo'])["AC"];
-		if (!isset($ACR['creador'])) {
+if ($submit_get_show_creator) {
+	if ($submit_get_type_confirm) {
+		$read = Daamper::$data->Read($route_get_type_file);
+
+		$ACR = $read["ACR"];
+		$AC = $read["AC"];
+		
+		if (!isset($ACR[$name['creator']])) {
 			Daamper::$sendAlert->Error(Language('file-exists-no-data-or-incomplete', 'alert'), "?ap=creator");
 		}
-		$Creador['lista_datos_necesarios'] = ['creador', 'db_ruta'];
-		foreach ($Creador['lista_datos_necesarios'] as $key => $value) {
+
+		foreach ($data_list_required as $key => $value) {
 			if (!isset($ACR[$value])) {
 				Daamper::$sendAlert->Error(Language('file-no-data-creator-or-ruta', 'alert'), "?ap=creator");
 			}
 		}
-		if ($Creador['get_creador'] != $ACR['creador']) {
-			header("Location: ?ap=creator&creador={$ACR['creador']}&tipo={$Creador['get_tipo']}&archivo={$Creador['get_archivo']}");
+
+		if ($get_creator != $ACR[$name['creator']]) {
+			header("Location: ?ap=creator&creador={$ACR[$name['creator']]}&tipo={$get_type}&archivo={$get_file}");
+			exit;
 		}
+
 		if (!isset($_SESSION['tmpForm'])) {
-			$Creador['tmp'] = [];
+			$tmp = [];
 			foreach ($AC as $key => $value) {
-				$Creador['tmp'][$key] = $value;
+				$tmp[$key] = $value;
 			}
 			foreach ($ACR as $key => $value) {
 				if ($key != 'db_ruta' || $key != 'id_publicador') {
-					$Creador['tmp'][$key] = $value;
+					$tmp[$key] = $value;
 				}
 			}
-			$_SESSION['tmpForm'] = $Creador['tmp'];
+			$_SESSION['tmpForm'] = $tmp;
 		}
 	}
-	unset($Creador['get_tipo']);
-	unset($Creador['get_creador']);
-	unset($Creador['get_archivo']);
-	unset($Creador['ruta_archivo']);
-	unset($Creador['tmp']);
-	unset($Creador['lista_datos_necesarios']);
+	unset($tmp);
 	unset($ACR);
 	unset($AC);
 }
