@@ -3,16 +3,50 @@ Descubre las nuevas novedades de daamper!
 
 ## [0.3.9 Stable] - 12/02/2026
 
-- Nuvas mejoras para el panel administrativo:
-    - Se cambio el diseño del apartado Configuración, ademas se unio el apartado Htaccess.
-    - Actualice el archivo de las acciones para que se pudiera re-dirigir a las configuraciones cuando se actualice el htaccess.
-    - Nuevo diseño para: (información, actualizaciones, explorador de archivos, subir imagen, anuncios, scripts, usuarios, editor).
-    - Cambie el nombre de **Directorio** por **Explorador** y **Creador** por **Publicar**.
-    - Elimine el apartado `Tema`.
-    - Mejore el diseño del apartado creador, por ahora solo la parte superior.
-    - Mejore y cambie el diseño de los formularios para publicar `normal`, `entrada anime`, `mirando anime` y `juego`.
-- Corregi un bug con el cierre de la etiqueta label en los input antiguos.
-- Ahora se puede usar el formato Markdown en la sinopsis de los animes y juego, ademas en la información extra en juego.
+### 🎨 Rediseño del panel administrativo
+
+- Nuevo diseño para los apartados:
+  - Información  
+  - Actualizaciones  
+  - Explorador de archivos  
+  - Subir imagen  
+  - Anuncios  
+  - Scripts  
+  - Usuarios  
+  - Editor  
+
+- Rediseñado el apartado **Configuración**, integrando la gestión de `.htaccess` en la misma sección.
+- Mejora visual en el apartado **Publicar** (antes *Creador*), optimizando su estructura superior.
+- Rediseño completo de los formularios para los tipos de publicación:
+  - Normal  
+  - Entrada anime  
+  - Mirando anime  
+  - Juego  
+
+### 🔁 Cambios estructurales
+
+- Renombrado:
+  - **Directorio → Explorador**
+  - **Creador → Publicar**
+- Eliminado el apartado `Tema`.
+- Actualizado el archivo de acciones para permitir redirección automática a **Configuración** tras modificar el archivo `.htaccess`.
+
+### ✨ Nuevas funciones
+
+- Soporte para **Markdown** en:
+  - Sinopsis de anime  
+  - Sinopsis de juego  
+  - Información extra en publicaciones tipo juego  
+
+- Visualización de la cantidad de visitas de cada publicación desde el panel administrativo.
+
+### 🐛 Correcciones
+
+- Corregido error en el cierre de la etiqueta `<label>` en formularios antiguos.
+- Ajustado el renderizado de Markdown en:
+  - Vista de entrada anime  
+  - Vista de anime  
+  - Vista de juego (incluye información extra)
 
 ## [0.3.8 Stable] - 13/11/2025
 Nuevo diseño del apartado Plantilla en el panel administrativo.
