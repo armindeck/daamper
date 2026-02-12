@@ -225,6 +225,7 @@ function pSelectArchivos($list){
 		}
 	}
 	$return .= '</select>';
+	$return .= isset($list['label']) && $list['label'] ? '</label>' : '';
 	return $return;
 }
 
@@ -274,6 +275,7 @@ function pSelectArchivosTitulo($list){
 	}
 	unset($ACR); unset($AC);
 	$return .= '</select>';
+	$return .= isset($list['label']) && $list['label'] ? '</label>' : '';
 	return $return;
 }
 
@@ -305,6 +307,7 @@ function pTextarea($list){
 		$return .= isset($list['value']) ? $list['value'] : '';
 	}
 	$return .= '</textarea>';
+	$return .= isset($list['label']) && $list['label'] ? '</label>' : '';
 	return $return;
 }
 
