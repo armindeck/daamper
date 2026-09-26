@@ -177,7 +177,7 @@ $formHtaccess = function ($section, $allData, $input, $render) {
 		503 => "service-unavailable"
 	];
 
-	$enable_list = ['todo_https' => 'ssl-https', 'errores' => 'errors', 'timezone' => 'time-zone'];
+	$enable_list = ['todo_https' => 'ssl-https', 'errores' => 'errors'];
 
 	$content = "<div class=\"flex flex-column gap-4 flex-1\">";
 
@@ -191,7 +191,7 @@ $formHtaccess = function ($section, $allData, $input, $render) {
 			"name" => "error_{$key}",
 			"value" => $data["error_{$key}"] ?? "",
 			"required" => true,
-			"type" => "url"
+			"type" => "text"
 		]);
 	}
 
