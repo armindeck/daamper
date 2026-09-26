@@ -1,6 +1,15 @@
 # Changelog
 Descubre las nuevas novedades de daamper!
 
+## [0.3.10 Stable] - 25/09/2026
+
+Versión de mantenimiento enfocada en reforzar la seguridad y dejar la configuración de acceso más limpia y controlada.
+
+- Modifique el archivo .htaccess, htaccess.txt y la seccion de htaccess en el panel.
+- El compo timezone fue quitado de la seccion htaccess.
+- Ahora los campos de enlaces de errores seran de tipo texto.
+- Agregue dos archivos .htaccess en app y database para denegar el acceso.
+
 ## [0.3.9 Stable] - 12/02/2026
 
 ### 🎨 Rediseño del panel administrativo
